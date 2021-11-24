@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>C++のコンパイラのインストール - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="C++のコンパイラをインストールしましょう。">
+<title>Install Fonts - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="I explain the way to install fonts. You can intall fonts using apt command as follows. This is examples of Japanese fonts. You need to search for the fonts you need by yourself using search engines, etc. I tried this article on Ubuntu 18.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200614085351.html">C++のコンパイラのインストール</a></h2>
+    <h2><a href="/blog/20211124125149.html">Install Fonts</a></h2>
 <p>
-  C++のコンパイラをインストールしましょう。
+  I explain the way to install fonts. You can intall fonts using <a href="/blog/20200530085516.html">apt</a> command as follows. This is examples of Japanese fonts. You need to search for the fonts you need by yourself using search engines, etc. I tried this article on Ubuntu 18.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -76,16 +76,38 @@
 </div>
 
 
+<pre>
+# Install Fonts
+apt install -y fonts-ipafont
+</pre>
 <p>
-  C++は、g++というコンパイラをインストールすると使えるようになります。
+  The fonts is installed on <b>/usr/share/fonts</b> directory. You can see the fonts using <a href="https://en.linux.perlzemi.com/blog/20200317121556.html">find</a> command.
 </p>
+<pre>
+# Find founts
+find /usr/share/fonts
+</pre>
 <p>
-  C++のソースコードの依存関係を解決してくれるmakeもインストールしておきましょう。
+  You can see the fonts you want to see using <a href="https://en.linux.perlzemi.com/blog/20200602093211.html">grep</a> command with <b>find</b> command.
 </p>
-<ul>
-  <li><a href="/blog/20200503174004.html">g++のインストール</a></li>
-  <li><a href="/blog/20200514084132.html">makeのインストール</a></li>
-</ul>
+<pre>
+# See the fonts you want to see
+find /usr/share/fonts | grep ipa
+</pre>
+<p>
+  An example of the output:
+</p>
+<pre>
+/usr/share/fonts/opentype/ipafont-mincho
+/usr/share/fonts/opentype/ipafont-mincho/ipam.ttf
+/usr/share/fonts/opentype/ipafont-mincho/ipamp.ttf
+/usr/share/fonts/opentype/ipafont-gothic
+/usr/share/fonts/opentype/ipafont-gothic/ipagp.ttf
+/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf
+</pre>
+<p>
+  The files which have the extension ".ttf" are font files.
+</p>
 
   </div>
   <div class="bottom">

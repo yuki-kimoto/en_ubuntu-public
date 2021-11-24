@@ -12,7 +12,6 @@
 <link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
 <script>
   $(function(){
-    // google code prettifyの有効化
     $("pre").addClass("prettyprint");
     function init(event){
       prettyPrint();
@@ -21,7 +20,6 @@
     else if(window.attachEvent)window.attachEvent("onload",init);
     
     $(".to-top").click(function() {
-      // ページの一番上までスクロールさせます。
       $('body, html').animate({scrollTop: 0}, 300, 'linear');;
     });
   });
@@ -38,18 +36,15 @@
 </script>
 
 <title>Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Ubuntuサーバー構築入門は、LinuxディストリビューションのひとつであるUbuntuでゼロからサーバー構築をするための無料Web講座です。目標は、Webシステム開発環境の構築です。データ分析のためのデータベースの環境構築も、Web開発環境を構築すれば、だいたいできあがります。">
+<meta name="description" content="Ubuntu Server Construction Primer is a free web course for building a server from scratch on Ubuntu, one of the Linux distributions. The goal is to build a Web system development environment. If you build a Web development environment, you can almost complete the database environment for data analysis.">
   </head>
   <body>
     <div class="container">
       <div class="header">
         <div class="header_main">
   <h1>
-    <a href="/"><img src="/images/logo.png">Ubuntuサーバー構築入門</a>
+    <a href="/"><img src="/images/logo.png">Introduction of Ubuntu Server Construction</a>
   </h1>
-  <div class="header_right">
-    <a rel="nofollow" href="https://perlclub.net/account/create">会員登録</a>
-  </div>
 </div>
 
       </div>
@@ -61,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Ubuntuサーバー構築入門</a></h2>
+    <h2><a href="/"> Introduction to Ubuntu server construction </a></h2>
 <p>
-  Ubuntuサーバー構築入門は、LinuxディストリビューションのひとつであるUbuntuでゼロからサーバー構築をするための無料Web講座です。目標は、Webシステム開発環境の構築です。データ分析のためのデータベースの環境構築も、Web開発環境を構築すれば、だいたいできあがります。
+  Ubuntu Server Construction Primer is a free web course for building a server from scratch on Ubuntu, one of the Linux distributions. The goal is to build a Web system development environment. If you build a Web development environment, you can almost complete the database environment for data analysis.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,409 +77,408 @@
 
 
 <p>
-  この講座では、Ubuntu上に、スケーラブルで、現代的なリアルタイムWeb対応のWebアプリケーションを構築してみます。
+  In this course, we will build a scalable, modern, real-time web-enabled web application on Ubuntu.
 </p>
 <p>
-  Ubuntu上にWebサーバーをインストールし、Webアプリケーションを作成、WebサーバーからリバースプロキシでWebアプリケーションに接続し、外部へ公開するところまでを解説します。WebアプリケーションのサンプルとしてはPerlのWebフレームワークを使用します。
+  We will explain how to install a web server on Ubuntu, create a web application, connect to the web application from the web server with a reverse proxy, and publish it to the outside. Use Perl's web framework as a sample web application.
 </p>
 <p>
-  2021年11月17日現在、Ubuntuのバージョンは、Ubuntu 18で確認しています。特別な注記がない限り、Ubuntu 20、Ubuntu 16でも、動作すると想定します。
+  As of November 17, 2021, the version of Ubuntu has been confirmed on Ubuntu 18. Unless otherwise noted, it is assumed to work on Ubuntu 20 and Ubuntu 16.
 </p>
 <p>
-  もしこの無料のUbuntu講座が良かったと感じたら他の人とシェアしてみませんか?
+  If you like this free Ubuntu course, why not share it with others?
 </p>
-<h3>Ubuntuを利用できるようにする</h3>
+<h3> Make Ubuntu available </h3>
 <p>
-  Ubuntuを利用できるようにしましょう。
-</p>
-<ul>
-  <li><a href="/blog/20200509155552.html">Ubuntuの利用方法</a></li>
-</ul>
-<p>
-  コマンドを実行できるコンソール画面を表示するところまで進んで、初期ユーザーでログインするところまで進みましょう。
-</p>
-<h3>ユーザーの作成</h3>
-<p>
-  次は、コンソール画面でユーザーを作成します。Webアプリケーションの実行ユーザー(myapp)を作成するのと、自分自身のユーザー(たとえばkimoto)の二つを作成してみましょう。
-</p>
-<p>
-  ユーザー追加「-m」オプションあり、パスワードの設定、<a href="/blog/20200406174004.html">sudo</a>グループへ追加の手順を行いましょう。
+  Let's make Ubuntu available.
 </p>
 <ul>
-  <li><a href="/blog/20200511173052.html">ユーザーの追加 - useraddコマンド</a></li>
+  <li> <a href="/blog/20200509155552.html"> How to use Ubuntu</a> </li>
 </ul>
-<h3>グループの作成</h3>
 <p>
-  Webアプリケーションで必要になる「myapp-group」グループを作成します。これは、データディレクトリにWebアプリケーションのユーザー、開発ユーザー、Apacheユーザーが、アクセスするために必要になります。
+  Proceed to the console screen where you can execute commands, and then log in as the initial user.
+</p>
+<h3> Create User </h3>
+<p>
+  Next, create a user on the console screen. Let's create two users, one to run the web application (myapp) and one to our own (for example, kimoto).
+</p>
+<p>
+  Add user There is an "-m" option, set a password, and add it to the <a href="/blog/20200406174004.html"> sudo</a> group.
 </p>
 <ul>
-  <li><a href="/blog/20200405174004.html">グループを追加する - groupaddコマンド</a></li>
+  <li> <a href="/blog/20200511173052.html"> Add user --useradd command</a> </li>
 </ul>
+<h3> Create group </h3>
 <p>
-  次に、myappユーザーと開発者ユーザ(たとえばkimoto)を「myapp-group」に追加しましょう。
+  Create the "myapp-group" group that your web application will need. This is required for web application users, development users, and Apache users to access the data directory.
 </p>
 <ul>
-  <li><a href="/blog/20200330174004.html">ユーザーをグループに追加する - gpasswd -a</a></li>
+  <li> <a href="/blog/20200405174004.html"> Add a group --group add command</a> </li>
 </ul>
-<h3>ファイアーウォールの設定</h3>
 <p>
-  ホスティングサービスが用意するネットーワークのファイアーウォール設定で以下のポートを開いてください。またオンプレミスでサーバーを構築している場合は<a href="/blog/20200907132441.html">ufwコマンド</a>を使って、以下のポートを開いてください。
+  Next, let's add myapp and developer users (eg kimoto) to "myapp-group".
+</p>
+<ul>
+  <li> <a href="/blog/20200330174004.html"> Add user to group --gpasswd -a</a> </li>
+</ul>
+<h3> Firewall settings </h3>
+<p>
+  Open the following ports in the firewall settings of the network provided by the hosting service. If you are building your server on-premises, use the <a href="/blog/20200907132441.html"> ufw command</a> to open the following ports.
 </p>
 <table>
-  <tr><td>HTTP</td><td>80</td>
-  <tr><td>HTTPS</td><td>443</td>
-  <tr><td>SSH</td><td><a href="/blog/20200715102902.html">SSHで利用するポート</a>(デフォルトの22番ポートは危険)</td>
-  <tr><td>開発Webアプリ</td><td>3000</td>
-  <tr><td>本番Webアプリ</td><td>8080</td>
+  <tr> <td> HTTP </td> <td> 80 </td>
+  <tr> <td> HTTPS </td> <td> 443 </td>
+  <tr> <td> SSH </td> <td> <a href="/blog/20200715102902.html"> SSH port</a> (default port 22 is dangerous) </td>
+  <tr> <td> Development web app </td> <td> 3000 </td>
+  <tr> <td> Production web app </td> <td> 8080 </td>
 </table>
 <p>
-  3000番ポートは、<a href="https://mojolicious.perlzemi.com/">Mojolicious</a>の開発サーバーのデフォルトのポートです。
+  Port 3000 is the default port for the <a href="https://mojolicious.perlzemi.com/"> Mojolicious</a> development server.
 </p>
 <p>
-  開発者が複数いる場合は、必要に応じて、パケットフィルタから別のポートを開放しましょう(3001番、3002番など)。
+  If you have multiple developers, open another port from the packet filter as needed (3001, 3002, etc.).
 </p>
 <p>
-  8080番ポートは、Mojoliciousの本番サーバーのデフォルトのポート番号です。
+  Port 8080 is the default port number for Mojolicious's production server.
 </p>
 <p>
-  複数のWebアプリケーションを動かす場合は、必要に応じて、パケットフィルタから別のポートを開放しましょう(8081番、8082番など)。
+  If you run multiple web applications, open another port from the packet filter as needed (8081, 8082, etc.).
 </p>
-<h3>SSHクライアントの利用</h3>
+<h3> Using SSH client </h3>
 <p>
-  パソコン上からSSHでサーバーへの接続して、コマンド実行とファイル編集ができるようにしましょう。
+  Let's connect to the server with SSH from your computer so that you can execute commands and edit files.
 </p>
-<h4>SSHクライアントでコマンド実行</h4>
+<h4> Command execution on SSH client </h4>
 <p>
-  SSHクライアントでSSHサーバーに接続してコマンド実行するツールに、Windowsの場合はTeraTermがあります。
-</p>
-<ul>
-  <li><a href="https://linux.perlclub.net/blog/20200525082545.html">Linuxサーバーにコマンドを送る - TeraTermのインストールと使い方</a></li>
-</ul>
-<p>
-  <a href="https://www.atmarkit.co.jp/ait/articles/1006/25/news095.html">PuTTY</a>などの他のWindowsで動くSSHクライアントもありますので、お好みで。
-</p>
-<p>
-  Macの場合は、ターミナルからsshコマンドが使えます。
-</p>
-<h4>SCPを使ってサーバー上のファイルを編集</h4>
-<p>
-  SCPというSSH上に構築されるプロトコルを使うとサーバー上のファイルを編集できます。
-</p>
-<p>
-  SCPクライアントとして、Windowsの場合はWinSCPがあります。
+  In the case of Windows, TeraTerm is a tool for connecting to an SSH server with an SSH client and executing commands.
 </p>
 <ul>
-  <li><a href="https://linux.perlclub.net/blog/20200520082545.html">Linuxサーバー上のファイルを編集 - WinSCPのインストールと使い方</a></li>
+  <li> <a href="https://linux.perlclub.net/blog/20200525082545.html"> Send commands to a Linux server-Installing and using TeraTerm</a> </li>
 </ul>
 <p>
-  MacにもWindowsのWinSCPの代わりになるようなソフトウェアがあるので、インストールしましょう。
-</p>
-<h3>SSHサーバーの設定</h3>
-<ul>
-  <li><a href="/blog/20200715102902.html">SSHポートを変更する - デフォルトの22番ポートはセキュリティ的に危険が高い</a></li>
-</ul>
-<h3>タイムゾーンの設定</h3>
-<p>
-  タイムゾーンを「Asia/Tokyo」に設定しましょう。
-</p>
-<ul>
-  <li><a href="/blog/20200507174004.html">タイムゾーンの確認と設定 - timedatectlコマンド</a></li>
-</ul>
-<h3>パッケージのインストール</h3>
-<p>
-  Webシステム開発環境構築に必要なパッケージをインストールしましょう。<a href="/blog/20200506174004.html">デフォルトパッケージ</a>では、足りないものをインストールしていきます。
+  There are SSH clients that work on other Windows such as <a href="https://www.atmarkit.co.jp/ait/articles/1006/25/news095.html"> PuTTY</a>, so you can use it as you like. so.
 </p>
 <p>
-  インストールがうまくいかない場合があるので、最初にaptを最新のバージョンにしましょう。
+  For Mac, you can use the ssh command from the terminal.
 </p>
-<ul>
-  <li><a href="/blog/20200524135533.html">aptのアップデート - apt update</a></li>
-</ul>
+<h4> Use SCP to edit files on the server </h4>
 <p>
-  まずは、ひとつのマシンの中に、Webサーバー、アプリケーションサーバー、メール送信サーバー、DBサーバーをすべて構築しましょう。
-</p>
-<h4>コンパイラ・リンカ</h4>
-<p>
-  C言語・C++のコンパイラ・リンカのインストール。
-</p>
-<ul>
-  <li><a href="/blog/20200514084132.html">makeのインストール</a></li>
-  <li><a href="/blog/20200504174004.html">gccのインストール</a></li>
-  <li><a href="/blog/20200503174004.html">g++のインストール</a></li>
-</ul>
-<h4>テキストエディタ</h4>
-<ul>
-  <li><a href="/blog/20200825150919.html">vimのインストール</a></li>
-</ul>
-<h4>HTTPクライアント</h4>
-<ul>
-  <li><a href="/blog/20200826170338.html">curlのインストール</a></li>
-</ul>
-<h4>SSL通信</h4>
-<ul>
-  <li><a href="/blog/20200412174004.html">libssl-devのインストール - OpenSSLのヘッダファイルとライブラリ</a></li>
-</ul>
-<h4>画像処理</h4>
-<ul>
-  <li><a href="/blog/20200501174004.html">libpng-devのインストール</a></li>
-  <li><a href="/blog/20200502174004.html">libgif-devのインストール</a></li>
-  <li><a href="/blog/20200426174004.html">libjpeg-devのインストール</a></li>
-</ul>
-<h4>圧縮・解凍</h4>
-<ul>
-  <li><a href="/blog/20200323174004.html">zipのインストール - ZIP形式のファイルの圧縮・解凍</a></li>
-</ul>
-<h4>ネットワーク</h4>
-<ul>
-  <li><a href="/blog/20200324174004.html">net-toolsのインストール - 非推奨だがとりあえずifconfig、arp、route、netstatを使いたい場合</a></li>
-</ul>
-<h4>リポジトリ管理</h4>
-<ul>
-  <li><a href="/blog/20200607082859.html">gitのインストール - Git分散リポジトリ管理システム</a></li>
-</ul>
-<h4>SSL証明書</h4>
-<ul>
-  <li><a href="/blog/20200319174004.html">certbotのインストール - Let's EncryptのSSL証明書の取得と更新</a></li>
-</ul>
-<h4>プログラミング言語</h4>
-<p>
-  プログラミング言語のインストールです。ABC順。
-</p>
-<ul>
-  <li><a href="/blog/20200303174004.html">Javaのインストール</a></li>
-  <li><a href="/blog/20200302174004.html">nodejsのインストール</a></li>
-  <li><a href="/blog/20200616085351.html">Perlのインストール</a></li>
-  <li><a href="/blog/20200613085351.html">PHPのインストール</a></li>
-  <li><a href="/blog/20200301174004.html">Python 2のインストール</a></li>
-  <li><a href="/blog/20200228174004.html">Python 3のインストール</a></li>
-  <li><a href="/blog/20200304174004.html">Rubyのインストール</a></li>
-</ul>
-<h3>データ用ディレクトリの作成</h3>
-<p>
-  Webアプリケーションからアップロードされたファイルを保存したり、バッチ処理でデータを要約したJSONを保存しておくための、データ用のディレクトリを作成します。このディレクトリは「myapp」ユーザー、他の開発ユーザーが立ち上げた、Webアプリケーションが、ファイルをアップロードする場所です。適切なパーミッションを設定しておきましょう。
+  You can edit files on the server using a protocol built on SSH called SCP.
 </p>
 <p>
-  もし、アタッチされたディスクを使って、それをデータ用のディレクトリにする場合は、こちらの手順を先に行っていください。「/datadrive」というデータ用のディレクトリが作成されます。
+  WinSCP is the SCP client for Windows.
 </p>
 <ul>
-  <li><a href="/blog/20200601085516.html">物理的に接続されているディスクを確認する</a></li>
-  <li><a href="/blog/20200528085516.html">新しい物理ディスクの初期フォーマットとファイルシステムへのマウント</a></li>
+  <li> <a href="https://linux.perlclub.net/blog/20200520082545.html"> Edit files on Linux server-Installing and using WinSCP</a> </li>
 </ul>
 <p>
-  アプリケーションサーバーのデフォルトのディスクを使う場合は「/datadrive」をmkdirコマンドで作成してください。
+  There is software on your Mac that can replace WinSCP on Windows, so install it.
+</p>
+<h3> SSH server settings </h3>
+<ul>
+  <li> <a href="/blog/20200715102902.html"> Change SSH port-default port 22 is a high security risk</a> </li>
+</ul>
+<h3> Time zone setting </h3>
+<p>
+  Let's set the time zone to "Asia / Tokyo".
+</p>
+<ul>
+  <li> <a href="/blog/20200507174004.html"> Checking and setting the time zone --timedatectl command</a> </li>
+</ul>
+<h3> Package installation </h3>
+<p>
+  Let's install the packages required to build the Web system development environment. <a href="/blog/20200506174004.html"> Default package</a> will install what is missing.
+</p>
+<p>
+  Installation may not work, so make sure you have the latest version of apt first.
+</p>
+<ul>
+  <li> <a href="/blog/20200524135533.html"> apt update --apt update</a> </li>
+</ul>
+<p>
+  First, let's build a web server, application server, mail sending server, and DB server all in one machine.
+</p>
+<h4> Compiler Linker </h4>
+<p>
+  Installation of C language / C ++ compiler / linker.
+</p>
+<ul>
+  <li> <a href="/blog/20200514084132.html"> Install make</a> </li>
+  <li> <a href="/blog/20200504174004.html"> Install gcc</a> </li>
+  <li> <a href="/blog/20200503174004.html"> Install g ++</a> </li>
+</ul>
+<h4> Text editor </h4>
+<ul>
+  <li> <a href="/blog/20200825150919.html"> Install vim</a> </li>
+</ul>
+<h4> HTTP client </h4>
+<ul>
+  <li> <a href="/blog/20200826170338.html"> Install curl</a> </li>
+</ul>
+<h4> SSL communication </h4>
+<ul>
+  <li> <a href="/blog/20200412174004.html"> Installing libssl-dev --OpenSSL header files and libraries</a> </li>
+</ul>
+<h4> Image processing </h4>
+<ul>
+  <li> <a href="/blog/20200501174004.html"> Install libpng-dev</a> </li>
+  <li> <a href="/blog/20200502174004.html"> Install libgif-dev</a> </li>
+  <li> <a href="/blog/20200426174004.html"> Install libjpeg-dev</a> </li>
+</ul>
+<h4> Compression / decompression </h4>
+<ul>
+  <li> <a href="/blog/20200323174004.html"> Zip installation-zipping / decompressing ZIP files</a> </li>
+</ul>
+<h4> Network </h4>
+<ul>
+  <li> <a href="/blog/20200324174004.html"> Installing net-tools-deprecated but if you want to use ifconfig, arp, route, netstat for the time being</a> </li>
+</ul>
+<h4> Repository management </h4>
+<ul>
+  <li> <a href="/blog/20200607082859.html"> Install git-Git distributed repository management system</a> </li>
+</ul>
+<h4> SSL certificate </h4>
+<ul>
+  <li> <a href="/blog/20200319174004.html"> Installing certbot --Getting and Renewing Let's Encrypt SSL Certificate</a> </li>
+</ul>
+<h4> Programming language </h4>
+<p>
+  Installation of programming language. In alphabetical order.
+</p>
+<ul>
+  <li> <a href="/blog/20200303174004.html"> Java installation</a> </li>
+  <li> <a href="/blog/20200302174004.html"> Install nodejs</a> </li>
+  <li> <a href="/blog/20200616085351.html"> Perl installation</a> </li>
+  <li> <a href="/blog/20200613085351.html"> PHP installation</a> </li>
+  <li> <a href="/blog/20200301174004.html"> Installing Python 2</a> </l>i>
+  <li> <a href="/blog/20200228174004.html"> Installing Python 3</a> </li>
+  <li> <a href="/blog/20200304174004.html"> Install Ruby</a> </li>
+</ul>
+<h3> Creating a directory for data </h3>
+<p>
+  Create a directory for your data to store files uploaded from your web application or to store JSON that summarizes your data in batch. This directory is where web applications launched by the "myapp" user and other development users upload files. Let's set appropriate permissions.
+</p>
+<p>
+  If you want to use an attached disk and make it a directory for data, follow these steps first. A directory for the data called "/ datadrive" will be created.
+</p>
+<ul>
+  <li> <a href="/blog/20200601085516.html"> Check the physically connected disk</a> </li>
+  <li> <a href="/blog/20200528085516.html"> Initial format of new physical disk and mount to file system</a> </li>
+</ul>
+<p>
+  To use the default disk of the application server, create "/ datadrive" with the mkdir command.
 </p>
 <pre>
-sudo mkdir /datadrive
+sudo mkdir / datadrive
 </pre>
 <p>
-  次に、このデータディレクトリに、アプリケーションユーザーと他の開発ユーザーが書き込めるようにします。
+  Then make this data directory writable to application users and other development users.
 </p>
 <ul>
-  <li><a href="/blog/20200327174004.html">データディレクトリに複数のユーザーが読み書きする方法 - Webアプリのファイルアップロードディレクトリ</a></li>
+  <li> <a href="/blog/20200327174004.html"> How multiple users read and write to the data directory --Web app file upload directory</a> </li>
 </ul>
 <p>
-  これで、データ用ディレクトリが完成しました。
+  This completes the data directory.
 </p>
-<h3>Redisサーバー</h3>
+<h3> Redis server </h3>
 <p>
-  揮発性の情報の保存サーバーであるRedisサーバーのインストールと起動確認を行います。
+  Install and check the startup of the Redis server, which is the storage server for volatile information.
 </p>
 <p>
-  以下の記事の「sudo systemctl status redis-server」を実行してRedisサーバーが起動していることを確認してください。
+  Make sure the Redis server is up by running "sudo systemctl status redis-server" in the following article.
 </p>
 <ul>
-  <li><a href="/blog/20200525135533.html">redis-serverをインストールする</a></li>
-  <li><a href="/blog/20200225174004.html">Redisサーバーの起動・停止・再起動・状態確認</a></li>
+  <li> <a href="/blog/20200525135533.html"> Install redis-server</a> </li>
+  <li> <a href="/blog/20200225174004.html"> Redis server start / stop / restart / status check</a> </li>
 </ul>
-<h3>データベースサーバー MariaDB</h3>
+<h3> Database server MariaDB </h3>
 <p>
-  データベースサーバーであるMariaDBのインストールと起動確認を行います。
+  Install and check the startup of MariaDB, which is a database server.
 </p>
-<h4>データベースサーバーと関連ライブラリのインストール</h4>
+<h4> Install database server and related libraries </h4>
 <ul>
-  <li><a href="/blog/20200422174004.html">mariadb-clientのインストール - MariaDBクライアント</a></li>
-  <li><a href="/blog/20200421174004.html">mariadb-serverのインストール - MariaDBデータベースサーバー</a></li>
-  <li><a href="/blog/20200411174004.html">libmysqlclient-dev のインストール - MariaDBクライアントのヘッダとライブラリ</a></li>
-  <li><a href="/blog/20200419174004.html">libmariadb-devのインストール - MariaDBデータベースのヘッダとライブラリ</a></li>
+  <li> <a href="/blog/20200422174004.html"> Installing mariadb-client --MariaDB client</a> </li>
+  <li> <a href="/blog/20200421174004.html"> Installing mariadb-server --MariaDB database server</a> </li>
+  <li> <a href="/blog/20200411174004.html"> Installing libmysqlclient-dev --MariaDB client headers and libraries</a> </li>
+  <li> <a href="/blog/20200419174004.html"> Installing libmariadb-dev --MariaDB database headers and libraries</a> </li>
 </ul>
-<h4>データベースサーバーの起動確認</h4>
+<h4> Confirm database server startup </h4>
 <p>
-  以下の記事の「sudo systemctl status mariadb」を実行してMariaDBが起動していることを確認してください。
-</p>
-<ul>
-  <li><a href="/blog/20200417174004.html">MariaDBの起動・停止・再起動・状態確認</a></li>
-</ul>
-<h4>MariaDBサーバーの初期設定</h4>
-<p>
-  データベースサーバーである<a href="https://mariadb.perlclub.net/">MariaDB</a>の初期設定を行いましょう。
+  Make sure MariaDB is running by running "sudo systemctl status mariadb" in the following article.
 </p>
 <ul>
-  <li><a href="/blog/20200224174004.html">MariaDBの初期設定とユーザーの作成</a></li>
+  <li> <a href="/blog/20200417174004.html"> MariaDB start / stop / restart / status check</a> </li>
 </ul>
-<h3>cron</h3>
+<h4> MariaDB server initialization </h4>
 <p>
-  定期プログラム実行の常駐アプリケーションであるcronの起動確認を行います。
-</p>
-<h4>cronの起動確認</h4>
-<p>
-  以下の記事の「sudo systemctl status cron」を実行してApacheが起動していることを確認してください。
+  Let's initialize the database server <a href="https://mariadb.perlclub.net/"> MariaDB</a>.
 </p>
 <ul>
-  <li><a href="/blog/20200520084454.html">cronの起動・停止・再起動・状態確認, cronの実行ログ</a></li>
+  <li> <a href="/blog/20200224174004.html"> MariaDB initialization and user creation</a> </li>
 </ul>
-<h4>crontabの設定</h4>
+<h3> cron </h3>
 <p>
-  crontabの初期設定をしておきましょう。
+  Check the startup of cron, which is a resident application for executing periodic programs.
+</p>
+<h4> Confirmation of cron startup </h4>
+<p>
+  Make sure Apache is running by running "sudo systemctl status cron" in the following article.
 </p>
 <ul>
-  <li><a href="/blog/20200604085516.html">crontab - cronで定期実行するプログラムを記述する</a></li>
+  <li> <a href="/blog/20200520084454.html"> Start / stop / restart / status check of cron, cron execution log</a> </li>
 </ul>
-<h3>Apache</h3>
+<h4> Crontab settings </h4>
 <p>
-  WebサーバーであるApacheのインストールと設定を行います。
-</p>
-<p>
-  Mojoliciousアプリケーションに接続できるようにリバースプロキシの設定を行います。
-</p>
-<p>
-  HTTPSで接続できるようにSSLの設定を行います。
-</p>
-<h4>Apacheのインストール</h4>
-<p>
-  Apacheをインストールして、起動していることを確認します。
+  Let's make the initial settings of crontab.
 </p>
 <ul>
-  <li><a href="/blog/20200424174004.html">apache2のインストール - WebサーバーであるApacheのバージョン2系</a></li>
-  <li><a href="/blog/20200519084454.html">Aapacheの起動・停止・再起動・状態確認</a></li>
+  <li> <a href="/blog/20200604085516.html"> crontab --Write a program to be executed periodically by cron</a> </li>
 </ul>
-<h4>Apacheの設定ファイル</h4>
+<h3> Apache </h3>
 <p>
-  Apacheの設定ファイルのディレクトリに移動して、Apacheの設定を行います。Apacheの設定ファイルが正しいかをチェックする方法、Apacheの設定を有効にする方法を見ておきましょう。
+  Install and configure Apache, the web server.
+</p>
+<p>
+  Set up a reverse proxy to connect to Mojolicious applications.
+</p>
+<p>
+  Set up SSL so that you can connect via HTTPS.
+</p>
+<h4> Apache installation </h4>
+<p>
+  Install Apache and make sure it is running.
 </p>
 <ul>
-  <li><a href="/blog/20200317174004.html">Apacheの設定ファイルの場所</a></li>
-  <li><a href="/blog/20200609132409.html">Apacheの設定ファイルが正しいかテストする</a></li>
-  <li><a href="/blog/20200610082714.html">Apache設定ファイルを有効・無効にする - 基本設定・モジュール設定・サイト設定</a></ul>
+  <li> <a href="/blog/20200424174004.html"> Installation of apache2 --Apache version 2 series which is a web server</a> </li>
+  <li> <a href="/blog/20200519084454.html"> Start / stop / restart / check the status of Aapache</a> </li>
 </ul>
-<h4>Apacheモジュール</h4>
+<h4> Apache configuration file </h4>
 <p>
-  リバースプロキシの設定とSSLの設定に必要なApacheモジュールを有効にします。
+  Go to the Apache configuration file directory and configure Apache settings. Let's see how to check if the Apache config file is correct and how to enable the Apache config.
 </p>
 <ul>
-  <li><a href="/blog/20200318174004.html">ApacheでHTTPSで通信できるようにmod_sslを有効化</a></li>
-  <li><a href="/blog/20200311174004.html">Apacheでmod_rewriteモジュールを有効にする</a></li>
-  <li><a href="/blog/20200309174004.html">Apacheでmod_headersモジュールを有効にする</a></li>
-  <li><a href="/blog/20200310174004.html">Apacheでmod_proxyモジュールを有効にする</a></li>
-  <li><a href="/blog/20200220174004.html">Apacheでmod_proxy_httpモジュールを有効にする</a></li>
-  <li><a href="/blog/20200718090758.html">ApacheでWebSocketリバースプロキシのproxy_wstunnelモジュールを有効にする</a></li>
+  <li> <a href="/blog/20200317174004.html"> Apache configuration file location</a> </li>
+  <li> <a href="/blog/20200609132409.html"> Test if the Apache configuration file is correct</a> </li>
+  <li> <a href="/blog/20200610082714.html"> Enable / Disable Apache Configuration File --Basic Settings / Module Settings / Site Settings</a> </ul>
 </ul>
-<h3>Webアプリケーションの作成</h3>
+<h4> Apache module </h4>
 <p>
-  Webアプリケーションの作成です。サンプルとしてPerlのWebフレームワークを使用しています。
-</p>
-<p>
-  安定性を求める場合は、CPANモジュールのインストールや警告表示などで不具合のない「perl-5.20.3」をインストール。
-</p>
-<p>
-  セキュアな最新版が良い場合は「perl-5.30.3」をインストール。
+  Enable the Apache module required to configure the reverse proxy and SSL.
 </p>
 <ul>
-  <li><a href="/blog/20200413174004.html">ユーザーPerlとcpanmのインストール</a></li>
+  <li> <a href="/blog/20200318174004.html"> Enable mod_ssl for HTTPS communication with Apache</a> </li>
+  <li> <a href="/blog/20200311174004.html"> Enable mod_rewrite module in Apache</a> </li>
+  <li> <a href="/blog/20200309174004.html"> Enable mod_headers module in Apache</a> </li>
+  <li> <a href="/blog/20200310174004.html"> Enable mod_proxy module in Apache</a> </li>
+  <li> <a href="/blog/20200220174004.html"> Enable mod_proxy_http module in Apache</a> </li>
+  <li> <a href="/blog/20200718090758.html"> Enable the proxy_wstunnel module for WebSocket reverse proxy in Apache</a> </li>
 </ul>
+<h3> Creating a web application </h3>
 <p>
-  次にWebアプリケーションをデプロイします。
+  Creating a web application. I'm using Perl's web framework as a sample.
+</p>
+<p>
+  If you want stability, install "perl-5.20.3" which has no problems with CPAN module installation and warning display.
+</p>
+<p>
+  If you want the latest secure version, install "perl-5.30.3".
 </p>
 <ul>
-  <li><a href="/blog/20200729134756.html">Webアプリケーションのデプロイ</a></li>
+  <li> <a href="/blog/20200413174004.html"> User Perl and cpanm installation</a> </li>
 </ul>
 <p>
-  バッチプログラムがWebアプリケーションのライブラリのパスを発見できるようにしておきましょう。Webアプリケーションに加えて、バッチプログラムを作成する場合の準備をしておきます。
+  Then deploy the web application.
+</p>
+<ul>
+  <li> <a href="/blog/20200729134756.html"> Deploying a web application</a> </li>
+</ul>
+<p>
+  Let the batch program find the path to the web application's library. Be prepared to create a batch program in addition to your web application.
 </p>
 <p>
-  「~/.bashrc」に追加しましょう。
+  Let's add it to "~ / .bashrc".
 </p>
 <pre>
-vi ~/.bashrc
+vi ~ / .bashrc
 </pre>
 <pre>
-export PERL5LIB=/home/myapp/webapp/lib
+export PERL5LIB = / home / myapp / webapp / lib
 </pre>
-<h3>ドメイン名の取得とDNSサーバーの設定</h3>
+<h3> Get domain name and set DNS server </h3>
 <p>
-  ドメインを取得して、ドメイン名とサーバーIPアドレスを紐づけましょう。インターネット上でWebサイトを公開するためと、メール送信サーバーのポータビリティのある設定のために必要です。
+  Get the domain and associate the domain name with the server IP address. Required for publishing websites on the Internet and for portable settings on email sending servers.
 </p>
 <ul>
-  <li><a href="/blog/20200807062918.html">ドメイン名の取得とDNSサーバーの設定</a></li>
+  <li> <a href="/blog/20200807062918.html"> Get domain name and set DNS server</a> </li>
 </ul>
-<h3>メールアドレスの作成とDNSサーバーの設定</h3>
+<h3> Creating an email address and setting up a DNS server </h3>
 <ul>
-  <li><a href="/blog/20200828123127.html">メールアドレスの作成とDNSサーバーの設定</a></li>
+  <li> <a href="/blog/20200828123127.html"> Creating an email address and setting up a DNS server</a> </li>
 </ul>
-<h3>メール送信</h3>
+<h3> Send email </h3>
 <p>
-  メール送信を行うためにpostfixをインストールします。クラウドメールサービスに申し込んでメールを送信できるようにします。
+  Install postfix to send mail. Apply for a cloud email service so that you can send emails.
 </p>
 <ul>
-  <li><a href="/blog/20200423174004.html">postfixのインストール - メール送信 sendmailコマンド</a></li>
+  <li> <a href="/blog/20200423174004.html"> Postfix installation-send mail sendmail command</a> </li>
 </ul>
-<h3>WebサーバーとWebアプリケーションの接続</h3>
+<h3> Connection between web server and web application </h3>
 <p>
-  WebサーバーとWebアプリケーションの接続しましょう。リバースプロキシは、Webサーバーで受けたHTTPリクエストを、他のサーバーアプリケーションに、透過的に渡す仕組みです。Webアプリケーションを起動後、リバースプロキシを使って、HTTPリクエストを、Webアプリケーションに渡します。
+  Let's connect the web server and the web application. A reverse proxy is a mechanism that transparently passes an HTTP request received by a Web server to another server application. After launching the web application, use a reverse proxy to pass the HTTP request to the web application.<ul>
+</p>
+  <li> <a href="/blog/20200306174004.html"> Connect your web application from Apache with a virtual host and reverse proxy</a>
+</ul>
+<h3> Obtaining an SSL certificate and setting SSL </h3>
+<p>
+  Issue an SSL certificate and configure SSL to receive requests over HTTPS.
 </p>
 <ul>
-  <li><a href="/blog/20200306174004.html">WebアプリケーションをバーチャルホストとリバースプロキシでApacheから接続する</a>
+  <li> <a href="/blog/20200618081050.html"> HTTPS support --Automation of SSL certificate acquisition / renewal / renewal of Let's Encrypt</a> </li>
+  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file</a> </li>
 </ul>
-<h3>SSL証明書の取得とSSLの設定</h3>
+<h3> Systemd management of web applications </h3>
 <p>
-  HTTPSでリクエストを受けるために、SSL証明書の発行とSSLの設定を行います。
+  Let's set the Web application to start automatically when the OS restarts.
 </p>
 <ul>
-  <li><a href="/blog/20200618081050.html">HTTPS対応 - Let's EncryptのSSL証明書の取得・更新・更新の自動化</a></li>
-  <li><a href="/blog/20200611082716.html">SSL証明書の設定をApacheの設定ファイルに記述する</a></li>
+  <li> <a href="/blog/20200901150837.html"> Register your web application with systemd</a> </li>
 </ul>
-<h3>Webアプリケーションのsystemdによる管理</h3>
+<h3> Procedure for building an environment with VPS or public cloud </h3>
 <p>
-  OSが再起動したときにWebアプリケーションが自動起動する設定を行いましょう。
+  The individual procedures using VPS and cloud server are published below.
 </p>
 <ul>
-  <li><a href="/blog/20200901150837.html">Webアプリケーションをsystemdへ登録</a></li>
+  <li> <a href="/blog/20200816052048.html"> Summary of procedures for creating a Web system development environment with Sakura VPS + Ubuntu 18 + Perl</a> </li>
 </ul>
-<h3>VPSやパブリッククラウドで環境構築する手順</h3>
+<h3> Update information </h3>
+<ul>
+  <li> <a href="/all.html"> See all articles</a> </li>
+  <li> <a href="/list.html"> New articles</a> </li>
+  <li> <a href="https://twitter.com/hashtag/Perl%E3%82%AF%E3%83%A9%E3%83%96%E6%9B%B4%E6%96%B0% E6% 83% 85% E5% A0% B1 "> Updates</a> </li>
+</ul>
+<h3> Ubuntu related information </h3>
 <p>
-  VPSやクラウドサーバーを使った個別の手順は以下で公開しています。
+  Information related to Ubuntu.
+</p>
+<h4> Linux server management </h4>
+<p>
+  Click here to learn about the vi text editor, basic Linux commands, and how Linux works.
 </p>
 <ul>
-  <li><a href="/blog/20200816052048.html">さくらVPS+Ubuntu 18+PerlでWebシステム開発環境を行う手順のまとめ</a></li>
+  <li> <a href="https://linux.perlclub.net/"> Introduction to Linux Server Management</a> </li>
 </ul>
-<h3>更新情報</h3>
-<ul>
-  <li><a href="/all.html">すべての記事を見る</a></li>
-  <li><a href="/list.html">新着記事</a></li>
-  <li><a href="https://twitter.com/hashtag/Perl%E3%82%AF%E3%83%A9%E3%83%96%E6%9B%B4%E6%96%B0%E6%83%85%E5%A0%B1">更新情報</a></li>
-</ul>
-<h3>Ubuntu関連情報</h3>
+<h4> Linux distribution </h4>
 <p>
-  Ubuntuに関連する情報です。
+  Linux distributions that can be compared to Ubuntu include <a href="https://centos.perlzemi.com/"> CentOS</a> and <a href="https://ja.wikipedia.org/wiki/". Fedora "> Fedora</a>, <a href="https://ja.wikipedia.org/wiki/Debian"> Debian</a>, <a href="https://ja.wikipedia.org/ wiki / Rocky_Linux "> Rocky Linux</a>, <a href="https://ja.wikipedia.org/wiki/Red_Hat_Enterprise_Linux"> Red Hat Enterprise Linux</a>.
 </p>
-<h4>Linuxサーバー管理</h4>
+<h4> Scripting language </h4>
 <p>
-  viテキストエディタや基本的なLinuxコマンド、Linuxの仕組みについて学びたい方はこちら。
-</p>
-<ul>
-  <li><a href="https://linux.perlclub.net/">Linuxサーバー管理入門</a></li>
-</ul>
-<h4>Linuxディストリビューション</h4>
-<p>
-  Ubuntuと比較できるLinuxディストリビューションとしては、<a href="https://centos.perlzemi.com/">CentOS</a>、<a href="https://ja.wikipedia.org/wiki/Fedora">Fedora</a>、<a href="https://ja.wikipedia.org/wiki/Debian">Debian</a>、<a href="https://ja.wikipedia.org/wiki/Rocky_Linux">Rocky Linux</a>、<a href="https://ja.wikipedia.org/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a>などがあります。
-</p>
-<h4>スクリプト言語</h4>
-<p>
-  Ubuntuのサーバー管理で利用できるスクリプト言語には、<a href="https://perlzemi.com/">Perl</a>、<a href="https://ja.wikipedia.org/wiki/Python">Python</a>、<a href="https://ja.wikipedia.org/wiki/Ruby">Ruby</a>などがあります。
+  Scripting languages ​​available for Ubuntu server management include <a href="https://perlzemi.com/"> Perl</a> and <a href="https://ja.wikipedia.org/wiki/". There are Python "> Python</a>, <a href="https://ja.wikipedia.org/wiki/Ruby"> Ruby</a> and so on.
 </p>
 
   </div>
   <div class="bottom">
-    <h3>関連情報</h3>
+    <h3>Associated Information</h3>
 
 <div style="margin:10px 0">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -536,7 +530,7 @@ export PERL5LIB=/home/myapp/webapp/lib
       </div>
       <div class="footer">
         <div class="perlri_link">
-  <a rel="nofollow" href="https://perlclub.net">Perlクラブ</a>
+  <a rel="nofollow" href="https://perlclub.net">Perl Club</a>
 </div>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
