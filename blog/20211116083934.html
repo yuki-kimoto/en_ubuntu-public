@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>ChromeDriverをインストールする - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Google ChromeブラウザをSeleniumを使ってプログラムから自動制御するためのChromeDriverをインストールしましょう。ChromeDriverのバイナリを直接配置します。64bit版のLinuxであることを想定します。Ubuntu 18で確認しています。">
+<title> Install ChromeDriver  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Install the ChromeDriver to automatically control your Google Chrome browser programmatically using Selenium. Place the ChromeDriver binaries directly. It is assumed that it is a 64-bit version of Linux. Confirmed on Ubuntu 18.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20211116083934.html">ChromeDriverをインストールする</a></h2>
+    <h2><a href="/blog/20211116083934.html"> Install ChromeDriver </a></h2>
 <p>
-  Google ChromeブラウザをSeleniumを使ってプログラムから自動制御するためのChromeDriverをインストールしましょう。ChromeDriverのバイナリを直接配置します。64bit版のLinuxであることを想定します。Ubuntu 18で確認しています。
+  Install the ChromeDriver to automatically control your Google Chrome browser programmatically using Selenium. Place the ChromeDriver binaries directly. It is assumed that it is a 64-bit version of Linux. Confirmed on Ubuntu 18.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -80,13 +80,13 @@
 google-chrome --version
 </pre>
 <p>
-  バージョン。
+  version.
 </p>
 <pre>
 Google Chrome 96.0.4664.45
 </pre>
 <p>
-  ChromeDriverを<a href="https://chromedriver.chromium.org/downloads">ChromeDriverのダウンロードページ</a>からダウンロードしましょう。不具合を起こさないために、上記のChromeのバージョンと同じものをダウンロードしましょう。
+  Download ChromeDriver from the <a href="https://chromedriver.chromium.org/downloads"> ChromeDriver download page</a>. Download the same version of Chrome above to avoid problems.
 </p>
 <pre>
 cd /usr/local/src
@@ -96,27 +96,27 @@ sudo unzip chromedriver_linux64.zip
 sudo mv chromedriver /usr/local/bin/
 </pre>
 <p>
-  ChromeDriverのバージョン確認。
+  Check the version of ChromeDriver.
 </p>
 <pre>
 chromedriver --version
 </pre>
 <p>
-  バージョンの出力結果。
+  The output result of the version.
 </p>
 <pre>
 ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947})
 </pre>
-<h3>Google Chromeのインストール</h3>
+<h3> Install Google Chrome </h3>
 <p>
-  ChromeDriverはGoogle ChromeブラウザをSeleniumを使ってプログラムから自動制御するために必要になるものです。Google Chrome本体が別途必要です。
+  The ChromeDriver is required to automatically control the Google Chrome browser programmatically using Selenium. Google Chrome itself is required separately.
 </p>
 <ul>
-  <li><a href="/blog/20211117083934.html">Google Chromeのインストール</a></li>
+  <li> <a href="/blog/20211117083934.html"> Install Google Chrome</a> </li>
 </ul>
-<h3>JavaScript対応のWebスクレイピングをプログラムから行うには?</h3>
+<h3> How to programmatically perform JavaScript-compatible web scraping? </H3>
 <p>
-  JavaScript対応のWebスクレイピングをプログラムから行うには、プログラミング言語で提供されているSeleniumライブラリが必要です。Perl - <a href="https://perlzemi.com/blog/20210105145700.html">Selenium::Remote::Driver</a>、PHP、Pyhton、RubyなどのSeleniumライブラリがあります。
+  To programmatically perform JavaScript-enabled web scraping, you need the Selenium library provided by the programming language. Perl-<a href="https://perlzemi.com/blog/20210105145700.html"> Selenium::Remote::Driver</a>, PHP, Pyhton, Ruby and other Selenium libraries.
 </p>
 
   </div>
