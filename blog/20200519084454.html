@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheの起動・停止・再起動・状態確認 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Apacheの起動・停止・再起動・状態確認について解説します。">
+<title> Apache start / stop / restart / status check  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Explains how to start / stop / restart / check the status of Apache.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200519084454.html">Apacheの起動・停止・再起動・状態確認</a></h2>
+<h2><a href="/blog/20200519084454.html"> Apache start / stop / restart / status check </a></h2>
 <p>
-  Apacheの起動・停止・再起動・状態確認について解説します。
+  Explains how to start / stop / restart / check the status of Apache.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,169 +95,169 @@
 </div>
 
 
-<h4>Apacheの状態確認</h4>
+<h4> Apache status check </h4>
 <p>
-  Apacheの状態確認は、<a href="/blog/20200605104005.html">systemctl</a>コマンドの「status」を使って行います。
+  To check the status of Apache, use "status" of the <a href="/blog/20200605104005.html"> systemctl</a> command.
 </p>
 <pre>
 sudo systemctl status apache2
 </pre>
-<h5>起動している場合</h5>
+<h5> If it is running </h5>
 <p>
-  起動している場合は、以下のように表示されます。
+  If it is running, the following will be displayed.
 </p>
 <pre>
-● apache2.service - The Apache HTTP Server
+● apache2.service --The Apache HTTP Server
    Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
   Drop-In: /lib/systemd/system/apache2.service.d
            mqapache2-systemd.conf
    Active: active (running) since Tue 2020-05-19 08:59:09 JST; 9s ago
-  Process: 120415 ExecStop=/usr/sbin/apachectl stop (code=exited, status=0/SUCCESS)
-  Process: 120947 ExecStart=/usr/sbin/apachectl start (code=exited, status=0/SUCCESS)
+  Process: 120415 ExecStop = / usr / sbin / apachectl stop (code = exited, status = 0 / SUCCESS)
+  Process: 120947 ExecStart = / usr / sbin / apachectl start (code = exited, status = 0 / SUCCESS)
  Main PID: 120968 (apache2)
     Tasks: 55 (limit: 9479)
    CGroup: /system.slice/apache2.service
-           tq120968 /usr/sbin/apache2 -k start
-           tq120971 /usr/sbin/apache2 -k start
-           mq120972 /usr/sbin/apache2 -k start
+           tq120968 / usr / sbin / apache2 -k start
+           tq120971 / usr / sbin / apache2 -k start
+           mq120972 / usr / sbin / apache2 -k start
 </pre>
-<h5>停止している場合</h5>
+<h5> When stopped </h5>
 <p>
-  停止している場合は、以下のように表示されます。
+  If it is stopped, the following will be displayed.
 </p>
 <pre>
-● apache2.service - The Apache HTTP Server
+● apache2.service --The Apache HTTP Server
    Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset:
   Drop-In: /lib/systemd/system/apache2.service.d
            mqapache2-systemd.conf
    Active: inactive (dead) since Tue 2020-05-19 08:52:07 JST; 3min 51s ago
-  Process: 120415 ExecStop=/usr/sbin/apachectl stop (code=exited, status=0/SUCCE
- Main PID: 104579 (code=exited, status=0/SUCCESS)
+  Process: 120415 ExecStop = / usr / sbin / apachectl stop (code = exited, status = 0 / SUCCE
+ Main PID: 104579 (code = exited, status = 0 / SUCCESS)
 </pre>
-<h4>Apacheの起動</h4>
+<h4> Starting Apache </h4>
 <p>
-  Apacheの起動は、systemctlコマンドの「start」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To start Apache, use the systemctl command "start". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl start apache2
 </pre>
 <p>
-  起動が成功しても、成功したというメッセージは返ってきません。状態確認を行ってください。
+  Even if the boot is successful, the message that it was successful is not returned. Please check the status.
 </p>
-<h4>Apacheの停止</h4>
+<h4> Stop Apache </h4>
 <p>
-  Apacheの停止は、systemctlコマンドの「stop」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To stop Apache, use the systemctl command "stop". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl stop apache2
 </pre>
 <p>
-  停止が成功しても、成功したというメッセージは何も返ってきません。状態確認を行ってください。
+  If the outage is successful, no successful message will be returned. Please check the status.
 </p>
-<h4>Apacheの再起動</h4>
+<h4> Restart Apache </h4>
 <p>
-  Apacheの再起動は、systemctlコマンドの「restart」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To restart Apache, use the systemctl command "restart". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl restart apache2
 </pre>
 <p>
-  restartは単に、stopコマンドを実行して、startコマンドを実行します。HTTPクライアントからの処理を切断してしまうので、通常はreloadコマンドを使用しましょう
+  restart simply executes the stop command and executes the start command. Normally, use the reload command as it will disconnect the processing from the HTTP client.
 </p>
 <p>
-  再起動が成功しても、成功したというメッセージは返ってきません。状態確認を行ってください。
+  If the reboot is successful, you will not get a successful message. Please check the status.
 </p>
-<h4>Apacheのグレースフル(graceful)再起動</h4>
+<h4> Apache graceful restart </h4>
 <p>
-  Apacheのグレースフル(graceful)再起動は、systemctlコマンドの「reload」を使って行います。sudoコマンドを使って、root権限で実行します。
+  A graceful restart of Apache is done using the "reload" systemctl command. Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl reload apache2
 </pre>
 <p>
-  グレイスフル(graceful, 優美な)再起動と呼ばれている再起動は、Apacheに接続しているHTTPクライアントに対して、正しくHTTPレスポンスを返しつつ、Apacheを再起動できる技術を使った再起動です。すべてのHTTPクライアントの処理を正しく処理できるので、通常はこちらの再起動を使いましょう。
+  A restart called a graceful restart is a restart that uses a technology that allows Apache to be restarted while correctly returning an HTTP response to an HTTP client connected to Apache. .. It can handle all HTTP client processing correctly, so usually use this restart.
 </p>
 <p>
-  再起動が成功しても、成功したというメッセージは返ってきません。状態確認を行ってください。
+  If the reboot is successful, you will not get a successful message. Please check the status.
 </p>
-<h3>Apacheの起動・停止のログを見るには</h3>
+<h3> To see the Apache start / stop log </h3>
 <p>
-  Apacheなどのサーバーは、systemdというプログラムによって集中的に管理されています。
-</p>
-<p>
-  systemdのログにApacheの起動・停止ログが出力されています。
+  Servers such as Apache are centrally managed by a program called systemd.
 </p>
 <p>
-  systemdのログを見るには<a href="/blog/20200602135100.html">journalctlコマンド</a>を使います。「-u」オプションでユニット「apache2」を指定します。sudoで実行しないとApacheのログが見れないので注意してください。ログの最後の部分だけ見たい場合は「-r」オプションを組み合わせます。
+  The Apache start / stop log is output to the systemd log.
+</p>
+<p>
+  Use the <a href="/blog/20200602135100.html"> journalctl command</a> to see the systemd logs. Specify the unit "apache2" with the "-u" option. Please note that you will not be able to see the Apache logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 </p>
 <pre>
 sudo journalctl -r -u apache2
 </pre>
 <p>
-  ログのサンプルです。
+  This is a sample log.
 </p>
 <pre>
-- Logs begin at Mon 2020-06-01 15:51:16 JST, end at Thu 2020-07-23 14:37:14 JST. --
-Jul 22 13:34:22 shinshina-development-app-00000001 systemd[1]: apache2.service: Failed with result 'exit-code'.
-Jul 22 13:34:22 shinshina-development-app-00000001 systemd[1]: apache2.service: Main process exited, code=exited, status=1/FAILURE
-Jul 22 13:24:35 shinshina-development-app-00000001 systemd[1]: Started The Apache HTTP Server.
-Jul 22 13:24:35 shinshina-development-app-00000001 apachectl[1299]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 10.0.0.4. Set the 'ServerName' direct
-Jul 22 13:24:33 shinshina-development-app-00000001 systemd[1]: Starting The Apache HTTP Server...
--- Reboot --
-Jul 22 13:13:48 shinshina-development-app-00000001 systemd[1]: Stopped The Apache HTTP Server.
-Jul 22 13:13:47 shinshina-development-app-00000001 systemd[1]: Stopping The Apache HTTP Server...
-Jul 22 06:25:03 shinshina-development-app-00000001 systemd[1]: Reloaded The Apache HTTP Server.
-Jul 22 06:25:03 shinshina-development-app-00000001 systemd[1]: Reloading The Apache HTTP Server.
+--Logs begin at Mon 2020-06-01 15:51:16 JST, end at Thu 2020-07-23 14:37:14 JST.-
+Jul 22 13:34:22 shinshina-development-app-00000001 systemd [1]: apache2.service: Failed with result'exit-code'.
+Jul 22 13:34:22 shinshina-development-app-00000001 systemd [1]: apache2.service: Main process exited, code = exited, status = 1 / FAILURE
+Jul 22 13:24:35 shinshina-development-app-00000001 systemd [1]: Started The Apache HTTP Server.
+Jul 22 13:24:35 shinshina-development-app-00000001 apachectl [1299]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 10.0.0.4. Set the'ServerName' direct
+Jul 22 13:24:33 shinshina-development-app-00000001 systemd [1]: Starting The Apache HTTP Server ...
+--Reboot -
+Jul 22 13:13:48 shinshina-development-app-00000001 systemd [1]: Stopped The Apache HTTP Server.
+Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping The Apache HTTP Server ...
+Jul 22 06:25:03 shinshina-development-app-00000001 systemd [1]: Reloaded The Apache HTTP Server.
+Jul 22 06:25:03 shinshina-development-app-00000001 systemd [1]: Reloading The Apache HTTP Server.
 </pre>
-<h3>再起動前にApacheの設定ファイルが正しいか確認する</h3>
+<h3> Check if the Apache configuration file is correct before rebooting </h3>
 <p>
-  Apacheの再起動(グレースフル再起動)を行う前には「apachectl -t」で、Apacheの設定ファイルが正しいことを確認します。これを忘れると、再起動に失敗して、Webシステムが止まることがあります。よくやりがちなので、注意します。
+  Before restarting Apache (graceful restart), use "apachectl -t" to confirm that the Apache configuration file is correct. If you forget this, the reboot may fail and the web system may stop. It's easy to do, so be careful.
 </p>
 <pre>
-# Apacheの設定ファイルの試験
+#Apache configuration file test
 apachectl -t
 </pre>
-<h3>Apacheのsystemdの設定ファイルを見るには</h3>
+<h3> To see the Apache systemd configuration file </h3>
 <p>
-  Apacheのsystemdの設定ファイルは「systemctl status apache2」で見れます。
+  You can see the Apache systemd configuration file with "systemctl status apache2".
 </p>
 <p>
-  設定ファイルを<a href="https://en.linux.perlzemi.com/blog/20200113083613.html">catコマンド</a>で見てみましょう。
+  Let's take a look at the configuration file with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command</a>.
 </p>
 <pre>
 cat /lib/systemd/system/apache2.service
 </pre>
 <p>
-  start、stop、reloadのコマンド定義などが確認できます。
+  Start, stop, reloadYou can check the mand definition and so on.
 </p>
 <pre>
 [Unit]
-Description=The Apache HTTP Server
-After=network.target remote-fs.target nss-lookup.target
+Description = The Apache HTTP Server
+After = network.target remote-fs.target nss-lookup.target
 
 [Service]
-Type=forking
-Environment=APACHE_STARTED_BY_SYSTEMD=true
-ExecStart=/usr/sbin/apachectl start
-ExecStop=/usr/sbin/apachectl stop
-ExecReload=/usr/sbin/apachectl graceful
-PrivateTmp=true
-Restart=on-abort
+Type = forking
+Environment = APACHE_STARTED_BY_SYSTEMD = true
+ExecStart = / usr / sbin / apachectl start
+ExecStop = / usr / sbin / apachectl stop
+ExecReload = / usr / sbin / apachectl graceful
+PrivateTmp = true
+Restart = on-abort
 
 [Install]
-WantedBy=multi-user.target
+WantedBy = multi-user.target
 </pre>
-<h3>Apacheの他の情報</h3>
-<h4>Apacheをインストールするには</h4>
+<h3> Other Apache information </h3>
+<h4> To install Apache </h4>
 <p>
-  Apacheのインストールについては、以下の記事で解説しています。
+  The following article explains how to install Apache.
 </p>
 <p>
-  <a href="/blog/20200424174004.html">apache2のインストール - WebサーバーであるApacheのバージョン2系</a>
+  <a href="/blog/20200424174004.html"> Installation of apache2 --Apache version 2 series which is a web server</a>
 </p>
-<h4>Apacheの設定ファイル</h4>
+<h4> Apache configuration file </h4>
 <p>
-  Apacheの設定ファイルについては、別の記事で解説します。
+  The Apache configuration file will be discussed in another article.
 </p>
 
   </div>

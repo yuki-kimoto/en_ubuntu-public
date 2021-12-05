@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>redis-cli - RedisクライアントからRedisコマンドを実行する - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="redis-cliは、Redisコマンドを実行するためのRedisクライアントです。Redisサーバーをインストールすると自動的にインストールされます。">
+<title> redis-cli --Run Redis command from Redis client  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="redis-cli is a Redis client for executing Redis commands.  Install the Redis server and it will be installed automatically.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200820081929.html">
-        <span itemprop="name">Redis</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Redis </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200720125704.html">redis-cli - RedisクライアントからRedisコマンドを実行する</a></h2>
+<h2><a href="/blog/20200720125704.html"> redis-cli --Run Redis command from Redis client </a></h2>
 <p>
-  redis-cliは、Redisコマンドを実行するためのRedisクライアントです。<a href="/blog/20200525135533.html">Redisサーバーをインストール</a>すると自動的にインストールされます。
+  redis-cli is a Redis client for executing Redis commands. <a href="/blog/20200525135533.html"> Install the Redis server</a> and it will be installed automatically.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -99,32 +99,32 @@
 redis-cli
 </pre>
 <p>
-  Redisクライアントが起動します。
+  The Redis client starts.
 </p>
-<h3>Redisコマンド</h3>
+<h3> Redis command </h3>
 <p>
-  Redisコマンドを実行しましょう。
+  Run the Redis command.
 </p>
-<h4>PUBを実行するPUBLISH</h4>
+<h4> PUBLISH running PUB </h4>
 <p>
-  PUBLISHコマンドを実行するとPUBを実行できます。PUBは、push通知に使用します。
-</p>
-<pre>
-PUBLISH チャンネル名 メッセージ
-</pre>
-<p>
-  チャンネル名もメッセージも単なる文字列です。複雑なデータ構造が必要な場合は、メッセージにJSONを使いましょう。
-</p>
-<p>
-  チャンネル名はすべてのプロセスでグローバルな名前空間ですので、重ならない名前を考えましょう。
+  You can execute PUB by executing the PUBLISH command. PUB is used for push notifications.
 </p>
 <pre>
-PUBLISH  /foo/bar/baz?id=5 Hello
-PUBLISH  "/foo/bar/baz?id=5" "Hello"
-PUBLISH  "/foo/bar/baz?id=5" '{message : "Hello"}'
+PUBLISH channel name message
 </pre>
 <p>
-  文字列の囲みは、ダブルクォートとシングルクォートの両方が使えます。
+  Both the channel name and the message are just strings. If you need complex data structures, use JSON for your messages.
+</p>
+<p>
+  Channel names are a global namespace for all processes, so consider non-overlapping names.
+</p>
+<pre>
+PUBLISH / foo / bar / baz? id = 5 Hello
+PUBLISH "/ foo / bar / baz? Id = 5" "Hello"
+PUBLISH "/ foo / bar / baz? id = 5"'{message: "Hello"}'
+</pre>
+<p>
+  Both double and single quotes can be used to enclose the string.
 </p>
 
   </div>

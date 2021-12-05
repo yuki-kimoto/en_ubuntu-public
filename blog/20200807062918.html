@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>ドメイン名の取得とDNSサーバーの設定 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="ドメイン名の取得とDNSサーバーの設定について解説します。ドメイン名とIPアドレスを対応させることによって、Webサイトをインターネットで公開できます。">
+<title> Get domain name and set DNS server  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Explains how to get a domain name and set up a DNS server. You can publish your website on the Internet by associating your domain name with your IP address.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200902120232.html">
-        <span itemprop="name">ドメイン管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Domain management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200807062918.html">ドメイン名の取得とDNSサーバーの設定</a></h2>
+<h2><a href="/blog/20200807062918.html"> Get domain name and set DNS server </a></h2>
 <p>
-  ドメイン名の取得とDNSサーバーの設定について解説します。ドメイン名とIPアドレスを対応させることによって、Webサイトをインターネットで公開できます。
+  Explains how to get a domain name and set up a DNS server. You can publish your website on the Internet by associating your domain name with your IP address.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,108 +96,108 @@
 
 
 <p>
-  DNSについての基本的な考え方と設定方法について書きます。
+  I will write about the basic idea and setting method of DNS.
 </p>
-<h3>DNSとは</h3>
+<h3> What is DNS? </H3>
 <p>
-  DNSとは、ドメインネームシステムのことで、ドメイン名(例: perlclub.net)とIPアドレス(59.106.185.188)を対応させる仕組みのことです。
+  DNS is a domain name system that associates a domain name (eg perlclub.net) with an IP address (59.106.185.188).
 </p>
 <p>
-  お名前.comなどの、ドメイン名取得サービスで取得することができます。
+  You can get it with a domain name acquisition service such as Name.com.
 </p>
 <ul>
-  <li><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3513971&pid=886673689" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3513971&pid=886673689" height="1" width="1" border="0">お名前.com</a></a>
+  <li> <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3513971&pid=886673689" rel="nofollow"> <img src = "// ad.jp.ap.valuecommerce" .com / servlet / giftbanner? sid = 3513971 & pid = 886673689 "height =" 1 "width =" 1 "border =" 0 "> your name.com</a></a>
 </ul>
 <p>
-  価格は、.comなどの一般的なドメイン「(例)perlclub.net」で、年間で1000円程度。会社用のco.jpドメイン「(例)perlclub.net」で、年間2000円程度を見積もっておくとよいでしょう。
+  The price is about 1000 yen a year for a general domain such as .com "(example) perlclub.net". It is a good idea to estimate about 2000 yen a year on the co.jp domain "(example) perlclub.net" for your company.
 </p>
-<h3>Aレコードの設定</h3>
+<h3> A record settings </h3>
 <p>
-  DNSの設定は以下のページで解説されています。
+  DNS settings are explained on the following pages.
 </p>
 <ul>
-  <li><a href="https://www.onamae.com/guide/p/70">ネームサーバー/DNSについて</a></li>
+  <li> <a href="https://www.onamae.com/guide/p/70"> About Name Server / DNS</a> </li>
 </ul>
 <p>
-  DNSサーバーによって、設定方法に若干の違いがありますが、基本は、AレコードにIPアドレスを設定して、それに対応するドメイン名を設定します。ドメイン名は、サブドメインでも、ドメイン名そのものでもかまいません。
+  There are some differences in the setting method depending on the DNS server, but basically, set the IP address in the A record and set the corresponding domain name. The domain name can be a subdomain or the domain name itself.
 </p>
 <p>
-  サブドメインとは「perlclub.net」というようなドメイン名の前に「文字列.」が付いたものです。
+  A subdomain is a domain name such as "perlclub.net" with "string." In front of it.
 </p>
 <p>
-  サブドメインの作成はAレコードか、後で解説するCNAMEレコードを使って行います。
+  Subdomains are created using A records or CNAME records, which will be explained later.
 </p>
 <p>
-  「perlclub.net」というドメイン名で「59.106.185.191」というIPアドレスをもつWebサーバーにアクセスさせたい場合は、以下の設定を行います。
-</p>
-<table>
-  <tr><th>perlclub.net</th><td>Aレコード</td><td>59.106.185.191</td></tr>
-</table>
-<p>
-  「perlclub.net」というドメイン名で「59.106.185.191」というIPアドレスをもつWebサーバーにアクセスさせたい場合は、以下の設定を行います。
+  If you want to access the Web server with the IP address "59.106.185.191" with the domain name "perlclub.net", make the following settings.
 </p>
 <table>
-  <tr><th>perlclub.net</th><td>Aレコード</td><td>59.106.185.191</td></tr>
+  <tr> <th> perlclub.net </th> <td> A record </td> <td> 59.106.185.191 </td> </tr>
 </table>
-<h3>サーバーのIPアドレスの調べ方</h3>
 <p>
-  サーバーのIPアドレスの調べ方を書いておきます。DNSサーバーの設定を行う場合は、サーバーのIPアドレスが必要でだからです。
-</p>
-<p>
-  サーバーには、IPアドレスが存在しています。正確に書くと、サーバーに接続されているNIC(ネットワークインターフェースカード)に、IPアドレスが設定されてます。
-</p>
-<p>
-  ネットワークは仮想化されているかもしれませんが、Webアプリケーションを作成するエンジニアから見た場合は、気にする必要はありません。VPSサービスやクラウドサービスのサーバー情報やネットワーク設定のページに記載されているIPアドレスをメモしておきましょう。
-</p>
-<p>
-  パブリッククラウドでないのであればipコマンドやifconfigコマンドを使うと、サーバーのIPアドレスを見ることができます。
-</p>
-<h3>CNAMEレコードの利用</h3>
-<p>
-  CNAMEレコードを使うと、ドメイン名の別名を設定することができます。
-</p>
-<p>
-  CNAMEレコードを設定できるのは、サブドメイン(perlclub.netやacount.perlclub.net)だけです。ネイキッドドメイン(perlclub.net)に設定できないので注意してください。
-</p>
-<h4>CNAMEレコードの設定の例</h4>
-<p>
-  複数のサブドメインに同じIPアドレスを設定する場合は、CNAMEレコードが便利です。
-</p>
-<p>
-  あるサーバーのIPアドレスが「59.106.185.179」だったとします。
-</p>
-<p>
-  このサーバーを識別するサブドメイン名をAレコードを使って、まず作成します。
+  If you want to access the Web server with the IP address "59.106.185.191" with the domain name "perlclub.net", make the following settings.
 </p>
 <table>
-  <tr><th>prod001.perlclub.net</th><td>Aレコード</td><td>59.106.185.179</td></tr>
+  <tr> <th> perlclub.net </th> <td> A record </td> <td> 59.106.185.191 </td> </tr>
 </table>
+<h3> How to find the IP address of the server </h3>
 <p>
-  次にCNAMEレコードを使って、上記のドメイン名に対する別名を作成します。
+  I will write how to find out the IP address of the server. This is because the IP address of the server is required when setting the DNS server.
+</p>
+<p>
+  The server has an IP address. To be precise, the IP address is set on the NIC (network interface card) connected to the server.
+</p>
+<p>
+  The network may be virtualized, but from the perspective of the engineer creating the web application, it doesn't matter. Make a note of the IP address on the server information and network settings page for your VPS or cloud service.
+</p>
+<p>
+  If it is not a public cloud, you can use the ip command or ifconfig command to see the IP address of the server.
+</p>
+<h3> Use CNAME records </h3>
+<p>
+  You can use a CNAME record to set an alias for your domain name.
+</p>
+<p>
+  Only subdomains (perlclub.net and account.perlclub.net) can have CNAME records. Please note that it cannot be set to the naked domain (perlclub.net).
+</p>
+<h4> Example of CNAME record settings </h4>
+<p>
+  CNAME records are useful if you want to configure the same IP address for multiple subdomains.
+</p>
+<p>
+  Suppose the IP address of a server is "59.106.185.179".
+</p>
+<p>
+  First, create a subdomain name that identifies this server using the A record.
 </p>
 <table>
-  <tr><th>foo.perlclub.net</th><td>CNAMEレコード</td><td>prod001.perlclub.net</td></tr>
-  <tr><th>bar.perlclub.net</th><td>CNAMEレコード</td><td>prod001.perlclub.net</td></tr>
+  <tr> <th> prod001.perlclub.net </th> <td> A record </td> <td> 59.106.185.179 </td> </tr>
 </table>
 <p>
-  「foo.perlclub.net」は「prod001.perlclub.net」の別名になりました。
+  Then use the CNAME record to create an alias for the above domain name.
+</p>
+<table>
+  <tr> <th> foo.perlclub.net </th> <td> CNAME record </td> <td> prod001.perlclub.net </td> </tr>
+  <tr> <th> bar.perlclub.net </th> <td> CNAME record </td> <td> prod001.perlclub.net </td> </tr>
+</table>
+<p>
+  "Foo.perlclub.net" is now another name for "prod001.perlclub.net".
 </p>
 <p>
-  「bar.perlclub.net」は「prod001.perlclub.net」の別名になりました。
+  "Bar.perlclub.net" is now another name for "prod001.perlclub.net".
 </p>
 <p>
-  DNSサーバーへの問い合わせでは「foo.perlclub.net」も「bar.perlclub.net」も「prod001.perlclub.net」のAレコードに設定した「59.106.185.179」を返します。
+  When querying the DNS server, both "foo.perlclub.net" and "bar.perlclub.net" return "59.106.185.179" set in the A record of "prod001.perlclub.net".
 </p>
-<h3>DNSレコードの問い合わせ</h3>
+<h3> DNS record query </h3>
 <p>
-  DNSレコードの問い合わせは<a href="https://en.linux.perlzemi.com/blog/20200622141433.html">dig</a>コマンドを使うのが簡単です。Aレコード、CNAMEレコード、MXレコードの設定の確認ができます。
+  Querying DNS records is easy with the <a href="https://en.linux.perlzemi.com/blog/20200622141433.html"> dig</a> command. You can check the settings of A record, CNAME record, and MX record.
 </p>
-<h3>メールアドレスの設定</h3>
+<h3> Email address settings </h3>
 <p>
-  メールを利用する場合は、メールアドレスに関する設定も行う必要があります。メールアドレスの作成とDNSサーバーの設定については以下の記事を参考にしてください。
+  When using e-mail, it is also necessary to set the e-mail address. Please refer to the following articles for creating an email address and setting up a DNS server.
 </p>
 <ul>
-  <li><a href="/blog/20200828123127.html">メールアドレスの作成とDNSサーバーの設定</a></li>
+  <li> <a href="/blog/20200828123127.html"> Creating an email address and setting up a DNS server</a> </li>
 </ul>
 
   </div>

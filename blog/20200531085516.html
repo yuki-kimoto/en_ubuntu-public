@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>sudo - 管理者権限で実行する - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="sudoは、一般ユーザーが、別ユーザーの権限でコマンドを実行するための機能ですが、一般的には、root権限で実行するために使用されます。">
+<title> sudo --Run with administrator privileges  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="sudo is a function for a general user to execute a command with the authority of another user, but it is generally used to execute the command with the authority of root.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop="name">ユーザー管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> User Management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200531085516.html">sudo - 管理者権限で実行する</a></h2>
+<h2><a href="/blog/20200531085516.html"> sudo --Run with administrator privileges </a></h2>
 <p>
-  sudoは、一般ユーザーが、別ユーザーの権限でコマンドを実行するための機能ですが、一般的には、root権限で実行するために使用されます。
+  sudo is a function for a general user to execute a command with the authority of another user, but it is generally used to execute the command with the authority of root.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,44 +96,44 @@
 
 
 <p>
-  sudoでユーザーを指定しない場合は、rootユーザーの権限でコマンドを実行しま。
+  If you do not specify a user with sudo, execute the command with root user privileges.
 </p>
 <pre>
-sudo コマンド
+sudo command
 </pre>
 <p>
-  sudoを実行するタイミングで、自分自身のパスワードを再度聞かれます。一度パスワードを入力すると、すうじ
+  When you run sudo, you will be asked for your own password again. Once you enter your password,
 </p>
-<h3>sudoの運用方法</h3>
+<h3> How to use sudo </h3>
 <p>
-  運用の方法としては、まず管理者となる<a href="/blog/20200511173052.html">一般ユーザーをuseraddで作成</a>します(kimotoなど)。
+  As an operation method, first create an administrator <a href="/blog/20200511173052.html"> general user with useradd</a> (kimoto etc.).
 </p>
 <pre>
 sudo useradd -m kimoto
 </pre>
 <p>
-  <a href="/blog/20200510173052.html">passwdでパスワードを設定</a>します。
+  <a href="/blog/20200510173052.html"> Set a password with passwd</a>.
 </p>
 <pre>
 sudo passwd kimoto
 </pre>
 <p>
-  gpasswdで、管理者となる一般ユーザーをsudoグループに追加します。
+  With gpasswd, add a regular administrator user to the sudo group.
 </p>
 <pre>
 sudo gpasswd -a kimoto sudo
 </pre>
 <p>
-  これで、kimotoは、自分のパスワードで、root権限が必要なコマンドを実行することができます。
+  Kimoto can now run commands that require root privileges with his password.
 </p>
-<h3>sudoの利点</h3>
+<h3> Advantages of sudo </h3>
 <p>
-  sudoの利点です。
+  The advantage of sudo.
 </p>
 <ul>
-  <li>sudoには、だれがどんなコマンドを実行したのかの記録機能がある</li>
-  <li>時間経過で、root権限がなくなる。パスワードの再入力を求められる。端末放置された場合でも安心。</li>
-  <li>root権限は、リスクを伴う権限でもあるので、だれが作業したかがわかると緊張感をもって作業できる</li>
+  <li> sudo has a function to record who executed what command </li>
+  <li> Over time, you lose root privileges. You will be prompted to re-enter your password. It is safe even if the terminal is left unattended. </li>
+  <li> Root authority is also a risky authority, so if you know who worked, you can work with a sense of tension </li>
 </ul>
 
   </div>

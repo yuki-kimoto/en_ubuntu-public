@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>crontab - cronで定期実行するプログラムを記述する - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="cronはプログラムを定期実行するためのアプリケーションですが、その設定ファイルはcrontabというコマンドを使って編集します。">
+<title> crontab --Write a program to be executed periodically by cron  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Cron is an application for running programs on a regular basis, but its configuration file is edited using a command called crontab.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200830052743.html">
-        <span itemprop="name">cron</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> cron </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200604085516.html">crontab - cronで定期実行するプログラムを記述する</a></h2>
+<h2><a href="/blog/20200604085516.html"> crontab --Write a program to be executed periodically by cron </a></h2>
 <p>
-  cronはプログラムを定期実行するためのアプリケーションですが、その設定ファイルはcrontabというコマンドを使って編集します。
+  Cron is an application for running programs on a regular basis, but its configuration file is edited using a command called crontab.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,155 +96,155 @@
 
 
 <p>
-  crontabは、ユーザーごとに持つことができます。myappというユーザーでcrontabを編集すると、それはmyappのcrontabになります。
+  You can have a crontab for each user. If you edit the crontab as a user named myapp, it becomes myapp's crontab.
 </p>
-<h3>crontabを編集する</h3>
+<h3> Edit crontab </h3>
 <p>
-  crontabを編集するには「-e」オプションを使用します。
+  Use the "-e" option to edit the crontab.
 </p>
 <pre>
 crontab -e
 </pre>
 <p>
-  エディタが起動します。
+  The editor will start.
 </p>
 <p>
-  もし使用するエディタを切り替えたい場合は<a href="/blog/20200325174004.html">select-editor</a>コマンドを実行してください。
+  If you want to switch the editor to use, execute the <a href="/blog/20200325174004.html"> select-editor</a> command.
 </p>
-<h3>crontabの記述方法</h3>
+<h3> How to write crontab </h3>
 <p>
-  crontabeでは、分 時 日 月 週を指定して、プログラムを定期実行できます。
+  With crontabe, you can specify minutes, hours, days, months, and weeks to run the program on a regular basis.
 </p>
 <pre>
-分 時 日 月 週 コマンド
+Minute hour day month week command
 </pre>
 <p>
-  たとえば、毎時の15分に実行する場合は以下のように書きます。
+  For example, if you want to run it every 15 minutes, write:
 </p>
 <pre>
 15 * * * * foo.pl
 </pre>
 <p>
-  実行の最低単位は1分です。
+  The minimum unit of execution is 1 minute.
 </p>
 <p>
-  「*」は単位毎を意味します。分の位置に「*」が指定された場合は、毎分という意味になります。
+  "*" Means each unit. If "*" is specified at the minute position, it means every minute.
 </p>
 <p>
-  毎分実行する場合は以下のようになります。
+  If you run it every minute, it will be as follows.
 </p>
 <pre>
 * * * * * foo.pl
 </pre>
 <p>
-  カンマで区切って、複数指定することも可能です。
+  It is also possible to specify multiple items by separating them with commas.
 </p>
 <pre>
 15,30,45 * * * * foo.pl
 </pre>
 <p>
-  「/」記号を使うと、15分毎のような記述ができます。
+  You can use the "/" symbol to write something like every 15 minutes.
 </p>
 <pre>
-*/15 * * * * foo.pl
+* / 15 * * * * foo.pl
 </pre>
 <p>
-  crontabのサンプルは以下に詳しいです。
+  The crontab sample is detailed below.
 </p>
 <ul>
-  <li><a href="https://crontab.guru/examples.html">Cron Examples(crontab guru)</a></li>
+  <li> <a href="https://crontab.guru/examples.html"> Cron Examples (crontab guru)</a> </li>
 </ul>
-<h3>crontabでユーザーPerlを使用する</h3>
+<h3> Use user Perl with crontab </h3>
 <p>
-  crontabののはまりどころのひとつは、perlbrewやplenvでインストールしたユーザーPerlがcronからは利用されないということでしょう。
+  One of the highlights of crontab is that user Perl installed with perlbrew or plenv will not be used by cron.
 </p>
 <p>
-  これはcronから実行するときは、シェルが起動されないのでperlbrewやplenvの設定が記述されている「.bashrc」「.bash_profile」が読み込まれないことが原因です。
+  This is because when running from cron, the shell is not started, so ".bashrc" and ".bash_profile" that describe the settings of perlbrew and plenv are not read.
 </p>
 <p>
-  一番簡単な解決策は、crontabの中でPATHを、そのユーザーが持っている環境変数PATHの値に書き換えてあげることです。
+  The simplest solution is to rewrite PATH in crontab to the value of the environment variable PATH that the user has.
 </p>
 <p>
-  まずperlbrewをインストールしたユーザーで、PATH環境変数の値を表示します。
-</p>
-<pre>
-env | grep -P '^PATH'
-</pre>
-<p>
-  PATHを含んだ環境変数がいくつか表示されるので、PATHというものを探します。(ユーザー名がmyappの場合の例です。)
+  First, as the user who installed perlbrew, display the value of the PATH environment variable.
 </p>
 <pre>
-PATH=/home/myapp/perl5/perlbrew/bin:/home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+env | grep -P'^ PATH'
 </pre>
 <p>
-  以下のコマンドでcrontabを編集します。
+  You will see some environment variables that include PATH, so look for something called PATH. (This is an example when the user name is myapp.)
+</p>
+<pre>
+PATH = / home / myapp / perl5 / perlbrew / bin: /home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin : / usr / bin: / sbin: / bin: / usr / games: / usr / local / games
+</pre>
+<p>
+  Edit crontab with the following command.
 </p>
 <pre>
 crontab -e
 </pre>
 <p>
-  そして上記のPATHの値をcrontabの一番上に書き込みます。
+  Then write the above PATH value to the top of crontab.
 </p>
 <pre>
-PATH=/home/myapp/perl5/perlbrew/bin:/home/myapp/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/myapp/bin
+PATH = / home / myapp / perl5 / perlbrew / bin: / home / myapp / perl5 / perlbrew / perls / perl-5.16.2 / bin: / usr / kerberos / bin: / usr / local / bin: / bin: / usr / bin: / home / myapp / bin
 
-# crontabの設定が続く...
+#Crontab settings continue ...
 </pre>
 <p>
-  これでcronがインストールしたユーザーPerlを利用してくれるようになります。
+  Now you can use the user Perl installed by cron.
 </p>
-<h3>Perlのライブラリのパスを追加する</h3>
+<h3> Add the Perl library path </h3>
 <p>
-  ライブラリのパスがあれば以下のように「PERL5LIB」を設定しましょう。Mojoliciousで作成したアプリケーションをバッチファイルから読み込む場合に必要な記述です。
+  If you have the library path, set "PERL5LIB" as follows. This description is required when reading an application created with Mojolicious from a batch file.
 </p>
 <pre>
-PERL5LIB=/home/myapp/webapp/lib
+PERL5LIB = / home / myapp / webapp / lib
 </pre>
-<h3>cronのエラーが発生した場合のメールの送信先を変更する MAILTO</h3>
+<h3> Change the destination of emails when a cron error occurs MAILTO </h3>
 <p>
-  cronは、標準エラー出力に出力があった場合は、メールを送信するという動作をします。
+  Cron works by sending an email if there is output in the standard error output.
 </p>
 <p>
-  <strong>MAILTO</strong>を使えば<strong>cron</strong>でメールの送信先を変更することができます。<strong>crontab</strong>の中に次の一行を追加します。
+  You can use <strong> MAILTO </strong> to change the destination of your email with <strong> cron </strong>. Add the following line inside the <strong> crontab </strong>.
 </p>
 <p>
-  設定しない場合は、cronを実行したユーザーのローカルのメールボックスに入ります。
+  If not set, it will be in the local mailbox of the user who ran the cron.
 </p>
 <pre>
-MAILTO=kimoto_test@perlclub.net
+MAILTO = kimoto_test@perlclub.net
 </pre>
 <p>
-  複数のメールアドレスを設定する場合はカンマで区切ります。
+  When setting multiple email addresses, separate them with commas.
 </p>
 <pre>
-MAILTO=kimoto_test@perlclub.net,taro@somehost.com
+MAILTO = kimoto_test@perlclub.net,taro@somehost.com
 </pre>
 <p>
-  メールアドレスを設定しておくと、cronで実行しているバッチ処理のエラーを知ることができるので便利です。
+  It is convenient to set an email address because you can know the error of batch processing executed by cron.
 </p>
-<h3>crontabの内容をバックアップして保存</h3>
+<h3> Back up and save the contents of crontab </h3>
 <p>
-  <b>-l</b>オプションで内容を表示することができます。リダイレクトして、内容をバックアップすることができます。
+  You can display the contents with the <b> -l </b> option. You can redirect and back up your contents.
 </p>
 <pre>
-crontab -l &gt; crontab_prod
+crontab -l&gt; crontab_prod
 </pre>
 <p>
-  これを、ソースコードと一緒に、Gitで管理しておけば、最悪crontabの設定全てを失うリスクを避けることができます。
+  If you manage this with Git together with the source code, you can avoid the risk of losing all the crontab settings in the worst case.
 </p>
-<h3>crontabに設定をファイルから読み込む</h3>
+<h3> Read settings from file into crontab </h3>
 <p>
-  crontabの引数にファイルを指定すると設定をファイルからcrontabに読み込むことができます。
+  You can load the settings from a file into crontab by specifying a file as an argument to crontab.
 </p>
 <pre>
-crontab ファイル名
+crontab file name
 </pre>
-<h3>cronの起動・停止・再起動・状態確認, cronの実行ログ</h3>
+<h3> Start / stop / restart / status check of cron, cron execution log </h3>
 <p>
-  cronの起動・停止・再起動・状態確認, cronの実行ログについては以下の記事を参考にしてくだい。
+  Please refer to the following articles for cron start / stop / restart / status check and cron execution log.
 </p>
 <ul>
-  <li><a href="/blog/20200520084454.html">cronの起動・停止・再起動・状態確認, cronの実行ログ</a></li>
+  <li> <a href="/blog/20200520084454.html"> Start / stop / restart / status check of cron, cron execution log</a> </li>
 </ul>
 
   </div>

@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheでmod_proxy_httpモジュールを有効にする - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="UbuntuのApacheでは、HTTP・HTTPSでプロキシ機能を提供するmod_proxy_httpモジュールがデフォルトでは有効になっていないので、有効にします。">
+<title> Enable mod_proxy_http module in Apache  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="In Apache of Ubuntu, the mod_proxy_http module that provides the proxy function by HTTP / HTTPS is not enabled by default, so enable it.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200220174004.html">Apacheでmod_proxy_httpモジュールを有効にする</a></h2>
+<h2><a href="/blog/20200220174004.html"> Enable mod_proxy_http module in Apache </a></h2>
 <p>
-  UbuntuのApacheでは、HTTP・HTTPSでプロキシ機能を提供するmod_proxy_httpモジュールがデフォルトでは有効になっていないので、有効にします。
+  In Apache of Ubuntu, the mod_proxy_http module that provides the proxy function by HTTP / HTTPS is not enabled by default, so enable it.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -99,23 +99,23 @@
 sudo a2enmod proxy_http
 </pre>
 <p>
-  設定を反映させるためには<a href="/blog/20200519084454.html">Apacheを再起動</a>してください。
+  Please <a href="/blog/20200519084454.html"> Restart Apache</a> for the settings to take effect.
 </p>
 <p>
-  Apacheのモジュールを有効・無効にする方法については、以下の記事を参考にしてください。
+  Please refer to the following articles for how to enable / disable Apache modules.
 </p>
 <ul>
-  <li><a href="/blog/20200610082714.html">Apache設定ファイルを有効・無効にする - 基本設定・モジュール設定・サイト設定</a></li>
+  <li> <a href="/blog/20200610082714.html"> Enable / disable Apache config file-basic config / module config / site config</a> </li>
 </ul>
 <p>
-  mod_proxy_httpはmod_proxyに依存していることに注意してください。
+  Note that mod_proxy_http depends on mod_proxy.
 </p>
-<h3>mod_proxy_httpが存在しない場合のApacheのエラーメッセージ</h3>
+<h3> Apache error message when mod_proxy_http does not exist </h3>
 <p>
-  mod_proxy_httpが存在しない場合にApacheのエラーメッセージの例。
+  Example Apache error message when mod_proxy_http does not exist.
 </p>
 <pre>
-Invalid command '&lt;Proxy', perhaps misspelled or defined by a module not included in the server configuration
+Invalid command'&lt;Proxy', perhaps misspelled or defined by a module not included in the server configuration
 </pre>
 
   </div>

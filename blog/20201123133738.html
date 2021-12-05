@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>UbuntuでC言語/C++開発環境構築 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="UbuntuでC言語/C++開発環境を構築する手順です。">
+<title> C language / C ++ development environment construction on Ubuntu  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="It is a procedure to build a C language / C ++ development environment on Ubuntu.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20201123133738.html">UbuntuでC言語/C++開発環境構築</a></h2>
+    <h2><a href="/blog/20201123133738.html"> C language / C ++ development environment construction on Ubuntu </a></h2>
 <p>
-  UbuntuでC言語/C++開発環境を構築する手順です。
+  It is a procedure to build a C language / C ++ development environment on Ubuntu.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -76,108 +76,108 @@
 </div>
 
 
-<h3>Ubuntuを利用できるようにする</h3>
+<h3> Make Ubuntu available </h3>
 <p>
-  Ubuntuを利用できるようにしましょう。
+  Let's make Ubuntu available.
 </p>
 <ul>
-  <li><a href="/blog/20200509155552.html">Ubuntuの利用方法</a></li>
+  <li> <a href="/blog/20200509155552.html"> How to use Ubuntu</a> </li>
 </ul>
 <p>
-  コマンドを実行できるコンソール画面を表示するところまで進んで、初期ユーザーでログインするところまで進みましょう。
+  Proceed to the console screen where you can execute commands, and then log in as the initial user.
 </p>
 <p>
-  VPSやクラウドサーバーを使った個別の手順は以下で公開しています。
+  The individual procedures using VPS and cloud server are published below.
 </p>
 <ul>
-  <li><a href="/blog/20200816052048.html">さくらVPS+Ubuntu 18+PerlでWebシステム開発環境を行う手順のまとめ</a></li>
+  <li> <a href="/blog/20200816052048.html"> Summary of procedures for creating a Web system development environment with Sakura VPS + Ubuntu 18 + Perl</a> </li>
 </ul>
-<h3>ユーザーの作成</h3>
+<h3> Create User </h3>
 <p>
-  次は、コンソール画面でユーザーを作成します。Webアプリケーションの実行ユーザー(myapp)を作成するのと、自分自身のユーザー(たとえばkimoto)の二つを作成してみましょう。
+  Next, create a user on the console screen. Let's create two users, one to run the web application (myapp) and one to our own (for example, kimoto).
 </p>
 <p>
-  ユーザー追加「-m」オプションあり、パスワードの設定、<a href="/blog/20200406174004.html">sudo</a>グループへ追加の手順を行いましょう。
+  Add user There is an "-m" option, set a password, and add it to the <a href="/blog/20200406174004.html"> sudo</a> group.
 </p>
 <ul>
-  <li><a href="/blog/20200511173052.html">ユーザーの追加 - useraddコマンド</a></li>
+  <li> <a href="/blog/20200511173052.html"> Add user --useradd command</a> </li>
 </ul>
-<h3>ファイアーウォールの設定</h3>
+<h3> Firewall settings </h3>
 <p>
-  ホスティングサービスが用意するネットーワークのファイアーウォール設定で以下のポートを開いてください。またオンプレミスでサーバーを構築している場合は<a href="/blog/20200907132441.html">ufwコマンド</a>を使って、以下のポートを開いてください。
+  Open the following ports in the firewall settings of the network provided by the hosting service. If you are building your server on-premises, use the <a href="/blog/20200907132441.html"> ufw command</a> to open the following ports.
 </p>
 <table>
-  <tr><td>SSH</td><td><a href="/blog/20200715102902.html">SSHで利用するポート</a>(デフォルトの22番ポートは危険)</td>
+  <tr> <td> SSH </td> <td> <a href="/blog/20200715102902.html"> SSH port</a> (default port 22 is dangerous) </td>
 </table>
-<h3>SSHクライアントの利用</h3>
+<h3> Using SSH client </h3>
 <p>
-  パソコン上からSSHでサーバーへの接続して、コマンド実行とファイル編集ができるようにしましょう。
+  Let's connect to the server with SSH from the computer so that you can execute commands and edit files.
 </p>
-<h4>SSHクライアントでコマンド実行</h4>
+<h4> Command execution on SSH client </h4>
 <p>
-  SSHクライアントでSSHサーバーに接続してコマンド実行するツールに、Windowsの場合はTeraTermがあります。
-</p>
-<ul>
-  <li><a href="https://en.linux.perlzemi.com/blog/20200525082545.html">Linuxサーバーにコマンドを送る - TeraTermのインストールと使い方</a></li>
-</ul>
-<p>
-  <a href="https://www.atmarkit.co.jp/ait/articles/1006/25/news095.html">PuTTY</a>などの他のWindowsで動くSSHクライアントもありますので、お好みで。
-</p>
-<p>
-  Macの場合は、ターミナルからsshコマンドが使えます。
-</p>
-<h4>SCPを使ってサーバー上のファイルを編集</h4>
-<p>
-  SCPというSSH上に構築されるプロトコルを使うとサーバー上のファイルを編集できます。
-</p>
-<p>
-  SCPクライアントとして、Windowsの場合はWinSCPがあります。
+  In the case of Windows, TeraTerm is a tool for connecting to an SSH server with an SSH client and executing commands.
 </p>
 <ul>
-  <li><a href="https://en.linux.perlzemi.com/blog/20200520082545.html">Linuxサーバー上のファイルを編集 - WinSCPのインストールと使い方</a></li>
+  <li> <a href="https://en.linux.perlzemi.com/blog/20200525082545.html"> Send commands to a Linux server-Installing and using TeraTerm</a> </li>
 </ul>
 <p>
-  MacにもWindowsのWinSCPの代わりになるようなソフトウェアがあるので、インストールしましょう。
+  There are SSH clients that work on other Windows such as <a href="https://www.atmarkit.co.jp/ait/articles/1006/25/news095.html"> PuTTY</a>, so you can use it as you like. so.
 </p>
-<h3>SSHサーバーの設定</h3>
-<ul>
-  <li><a href="/blog/20200715102902.html">SSHポートを変更する - デフォルトの22番ポートはセキュリティ的に危険が高い</a></li>
-</ul>
-<h3>タイムゾーンの設定</h3>
 <p>
-  タイムゾーンを「Asia/Tokyo」に設定しましょう。
+  For Mac, you can use the ssh command from the terminal.
 </p>
-<ul>
-  <li><a href="/blog/20200507174004.html">タイムゾーンの確認と設定 - timedatectlコマンド</a></li>
-</ul>
-<h3>パッケージのインストール</h3>
+<h4> Use SCP to edit files on the server </h4>
 <p>
-  Ubuntuのパッケージ管理ツールはaptです。パッケージのインストールがうまくいかない場合があるので、最初にaptを最新のバージョンにしましょう。
+  You can edit files on the server using a protocol built on SSH called SCP.
+</p>
+<p>
+  WinSCP is the SCP client for Windows.
 </p>
 <ul>
-  <li><a href="/blog/20200524135533.html">aptのアップデート - apt update</a></li>
+  <li> <a href="https://en.linux.perlzemi.com/blog/20200520082545.html"> Edit files on Linux server-Installing and using WinSCP</a> </li>
 </ul>
 <p>
-  まずは、ひとつのマシンの中に、Webサーバー、アプリケーションサーバー、メール送信サーバー、DBサーバーをすべて構築しましょう。
+  There is software on your Mac that can replace WinSCP on Windows, so install it.
 </p>
-<h4>コンパイラ・リンカ</h4>
+<h3> SSH server settings </h3>
+<ul>
+  <li> <a href="/blog/20200715102902.html"> Change SSH port-default port 22 is a high security risk</a> </li>
+</ul>
+<h3> Time zone setting </h3>
 <p>
-  C言語のコンパイルのためにgcc、C++のコンパイルのためにg++、コンパイルの依存関係を解決できるツールであるmakeをインストールしましょう。
+  Let's set the time zone to "Asia / Tokyo".
 </p>
 <ul>
-  <li><a href="/blog/20200514084132.html">makeのインストール</a></li>
-  <li><a href="/blog/20200504174004.html">gccのインストール</a></li>
-  <li><a href="/blog/20200503174004.html">g++のインストール</a></li>
+  <li> <a href="/blog/20200507174004.html"> Checking and setting the time zone --timedatectl command</a> </li>
 </ul>
-<h4>リポジトリ管理</h4>
+<h3> Package installation </h3>
 <p>
-  C言語/C++のソースコードを管理できるように<a href="https://en.git.perlzemi.com/>Git</a>をインストールしましょう。
+  Ubuntu's package management tool is apt. Install the package may not work, so make sure you have the latest version of apt first.
 </p>
 <ul>
-  <li><a href="/blog/20200607082859.html">gitのインストール - Git分散リポジトリ管理システム</a></li>
+  <li> <a href="/blog/20200524135533.html"> apt update --apt update</a> </li>
 </ul>
 <p>
-  お疲れ様でした。
+  First, let's build a web server, application server, mail sending server, and DB server all in one machine.
+</p>
+<h4> Compiler Linker </h4>
+<p>
+  Install gcc for C language compilation, g ++ for C ++ compilation, and make, a tool that can resolve compilation dependencies.
+</p>
+<ul>
+  <li> <a href="/blog/20200514084132.html"> Install make</a> </li>
+  <li> <a href="/blog/20200504174004.html"> Install gcc</a> </li>
+  <li> <a href="/blog/20200503174004.html"> Install g ++</a> </li>
+</ul>
+<h4> Repository management </h4>
+<p>
+  Install <a href="https://en.git.perlzemi.com/>Git</a> so that you can manage the C / C ++ source code.
+</p>
+<ul>
+  <li> <a href="/blog/20200607082859.html"> Install git-Git distributed repository management system</a> </li>
+</ul>
+<p>
+  good job for today.
 </p>
 
   </div>

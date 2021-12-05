@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>hostsファイル「/etc/hosts」 - ホスト名とIPアドレスの対応 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="hostsファイルは、IPアドレスとホスト名の対応を記述するためのファイルです。">
+<title> hosts file "/ etc / hosts" --Correspondence between host name and IP address  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="The hosts file is a file that describes the correspondence between IP addresses and host names.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200414174004.html">hostsファイル「/etc/hosts」 - ホスト名とIPアドレスの対応</a></h2>
+    <h2><a href="/blog/20200414174004.html"> hosts file "/ etc / hosts" --Correspondence between host name and IP address </a></h2>
 <p>
-  hostsファイルは、IPアドレスとホスト名の対応を記述するためのファイルです。
+  The hosts file is a file that describes the correspondence between IP addresses and host names.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -77,42 +77,42 @@
 
 
 <pre>
-cat /etc/hosts
+cat / etc / hosts
 </pre>
 <p>
-  デフォルトでは、localhostとループバックアドレスの対応が書かれています。IPv4とIPv6。
+  By default, the correspondence between localhost and the loopback address is written. IPv4 and IPv6.
 </p>
 <pre>
-127.0.0.1               localhost.localdomain localhost
-::1             localhost6.localdomain6 localhost6
+127.0.0.1 localhost.localdomain localhost
+:: 1 localhost6.localdomain6 localhost6
 </pre>
-<h3>ホスト名を扱うアプリケーションにおける自動的なIPアドレス解決</h3>
+<h3> Automatic IP address resolution in applications that handle host names </h3>
 <p>
-  hostsファイルの役割は、ホスト名を扱うアプリケーションで、IPアドレスを自動的に解決できることです。
+  The role of the hosts file is to allow applications that work with hostnames to resolve IP addresses automatically.
 </p>
 <p>
-  viを使って、hostsファイルを編集します。
+  Use vi to edit the hosts file.
 </p>
 <pre>
-sudo vi /etc/hosts
+sudo vi / etc / hosts
 </pre>
 <p>
-  たとえば、データベースへ接続するアプリケーションにおいて、データベースへの接続先ホストを記述したとしてください。
+  For example, suppose an application that connects to a database describes the host to connect to the database.
 </p>
 <p>
-  この場合、開発環境と本番環境では、データベースが異なり、そのIPアドレスも異なります。このような場合に、アプリケーションにおいて、ホスト名を記述しておき、hostsファイルでIPアドレスを解決してもらうことができます。
+  In this case, the development environment and the production environment have different databases and different IP addresses. In such a case, you can write the host name in the application and have the hosts file resolve the IP address.
 </p>
 <pre>
 13.66.226.204 database
 </pre>
 <p>
-  mysqlコマンドで、ホスト名を使ったサンプルです。開発環境と本番環境で、それぞれIPアドレスとの対応を定義すれば、同じ記述で、接続できます。
+  This is a sample using the host name in the mysql command. If you define the correspondence with the IP address in the development environment and the production environment, you can connect with the same description.
 </p>
 <pre>
-# IPアドレスで指定
+#Specified by IP address
 mysql -h 13.66.226.204 -ukimoto -p
 
-# ホスト名で指定
+#Specified by host name
 mysql -h database -ukimoto -p
 </pre>
 

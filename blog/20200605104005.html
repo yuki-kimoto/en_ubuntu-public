@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>systemctl - systemdで管理されているサーバーアプリケーションの管理 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="systemctlコマンドを使うと、systemdで管理されているサーバーアプリケーションの管理を行うことができます。">
+<title> systemctl --Managing server applications managed by systemd  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="You can use the  systemctl  command to manage server applications managed by systemd.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200823150919.html">
-        <span itemprop="name">systemd</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> systemd </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200605104005.html">systemctl - systemdで管理されているサーバーアプリケーションの管理</a></h2>
+<h2><a href="/blog/20200605104005.html"> systemctl --Managing server applications managed by systemd </a></h2>
 <p>
-  <b>systemctl</b>コマンドを使うと、systemdで管理されているサーバーアプリケーションの管理を行うことができます。
+  You can use the <b> systemctl </b> command to manage server applications managed by systemd.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,44 +96,44 @@
 
 
 <p>
-  ここでは、apache2を使って、各種コマンドについて解説します。
+  Here, we will explain various commands using apache2.
 </p>
-<h4>アプリケーションの開始</h3>
+<h4> Start application </h3>
 <p>
-  アプリケーションを開始するには、startコマンドを使用します。
+  Use the start command to start the application.
 </p>
 <pre>
 sudo systemctl start apache2
 </pre>
-<h4>アプリケーションの停止</h3>
+<h4> Stop application </h3>
 <p>
-  アプリケーションを停止するには、stopコマンドを使用します。
+  Use the stop command to stop the application.
 </p>
 <pre>
 sudo systemctl stop apache2
 </pre>
-<h4>アプリケーションの再起動</h3>
+<h4> Restart the application </h3>
 <p>
-  アプリケーションを再起動するには、restartコマンドを使用します。
+  Use the restart command to restart the application.
 </p>
 <pre>
 sudo systemctl restart apache2
 </pre>
 <p>
-  stopの後に、startが実行されます。
+  After stop, start is executed.
 </p>
-<h4>アプリケーションの状態</h3>
+<h4> Application status </h3>
 <p>
-  アプリケーションの状態を見るには、statusコマンドを使用します。
+  Use the status command to see the status of the application.
 </p>
 <pre>
 sudo systemctl status apache2
 </pre>
 <p>
-  アプリケーションが起動している場合は、以下のように表示されます。
+  If the application is running, you should see something like this:
 </p>
 <pre>
-● apache2.service - The Apache HTTP Server
+● apache2.service --The Apache HTTP Server
    Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
   Drop-In: /lib/systemd/system/apache2.service.d
            mqapache2-systemd.conf
@@ -141,32 +141,32 @@ sudo systemctl status apache2
  Main PID: 1624 (apache2)
     Tasks: 55 (limit: 9479)
    CGroup: /system.slice/apache2.service
-           tq1624 /usr/sbin/apache2 -k start
-           tq1628 /usr/sbin/apache2 -k start
-           mq1629 /usr/sbin/apache2 -k start
+           tq1624 / usr / sbin / apache2 -k start
+           tq1628 / usr / sbin / apache2 -k start
+           mq1629 / usr / sbin / apache2 -k start
 </pre>
-<h4>アプリケーションのリロード</h3>
+<h4> Application reload </h3>
 <p>
-  アプリケーションで、reloadが定義されている場合は、reloadを使うことができます。
+  If your application defines reload, you can use reload.
 </p>
 <pre>
 sudo systemctl reload apache2
 </pre>
 <p>
-  <a href="/blog/20200526151435.html">apache2</a>の場合はグレースフルスタート、postfixの場合は、設定ファイルの再読み込みが定義されています。
+  For <a href="/blog/20200526151435.html"> apache2</a>, graceful start is defined, and for postfix, reloading of the configuration file is defined.
 </p>
-<h3>各アプリケーションのsystemdの設定ファイルを見る</h3>
+<h3> View the systemd configuration file for each application </h3>
 <p>
-  各アプリケーションのsystemdの設定ファイルは「systemctl status」の内容に含まれています。
+  The systemd configuration file for each application is included in the "systemctl status" content.
 </p>
 <pre>
 sudo systemctl status apache2
 </pre>
 <p>
-  以下の「/lib/systemd/system/apache2.service」というのが、systemdのapacheの設定ファイルです。
+  The following "/lib/systemd/system/apache2.service" is the systemd apache configuration file.
 </p>
 <pre>
-● apache2.service - The Apache HTTP Server
+● apache2.service --The Apache HTTP Server
    Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
   Drop-In: /lib/systemd/system/apache2.service.d
            mqapache2-systemd.conf
@@ -174,70 +174,70 @@ sudo systemctl status apache2
  Main PID: 1624 (apache2)
     Tasks: 55 (limit: 9479)
    CGroup: /system.slice/apache2.service
-           tq1624 /usr/sbin/apache2 -k start
-           tq1628 /usr/sbin/apache2 -k start
-           mq1629 /usr/sbin/apache2 -k start
+           tq1624 / usr / sbin / apache2 -k start
+           tq1628 / usr / sbin / apache2 -k start
+           mq1629 / usr / sbin / apache2 -k start
 </pre>
 <p>
-  catコマンドを使って「/lib/systemd/system/apache2.service」の中身を見てみましょう。
+  Let's use the cat command to look at the contents of "/lib/systemd/system/apache2.service".
 </p>
 <pre>
 [Unit]
-Description=The Apache HTTP Server
-After=network.target remote-fs.target nss-lookup.target
+Description = The Apache HTTP Server
+After = network.target remote-fs.target nss-lookup.target
 
 [Service]
-Type=forking
-Environment=APACHE_STARTED_BY_SYSTEMD=true
-ExecStart=/usr/sbin/apachectl start
-ExecStop=/usr/sbin/apachectl stop
-ExecReload=/usr/sbin/apachectl graceful
-PrivateTmp=true
-Restart=on-abort
+Type = forking
+Environment = APACHE_STARTED_BY_SYSTEMD = true
+ExecStart = / usr / sbin / apachectl start
+ExecStop = / usr / sbin / apachectl stop
+ExecReload = / usr / sbin / apachectl graceful
+PrivateTmp = true
+Restart = on-abort
 
 [Install]
-WantedBy=multi-user.target
+WantedBy = multi-user.target
 </pre>
-<h3>systemdの設定ファイル</h3>
+<h3> systemd configuration file </h3>
 <p>
-  systemdの設定ファイルは「/lib/systemd/system」にあります。以下はApacheの設定ファイルです。
+  The systemd configuration file is located in "/ lib / systemd / system". The following is the Apache configuration file.
 </p>
 <pre>
 /lib/systemd/system/apache2.service
 </pre>
-<h3>systemdのサービスとして追加</h3>
+<h3> Added as a systemd service </h3>
 <p>
-  systemdで管理される新しいアプリケーションを追加するには、systemdの設定ファイルがあるディレクトリの中に設定ファイルを追加します。
+  To add a new application managed by systemd, add the configuration file in the directory where the systemd configuration file is located.
 </p>
 <p>
-  MojoliciousでWebアプリケーションを作成してhypnotoadで起動している場合にこれを<a href="https://docs.mojolicious.org/Mojolicious/Guides/Cookbook">systemdで管理する場合の公式ドキュメントのサンプル</a>は以下のようになっています。
+  Sample official documentation for creating a web application in Mojolicious and running it in hypnotoad with <a href="https://docs.mojolicious.org/Mojolicious/Guides/Cookbook"> systemd</a> looks like this:
 </p>
 <pre>
 [Unit]
-Description=My Mojolicious application
-After=network.target
+Description = My Mojolicious application
+After = network.target
 
 [Service]
-Type=forking
-PIDFile=/home/sri/myapp/script/hypnotoad.pid
-ExecStart=/path/to/hypnotoad /home/sri/myapp/script/my_app
-ExecReload=/path/to/hypnotoad /home/sri/myapp/script/my_app
-KillMode=process
+Type = forking
+PIDFile = / home / sri / myapp / script / hypnotoad.pid
+ExecStart = / path / to / hypnotoad / home / sri / myapp / script / my_app
+ExecReload = / path / to / hypnotoad / home / sri / myapp / script / my_app
+KillMode = process
 
 [Install]
-WantedBy=multi-user.target
+WantedBy = multi-user.target
 </pre>
 <p>
-  ファイル名は以下のようにします。「mywebapp」の部分は任意の名前でOKです。viを使って、編集して、内容を追記しましょう。
+  The file name should be as follows. The "mywebapp" part can be any name. Use vi to edit and add content.
 </p>
 <pre>
 sudo vi /lib/systemd/system/mywebapp.service
 </pre>
 <p>
-  systemdにサービスとして登録しておくと、OSの再起動時に、Webアプリケーションを自動起動させることができます。
+  If you register it as a service in systemd, you can automatically start the Web application when the OS is restarted.
 </p>
 <p>
-  設定ファイルが正しいく記述されているかどうかはsystemctlコマンドのstatusで確認することができます。
+  You can check whether the configuration file is written correctly by checking the status of the systemctl command.
 </p>
 <pre>
 systemctl status mywebapp

@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>SSHのポートを変更する - デフォルトの22番ポートはセキュリティ的に危険が高い - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="SSHポートを変更する方法を解説します。デフォルトの22番ポートはセキュリティ的に危険が高いので、異なる番号に変えておきましょう。">
+<title> Change SSH port-default port 22 is a high security risk  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="I will explain how to change the SSH port. The default port 22 is a high security risk, so change it to a different number.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200715102902.html">SSHのポートを変更する - デフォルトの22番ポートはセキュリティ的に危険が高い</a></h2>
+    <h2><a href="/blog/20200715102902.html"> Change SSH port-default port 22 is a high security risk </a></h2>
 <p>
-  SSHポートを変更する方法を解説します。デフォルトの22番ポートはセキュリティ的に危険が高いので、異なる番号に変えておきましょう。
+  I will explain how to change the SSH port. The default port 22 is a high security risk, so change it to a different number.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -77,84 +77,84 @@
 
 
 <p>
-  SSHサーバーの設定ファイルは以下にあるので、<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">vi</a>で開きます。
+  The SSH server configuration file is below, so open it with <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a>.
 </p>
 <pre>
-cd /etc/ssh
+cd / etc / ssh
 sudo vi sshd_config
 </pre>
 <p>
-  次に以下の行を見つけてください。ポート番号がコメントアウトされています。この場合はデフォルトの22番ポートになります。
+  Then find the following line. The port number is commented out. In this case, it defaults to port 22.
 </p>
 <pre>
 #Port 22
 </pre>
 <p>
-  ポート番号を変更しましょう。今回は、一行下にポート番号の指定を55550にしました。
+  Let's change the port number. This time, I set the port number to 55550 one line below.
 </p>
 <pre>
 #Port 22
 Port 55550
 </pre>
 <p>
-  Escをおして「:wq」と入力後Enterで保存して終了します。
+  Enter ": wq" through Esc, then press Enter to save and exit.
 </p>
-<h4>SSHサーバーの再起動</h4>
+<h4> Restart SSH server </h4>
 <p>
-  設定ファイルを反映させるために、<a href="/blog/20200605104005.html">systemctl</a>コマンドで、SSHサーバーを再起動します。
+  Restart the SSH server with the <a href="/blog/20200605104005.html"> systemctl</a> command for the configuration file to take effect.
 </p>
 <pre>
 sudo systemctl restart sshd
 </pre>
 <p>
-  再起動されたのを確認します。
+  Confirm that it has been restarted.
 </p>
 <pre>
 sudo systemctl status sshd
 </pre>
 <p>
-  ここで、大事なことは、現在のSSHの接続を切らないことです。変更したポートで接続できることが確認できるまで、現在の接続を維持しておきましょう。そうすれば、SSHサーバーの設定間違いがあった場合に、修正することができます。
+  The important thing here is not to disconnect the current SSH connection. Keep your current connection until you can confirm that you can connect on the changed port. That way, if you make a mistake in your SSH server settings, you can fix it.
 </p>
 <p>
-  もし、SSHで接続することが、不可能になってしまった場合は、VPSやパブリッククラウドのWeb管理画面には、必ずコンソールという機能がありますので、その画面から、SSHの設定ファイルを修正しましょう。
+  If it becomes impossible to connect with SSH, there is always a function called console on the Web management screen of VPS or public cloud, so let's modify the SSH configuration file from that screen. ..
 </p>
-<h3>22番ポートは、どれくらいセキュリティ的に危険なの?</h3>
+<h3> How dangerous is port 22 in terms of security? </H3>
 <p>
-  よく知られたクラウドサービスの場合は、世界中からの攻撃者が大量に存在すると考えてください。侵入しようとしている悪い人がたくさんいます。
-</p>
-<p>
-  22番ポートは、デフォルトのSSHポートなので、インターネットから、ポートスキャニングされています。家の鍵はどんな感じだろうとチェックしています。
+  For well-known cloud services, consider that there are a large number of attackers from all over the world. There are many bad people trying to break in.
 </p>
 <p>
-  次に、IDとパスワードを試してきます。まぁいわゆる、ピッキングですね。
+  Port 22 is the default SSH port, so it is port scanned from the Internet. I'm checking what the house key looks like.
 </p>
 <p>
-  IDとパスワードを検出したら、侵入してきます。
+  Next, try your ID and password. Well, it's so-called picking.
 </p>
 <p>
-  侵入されると、そのユーザーで可能なことはなんでもできます。踏み台サーバーとして利用したり、勝手にコマンドを実行されたりします。
+  If it detects your ID and password, it will break in.
 </p>
 <p>
-  そのユーザーがsudoユーザーであったら、さぁ大変。すべてのファイルを書き換えることができますし、悪意のあるプログラムを配置できます。
+  Once compromised, the user can do whatever he can. It can be used as a stepping stone server or commands can be executed without permission.
 </p>
 <p>
-  調べる側は、どこに悪意のあるプログラムが設置されたかは、簡単にはわかりません。
+  If that user is a sudo user, it's hard. All files can be rewritten and malicious programs can be deployed.
 </p>
 <p>
-  そうなると、本当の意味でのセキュリティの完全な復旧は、サーバー再構築です。これは、大変な作業です。
+  It is not easy for the investigator to know where the malicious program was installed.
 </p>
 <p>
-  SSHのデフォルトポートを変更しない場合は、上記のようなリスクがあります。
-</p>
-<h3>何番ポートにしたらいいの?</h3>
-<p>
-  ウェルノウンポート(0–1023)以外で、自分のWebアプリケーションが使うポート番号(たとえば、3000と8080をWebアプリで使う)と被らない、65535より小さな値にしましょう。
+  When that happens, the true complete recovery of security is a server rebuild. This is a daunting task.
 </p>
 <p>
-  <a href="https://en.mariadb.perlzemi.com/">MaridDB</a>やRedisなどのサーバーアプリケーションのデフォルトのポート番号も避けておくのがよいでしょう。
+  If you do not change the SSH default port, there are risks such as those mentioned above.
+</p>
+<h3> What port should I use? </H3>
+<p>
+  Other than the well-known port (0–1023), it should be less than 65535, which does not overlap with the port numbers used by your web application (for example, use 3000 and 8080 in your web app).
 </p>
 <p>
-  以下は、SSHのポート番号の例です。
+  It's also a good idea to avoid the default port numbers for server applications such as <a href="https://en.mariadb.perlzemi.com/"> MariadDB</a> and Redis.
+</p>
+<p>
+  The following is an example of an SSH port number.
 </p>
 <pre>
 20000

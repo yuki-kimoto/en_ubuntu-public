@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>MojoliciousによるWebアプリケーションのデプロイ - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="MojoliciousによるWebアプリケーションのデプロイ方法の解説です。Mojoliciousは、リアルタイムWebに対応したスケーラブルなPerlのWebフレームワークです。">
+<title> Deploying web applications with Mojolicious  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="This is an explanation of how to deploy a web application with Mojolicious.  Mojolicious is a scalable  for the real-time web. Perl web framework.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
-        <span itemprop="name">Perl</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Perl </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200729134756.html">MojoliciousによるWebアプリケーションのデプロイ</a></h2>
+<h2><a href="/blog/20200729134756.html"> Deploying web applications with Mojolicious </a></h2>
 <p>
-  MojoliciousによるWebアプリケーションのデプロイ方法の解説です。<a href="https://en.mojolicious.perlzemi.com/">Mojolicious</a>は、リアルタイムWebに対応したスケーラブルな<a href="https://en.perlzemi.com/">Perl</a>のWebフレームワークです。
+  This is an explanation of how to deploy a web application with Mojolicious. <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious</a> is a scalable <a href="https://en.perlzemi.com/"> for the real-time web. Perl</a> web framework.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,121 +95,121 @@
 </div>
 
 
-<h3>Mojoliciousのインストール</h3>
+<h3> Install Mojolicious </h3>
 <p>
-  Mojoliciousをインストールしましょう。<a href="/blog/20200413174004.html">ユーザーPerlとcpanmのインストール</a>が完了している必要があります。
+  Install Mojolicious. <a href="/blog/20200413174004.html"> User Perl and cpanm must be installed</a>.
 </p>
 <pre>
 cpanm Mojolicious
 </pre>
-<h3>Mojoliciousアプリケーションの作成</h3>
+<h3> Creating a Mojolicious application </h3>
 <p>
-  <a href="https://mojolicious.org/">Mojolicious</a>アプリケーションを作成しましょう。
+  <a href="https://mojolicious.org/"> Mojolicious</a> Let's create an application.
 </p>
 <p>
-  アプリケーション名は「Webapp」とします。
+  The application name is "Webapp".
 </p>
 <p>
-  「mojo generate app」コマンドを実行してMojoliciousアプリケーションを作成します。
-</p>
-<pre>
-mojo generate app Webapp
-</pre>
-<p>
-  webappというディレクトリが作成され、その中にMojoliciousアプリケーションが配置されます。
-</p>
-<h3>Mojoliciousの開発サーバーを起動</h3>
-<p>
-  <a href="https://en.mojolicious.perlzemi.com/blog/20120406133367.html">morbo</a>コマンドでMojoliciousの開発サーバーを起動します。
+  Run the "mojo generate app" command to create a Mojolicious application.
 </p>
 <pre>
-cd ~/webapp
-morbo script/webapp
+mojo generate app web app
 </pre>
 <p>
-  ポート番号が3000番で、Webアプリケーションが起動します。
+  A directory called webapp will be created and the Mojolicious application will be placed in it.
+</p>
+<h3> Start Mojolicious's development server </h3>
+<p>
+  Start the Mojolicious development server with the <a href="https://en.mojolicious.perlzemi.com/blog/20120406133367.html"> morbo</a> command.
+</p>
+<pre>
+cd ~ / webapp
+morbo script / webapp
+</pre>
+<p>
+  The port number is 3000 and the web application starts.
 </p>
 <pre>
 Web application available at http://127.0.0.1:3000
 </pre>
 <p>
-  「127.0.0.1」の部分はループバックアドレスですので、サーバーのIPアドレスに変更してアクセスしてみましょう。
+  The "127.0.0.1" part is the loopback address, so let's change it to the IP address of the server and access it.
 </p>
 <p>
-  サーバーのIPアドレスが「132.165.23.8」の場合は、以下でアクセスできます。
+  If the IP address of the server is "132.165.23.8", you can access it with the following.
 </p>
 <pre>
 http://132.165.23.8:3000
 </pre>
 <p>
-  アクセスできない場合は、ネットワークのファイアーウォール設定で3000番ポートが許可されているか確認しましょう。
+  If you can't access it, make sure your network firewall settings allow port 3000.
 </p>
 <p>
-  成功すると画面に「Welcome to the Mojolicious real-time web framework!」と表示されます。
+  If successful, the screen will display "Welcome to the Mojolicious real-time web framework!".
 </p>
 <p>
-  「Ctrl + C」で終了できます。
+  You can exit with "Ctrl + C".
 </p>
-<h3>Mojoliciousの本番サーバーを起動</h3>
+<h3> Start Mojolicious production server </h3>
 <p>
-  <a href="https://en.mojolicious.perlzemi.com/blog/20110122130016.html">hypnotoad</a>コマンドでMojoliciousの本番サーバーを起動しましょう。hypnotoadは、Mojoliciousの本番用サーバーで、プリフォーク+非同期I/Oの実装を持ち、パフォーマンスで最適化されています。
+  Start Mojolicious's production server with the <a href="https://en.mojolicious.perlzemi.com/blog/20110122130016.html"> hypnotoad</a> command. hypnotoad is a Mojolicious production server with a prefork + asynchronous I / O implementation and performance optimized.
 </p>
 <pre>
-cd ~/webapp
-hypnotoad script/webapp
+cd ~ / webapp
+hypnotoad script / webapp
 </pre>
 <pre>
 Web application available at http://127.0.0.1:8080
 </pre>
 <p>
-  ポート番号8080は閉じられているので、確認のためには、コマンドラインでcurlコマンドを使用しましょう。「I ? Mojolicious!」と表示されれば、本番サーバーが正しく起動しています。
+  Port number 8080 is closed, so use the curl command on the command line to check. If "I? Mojolicious!" Is displayed, the production server has started correctly.
 </p>
 <pre>
 curl http://127.0.0.1:8080
 </pre>
 <p>
-  停止する場合は「--stop」オプションを使用します。
+  Use the "--stop" option to stop.
 </p>
 <pre>
-hypnotoad script/webapp --stop
+hypnotoad script / webapp --stop
 </pre>
 <p>
-  ポート番号を変更したい場合は、設定ファイルのlistenオプションで変更できます。設定ファイル名は「webapp.conf」とします。
+  If you want to change the port number, you can change it with the listen option in the configuration file. The configuration file name is "webapp.conf".
 </p>
-<h3>リバースプロキシに接続のためにMojolicious設定ファイルに必要な項目</h3>
+<h3> Items required in the Mojolicious configuration file to connect to the reverse proxy </h3>
 <p>
-  リバースプロキシに接続する場合に、<a href="https://en.mojodoc.perlzemi.com/Mojo::Server::Hypnotoad.html">Mojoliciousの設定ファイル</a>に少なくとも必要な項目は、以下です。
+  When connecting to a reverse proxy, at least the required items in the <a href="https://en.mojodoc.perlzemi.com/Mojo :: Server :: Hypnotoad.html"> Mojolicious configuration file</a> are required. ,It is less than.
 </p>
-<h4>設定ファイルがwebapp.confの場合</h4>
+<h4> If the configuration file is webapp.conf </h4>
 <p>
-  設定ファイル名が、webapp.confの場合は、以下の設定を追記してください。
+  If the setting file name is webapp.conf, add the following settings.
 </p>
 <pre>
 # webapp.conf
 {
   hypnotoad =&gt; {proxy =&gt; 1}
-};
+};;
 </pre>
-<h4>設定ファイルがwebapp.ymlの場合</h4>
+<h4> When the configuration file is webapp.yml </h4>
 <p>
-  設定ファイルがwebapp.ymlの場合は、以下の設定を追記してください。(Mojolicious 8.58以降)
+  If the configuration file is webapp.yml, add the following settings. (Mojolicious 8.58 or later)
 </p>
 <pre>
-hypnotoad :
-  proxy : 1
+hypnotoad:
+  proxy: 1
 </pre>
 <p>
-  上記の設定で起動できるか確認しておきましょう。
+  Let's check if it can be started with the above settings.
 </p>
 <pre>
-hypnotoad script/webapp
+hypnotoad script / webapp
 </pre>
-<h3>ApacheからのリバースプキシによるWebアプリケーションへの接続</h3>
+<h3> Connecting to a web application by reverse pixi from Apache </h3>
 <p>
-  <a href="/blog/20200526151435.html">Apache</a>からリバースプロキシから接続して、インターネット上にWebアプリケーションを公開する方法については以下を参考にしてください。
+  Please refer to the following for how to connect from <a href="/blog/20200526151435.html"> Apache</a> from a reverse proxy and publish a web application on the Internet.
 </p>
 <ul>
-  <li><a href="/blog/20200306174004.html">WebサイトをバーチャルホストとリバースプロキシでApacheから接続する</a></li>
+  <li> <a href="/blog/20200306174004.html"> Connect your website from Apache with a virtual host and reverse proxy</a> </li>
 </ul>
 
   </div>

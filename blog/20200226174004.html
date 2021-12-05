@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>cronのインストール - 定期プログラム実行 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="cronをインストールしましょう。cronは定期プログラム実行を行うための常駐アプリケーションです。デフォルトでインストールされていると思いますが、もしインストールされていない場合は、この手順でインストールしてください。aptコマンドを使います。">
+<title> Install cron-Run regular program  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Let's install  cron . Cron is a resident application for executing periodic programs. I think it is installed by default, but if it is not installed, follow this procedure to install it. Use the  apt command.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200226174004.html">cronのインストール - 定期プログラム実行</a></h2>
+    <h2><a href="/blog/20200226174004.html"> Install cron-Run regular program </a></h2>
 <p>
-  <b>cron</b>をインストールしましょう。cronは定期プログラム実行を行うための常駐アプリケーションです。デフォルトでインストールされていると思いますが、もしインストールされていない場合は、この手順でインストールしてください。<a href="/blog/20200530085516.html">apt</a>コマンドを使います。
+  Let's install <b> cron </b>. Cron is a resident application for executing periodic programs. I think it is installed by default, but if it is not installed, follow this procedure to install it. Use the <a href="/blog/20200530085516.html"> apt</a> command.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -80,23 +80,23 @@
 sudo apt install -y cron
 </pre>
 <p>
-  cronがインストールされて実行されていることを<a href="/blog/20200605104005.html">systemctl</a>で確認します。
+  Check <a href="/blog/20200605104005.html"> systemctl</a> that cron is installed and running.
 </p>
 <pre>
 sudo systemctl status cron
 </pre>
 <p>
-  activeと表示されれば、cronがインストールされて実行されています。
+  If you see active, cron is installed and running.
 </p>
 <pre>
-● cron.service - Regular background program processing daemon
+● cron.service --Regular background program processing daemon
    Loaded: loaded (/lib/systemd/system/cron.service; enabled; vendor preset: enabled)
    Active: active (running) since Fri 2020-06-12 10:43:36 JST; 4 days ago
-     Docs: man:cron(8)
+     Docs: man: cron (8)
  Main PID: 1161 (cron)
     Tasks: 1 (limit: 9479)
    CGroup: /system.slice/cron.service
-           mq1161 /usr/sbin/cron -f
+           mq1161 / usr / sbin / cron -f
 </pre>
 
   </div>

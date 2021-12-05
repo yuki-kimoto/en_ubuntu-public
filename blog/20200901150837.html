@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Mojoliciousアプリケーションをsystemdへ登録 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Mojoliciousアプリケーションをsystemdへ登録しましょう。systemd管理にすると、systemctlコマンドを使って、起動・停止・再起動ができます。また、OSを再起動したときに、Mojoliciousアプリケーションを自動的に再起動させることができます。">
+<title> Register Mojolicious application with systemd  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Register your Mojolicious application with  systemd. With systemd management, you can start / stop / restart using the systemctl command. You can also have the Mojolicious application restart automatically when you restart the OS.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200823150919.html">
-        <span itemprop="name">systemd</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> systemd </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200901150837.html">Mojoliciousアプリケーションをsystemdへ登録</a></h2>
+<h2><a href="/blog/20200901150837.html"> Register Mojolicious application with systemd </a></h2>
 <p>
-  Mojoliciousアプリケーションを<a href="/blog/20200823150919.html">systemd</a>へ登録しましょう。systemd管理にすると、systemctlコマンドを使って、起動・停止・再起動ができます。また、OSを再起動したときに、Mojoliciousアプリケーションを自動的に再起動させることができます。
+  Register your Mojolicious application with <a href="/blog/20200823150919.html"> systemd</a>. With systemd management, you can start / stop / restart using the systemctl command. You can also have the Mojolicious application restart automatically when you restart the OS.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,135 +95,135 @@
 </div>
 
 
-<h3>systemd設定ファイルで必要な情報</h3>
+<h3> Information required for systemd configuration file </h3>
 <p>
-  hypnotoadのパスや、ユーザー読み込んでいる環境変数を、systemdの設定ファイルの中でも指定する必要があるので、その部分だけは注意してください。
+  Please note that the path of hypnotoad and the environment variables loaded by the user must be specified in the systemd configuration file as well.
 </p>
-<h4>hypnotoadのパス</h4>
+<h4> hypnotoad path </h4>
 <p>
-  hypnotoadのパスを調べます。
+  Find out the path of hypnotoad.
 </p>
 <pre>
 which hypnotoad
 </pre>
 <p>
-  以下のように表示されました。
+  It was displayed as follows.
 </p>
 <pre>
-~/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad
+~ / perl5 / perlbrew / perls / perl-5.20.3 / bin / hypnotoad
 </pre>
 <p>
-  「~」の部分を、ホームディレクトリに変更するので、ホームディレクトリ名を調べます。
+  Since the "~" part is changed to the home directory, check the home directory name.
 </p>
 <pre>
-# ホームディレクトリ名
-env | grep -P '^HOME'
+#Home directory name
+env | grep -P'^ HOME'
 </pre>
 <p>
-  以下のように表示されました。
+  It was displayed as follows.
 </p>
 <pre>
-HOME=/home/myapp
+HOME = / home / myapp
 </pre>
 <p>
-  hypnotoadのパスは以下のようになります。
+  The path for hypnotoad is as follows.
 </p>
 <pre>
 /home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad
 </pre>
-<h4>Webアプリケーションのパス</h4>
+<h4> Web application path </h4>
 <p>
-  Webアプリケーションのプログラムのパスです。Mojoliciousのひな型を使って作った場合は、以下の場所になります。「Webapp」という名前で作成したと仮定しています。
+  The path of the web application program. If you made it using the Mojolicious template, it will be in the following location. Suppose you created it with the name "Webapp".
 </p>
 <pre>
-/home/myapp/webapp/script/webapp
+/ home / myapp / webapp / script / webapp
 </pre>
-<h4>WebアプリケーションのプロセスIDファイル</h4>
+<h4> Web application process ID file </h4>
 <p>
-  WebアプリケーションのプロセスIDファイルのパスです。
+  The path to the process ID file for the web application.
 </p>
 <pre>
 /home/myapp/webapp/script/hypnotoad.pid
 </pre>
-<h4>環境変数</h4>
+<h4> Environment variables </h4>
 <p>
-  今回は「~/.bashrc」の中に以下の環境変数が設定されているとして記事にします。
+  This time, I will write an article assuming that the following environment variables are set in "~ / .bashrc".
 </p>
 <pre>
-export MY_SERVER_ENV=my_dev
+export MY_SERVER_ENV = my_dev
 </pre>
 <p>
-  この環境変数をsystemdの設定ファイルの中で記述する必要があります。
+  You need to write this environment variable in the systemd configuration file.
 </p>
-<h3>systemdの設定ファイル</h3>
+<h3> systemd configuration file </h3>
 <p>
-  systemdの設定ファイルです。以下の名前にします。
+  This is a systemd configuration file. Give it the following name.
 </p>
 <pre>
 sudo vi /lib/systemd/system/webapp.service
 </pre>
 <p>
-  <a href="https://en.linux.perlzemi.com/blog/20190401171737.html">vi</a>コマンド開いて以下の内容を書き込んでください。
+  <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> Open the command and write the following content.
 </p>
 <pre>
 [Unit]
-Description=My Mojolicious application
-After=network.target
+Description = My Mojolicious application
+After = network.target
 
 [Service]
-Type=forking
-PIDFile=/home/myapp/webapp/script/hypnotoad.pid
-ExecStart=/home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp
-ExecReload=/home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp
-ExecStop=/home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp --stop
-KillMode=process
-User=myapp
-Group=myapp-group
-Environment=MY_SERVER_ENV=my_dev
+Type = forking
+PIDFile = / home / myapp / webapp / script / hypnotoad.pid
+ExecStart = / home / myapp / perl5 / perlbrew / perls / perl-5.20.3 / bin / hypnotoad / home / myapp / webapp / script / webapp
+ExecReload = / home / myapp / perl5 / perlbrew / perls / perl-5.20.3 / bin / hypnotoad / home / myapp / webapp / script / webapp
+ExecStop = / home / myapp / perl5 / perlbrew / perls / perl-5.20.3 / bin / hypnotoad / home / myapp / webapp / script / webapp --stop
+KillMode = process
+User = myapp
+Group = myapp-group
+Environment = MY_SERVER_ENV = my_dev
 
 [Install]
-WantedBy=multi-user.target
+WantedBy = multi-user.target
 </pre>
-<h3>サービスの有効化</h3>
+<h3> Service activation </h3>
 <p>
-  サービスを有効化しましょう。
+  Let's activate the service.
 </p>
 <pre>
 sudo systemctl enable webapp
 </pre>
 <p>
-  もしMojoliciousアプリケーションがすでに起動している場合は、停止します。
+  If the Mojolicious application is already running, stop it.
 </p>
 <pre>
 /home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp --stop
 </pre>
 <p>
-  Mojoliciousアプリケーションをsystemdの管理下でスタートしましょう。
+  Start your Mojolicious application under systemd's control.
 </p>
 <pre>
 sudo systemctl start webapp
 </pre>
 <p>
-  Mojoliciousアプリケーションが起動しているかどうか確認しましょう。
+  Let's check if the Mojolicious application is running.
 </p>
 <pre>
 sudo systemctl status webapp
 </pre>
 <p>
-  Mojoliciousアプリケーションが再起動できるか確認しましょう。
+  Check if the Mojolicious application can be restarted.
 </p>
 <pre>
 sudo systemctl reload webapp
 </pre>
 <p>
-  Mojoliciousアプリケーションが停止できるか確認しましょう。
+  Let's see if the Mojolicious application can be stopped.
 </p>
 <pre>
 sudo systemctl stop webapp
 </pre>
-<h3>OSの再起動</h3>
+<h3> OS restart </h3>
 <p>
-  <a href="/blog/20200903120232.html">OSの再起動</a>を行ってMojoliciousアプリケーションが自動再起動されるか確認しましょう。
+  Perform <a href="/blog/20200903120232.html"> Restart OS</a> and see if the Mojolicious application is automatically restarted.
 </p>
 <pre>
 sudo reboot

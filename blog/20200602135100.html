@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>journalctlコマンド - systemd管理のログを見る - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="journalctlコマンドを使うと、systemdで管理されているアプリケーション(サーバーアプリケーション)のログを見ることができます。sudoでroot権限で実行します。">
+<title> journalctl command --view systemd management logs  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="You can use the  journalctl command  to see the logs of applications (server applications) managed by systemd. Execute with root privileges with  sudo.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200823150919.html">
-        <span itemprop="name">systemd</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> systemd </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200602135100.html">journalctlコマンド - systemd管理のログを見る</a></h2>
+<h2><a href="/blog/20200602135100.html"> journalctl command --view systemd management logs </a></h2>
 <p>
-  <b>journalctlコマンド</b>を使うと、systemdで管理されているアプリケーション(サーバーアプリケーション)のログを見ることができます。<a href="/blog/20200531085516.html">sudo</a>でroot権限で実行します。
+  You can use the <b> journalctl command </b> to see the logs of applications (server applications) managed by systemd. Execute with root privileges with <a href="/blog/20200531085516.html"> sudo</a>.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -99,145 +99,145 @@
 sudo journalctl
 </pre>
 <p>
-  ログには、日付・時刻・ホスト名・アプリケーション名・プロセスID・メッセージが記述されています。
+  The log contains the date, time, host name, application name, process ID, and message.
 </p>
 <pre>
-Jun 02 12:17:26 myhost systemd[75667]: Received SIGRTMIN+24 from PID 81968 (kill).
-Jun 02 14:11:19 myhost systemd[88231]: Reached target Paths.
-Jun 02 14:11:19 myhost systemd[88231]: Reached target Timers.
-Jun 02 14:11:19 myhost systemd[88231]: Listening on GnuPG cryptographic agent (ssh-agent emulation).
-Jun 02 14:11:19 myhost systemd[88231]: Listening on GnuPG cryptographic agent and passphrase cache.
-Jun 02 14:11:19 myhost systemd[88231]: Listening on GnuPG cryptographic agent and passphrase cache (access for web browsers).
-Jun 02 14:11:19 myhost systemd[88231]: Listening on REST API socket for snapd user session agent.
-Jun 02 14:11:19 myhost systemd[88231]: Listening on GnuPG network certificate management daemon.
-Jun 02 14:11:19 myhost systemd[88231]: Listening on GnuPG cryptographic agent and passphrase cache (restricted).
-Jun 02 14:11:19 myhost systemd[88231]: Reached target Sockets.
-Jun 02 14:11:19 myhost systemd[88231]: Reached target Basic System.
-Jun 02 14:11:19 myhost systemd[88231]: Reached target Default.
-Jun 02 14:11:19 myhost systemd[88231]: Startup finished in 20ms.
+Jun 02 12:17:26 myhost systemd [75667]: Received SIGRTMIN + 24 from PID 81968 (kill).
+Jun 02 14:11:19 myhost systemd [88231]: Reached target Paths.
+Jun 02 14:11:19 myhost systemd [88231]: Reached target Timers.
+Jun 02 14:11:19 myhost systemd [88231]: Listening on GnuPG cryptographic agent (ssh-agent emulation).
+Jun 02 14:11:19 myhost systemd [88231]: Listening on GnuPG cryptographic agent and passphrase cache.
+Jun 02 14:11:19 myhost systemd [88231]: Listening on GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 02 14:11:19 myhost systemd [88231]: Listening on REST API socket for snapd user session agent.
+Jun 02 14:11:19 myhost systemd [88231]: Listening on GnuPG network certificate management daemon.
+Jun 02 14:11:19 myhost systemd [88231]: Listening on GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 02 14:11:19 myhost systemd [88231]: Reached target Sockets.
+Jun 02 14:11:19 myhost systemd [88231]: Reached target Basic System.
+Jun 02 14:11:19 myhost systemd [88231]: Reached target Default.
+Jun 02 14:11:19 myhost systemd [88231]: Startup finished in 20ms.
 </pre>
 <p>
-  ログファイルを<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">vi</a>を使って開いた状態になりますので「Shift + G」を押すと一番下まで移動できます。
+  The log file will be opened using <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a>, so press "Shift + G". You can move to the bottom.
 </p>
-<h3>特定のアプリケーションのログだけを取り出す</h3>
+<h3> Extract only the log of a specific application </h3>
 <p>
-  特定のアプリケーションのログだけを取り出すには、「-u」でユニット名を指定します。「-r」オプションを指定すると最新のログから見ることができます。
+  To retrieve only the logs for a specific application, specify the unit name with "-u". You can see it from the latest log by specifying the "-r" option.
 </p>
-<h4>Apacheのログを見る</h4>
+<h4> View Apache logs </h4>
 <p>
-  <a href="/blog/20200526151435.html">Apache</a>のログを表示します。
+  Display the log of <a href="/blog/20200526151435.html"> Apache</a>.
 </p>
 <pre>
-# Apache
+#Apache
 sudo journalctl -r -u apache2
 </pre>
-<h4>MariaDBのログを見る</h4>
+<h4> View MariaDB logs </h4>
 <p>
-  MariaDBのログを表示します。
+  View MariaDB logs.
 </p>
 <pre>
-# MariaDB
+#MariaDB
 sudo journalctl -r -u mariadb
 </pre>
-<h4>SSHサーバーのログを見る</h4>
+<h4> View SSH server logs </h4>
 <p>
-  SSHサーバーのログを表示します。
+  View SSH server logs.
 </p>
 <pre>
-# SSHサーバー
+# SSH server
 sudo journalctl -r -u sshd
 </pre>
-<h4>Postfixのログを見る</h4>
+<h4> View Postfix logs </h4>
 <pre>
-# Postfix
+#Postfix
 sudo journalctl -r -u postfix
 </pre>
-<h4>cronのログを見る</h4>
+<h4> View cron logs </h4>
 <pre>
 # cron
 sudo journalctl -r -u cron
 </pre>
-<h4>FTPサーバーのログを見る</h4>
+<h4> View FTP server logs </h4>
 <pre>
-# FTPサーバー
+#FTP server
 sudo journalctl -r -u vsftpd
 </pre>
-<h4>Redisサーバーのログを見る</h4>
+<h4> View Redis server logs </h4>
 <pre>
-# Redisサーバー
+#Redis server
 sudo journalctl -r -u redis-server
 </pre>
-<h3>journalctlのオプション</h3>
+<h3> journalctl options </h3>
 <p>
-  journalctlのオプションです。
+  It is an option of journalctl.
 </p>
 <pre>
-journalctl [オプション...] [マッチ...]
+journalctl [options ...] [match ...]
 
-ジャーナルをクエリします。
+Query the journal.
 
-オプション：
-     --systemシステムジャーナルを表示します
-     --user現在のユーザーのユーザージャーナルを表示します
-  -M --machine = CONTAINERローカルコンテナーで動作します
-  -S --since = DATE指定した日付より古いエントリを表示します
-  -U --until = DATE指定された日付よりも新しいエントリを表示します
-  -c --cursor = CURSOR指定されたカーソルで始まるエントリを表示します
-     --after-cursor = CURSOR指定したカーソルの後にエントリを表示します
-     --show-cursorすべてのエントリの後にカーソルを出力します
-  -b --boot [= ID]現在のブートまたは指定されたブートを表示します
-     --list-boots記録されたブーツに関する簡潔な情報を表示します
-  -k --dmesg現在のブートからのカーネルメッセージログを表示します
-  -u --unit = UNIT指定されたユニットからのログを表示します
-     --user-unit = UNIT指定されたユーザーユニットのログを表示します
-  -t --identifier = STRING指定されたsyslog識別子を持つエントリを表示します
-  -p --priority = RANGE指定された優先度のエントリを表示します
-  -g --grep = PATTERN MESSSAGEがPATTERNに一致するエントリを表示します
-     --case-sensitive [= BOOL]大文字と小文字を区別するか無意識に一致させる
-  -e --pager-endポケットベルの最後にすぐにジャンプします
-  -f --followジャーナルをフォローする
-  -n --lines [= INTEGER]表示するジャーナルエントリの数
-     --no-tailフォローモードでもすべての行を表示します
-  -r --reverse最新のエントリを最初に表示します
-  -o --output = STRINGジャーナル出力モードを変更します（short、short-precise、
-                               short-iso、short-iso-precise、short-full、
-                               短い単調、短いUNIX、冗長、エクスポート、
-                               json、json-pretty、json-sse、cat）
-     --output-fields = LIST詳細/エクスポート/ jsonモードで印刷するフィールドを選択します
-     --utc協定世界時（UTC）のエクスプレス時間
-  -x --catalog可能な場合、メッセージの説明を追加します
-     --no-full Ellipsizeフィールド
-  -a --all長くて印刷できないものを含む、すべてのフィールドを表示します
-  -q --quiet情報メッセージと特権警告を表示しません
-     --no-pager出力をページャーにパイプしません
-     --no-hostnameホスト名フィールドの出力を抑制します
-  -m --merge利用可能なすべてのジャーナルのエントリを表示します
-  -D --directory = PATHディレクトリのジャーナルファイルを表示します
-     --file = PATHジャーナルファイルを表示
-     --root = ROOTルートディレクトリ以下のファイルを操作します
-     --interval = TIME FSSシーリングキーを変更するための時間間隔
-     --verify-key = KEY FSS検証キーを指定します
-     --force --setup-keysを使用したFSS鍵ペアのオーバーライド
+option:
+     --system Show system journal
+     --user Shows the user journal of the current user
+  -M --machine = CONTAINER Works with local container
+  -S --since = DATE Show entries older than the specified date
+  -U --until = DATE Show entries newer than the specified date
+  -c --cursor = CURSOR Show entries starting with the specified cursor
+     --after-cursor = CURSOR Show entry after the specified cursor
+     --show-cursor Print cursor after every entry
+  -b --boot [= ID] Shows the current boot or the specified boot
+     --list-boots Shows brief information about recorded boots
+  -k --dmesg Show kernel message log from current boot
+  -u --unit = UNIT Display logs from the specified unit
+     --user-unit = UNIT Displays the log of the specified user unit.
+  -t --identifier = STRING Show entries with the specified syslog identifier
+  -p --priority = RANGE Shows entries with the specified priority
+  -g --grep = PATTERN Shows entries where MESSSAGE matches PATTERN
+     --case-sensitive [= BOOL] Case-sensitive or unknowingly match
+  -e --pager-end Jump immediately to the end of the pager
+  -f --follow Follow the journal
+  -n --lines [= INTEGER] Number of journal entries to display
+     --no-tail Show all rows even in follow mode
+  -r --reverse Show the latest entry first
+  -o --output = STRING Change journal output mode (short, short-precise,
+                               short-iso, short-iso-precise, short-full,
+                               Short monotonous, short UNIX, verbose, export,
+                               json, json-pretty, json-sse, cat)
+     --output-fields = LIST Details / Export / Select fields to print in json mode
+     --utc Coordinated Universal Time (UTC) Express Time
+  -x --catalog Add message description if possible
+     --no-full Ellipsize field
+  -a --all Show all fields, including those that are too long to print
+  -q --quiet Do not display informational messages and privilege warnings
+     --no-pager Do not pipe output to pager
+     --no-hostname Suppress the output of the hostname field
+  -m --merge Show entries for all available journals
+  -D --directory = Show journal files in PATH directory
+     --file = View PATH journal file
+     --root = ROOT Operate files under the root directory
+     --interval = TIME Interval for changing the FSS sealing key
+     --verify-key = KEY Specifies the FSS verification key
+     Overriding FSS key pairs using --force --setup-keys
 
-コマンド：
-  -h --helpこのヘルプテキストを表示します
-     --versionパッケージのバージョンを表示
-  -N --fields現在使用されているすべてのフィールド名をリストします
-  -F --field = FIELD指定されたフィールドが取るすべての値をリストします
-     --disk-usageすべてのジャーナルファイルの合計ディスク使用量を表示します
-     --vacuum-size = BYTESディスク使用量を指定されたサイズ未満に減らします
-     --vacuum-files = INT指定した数のジャーナルファイルのみを残す
-     --vacuum-time = TIME指定された時間より古いジャーナルファイルを削除します
-     --verifyジャーナルファイルの整合性を確認します
-     --sync書き込まれていないジャーナルメッセージをディスクに同期
-     --flush / runから/ varにすべてのジャーナルデータをフラッシュします
-     --rotateジャーナルファイルの即時ローテーションを要求します。
-     --headerジャーナルのヘッダー情報を表示します
-     --list-catalogカタログ内のすべてのメッセージIDを表示します
-     --dump-catalogメッセージカタログのエントリを表示します
-     --update-catalogメッセージカタログデータベースを更新します
-     --new-id128新しい128ビットIDを生成します
-     --setup-keys新しいFSS鍵ペアを生成します
+command:
+  -h --help Display this help text
+     --version Show package version
+  -N --fields Lists all currently used field names
+  -F --field = FIELD Lists all values ​​taken by the specified field
+     --disk-usage Shows total disk usage for all journal files
+     --vacuum-size = BYTES Reduces disk usage to less than the specified size
+     --vacuum-files = INT Leave only the specified number of journal files
+     --vacuum-time = TIME Deletes journal files older than the specified time
+      --verify Check the integrity of the journal file
+      --sync Synchronize unwritten journal messages to disk
+      --flush flush all journal data from / run to / var
+      --rotate Requests immediate rotation of the journal file.
+      --header Show header information for the journal
+      --list-catalog Shows all message IDs in the catalog
+      --dump-catalog Shows message catalog entries
+      --update-catalog Updates the message catalog database
+      --new-id128 Generate a new 128-bit ID
+      --setup-keys Generate a new FSS key pair
 </pre>
 
   </div>

@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Ubuntuのパッケージの検索サイト - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Ubuntuのパッケージの検索には「Ubuntu パッケージ検索」が便利です。">
+<title> Header file read path  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Information about the read path of Ubuntu header files.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Package management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200430174004.html">Ubuntuのパッケージの検索サイト</a></h2>
+<h2><a href="/blog/20200430174004.html"> Header file read path </a></h2>
 <p>
-  Ubuntuのパッケージの検索には「Ubuntu パッケージ検索」が便利です。
+  Information about the read path of Ubuntu header files.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,12 +95,47 @@
 </div>
 
 
+<h4> Header file for packages installed with apt </h4>
 <p>
-  <a href="https://packages.ubuntu.com/">Ubuntu パッケージ検索</a>
+  The header files for packages installed with apt are in "/ usr / include".
+</p>
+<pre>
+/ usr / include
+</pre>
+<h3> Check the read path of the header file </h3>
+<p>
+  The header file read path is written to the C preprocessor.
 </p>
 <p>
-  ライブラリの部分名はわかるのにUbuntuのパッケージの正しい名前がわからない場合に、便利です。
+  First, find out the path of the preprocessor used by gcc.
 </p>
+<pre>
+gcc -print-prog-name = cc1
+</pre>
+<p>
+  The output is as follows.
+</p>
+<pre>
+/ usr / lib / gcc / x86_64-linux-gnu / 7 / cc1
+</pre>
+<p>
+  When viewing the preprocessor version, the include path is displayed.
+</p>
+<pre>
+/ usr / lib / gcc / x86_64-linux-gnu / 7 / cc1 -v
+</pre>
+<p>
+  The default header file read path is displayed.
+</p>
+<pre>
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/7/../../../../x86_64-linux-gnu/include"
+#include "..." search starts here:
+#include &lt;...&gt; search starts here:
+ / usr / lib / gcc / x86_64-linux-gnu / 7 / include
+ / usr / local / include
+ / usr / lib / gcc / x86_64-linux-gnu / 7 / include-fixed
+ / usr / include
+</pre>
 
   </div>
   <div class="bottom">

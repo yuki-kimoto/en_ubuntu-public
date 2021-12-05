@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>sshパッケージのインストール - SSHサーバーとクライアント - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="SSHサーバーとSSLクライアントを使えるようにするにはsshパッケージをaptコマンドを使ってインストールします。">
+<title> Installing the ssh package-SSH server and client  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="To enable SSH server and SSL client, install the ssh package using the  apt command.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Package management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200608082859.html">sshパッケージのインストール - SSHサーバーとクライアント</a></h2>
+<h2><a href="/blog/20200608082859.html"> Installing the ssh package-SSH server and client </a></h2>
 <p>
-  SSHサーバーとSSLクライアントを使えるようにするにはsshパッケージを<a href="/blog/20200530085516.html">apt</a>コマンドを使ってインストールします。
+  To enable SSH server and SSL client, install the ssh package using the <a href="/blog/20200530085516.html"> apt</a> command.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,44 +96,44 @@
 
 
 <pre>
-# SSHサーバーとSSHクライアントのインストール
+# SSH server and SSH client installation
 sudo apt install -y ssh
 </pre>
 <p>
-  これはOpenSSHと呼ばれるSSHクライアントとSSHサーバーを含むオープンソースのプロジェクトです。
+  This is an open source project that includes an SSH client and SSH server called OpenSSH.
 </p>
 <p>
-  SSHサーバーとクライアントが、デフォルトでインストールされていない場合に、インストールしてください。
+  Install the SSH server and client if they are not installed by default.
 </p>
 <p>
-  SSHサーバー、SSHクライアントを個別にインストールすることもできます。
+  You can also install the SSH server and SSH client separately.
 </p>
 <pre>
-# SSHクライアント
+# SSH client
 sudo apt install -y ssh openssh-client
 
-# SSHサーバー
+# SSH server
 sudo apt install -y ssh openssh-server
 </pre>
-<h4>sshコマンドがインストールされたことの確認</h4>
+<h4> Confirm that the ssh command has been installed </h4>
 <p>
-  sshコマンドがインストールされたことを確認しましょう。
+  Make sure you have the ssh command installed.
 </p>
 <pre>
 ssh --help
 </pre>
-<h4>sshサーバーがインストールされたことの確認</h4>
+<h4> Confirm that the ssh server is installed </h4>
 <p>
-  sshサーバーがインストールされたことを<a href="/blog/20200605104005.html">systemctl</a>コマンドで確認しましょう。<a href="/blog/20200531085516.html">sudo</a>で管理者権限で実行します。
+  Confirm that the ssh server is installed with the <a href="/blog/20200605104005.html"> systemctl</a> command. Execute with administrator privileges with <a href="/blog/20200531085516.html"> sudo</a>.
 </p>
 <pre>
 sudo systemctl status ssh
 </pre>
 <p>
-  activeと表示されれば、インストールが成功し、SSHサーバーが起動しています。
+  If it says active, the installation is successful and the SSH server is up.
 </p>
 <pre>
-● ssh.service - OpenBSD Secure Shell server
+● ssh.service --OpenBSD Secure Shell server
    Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enab
    Active: active (running) since Fri 2020-06-05 10:27:15 JST; 2 days ago
 </pre>

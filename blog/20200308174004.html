@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>ApacheのCGIプログラムでユーザーPerlを利用する方法 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="ApacheのCGIプログラムでユーザーPerlを利用する方法を解説します。">
+<title> How to use user Perl with Apache CGI program  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Learn how to use user Perl with Apache's CGI program.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200308174004.html">ApacheのCGIプログラムでユーザーPerlを利用する方法</a></h2>
+<h2><a href="/blog/20200308174004.html"> How to use user Perl with Apache CGI program </a></h2>
 <p>
-  ApacheのCGIプログラムでユーザーPerlを利用する方法を解説します。
+  Learn how to use user Perl with Apache's CGI program.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,46 +96,46 @@
 
 
 <p>
-  ApacheのCGIプログラムでは通常、システムにインストールされているPerlが利用されます。ですが、CPANモジュールの管理の手間を一元化するために、<a href="https://perlzemi.com/blog/20110220130464.html">perlbrew</a>や<a href="https://perlzemi.com/blog/20180816153437.html">plenv</a>でユーザー環境にインストールしたユーザーPerlを使いたいという場合があると思います。
+  Apache's CGI programs typically utilize Perl installed on your system. However, to centralize the effort of managing CPAN modules, <a href="https://perlzemi.com/blog/20110220130464.html"> perlbrew</a> and <a href="https: //" You may want to use the user Perl installed in your environment at perlzemi.com/blog/20180816153437.html "> plenv</a>.
 </p>
 <p>
-  新しくPerlでWebアプリケーションを作る場合は、リアルタイムWebとクラウドサーバーに自然に対応できるリバースプロキシを使ったWebシステム開発手法をお勧めしますが、既存のCGIアプリケーションが存在するという場合も、まだまだあると思います。
+  When creating a new web application with Perl, we recommend a web system development method using a reverse proxy that can naturally support real-time web and cloud servers, but if there are existing CGI applications, there are still more. think.
 </p>
-<h3>環境変数の設定</h3>
+<h3> Environment variable settings </h3>
 <p>
-  UbuntuのApacheにおける環境変数の設定方法は、envvarsファイルに指定する方法と、SetEnvディレクティブを使う方法があります。グローバルに影響を与える、envvarsには手を加えないで、個別のサイトで、SetEnvディレクトリブを使うのがお勧めです。SetEnvでは、定数しか使えないことに注意してください。
+  There are two ways to set environment variables in Ubuntu Apache, one is to specify it in the envvars file, and the other is to use the SetEnv directive. It is recommended to use the SetEnv directory on individual sites, leaving the envvars untouched, which has a global impact. Note that you can only use constants with SetEnv.
 </p>
-<h4>環境変数PATHの設定</h4>
+<h4> Environment variable PATH setting </h4>
 <p>
-  環境変数PATHの設定しましょう。まず、現在のPATHを調べます。<a href="https://en.linux.perlzemi.com/blog/20190102171737.html">env</a>コマンドと<a href="https://en.linux.perlzemi.com/blog/20200602093211.html">grep</a>コマンドでPATHを表示します。PATHという名前を含む環境変数が複数あるので、<a href="https://perlzemi.com/blog/20100827127859.html">Perlの正規表現</a>を使ってPATHだけに絞り込んでいます。
-</p>
-<pre>
-env | grep -P '^PATH='
-</pre>
-<p>
-  表示されたPATHをメモします。
+  Let's set the environment variable PATH. First, check your current PATH. <a href="https://en.linux.perlzemi.com/blog/20190102171737.html"> env</a> command and <a href="https://en.linux.perlzemi.com/blog/ 20200602093211.html "> grep</a> command to display PATH. There are multiple environment variables that contain the name PATH, so I'm using <a href="https://perlzemi.com/blog/20100827127859.html"> Perl regular expressions</a> to narrow it down to just PATH. ..
 </p>
 <pre>
-PATH=/home/appuser/perl5/perlbrew/bin:/home/appuser/perl5/perlbrew/perls/perl-5.20.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+env | grep -P'^ PATH ='
 </pre>
 <p>
-  この値をSetEnvディレクトリを使用して設定します。
+  Make a note of the displayed PATH.
 </p>
 <pre>
-SetEnv PATH /home/appuser/perl5/perlbrew/bin:/home/appuser/perl5/perlbrew/perls/perl-5.20.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = / home / appuser / perl5 / perlbrew / bin: /home/appuser/perl5/perlbrew/perls/perl-5.20.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin : / usr / bin: / sbin: / bin: / usr / games: / usr / local / games: / snap / bin
 </pre>
 <p>
-  これで、ユーザーPerlが利用されるようになります。
-</p>
-<h4>環境変数PERL5LIBの設定</h4>
-<p>
-  自分で作成したPerlのライブラリを読み込みたい場合は、PERL5LIB環境変数を設定します。
+  Set this value using the SetEnv directory.
 </p>
 <pre>
-SetEnv PERL5LIB /home/appuser/my-app/lib
+SetEnv PATH / home / appuser / perl5 / perlbrew / bin: / home / appuser / perl5 / perlbrew / perls / perl-5.20.3 / bin: / usr / local / sbin: / usr / local / bin: / usr / sbin : / usr / bin: / sbin: / bin: / usr / games: / usr / local / games: / snap / bin
 </pre>
 <p>
-  環境変数を設定した後は、<a href="/blog/20200519084454.html">Apacheの再起動</a>が必要です。
+  User Perl is now available.
+</p>
+<h4> Setting the environment variable PERL5LIB </h4>
+<p>
+  If you want to load your own Perl library, set the PERL5LIB environment variable.
+</p>
+<pre>
+SetEnv PERL5LIB / home / appuser / my-app / lib
+</pre>
+<p>
+  After setting the environment variables, you need to <a href="/blog/20200519084454.html"> restart Apache</a>.
 </p>
 
   </div>

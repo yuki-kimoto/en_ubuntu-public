@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheの子プロセスの実行ユーザーとグループの変更 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Apacheの子プロセスの実行ユーザーとグループの変更はApache設定ファイルの「envvars」の中の「APACHE_RUN_USER」と「APACHE_RUN_GROUP」を設定することによって行えます。">
+<title> Apache child process execution User and group change  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="You can change the execution user and group of Apache child processes by setting "APACHE_RUN_USER" and "APACHE_RUN_GROUP" in "envvars" of the Apache configuration file.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200706123952.html">Apacheの子プロセスの実行ユーザーとグループの変更</a></h2>
+<h2><a href="/blog/20200706123952.html"> Apache child process execution User and group change </a></h2>
 <p>
-  Apacheの子プロセスの実行ユーザーとグループの変更はApache設定ファイルの「envvars」の中の「APACHE_RUN_USER」と「APACHE_RUN_GROUP」を設定することによって行えます。
+  You can change the execution user and group of Apache child processes by setting "APACHE_RUN_USER" and "APACHE_RUN_GROUP" in "envvars" of the Apache configuration file.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,18 +96,18 @@
 
 
 <p>
-  Apache自体はroot権限で実行されますが、実際にリクエストを受ける子プロセスはセキュリティ上の理由で、指定したユーザーで実行されます。この子プロセスの実行ユーザーと実行グループを指定する項目が「APACHE_RUN_USER」と「APACHE_RUN_GROUP」環境変数です。
+  Apache itself runs with root privileges, but for security reasons, the child process that actually receives the request runs under the specified user. The items that specify the execution user and execution group of this child process are the "APACHE_RUN_USER" and "APACHE_RUN_GROUP" environment variables.
 </p>
 <pre>
-cd /etc/apache2
+cd / etc / apache2
 sudo vi envvars
 </pre>
 <p>
-  Apacheの子プロセスの実行ユーザーとグループを、アプリケーションユーザーに設定する例です。グループには、デフォルトで個別のユーザーだけが所属している同名のグループが存在しますのでそれを指定します。
+  This is an example of setting the execution user and group of Apache child processes to the application user. By default, there is a group with the same name to which only individual users belong, so specify it.
 </p>
 <pre>
-export APACHE_RUN_USER=myapp
-export APACHE_RUN_GROUP=myapp
+export APACHE_RUN_USER = myapp
+export APACHE_RUN_GROUP = myapp
 </pre>
 
   </div>

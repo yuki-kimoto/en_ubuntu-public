@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>データディレクトリに複数のユーザーが読み書きする方法 - Webアプリのファイルアップロードディレクトリ - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="データディレクトリに複数のユーザーが読み書きする方法を解説します。">
+<title> How multiple users read and write to the data directory-Web app file upload directory  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Learn how multiple users can read and write to a data directory.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200327174004.html">データディレクトリに複数のユーザーが読み書きする方法 - Webアプリのファイルアップロードディレクトリ</a></h2>
+    <h2><a href="/blog/20200327174004.html"> How multiple users read and write to the data directory-Web app file upload directory </a></h2>
 <p>
-  データディレクトリに複数のユーザーが読み書きする方法を解説します。
+  Learn how multiple users can read and write to a data directory.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -77,71 +77,71 @@
 
 
 <p>
-  これは、PerlでWebシステム開発を行っている場合に、別々の開発ユーザー起動したWebアプリケーションが、データ保存ディレクトリに、ファイルアップロードを行う場合に、直面する問題です。特定のユーザーだけではなく、複数のユーザーが読み書きできるようにします。
+  This is a problem you face when you are developing a web system in Perl and the web applications launched by different development users upload files to the data storage directory. Allows multiple users to read and write, not just a specific user.
 </p>
 <p>
-  データ保存ディレクトリ以下のファイルすべてに「myapp-group」という所有者グループを設定して、特別なパーミッションSGIDをデータ保存ディレクトリ(トップディレクトリ)に設定することで、新規に作成されるファイルも、同じグループを持たせることができます。
+  By setting an owner group called "myapp-group" for all files under the data storage directory and setting a special permission SGID to the data storage directory (top directory), newly created files will also be in the same group. Can be given.
 </p>
 <p>
-  SGIDというのはSet Group IDの略です。ディレクトリに設定することで、ディレクトリ以下のファイルが新規作成された場合に、所有者グループが、トップディレクトリと同じものになります。
+  SGID is an abbreviation for Set Group ID. By setting it to a directory, the owner group will be the same as the top directory when new files under the directory are created.
 </p>
-<h3>データディレクトリに複数のユーザーが読み書きする手順</h3>
+<h3> Procedures for multiple users to read and write to the data directory </h3>
 <p>
-  データディレクトリに複数のユーザーが読み書きする手順です。データディレクトリを「/datadrive」とします。
+  This is a procedure for multiple users to read and write to the data directory. The data directory is "/ datadrive".
 </p>
-<h4>アプリケーション用のグループの作成</h4>
+<h4> Create a group for your application </h4>
 <p>
-  アプリケーション用のグループを<a href="/blog/20200405174004.html">groupadd</a>コマンドで作成します。名前は「myapp-group」とします。
+  Create a group for your application with the <a href="/blog/20200405174004.html"> groupadd</a> command. The name is "myapp-group".
 </p>
 <pre>
 sudo groupadd myapp-group
 </pre>
-<h4>myapp-groupグループに開発ユーザーを追加</h4>
+<h4> Add development user to myapp-group group </h4>
 <p>
-  myapp-groupグループに<a href="/blog/20200330174004.html">gpasswd</a>コマンドで、開発ユーザーを追加します。
+  Add the development user to the myapp-group group with the <a href="/blog/20200330174004.html"> gpasswd</a> command.
 </p>
 <pre>
 sudo gpasswd -a myapp myapp-group
 sudo gpasswd -a yamada myapp-group
 </pre>
-<h4>データディレクトリ以下にあるファイルの所有者グループを再帰的にmyapp-groupに変更</h4>
+<h4> Recursively change the owner group of files under the data directory to myapp-group </h4>
 <p>
-  データディレクトリ以下にあるファイルの所有者グループを<a href="https://en.linux.perlzemi.com/blog/20200604095018.html">chgrp</a>コマンドで再帰的にmyapp-groupに変更
+  Recursively change the owner group of files under the data directory to myapp-group with the <a href="https://en.linux.perlzemi.com/blog/20200604095018.html"> chgrp</a> command.
 </p>
 <pre>
-sudo chgrp -R myapp-group /datadrive
+sudo chgrp -R myapp-group / datadrive
 </pre>
-<h4>グループの書き込み権限を与える</h4>
+<h4> Give write permission to the group </h4>
 <p>
-  「/datadrive」にグループでの書き込み権限を与えます。
+  Give "/ datadrive" write permission for the group.
 </p>
 <pre>
-sudo chmod 775 /datadrive
+sudo chmod 775 / datadrive
 </pre>
-<h4>データディレクトリに特別なパーミッションSGIDを設定</h4>
+<h4> Set special permissions SGID for data directories </h4>
 <p>
-  データディレクトリに特別なパーミッションSGIDを<a href="https://en.linux.perlzemi.com/blog/20200519082545.html">chmod</a>コマンドで設定します。
+  Set a special permission SGID for the data directory with the <a href="https://en.linux.perlzemi.com/blog/20200519082545.html"> chmod</a> command.
 </p>
 <pre>
-sudo chmod g+s /datadrive
+sudo chmod g + s / datadrive
 </pre>
 <p>
-  lsコマンドで確認するとsが設定されています。
+  If you check with the ls command, s is set.
 </p>
 <pre>
 ls -l / | grep datadrive
 </pre>
 <p>
-  出力結果の一部です。
+  It is a part of the output result.
 </p>
 <pre>
-drwxr-sr-x   7 myapp myapp-group  115 Jun  3 10:36 /datadrive
+drwxr-sr-x 7 myapp myapp-group 115 Jun 3 10:36 / datadrive
 </pre>
 <p>
-  これで、複数の開発者が起動するWebアプリケーションによって、アップロードされるファイルのためのデータディレクトリの準備ができました。
+  Now the data directory is ready for the files to be uploaded by the web application launched by multiple developers.
 </p>
 <p>
-  グループへの追加の反映は、ユーザーがログインしたときに認識されますので、自分のユーザーが、グループに追加したユーザーである場合は、いったんログアウトして、ログインしてください。
+  The reflection of the addition to the group will be recognized when the user logs in, so if your user is the user who added to the group, log out and log in once.
 </p>
 
   </div>

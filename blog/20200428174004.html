@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>ライブラリの読み込みパス - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Ubuntuのライブラリの読み込みパスについての情報です。">
+<title> Library loading path  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Information about the loading path of Ubuntu libraries.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Package management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200428174004.html">ライブラリの読み込みパス</a></h2>
+<h2><a href="/blog/20200428174004.html"> Library loading path </a></h2>
 <p>
-  Ubuntuのライブラリの読み込みパスについての情報です。
+  Information about the loading path of Ubuntu libraries.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,38 +95,38 @@
 </div>
 
 
-<h4>aptでインストールしたパッケージのライブラリの読み込みパス</h4>
+<h4> Load path of library of package installed by apt </h4>
 <p>
-  aptでインストールしたパッケージのライブラリは「/usr/lib/x86_64-linux-gnu」にあります。
+  The library of the package installed by apt is in "/ usr / lib / x86_64-linux-gnu".
 </p>
 <pre>
-/usr/lib/x86_64-linux-gnu
+/ usr / lib / x86_64-linux-gnu
 </pre>
-<h4>ライブラリの読み込みパスの確認</h4>
+<h4> Check the library loading path </h4>
 <p>
-  ライブラリの読み込みパスを確認するには「/etc/ld.so.conf」の中を見ます。
+  Look in "/etc/ld.so.conf" to check the loading path of the library.
 </p>
 <pre>
 cat /etc/ld.so.conf
 </pre>
 <p>
-  中身を見てみると、さらにincludeされています。
+  Looking at the contents, it is further included.
 </p>
 <pre>
 include ld.so.conf.d/*.conf
 </pre>
 <p>
-  ですので、<a href="https://en.linux.perlzemi.com/blog/20200113083613.html">catコマンド</a>で、すべての読み込みファイルを出力してみましょう。
+  So, let's output all the read files with <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command</a>.
 </p>
 <pre>
 $ cat /etc/ld.so.conf.d/*.conf
 
 # libc default configuration
-/usr/local/lib
-# Multiarch support
-/usr/local/lib/x86_64-linux-gnu
-/lib/x86_64-linux-gnu
-/usr/lib/x86_64-linux-gnu
+/ usr / local / lib
+#Multiarch support
+/ usr / local / lib / x86_64-linux-gnu
+/ lib / x86_64-linux-gnu
+/ usr / lib / x86_64-linux-gnu
 </pre>
 
   </div>

@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>ユーザーPerlにcpanmでImage::Magickをインストールする - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="ユーザーPerlにcpanmでImage::Magicをインストールする方法です。">
+<title> Install Image :: Magick with cpanm on user Perl  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="How to install Image :: Magic with cpanm in user Perl.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
-        <span itemprop="name">Perl</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Perl </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200622115851.html">ユーザーPerlにcpanmでImage::Magickをインストールする</a></h2>
+<h2><a href="/blog/20200622115851.html"> Install Image :: Magick with cpanm on user Perl </a></h2>
 <p>
-  ユーザーPerlにcpanmでImage::Magicをインストールする方法です。
+  How to install Image :: Magic with cpanm in user Perl.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,113 +96,113 @@
 
 
 <p>
-  最初に注意を書いておきますと、Image::Magickモジュールは、ユーザー環境のPerlにcpanmで、インストールすることが非常に難しいモジュールです。cpanmで簡単にインストールすることができず、手動でMakefile.PLを書き換える必要があります。
+  First of all, the Image :: Magick module is a very difficult module to install in Perl in your environment with cpanm. It is not easy to install with cpanm and you have to manually rewrite Makefile.PL.
 </p>
 <p>
-  新規にPerlシステム開発で、画像処理を行う場合は、Perlで書かれた<a href="https://en.perlzemi.com/blog/20110820131832.html">Imager</a>という画像編集モジュールがありますので、まずこちらを試してみましょう。
+  When performing image processing in a new Perl system development, an image editing module called <a href="https://en.perlzemi.com/blog/20110820131832.html"> Imager</a> written in Perl. There is, so let's try this first.
 </p>
 <p>
-  <a href="https://en.ubuntu.perlzemi.com/blog/20200425174004.html">ImageMagicをインストール</a>してconvertコマンドなどを<a href="https://en.perlzemi.com/blog/20180124151680.html">system関数</a>で、呼び出すことは、次善の方法です。
+  <a href="https://en.ubuntu.perlzemi.com/blog/20200425174004.html"> Install ImageMagic</a> and execute the convert command etc. <a href="https://en.perlzemi. Calling it with the com / blog / 20180124151680.html "> system function</a> is the next best thing to do.
 </p>
-<h3>ユーザーPerlにcpanmでImage::Magickをインストールするために必要なパッケージ</h3>
-<h4>libmagickcore-devのインストール</h4>
+<h3> Packages required to install Image :: Magick with cpanm on user Perl </h3>
+<h4> Install libmagickcore-dev </h4>
 <p>
-  PerlのImage::Magickをインストールする前提としてImageMagickのヘッダとライブラリをインストールしましょう。
+  Install ImageMagick headers and libraries as a prerequisite to installing Perl's Image :: Magick.
 </p>
 <ul>
-  <li><a href="/blog/20200612115851.html">libmagickcore-devのインストール - ImageMagickのヘッダとライブラリ</a></li>
+  <li> <a href="/blog/20200612115851.html"> Installing libmagickcore-dev --ImageMagick headers and libraries</a> </li>
 </ul>
 <p>
-  ImageMagickの以下のヘッダを探します。
+  Look for the following headers in ImageMagick.
 </p>
 <pre>
-find /usr/include | grep 'ImageMagick.h'
-find /usr/include | grep 'magick-baseconfig.h'
+find / usr / include | grep'ImageMagick.h'
+find / usr / include | grep'magick-baseconfig.h'
 </pre>
 <p>
-  以下のように表示されます。バージョン番号は異なる可能性があります。
+  It will be displayed as follows. The version number may be different.
 </p>
 <pre>
 /usr/include/ImageMagick-6/magick/ImageMagick.h
 /usr/include/x86_64-linux-gnu/ImageMagick-6/magick/magick-baseconfig.h
 </pre>
 <p>
-  これらの、ImageMagicのインクルードディレクトリを覚えておきます。これらの名前は、Ubuntuのバージョンにより違う可能性があります。
+  Remember these ImageMagic include directories. These names may vary depending on your version of Ubuntu.
 </p>
 <pre>
-/usr/include/ImageMagick-6
-/usr/include/x86_64-linux-gnu/ImageMagick-6
+/ usr / include / ImageMagick-6
+/ usr / include / x86_64-linux-gnu / ImageMagick-6
 </pre>
-<h4>libperl-devのインストール</h4>
+<h4> Install libperl-dev </h4>
 <p>
-  Perlのヘッダとライブラリが必要です。
+  Requires Perl headers and libraries.
 </p>
 <ul>
-  <li><a href="/blog/20200620115851.html">libperl-devのインストール - Perlのヘッダとライブラリ</a></li>
+  <li> <a href="/blog/20200620115851.html"> Installing libperl-dev --Perl headers and libraries</a> </li>
 </ul>
-<h3>ユーザーPerlにcpanmでImage::Magickのインストールする</h3>
+<h3> Install Image :: Magick with cpanm on user Perl </h3>
 <p>
-  まず一度cpanmでImage::Magickをインストールしてみましょう。
+  First, let's install Image :: Magick with cpanm.
 </p>
 <pre>
-cpanm Image::Magick
+cpanm Image :: Magick
 </pre>
 <p>
-  失敗しますね。ログを見ると「magick/magick-baseconfig.h」がないといわれています。
+  It will fail. Looking at the log, it is said that "magick / magick-baseconfig.h" does not exist.
 </p>
 <pre>
 /usr/include/ImageMagick-6/magick/magick-config.h:21:10: fatal error: magick/magick-baseconfig.h: No such file or directory
- #include "magick/magick-baseconfig.h"
+ #include "magick / magick-baseconfig.h"
 </pre>
 <p>
-  Makefileを書き換えて、インクルードディレクトリ「/usr/include/ImageMagick-6」にする作業をします。
+  Rewrite Makefile to include directory "/ usr / include / ImageMagick-6".
 </p>
 <p>
-  まず、cpanmのビルドディレクトリに移動します。
+  First, change to the cpanm build directory.
 </p>
 <pre>
-cd ~/.cpanm/latest-build
+cd ~ / .cpanm / latest-build
 </pre>
 <p>
-  <a href="https://en.linux.perlzemi.com/blog/20191126082723.html">ls</a>コマンドでディレクトリを表示します。
+  Use the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls</a> command to display the directory.
 </p>
 <pre>
 ls
 </pre>
 <p>
-  Image::MagickはPerlMagickに含まれているので、以下のディレクトリを見つけましょう。バージョン番号は、環境によって異なります。
+  Image :: Magick is included in PerlMagick, so find the following directory. The version number depends on your environment.
 </p>
 <pre>
 PerlMagick-6.89
 </pre>
 <p>
-  ディレクトリに移動。
+  Move to the directory.
 </p>
 <pre>
 cd PerlMagick-6.89
 </pre>
 <p>
-  Makefileを編集します。
+  Edit the Makefile.
 </p>
 <pre>
 vi Makefile.PL
 </pre>
 <p>
-  $INC_magickを書き換えます。以下のインクルードディレクトリを先頭に追加しましょう。「-I」はインクルードディレクトリを追加するgccのオプションです。
+  Rewrite $ INC_magick. Add the following include directories to the beginning. "-I" is a gcc option to add an include directory.
 </p>
 <pre>
-/usr/include/ImageMagick-6
-/usr/include/x86_64-linux-gnu/ImageMagick-6
+/ usr / include / ImageMagick-6
+/ usr / include / x86_64-linux-gnu / ImageMagick-6
 </pre>
 <pre>
-# 変更前
-my $INC_magick = '-I/usr/local/include/ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/include/libxml2 -I"' . $Config{'usrinc'} . '/ImageMagick-6"';
+# Change before
+my $ INC_magick ='-I / usr / local / include / ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE = 0 -DMAGICKCORE_QUANTUM_DEPTH = 16 -I / usr / include / libxml2 -I"'. $ Config {'usrinc'}.'/ ImageMagick- 6 "';
 
-# 変更後
-my $INC_magick = '-I/usr/include/ImageMagick-6 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/local/include/ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/include/libxml2 -I"' . $Config{'usrinc'} . '/ImageMagick-6"';
+# After change
+my $ INC_magick ='-I / usr / include / ImageMagick-6 -I / usr / include / x86_64-linux-gnu / ImageMagick-6 -I / usr / local / include / ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE = 0 -DMAGICKCORE_QUANTUM_DEPTH = 16 -I / usr / include / libxml2 -I "'. $ Config {'usrinc'}.'/ ImageMagick-6"';
 </pre>
 <p>
-  後はコンパイルしてインストールです。
+  The rest is compilation and installation.
 </p>
 <pre>
 perl Makefile.PL
@@ -210,10 +210,10 @@ make
 make install
 </pre>
 <p>
-  モジュールを読み込んでエラーが出ないことを確認しましょう。
+  Load the module and make sure there are no errors.
 </p>
 <pre>
-perl -e 'use Image::Magick'
+perl -e'use Image :: Magick'
 </pre>
 
   </div>

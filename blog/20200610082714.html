@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apache設定ファイルを有効・無効にする - 基本設定・モジュール設定・サイト設定 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="UbunutのApacheでは、コマンドによって、設定ファイルの有効・無効を切り替えるコマンドが存在します。">
+<title> Enable / disable Apache config file-basic config / module config / site config  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="In Apache of Ubunut, there is a command to enable / disable the configuration file by a command.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200610082714.html">Apache設定ファイルを有効・無効にする - 基本設定・モジュール設定・サイト設定</a></h2>
+<h2><a href="/blog/20200610082714.html"> Enable / disable Apache config file-basic config / module config / site config </a></h2>
 <p>
-  UbunutのApacheでは、コマンドによって、設定ファイルの有効・無効を切り替えるコマンドが存在します。
+  In Apache of Ubunut, there is a command to enable / disable the configuration file by a command.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,147 +96,147 @@
 
 
 <p>
-  Apacheの設定ファイルの場所は「/etc/apache2」です。
+  The location of the Apache configuration file is "/ etc / apache2".
 </p>
 <p>
-  Apacheの設定ファイルのディレクトリ構成を見てください。設定ファイルに関するものだけを表示します。
-</p>
-<pre>
--rw-r--r-- 1 root root  7224 Mar 13 21:26 apache2.conf
-drwxr-xr-x 2 root root  4096 Jun  8 15:37 conf-available
-drwxr-xr-x 2 root root  4096 Jun  8 15:37 conf-enabled
-drwxr-xr-x 2 root root 12288 Jun  8 15:21 mods-available
-drwxr-xr-x 2 root root  4096 Jun  8 16:07 mods-enabled
--rw-r--r-- 1 root root   320 Jul 17  2019 ports.conf
-drwxr-xr-x 2 root root  4096 May 26 14:59 sites-available
-drwxr-xr-x 2 root root  4096 May 26 14:59 sites-enabled
-</pre>
-<p>
-  confで始まるものは、一般的な設定、modsで始まるものはApacheモジュールの設定、sitesで始まるものは、複数のサイトを運営するためのバーチャルホストの設定です。
-</p>
-<h4>有効になるApacheの設定ファイル</h4>
-<p>
-  Apacheの設定ファイルとしてが有効になるのは、以下です。設定が有効になるためには、以下のどれかに該当する必要があります。availableに格納されている設定ファイルは、そのままでは有効になりまｗせん。
+  See the directory structure of Apache's configuration files. Only the ones related to the configuration file are displayed.
 </p>
 <pre>
-#       /etc/apache2/
-#       |-- apache2.conf
-#       |       `--  ports.conf
-#       |-- mods-enabled
-#       |       |-- *.load
-#       |       `-- *.conf
-#       |-- conf-enabled
-#       |       `-- *.conf
-#       `-- sites-enabled
-#               `-- *.conf
+-rw-r--r-- 1 root root 7224 Mar 13 21:26 apache2.conf
+drwxr-xr-x 2 root root 4096 Jun 8 15:37 conf-available
+drwxr-xr-x 2 root root 4096 Jun 8 15:37 conf-enabled
+drwxr-xr-x 2 root root 12288 Jun 8 15:21 mods-available
+drwxr-xr-x 2 root root 4096 Jun 8 16:07 mods-enabled
+-rw-r--r-- 1 root root 320 Jul 17 2019 ports.conf
+drwxr-xr-x 2 root root 4096 May 26 14:59 sites-available
+drwxr-xr-x 2 root root 4096 May 26 14:59 sites-enabled
 </pre>
-<h3>一般的な設定ファイル</h2>
 <p>
-  まず、あなたが新しく作る設定ファイルは、apache2.confの中に書きたくなりますが、これは、デフォルトのまま置いておくことをお勧めします。
+  Those that start with conf are general settings, those that start with mods are Apache module settings, and those that start with sites are virtual host settings for running multiple sites.
+</p>
+<h4> Apache configuration file to enable </h4>
+<p>
+  The following are valid as Apache configuration files. One of the following must be true for the setting to take effect: The configuration file stored in available will not be valid as it is.
+</p>
+<pre>
+# / etc / apache2 /
+# |-apache2.conf
+# | `--ports.conf
+# |-mods-enabled
+# | |-*. Load
+# | `-* .Conf
+# |-conf-enabled
+# | `-* .Conf
+# `--sites-enabled
+# `-* .Conf
+</pre>
+<h3> General configuration file </h2>
+<p>
+  First of all, you'll want to write your new config file in apache2.conf, but it's a good idea to leave this as the default.
 </p>
 <p>
-  あなたが新しく作る設定ファイルは「conf-available」の中に作成します。「myapache2.conf」という名前で配置してみましょう。<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">viコマンド</a>で新規に作成します。
+  Create the new configuration file you create in "conf-available". Let's place it with the name "myapache2.conf". Create a new one with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi command</a>.
 </p>
 <pre>
 sudo vi conf-available/myapache2.conf
 </pre>
 <p>
-  保存して終了してください。
+  Please save and exit.
 </p>
-<h4>一般的なApacheの設定ファイルをa2enconfで有効にする</h4>
+<h4> Enable common Apache config files in a2enconf </h4>
 <p>
-  次にこの設定ファイルa2enconfコマンドで有効にします。
+  Then enable this configuration file with the a2enconf command.
 </p>
 <pre>
 sudo a2enconf myapache2
 </pre>
 <p>
-  <a href="https://en.linux.perlzemi.com/blog/20191126082723.html">ls</a>コマンドで「conf-enabled」の中を見てみます。
+  Take a look inside "conf-enabled" with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls</a> command.
 </p>
 <pre>
 ls -l conf-enabled
 </pre>
 <p>
-  すると<a href="https://en.linux.perlzemi.com/blog/20200610092705.html">シンボリックリンク</a>が「conf-available/myapache2.conf」に対して作成されていることがわかります。
+  Then <a href="https://en.linux.perlzemi.com/blog/20200610092705.html"> symbolic link</a> is created for "conf-available / myapache2.conf" I understand.
 </p>
 <pre>
-myapache2.conf -&gt; ../conf-available/myapache2.conf
+myapache2.conf-&gt; ../conf-available/myapache2.conf
 </pre>
 <p>
-  これで、あなたの作成したApacheの設定ファイルが有効になりました。
+  The Apache configuration file you created is now valid.
 </p>
 <p>
-  有効にした後は、Apacheに設定を反映させるには<a href="/blog/20200519084454.html">Apacheを再起動</a>する必要があります。
+  After enabling it, you need to <a href="/blog/20200519084454.html"> restart Apache</a> for Apache to reflect your settings.
 </p>
-<h4>一般的なApacheの設定ファイルをa2disconfで無効にする</h4>
+<h4> Disable common Apache config files with a2disconf </h4>
 <p>
-  無効にするには、a2disconfコマンドを使用します。
+  To disable it, use the a2disconf command.
 </p>
 <pre>
 sudo a2disconf myapache2
 </pre>
 <p>
-  無効にした後は、Apacheに設定を反映させるにはApacheを再起動する必要があります。
+  After disabling it, you will need to restart Apache for the settings to take effect.
 </p>
-<h3>モジュール設定ファイル</h2>
+<h3> Module configuration file </h2>
 <p>
-  Apacheのモジュールは、利用可能だが、有効化されていないものがあります。そのようなモジュールの設定は「mods-available」の中にあります。
+  Some Apache modules are available but not enabled. The settings for such modules are in "mods-available".
 </p>
-<h4>Apacheのモジュールの設定ファイルをa2enmodで有効にする</h4>
+<h4> Enable Apache module configuration file with a2enmod </h4>
 <p>
-  Apacheのモジュールの設定ファイルを有効にするにはa2enmodコマンドを使用します。sslモジュール(mod_ssl)を有効にしてみます。
+  Use the a2enmod command to enable the Apache module configuration file. Try enabling the ssl module (mod_ssl).
 </p>
 <pre>
 sudo a2enmod ssl
 </pre>
 <p>
-  「mods-enabled」の中にシンボリックリンクが張られます。設定を反映させるにはApacheの再起動が必要です。
+  A symbolic link will be created in "mods-enabled". Apache needs to be restarted for the settings to take effect.
 </p>
-<h4>Apacheのモジュールの設定ファイルをa2dismodで無効にする</h4>
+<h4> Disable Apache module configuration file with a2dismod </h4>
 <p>
-  Apacheのモジュールの設定ファイルを無効にするには、a2dismodコマンドを使用します。
+  To disable the Apache module configuration file, use the a2dismod command.
 </p>
 <pre>
 sudo a2dismod ssl
 </pre>
 <p>
-  無効にした後は、設定を反映させるにはApacheの再起動が必要です。
+  After disabling it, you need to restart Apache for the settings to take effect.
 </p>
-<h3>複数のサイトを運営するためのバーチャルホストの設定ファイル</h2>
+<h3> Virtual host configuration file for running multiple sites </h2>
 <p>
-  Ubuntuでは、バーチャルホストで複数のサイトを運営するための「sites-available」ディレクトリが用意されています。
-</p>
-<p>
-  まず、新しくバーチャルホストの設定を書く場合は「sites-available」に設定ファイルを格納しましょう。
+  Ubuntu provides a "sites-available" directory for running multiple sites on a virtual host.
 </p>
 <p>
-  サイトのドメイン名を設定ファイルの名前にします。拡張子は「.conf」です。
+  First, when writing a new virtual host setting, store the setting file in "sites-available".
+</p>
+<p>
+  Make the domain name of the site the name of the configuration file. The extension is ".conf".
 </p>
 <pre>
 vi www.mysite.example.conf
 </pre>
 <p>
-  この中にバーチャルホストの設定を書きましょう。
+  Let's write the virtual host settings in this.
 </p>
-<h4>バーチャルホストの設定ファイルをa2ensiteで有効にする</h4>
+<h4> Enable virtual host config file on a2ensite </h4>
 <p>
-  バーチャルホストの設定ファイルを有効にするにはa2ensiteコマンドを使用します。sslモジュール(mod_ssl)を有効にしてみます。
+  Use the a2ensite command to enable the virtual host configuration file. Try enabling the ssl module (mod_ssl).
 </p>
 <pre>
 sudo a2ensite www.mysite.example
 </pre>
 <p>
-  「sites-enabled」の中にシンボリックリンクが張られます。設定を反映させるにはApacheの再起動が必要です。
+  A symbolic link will be created in "sites-enabled". Apache needs to be restarted for the settings to take effect.
 </p>
-<h4>バーチャルホストの設定ファイルをa2dissiteで無効にする</h4>
+<h4> Disable virtual host config file with a2dissite </h4>
 <p>
-  バーチャルホストの設定ファイルを無効にするには、a2dissiteコマンドを使用します。
+  To disable the virtual host configuration file, use the a2dissite command.
 </p>
 <pre>
 sudo a2dissite www.mysite.example
 </pre>
 <p>
-  無効にした後は、設定を反映させるにはApacheの再起動が必要です。
+  After disabling it, you need to restart Apache for the settings to take effect.
 </p>
 
   </div>

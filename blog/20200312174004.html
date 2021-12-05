@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheの設定ファイルをGitで管理する - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="UbuntuのApacheの設定ファイルは、Gitで管理しやすいようになっているので、Gitで管理してみましょう。">
+<title> Manage Apache configuration files with Git  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Ubuntu's Apache configuration file is easy to manage with  Git, so let's manage it with Git. prize.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200312174004.html">Apacheの設定ファイルをGitで管理する</a></h2>
+<h2><a href="/blog/20200312174004.html"> Manage Apache configuration files with Git </a></h2>
 <p>
-  UbuntuのApacheの設定ファイルは、<a href="https://en.git.perlzemi.com/">Git</a>で管理しやすいようになっているので、Gitで管理してみましょう。
+  Ubuntu's Apache configuration file is easy to manage with <a href="https://en.git.perlzemi.com/"> Git</a>, so let's manage it with Git. prize.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,62 +96,62 @@
 
 
 <pre>
-cd /etc/apache2
+cd / etc / apache2
 </pre>
-<h4>Gitリポジトリの初期化</h4>
+<h4> Initialize Git repository </h4>
 <p>
-  Gitリポジトリとして初期化するには「<a href="https://en.git.perlzemi.com/blog/20200605092020.html">git init</a>」を使用します。
+  Use "<a href="https://en.git.perlzemi.com/blog/20200605092020.html"> git init</a>" to initialize it as a Git repository.
 </p>
 <pre>
 sudo git init
 </pre>
-<h4>.gitignoreの作成</h4>
+<h4> Creating .gitignore </h4>
 <p>
-  conf-enabled, mods-enabled, sites-enabledは、環境ごとに有効になっている設定ファイルですので、<a href="https://en.git.perlzemi.com/blog/20200610092020.html">.gitignore</a>を使ってGitの管理からはずしましょう。<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">vi</a>コマンドで、編集します。
+  conf-enabled, mods-enabled, sites-enabled are configuration files that are enabled for each environment, so <a href="https://en.git.perlzemi.com/blog/20200610092020.html"> Use .gitignore</a> to remove it from Git management. Edit with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> command.
 </p>
 <pre>
 sudo vi .gitignore
 </pre>
 <p>
-  以下の設定を記述します。これでconf-enabled, mods-enabled, sites-enabledは、Gitの管理からはずれます。
+  Describe the following settings. Now conf-enabled, mods-enabled, sites-enabled are no longer managed by Git.
 </p>
 <pre>
-*-enable
+* -enable
 </pre>
-<h4>管理方法のコツ</h4>
+<h4> Tips on how to manage </h4>
 <p>
-  apache2.conf, envvars, magic, ports.confは、デフォルトのまま手を加えないのがお勧めです。
+  It is recommended to leave apache2.conf, envvars, magic, ports.conf untouched by default.
 </p>
 <p>
-  xxx-availableに、開発環境と本番環境におけるすべての設定ファイルを、含めてしまいましょう。
+  Let's include all the configuration files in the development environment and the production environment in xxx-available.
 </p>
-<h4>ステージング環境に乗せる</h4>
+<h4> Put it in the staging environment </h4>
 <p>
-  次に、「git addコマンド」を使って、管理したいファイルをステージング環境に載せます。カレントディレクトリ以下のすべてのファイルをステージング環境に乗せるには「.」を指定します。
+  Next, use the "git add command" to put the files you want to manage into the staging environment. Specify "." To put all the files under the current directory in the staging environment.
 </p>
 <pre>
-sudo git add .
+sudo git add.
 </pre>
 <p>
-  ステージング環境に乗ったファイルを「git statusコマンド」で確認しましょう。
+  Let's check the file in the staging environment with the "git status command".
 </p>
 <pre>
 sudo git status
 </pre>
 <p>
-  間違ってしまった場合は「git reset」でいったん元に戻しましょう。
+  If you make a mistake, use "git reset" to restore it.
 </p>
 <pre>
 sudo git reset
 </pre>
 <p>
-  正しくステージングされていたら、最後にコミットです。
+  If properly staged, it's finally a commit.
 </p>
 <pre>
 sudo git commit -m "first commit"
 </pre>
 <p>
-  Githubなどのリモートリポジトリにpushしましょう。リモートリポジトリからの取り込み、リモートリポジトリへの反映については、別の場所で扱います。
+  Push to a remote repository such as Github. Importing from the remote repository and reflecting it in the remote repository will be handled in another location.
 </p>
 
   </div>

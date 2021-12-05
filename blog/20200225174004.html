@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Redisサーバーの起動・停止・再起動・状態確認 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Redisサーバーの起動・停止・再起動・状態確認について解説します。">
+<title> Redis server start / stop / restart / status check  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Explains how to start / stop / restart / check the status of the Redis server.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200820081929.html">
-        <span itemprop="name">Redis</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Redis </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200225174004.html">Redisサーバーの起動・停止・再起動・状態確認</a></h2>
+<h2><a href="/blog/20200225174004.html"> Redis server start / stop / restart / status check </a></h2>
 <p>
-  Redisサーバーの起動・停止・再起動・状態確認について解説します。
+  Explains how to start / stop / restart / check the status of the Redis server.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,137 +95,137 @@
 </div>
 
 
-<h4>Redisの状態確認</h4>
+<h4> Check Redis status </h4>
 <p>
-  Redisの状態確認は、<a href="/blog/20200605104005.html">systemctl</a>コマンドの「status」を使って行います。
+  To check the status of Redis, use "status" of the <a href="/blog/20200605104005.html"> systemctl</a> command.
 </p>
 <pre>
 sudo systemctl status redis-server
 </pre>
-<h5>起動している場合</h5>
+<h5> If it is running </h5>
 <p>
-  起動している場合は、以下のように表示されます。
+  If it is running, the following will be displayed.
 </p>
 <pre>
-● redis-server.service - Advanced key-value store
+● redis-server.service --Advanced key-value store
    Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
    Active: active (running) since Tue 2020-06-16 10:12:56 JST; 3h 57min ago
      Docs: http://redis.io/documentation,
-           man:redis-server(1)
+           man: redis-server (1)
  Main PID: 108380 (r.edis-server)
     Tasks: 4 (limit: 9479)
    CGroup: /system.slice/redis-server.service
            mq108380 /usr/bin/redis-server 127.0.0.1:6379
 </pre>
-<h5>停止している場合</h5>
+<h5> When stopped </h5>
 <p>
-  停止している場合は、以下のように表示されます。
+  If it is stopped, the following will be displayed.
 </p>
 <pre>
-● redis-server.service - Advanced key-value store
+● redis-server.service --Advanced key-value store
    Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
    Active: inactive (dead) since Tue 2020-06-16 14:11:18 JST; 2s ago
      Docs: http://redis.io/documentation,
-           man:redis-server(1)
-  Process: 27892 ExecStop=/bin/kill -s TERM $MAINPID (code=exited, status=0/SUCCESS)
- Main PID: 108380 (code=exited, status=0/SUCCESS)
+           man: redis-server (1)
+  Process: 27892 ExecStop = / bin / kill -s TERM $ MAINPID (code = exited, status = 0 / SUCCESS)
+ Main PID: 108380 (code = exited, status = 0 / SUCCESS)
 </pre>
-<h4>Redisの起動</h4>
+<h4> Start Redis </h4>
 <p>
-  Redisの起動は、systemctlコマンドの「start」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To start Redis, use the systemctl command "start". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl start redis-server
 </pre>
 <p>
-  起動が成功しても、成功したというメッセージは返ってきません。状態確認を行ってください。
+  Even if the boot is successful, the message that it was successful is not returned. Please check the status.
 </p>
-<h4>Redisの停止</h4>
+<h4> Stop Redis </h4>
 <p>
-  Redisの停止は、systemctlコマンドの「stop」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To stop Redis, use the systemctl command "stop". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl stop redis-server
 </pre>
 <p>
-  停止が成功しても、成功したというメッセージは何も返ってきません。状態確認を行ってください。
+  If the outage is successful, no successful message will be returned. Please check the status.
 </p>
-<h4>Redisの再起動</h4>
+<h4> Restart Redis </h4>
 <p>
-  Redisの再起動は、systemctlコマンドの「restart」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To restart Redis, use the systemctl command "restart". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl restart redis-server
 </pre>
 <p>
-  restartは単に、stopコマンドを実行して、startコマンドを実行します。
+  restart simply executes the stop command and executes the start command.
 </p>
-<h3>Redisの起動・停止のログを見るには</h3>
+<h3> To see the Redis start / stop log </h3>
 <p>
-  Redisなどのサーバーは、systemdというプログラムによって集中的に管理されています。
-</p>
-<p>
-  systemdのログにRedisの起動・停止ログが出力されています。
+  Servers such as Redis are centrally managed by a program called systemd.
 </p>
 <p>
-  systemdのログを見るには<a href="/blog/20200602135100.html">journalctlコマンド</a>を使います。「-u」オプションでユニット「redis-server」を指定します。sudoで実行しないとRedisサーバーのログが見れないので注意してください。ログの最後の部分だけ見たい場合は「-r」オプションを組み合わせます。
+  The Redis start / stop log is output to the systemd log.
+</p>
+<p>
+  Use the <a href="/blog/20200602135100.html"> journalctl command</a> to see the systemd logs. Specify the unit "redis-server" with the "-u" option. Please note that you will not be able to see the Redis server logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 </p>
 <pre>
 sudo journalctl -r -u redis-server
 </pre>
 <p>
-  ログのサンプルです。
+  This is a sample log.
 </p>
 <pre>
-Jul 22 13:24:34 shinshina-development-app-00000001 systemd[1]: Started Advanced key-value store.
-Jul 22 13:24:34 shinshina-development-app-00000001 systemd[1]: redis-server.service: Can't open PID file /var/run/redis/redis-server.pid (yet?) after start: No such file or directory
-Jul 22 13:24:33 shinshina-development-app-00000001 systemd[1]: Starting Advanced key-value store...
--- Reboot --
-Jul 22 13:13:48 shinshina-development-app-00000001 systemd[1]: Stopped Advanced key-value store.
-Jul 22 13:13:47 shinshina-development-app-00000001 systemd[1]: Stopping Advanced key-value store...
+Jul 22 13:24:34 shinshina-development-app-00000001 systemd [1]: Started Advanced key-value store.
+Jul 22 13:24:34 shinshina-development-app-00000001 systemd [1]: redis-server.service: Can't open PID file /var/run/redis/redis-server.pid (yet?) after start: No such file or directory
+Jul 22 13:24:33 shinshina-development-app-00000001 systemd [1]: Starting Advanced key-value store ...
+--Reboot -
+Jul 22 13:13:48 shinshina-development-app-00000001 systemd [1]: Stopped Advanced key-value store.
+Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping Advanced key-value store ...
 </pre>
-<h3>Redisのsystemdの設定ファイルを見るには</h3>
+<h3> To see the Redis systemd config file </h3>
 <p>
-  Redisのsystemdの設定ファイルは「systemctl status redis-server」で見れます。
+  You can see the Redis systemd configuration file under "systemctl status redis-server".
 </p>
 <p>
-  設定ファイルを<a href="https://en.linux.perlzemi.com/blog/20200113083613.html">catコマンド</a>で見てみましょう。
+  Let's take a look at the configuration file with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command</a>.
 </p>
 <pre>
 cat /lib/systemd/system/redis-server.service
 </pre>
-<h3>Redisトラブルシューティング</h3>
+<h3> Redis Troubleshooting </h3>
 <p>
-  以下のようなエラーでRedisサーバーが起動できない場合があります。
+  The Redis server may not start with the following error.
 </p>
 <pre>
 redis-server.service: Can't open PID file /var/run/redis/redis-server.pid (yet?) after start: No such file or directory
 </pre>
 <p>
-  これは、サーバーのネットワーク設定でIPv6が有効になっておらず、Redisサーバーの設定ファイルで、IPv6が有効になっている場合に出るエラーです。
+  This is an error that occurs when IPv6 is not enabled in the server's network settings and IPv6 is enabled in the Redis server's configuration file.
 </p>
 <p>
-  Redis設定ファイルを編集して修正しましょう。間違った場合のためにバックアップもとっておきます。
+  Edit and modify your Redis config file. Make a backup in case you make a mistake.
 </p>
 <pre>
 sudo cp /etc/redis/redis.conf /etc/redis/redis.conf.bak
 sudo vi /etc/redis/redis.conf
 </pre>
 <p>
-  以下を
+  The following
 </p>
 <pre>
-bind 127.0.0.1 ::1
+bind 127.0.0.1 :: 1
 </pre>
 <p>
-  以下に変更
+  Changed to
 </p>
 <pre>
 bind 127.0.0.1
 </pre>
-<h4>Redisの起動と確認</h4>
+<h4> Start and check Redis </h4>
 <p>
-  Redisの起動と確認を行います。
+  Start and check Redis.
 </p>
 <pre>
 sudo systemctl start redis-server

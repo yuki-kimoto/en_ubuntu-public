@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>さくらVPS+Ubuntu 18+PerlでWebシステム開発 環境構築 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="さくらVPS+Ubuntu 18+PerlでWebシステム開発環境を行う手順のまとめ。">
+<title> Web system development environment construction with Sakura VPS + Ubuntu 18 + Perl  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="A summary of the procedure for creating a Web system development environment with Sakura VPS + Ubuntu 18 + Perl.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200816052048.html">さくらVPS+Ubuntu 18+PerlでWebシステム開発 環境構築</a></h2>
+    <h2><a href="/blog/20200816052048.html"> Web system development environment construction with Sakura VPS + Ubuntu 18 + Perl </a></h2>
 <p>
-  さくらVPS+Ubuntu 18+PerlでWebシステム開発環境を行う手順のまとめ。
+  A summary of the procedure for creating a Web system development environment with Sakura VPS + Ubuntu 18 + Perl.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -76,460 +76,460 @@
 </div>
 
 
-<h3>さくらVPSの申し込み</h3>
+<h3> Sakura VPS application </h3>
 <p>
-  さくらVPSを申し込みます。
+  Apply for Sakura VPS.
 </p>
 <p>
-  <a href="https://vps.sakura.ad.jp/specification/">さくらVPS 料金・仕様一覧</a>
+  <a href="https://vps.sakura.ad.jp/specification/"> Sakura VPS Price / Specification List</a>
 </p>
-<h3>さくらVPSへUbuntu 18をインストール</h3>
+<h3> Install Ubuntu 18 on Sakura VPS </h3>
 <p>
-  さくらVPSへUbuntu 18をインストールしましょう。インストール手順は、2020年8月16日に試したものです。
-</p>
-<p>
-  <a href="https://secure.sakura.ad.jp/vps/#/login">さくらVPSコントールパネル</a>からログイン。
+  Let's install Ubuntu 18 on Sakura VPS. The installation procedure was tried on August 16, 2020.
 </p>
 <p>
-  右上、サーバー新規追加をクリック。
+  Log in from <a href="https://secure.sakura.ad.jp/vps/#/login"> Sakura VPS Control Panel</a>.
 </p>
 <p>
-  ゾーンを選択。石狩 第1ゾーン。東京 第2ゾーン。大阪 第3ゾーン。
+  Click Add New Server in the upper right.
 </p>
 <p>
-  コストが安く、サービスを行う場所に近いゾーンを選ぶのが良いでしょう。
+  Select a zone. Ishikari Zone 1. Tokyo second zone. Osaka 3rd zone.
 </p>
 <p>
-  プラン選択。512, 1G, 2Gの中からまずは選択しましょう。ストレージは100G程度あったほうが、後ほど困らないと経験的に感じますが、最初に始めるなら、一番コストの小さなプランもお勧めです。
+  It's a good idea to choose a zone that is cheaper and closer to where you will be servicing.
 </p>
 <p>
-  ストレージを増やしたい場合は、ストレージ変更オプションで、ストレージを増やしましょう。料金は初回のみです。ストレージ性能が下がるリスクについて書かれているので、速度をとるか容量をとるかで決めましょう。
+  Plan selection. Choose from 512, 1G and 2G first. Experience shows that having about 100G of storage will not be a problem later, but if you are starting first, we recommend the plan with the lowest cost.
 </p>
 <p>
-  次へ進む。
+  If you want to increase the storage, use the storage change option to increase the storage. The fee is only for the first time. It's about the risk of poor storage performance, so decide whether to speed up or take up capacity.
 </p>
 <p>
-  サーバーの名前は、任意項目なので、そのまま。
+  Proceed to the next.
 </p>
 <p>
-  サーバーの説明も、任意項目なので、そのまま。
+  The name of the server is an optional item, so leave it as it is.
 </p>
 <p>
-  インストールするOSは、Ubuntu 18.04amd64(64bit)です。
+  The description of the server is also an optional item, so leave it as it is.
 </p>
 <p>
-  管理ユーザ名は固定で「ubuntu」となっています。
+  The OS to be installed is Ubuntu 18.04 amd64 (64bit).
 </p>
 <p>
-  「新しい管理ユーザのパスワード」と「新しい管理ユーザのパスワード（確認のため再入力）」を入力します。これは、実質的にはrootパスワードになります。
+  The admin user name is fixed and is "ubuntu".
 </p>
 <p>
-  スタートアップスクリプトは、利用しません。
+  Enter the New Administrative User Password and the New Administrative User Password (re-entered for confirmation). This is effectively the root password.
 </p>
 <p>
-  パケットフィルタの設定は、デフォルトでSSHの22番ポートのみとなっています。これは、後で変更します。
+  The startup script is not used.
 </p>
 <p>
-  公開鍵の登録は、登録しないを選択します。
+  By default, the packet filter setting is only for SSH port 22. This will change later.
 </p>
 <p>
-  次へ進む。
+  To register the public key, select Do not register.
 </p>
 <p>
-  支払いパターンを選択します。月払いか年間一括払いを選択できます。
+  Proceed to the next.
 </p>
 <p>
-  支払い方法を選択します。クレジットカード、銀行振込、請求書払いを選択できます。
+  Select a payment pattern. You can choose monthly payment or annual lump sum payment.
 </p>
 <p>
-  クーポンは、空白にしておきます。クーポンがあって、使いたい場合は入力してください。
+  Select a payment method. You can choose credit card, bank transfer or invoice payment.
 </p>
 <p>
-  次へ進む。
+  Leave the coupon blank. If you have a coupon and want to use it, please enter it.
 </p>
 <p>
-  お申し込み確認の画面になりますので、同意するを選択して、申し込みをクリック。
+  Proceed to the next.
 </p>
 <p>
-  これで、さくらVPSで、Ubuntu 18を使えるようになります。
-</p>
-<h3>パケットフィルタリング - ファイアーウォールの設定</h3>
-<p>
-  Webシステム開発のために必要なポートを開放しましょう。この手順は、2020年8月16日に試したものです。
+  The application confirmation screen will appear. Select I Agree and click Apply.
 </p>
 <p>
-  さくらVPSログイン。
+  Now you can use Ubuntu 18 with Sakura VPS.
+</p>
+<h3> Packet Filtering-Firewall Settings </h3>
+<p>
+  Open the ports needed for web system development. This procedure was tried on August 16, 2020.
 </p>
 <p>
-  左サイドバー、サーバーをクリック。
+  Sakura VPS login.
 </p>
 <p>
-  サーバー一覧から、作成したサーバーをクリック。
+  Click on the server in the left sidebar.
 </p>
 <p>
-  タブの一番右側の「パケットフィルタ」をクリック。
+  From the server list, click the created server.
 </p>
 <p>
-  「パケットフィルタ設定へ」をクリック。
+  Click "Packet Filter" on the far right of the tab.
 </p>
 <p>
-  「解放ポートを追加する」をクリック。
-</p>
-<h4>HTTPとHTTPSのポートを開放</h4>
-<p>
-  「フィルタの用途」で「Web」をクリック。HTTPの80番ポートと、HTTPSの443番ポートが解放されます。
+  Click "To Packet Filter Settings".
 </p>
 <p>
-  「設定を保存する」をクリック。設定が完了しました。
+  Click "Add release port".
+</p>
+<h4> Open HTTP and HTTPS ports </h4>
+<p>
+  Click "Web" in "Use of Filter". HTTP port 80 and HTTPS port 443 are released.
 </p>
 <p>
-  同じ作業を繰り返します。
+  Click "Save settings". The setting is completed.
 </p>
 <p>
-  「パケットフィルタ」「パケットフィルタ設定へ」
-</p>
-<h4>SSHのポートを開放</h4>
-<p>
-  <a href="/blog/20200715102902.html">SSHのデフォルトの22番ポートは非常にセキュリティリスクのあるポート</a>です。
+  Repeat the same work.
 </p>
 <p>
-  SSH用のあなた独自のポートを追加してください。ウェルナウンポートと、Webアプリケーションで使うポートを避けて選びます。
+  "Packet filter" "To packet filter setting"
+</p>
+<h4> Open SSH port </h4>
+<p>
+  <a href="/blog/20200715102902.html"> SSH's default port 22 is a very security-risk port</a>.
 </p>
 <p>
-  自分で選べないよーという方は「30000」番台のポート(32767まで)を一つ選びましょう。例を書いておきます。
+  Add your own port for SSH. Avoid choosing well-known ports and ports used by web applications.
+</p>
+<p>
+  If you can't choose by yourself, choose one port in the "30000" range (up to 32767). I will write an example.
 </p>
 <ul>
-  <li>30012</li>
-  <li>31463</li>
-  <li>32130</li>
+  <li> 30012 </li>
+  <li> 31163 </li>
+  <li> 32130 </li>
 </ul>
 <p>
-  さくらVPSでは、パケットフィルタリングでは、ポートの値は数値で 1 から 32767 の範囲で指定する必要があるようです。
+  In Sakura VPS, packet filtering seems to require the port value to be a number in the range 1-32767.
 </p>
 <p>
-  「開放ポートを追加する」をクリック。
+  Click "Add open port".
 </p>
 <p>
-  「フィルタの用途」で「カスタム」をクリック。
+  Click "Custom" in "Filter Usage".
 </p>
 <p>
-  プロトコルは「TCP」を選択。
+  Select "TCP" as the protocol.
 </p>
 <p>
-  「ポート番号」に上記で選択したSSH用のポート番号を入力してください。
+  Enter the SSH port number selected above in "Port number".
 </p>
 <p>
-  「設定を保存する」をクリック。設定が完了しました。
+  Click "Save settings". The setting is completed.
 </p>
 <p>
-  同じ作業を繰り返します。
+  Repeat the same work.
 </p>
 <p>
-  「パケットフィルタ」「パケットフィルタ設定へ」
+  "Packet filter" "To packet filter setting"
 </p>
-<h4>Mojolicious開発サーバー用のポートを開放</h4>
+<h4> Open port for Mojolicious development server </h4>
 <p>
-  Mojolicious開発サーバー用のポートを開放しておきましょう。<a href="https://en.mojolicious.perlzemi.com/">Mojolicious</a>は、PerlのWebフレームワークのひとつで、リアルタイムWebとクラウドサーバーに対応できます。
+  Let's open the port for the Mojolicious development server. <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious</a> is one of Perl's web frameworks for real-time web and cloud servers.
 </p>
 <p>
-  Mojolicious開発サーバー用のポートは
+  The port for the Mojolicious development server is
 </p>
 <pre>
 3000
 </pre>
 <p>
-  です。
+  is.
 </p>
 <p>
-  「開放ポートを追加する」をクリック。
+  Click "Add open port".
 </p>
 <p>
-  「フィルタの用途」で「カスタム」をクリック。
+  Click "Custom" in "Filter Usage".
 </p>
 <p>
-  プロトコルは「TCP」を選択。
+  Select "TCP" as the protocol.
 </p>
 <p>
-  「ポート番号」に「3000」を入力してください。
+  Enter "3000" in "Port number".
 </p>
 <p>
-  「設定を保存する」をクリック。設定が完了しました。
+  Click "Save settings". The setting is completed.
 </p>
 <p>
-  開発者が複数いる場合は、必要に応じて、パケットフィルタから別のポートを開放しましょう(3001番、3002番など)。
+  If you have multiple developers, open another port from the packet filter as needed (3001, 3002, etc.).
 </p>
 <p>
-  同じ作業を繰り返します。
+  Repeat the same work.
 </p>
 <p>
-  「パケットフィルタ」「パケットフィルタ設定へ」
+  "Packet filter" "To packet filter setting"
 </p>
-<h4>Mojolicious本番サーバー用のポート開放</h4>
+<h4> Open port for Mojolicious production server </h4>
 <p>
-  Mojolicious本番サーバー用のポートを開放しておきましょう。これは、試験に使用します。
+  Let's open the port for the Mojolicious production server. This is used for testing.
 </p>
 <p>
-  Mojolicious本番サーバー用のポートは
+  The port for the Mojolicious production server is
 </p>
 <pre>
 8080
 </pre>
 <p>
-  です。
+  is.
 </p>
 <p>
-  「開放ポートを追加する」をクリック。
+  Click "Add open port".
 </p>
 <p>
-  「フィルタの用途」で「カスタム」をクリック。
+  Click "Custom" in "Filter Usage".
 </p>
 <p>
-  プロトコルは「TCP」を選択。
+  Select "TCP" as the protocol.
 </p>
 <p>
-  「ポート番号」に「8080」を入力してください。
+  Enter "8080" in "Port number".
 </p>
 <p>
-  「設定を保存する」をクリック。設定が完了しました。
+  Click "Save settings". The setting is completed.
 </p>
 <p>
-  開発者が複数いる場合は、必要に応じて、パケットフィルタから別のポートを開放しましょう(3001番、3002番など)。
+  If you have multiple developers, open another port from the packet filter as needed (3001, 3002, etc.).
 </p>
-<h3>Webコンソールからの作業</h3>
+<h3> Working from the web console </h3>
 <p>
-  Webコンソールからの作業について解説します。
-</p>
-<p>
-  まずVPSサービスを申し込んだ後のサーバーの操作は、まずWebコンソールからのコマンドで始めます。
+  I will explain the work from the Web console.
 </p>
 <p>
-  この記事では、Webコンソールは、Webブラウザから利用できるCUI端末のことです。
+  After applying for the VPS service, the server operation starts with a command from the Web console.
 </p>
 <p>
-  最低限やっておかなければならないことは、Webアプリケーション用のユーザーの作成です。
+  In this article, the web console is a CUI terminal that can be used from a web browser.
 </p>
 <p>
-  Webアプリケーションのユーザーの作成の作業が終われば、SSHクライアントと呼ばれるツールを使って、WindowsやMacOSからUbuntuサーバーにアクセスできるようになります。
+  The minimum thing you need to do is create a user for your web application.
 </p>
 <p>
-  Webコンソールからすべてのコマンド実行を行えますが、効率を考えた場合は、SSHクライアントとSSH上でサーバー上のファイルを編集できるソフトウェアをWindowsやMacOS上にインストールして使うのが、現実的です。
-</p>
-<h4>Webコンソールを表示する</h4>
-<p>
-  Webコンソールを表示しましょう。
+  Once you've created a user for your web application, you'll be able to access your Ubuntu server from Windows or Mac OS using a tool called an SSH client.
 </p>
 <p>
-  さくらVPSへログインします。
+  You can execute all commands from the web console, but for efficiency, it is practical to install and use SSH client and software that can edit files on the server on SSH on Windows or MacOS.
+</p>
+<h4> Display the web console </h4>
+<p>
+  Let's display the web console.
 </p>
 <p>
-  対象のサーバーをクリックします。
+  Log in to Sakura VPS.
 </p>
 <p>
-  サイト上部「コンソール」をクリックします。
+  Click the target server.
 </p>
 <p>
-  「シリアルコンソール(β版)」をクリックします。シリアルコンソールが起動します。シリアルコンソールは、Webコンソールの一つです。シリアルコンソールを使ってコマンド実行を行っていきます。
+  Click "Console" at the top of the site.
 </p>
 <p>
-  シリアルコンソールが起動したら、一度Enterキーを押してください。
+  Click "Serial Console (β version)". The serial console will start. The serial console is one of the web consoles. We will execute commands using the serial console.
 </p>
 <p>
-  次のようにloginユーザーを入力できるようになります。
+  Once the serial console boots up, press Enter once.
+</p>
+<p>
+  You will be able to enter the login user as follows:
 </p>
 <pre>
 tk2-250-35845 login:
 </pre>
 <p>
-  「ubuntu」と入力して、Enterを押してください。
+  Type ubuntu and press Enter.
 </p>
 <pre>
 ubuntu
 </pre>
 <p>
-  以下のようにパスワードを聞かれます。
+  You will be asked for your password as follows.
 </p>
 <pre>
-Password:
+Password: Password:
 </pre>
 <p>
-  初期パスワードを入力して、Enterを押してください。ログインできれば成功です。以下のように表示されます。
+  Enter your initial password and press Enter. If you can log in, you are successful. It will be displayed as follows.
 </p>
 <pre>
-ubuntu@tk2-250-35845:~$
+ubuntu @ tk2-250-35845: ~ $
 </pre>
 <p>
-  この状態になれば、<a href="https://en.linux.perlzemi.com/blog/20200211081227.html">Linuxのコマンド</a>が実行できます。
+  In this state, you can execute <a href="https://en.linux.perlzemi.com/blog/20200211081227.html"> Linux commands</a>.
 </p>
-<h3>Webアプリケーション用のユーザーの追加</h3>
+<h3> Add user for web application </h3>
 <p>
-  Webアプリケーション用のユーザー「myapp」を追加しましょう。この名前は任意で構いませんが、これ以降の手順では「myapp」を使って解説します。
+  Let's add the user "myapp" for the web application. This name can be arbitrary, but in the following steps, we will use "myapp" for explanation.
 </p>
-<h4>ユーザーの追加</h4>
+<h4> Add user </h4>
 <p>
-  ユーザーを追加するには<a href="/blog/20200511173052.html">useradd</a>コマンドを使用します。「-m」オプションで、ホームディレクトリが作られます。
+  Use the <a href="/blog/20200511173052.html"> useradd</a> command to add a user. The "-m" option creates a home directory.
 </p>
 <p>
-  <a href="/blog/20200531085516.html">sudo</a>コマンドは、管理者権限で実行するためのコマンドだとここでは想定してください。
+  Assuming that the <a href="/blog/20200531085516.html"> sudo</a> command is a command to be executed with administrator privileges.
 </p>
 <pre>
-# ユーザーの追加(ホームディレクトリあり。シェルにbashを使う)
-sudo useradd -m myapp -s /bin/bash
+#Add user (home directory available, use bash for shell)
+sudo useradd -m myapp -s / bin / bash
 </pre>
 <p>
-  sudoコマンドを実行するとパスワードを聞かれますので、初期パスワードを入力してください。
+  When you execute the sudo command, you will be asked for the password, so enter the initial password.
 </p>
-<h4>パスワードの設定</h4>
+<h4> Password setting </h4>
 <p>
-  Webアプリケーション用のユーザー「myapp」のパスワードを設定しましょう。「myapp」はsudoグループに追加して、管理者権限を持たせますので、安全な長さと複雑さのパスワードにしておくことを推奨します。
+  Let's set a password for the user "myapp" for the web application. "Myapp" will be added to the sudo group to give it administrator privileges, so it is recommended to keep the password secure in length and complexity.
 </p>
 <p>
-  パスワードは<a href="/blog/20200510173052.html">passwd</a>コマンドで設定できます。
+  The password can be set with the <a href="/blog/20200510173052.html"> passwd</a> command.
 </p>
 <pre>
 sudo passwd myapp
 </pre>
 <p>
-  パスワードの入力と確認のための再入力を求められるので設定します。
+  You will be asked to enter the password and re-enter it for confirmation, so set it.
 </p>
-<h4>sudoグループに登録</h4>
+<h4> Join sudo group </h4>
 <p>
-  アプリケーションユーザー「myapp」を<a href="/blog/20200330174004.html">gpasswd</a>コマンドを使って、sudoグループに登録します。「myapp」ユーザーに管理者権限を与えます。
+  Register the application user "myapp" in the sudo group using the <a href="/blog/20200330174004.html"> gpasswd</a> command. Give the "myapp" user administrator privileges.
 </p>
 <pre>
 sudo gpasswd -a myapp sudo
 </pre>
-<h3>SSHクライアントの利用</h3>
+<h3> Using SSH client </h3>
 <p>
-  パソコン上からSSHでサーバーへの接続して、コマンド実行とファイル編集ができるようにしましょう。
+  Let's connect to the server with SSH from the computer so that you can execute commands and edit files.
 </p>
-<h4>SSHクライアントでコマンド実行</h4>
+<h4> Command execution on SSH client </h4>
 <p>
-  SSHクライアントでSSHサーバーに接続してコマンド実行するツールに、Windowsの場合はTeraTermがあります。
-</p>
-<ul>
-  <li><a href="https://en.linux.perlzemi.com/blog/20200525082545.html">Linuxサーバーにコマンドを送る - TeraTermのインストールと使い方</a></li>
-</ul>
-<p>
-  <a href="https://www.atmarkit.co.jp/ait/articles/1006/25/news095.html">PuTTY</a>などの他のWindowsで動くSSHクライアントもありますので、お好みで。
-</p>
-<p>
-  Macの場合は、ターミナルからsshコマンドが使えます。
-</p>
-<h4>SCPを使ってサーバー上のファイルを編集</h4>
-<p>
-  SCPというSSH上に構築されるプロトコルを使うとサーバー上のファイルを編集できます。
-</p>
-<p>
-  SCPクライアントとして、Windowsの場合はWinSCPがあります。
+  In the case of Windows, TeraTerm is a tool for connecting to an SSH server with an SSH client and executing commands.
 </p>
 <ul>
-  <li><a href="https://en.linux.perlzemi.com/blog/20200520082545.html">Linuxサーバー上のファイルを編集 - WinSCPのインストールと使い方</a></li>
+  <li> <a href="https://en.linux.perlzemi.com/blog/20200525082545.html"> Send commands to a Linux server-Installing and using TeraTerm</a> </li>
 </ul>
 <p>
-  MacにもWindowsのWinSCPの代わりになるようなソフトウェアがあるので、インストールしましょう。
-</p>
-<h3>SSHサーバーの設定</h3>
-<p>
-  SSHクライアントを使って、SSHでサーバーに接続します。デフォルトでは、SSHのポート番号は22番になっています。
+  <a href="https://www.atmarkit.co.jp/ait/articles/1006/25/There are other SSH clients that work on Windows, such as news095.html "> PuTTY</a>, so if you like.
 </p>
 <p>
-  サーバーのセキュリティを高めるために、先ほど、さくらVPSのパケットフィルタで追加で解放したSSHのポートに変更しましょう。
+  For Mac, you can use the ssh command from the terminal.
+</p>
+<h4> Use SCP to edit files on the server </h4>
+<p>
+  You can edit files on the server using a protocol built on SSH called SCP.
+</p>
+<p>
+  WinSCP is the SCP client for Windows.
 </p>
 <ul>
-  <li><a href="/blog/20200715102902.html">SSHポートを変更する - デフォルトの22番ポートはセキュリティ的に危険が高い</a></li>
+  <li> <a href="https://en.linux.perlzemi.com/blog/20200520082545.html"> Edit files on Linux server-Installing and using WinSCP</a> </li>
 </ul>
-<h3>タイムゾーンの設定</h3>
 <p>
-  タイムゾーンを「Asia/Tokyo」に設定しましょう。<a href="/blog/20200507174004.html">timedatectlでタイムゾーンの設定・確認</a>ができます。
+  There is software on your Mac that can replace WinSCP on Windows, so install it.
+</p>
+<h3> SSH server settings </h3>
+<p>
+  Use an SSH client to connect to the server with SSH. By default, the SSH port number is 22.
+</p>
+<p>
+  To increase the security of the server, let's change to the SSH port that was additionally released by the packet filter of Sakura VPS earlier.
+</p>
+<ul>
+  <li> <a href="/blog/20200715102902.html"> Change SSH port-default port 22 is a high security risk</a> </li>
+</ul>
+<h3> Time zone setting </h3>
+<p>
+  Let's set the time zone to "Asia / Tokyo". <a href="/blog/20200507174004.html"> You can set and check the time zone with timedatectl</a>.
 </p>
 <pre>
-# タイムゾーンを「Asia/Tokyo」に設定
-sudo timedatectl set-timezone Asia/Tokyo
+#Set the time zone to "Asia / Tokyo"
+sudo timedatectl set-timezone Asia / Tokyo
 </pre>
 <p>
-  タイムゾーンの確認。
+  Check the time zone.
 </p>
 <pre>
-# タイムゾーンの確認
+#Check the time zone
 timedatectl
 </pre>
-<h3>パッケージのインストール</h3>
+<h3> Package installation </h3>
 <p>
-  Perl Webシステム開発で必要になるパッケージをインストールしましょう。
+  Install the packages you need for Perl web system development.
 </p>
-<h4>aptのアップデート</h4>
+<h4> apt updates </h4>
 <p>
-  <a href="/blog/20200530085516.html">apt</a>コマンドは、パッケージのインストールコマンドですが、apt自体が古いとパッケージのダウンロードが失敗する場合があるので<a href="/blog/20200524135533.html">aptをアップデート</a>します。
+  The <a href="/blog/20200530085516.html"> apt</a> command is a package installation command, but if apt itself is old, the package download may fail, so <a href="/blog" //20200524135533.html "> Update apt</a>.
 </p>
 <pre>
 sudo apt update
 </pre>
-<h4>コンパイラ・リンカ</h4>
+<h4> Compiler Linker </h4>
 <p>
-  コンパイラ・リンカのインストールです。<a href="/blog/20200514084132.html">makeのインストール</a>、<a href="/blog/20200504174004.html">gccのインストール</a>、<a href="/blog/20200503174004.html">g++のインストール</a>を行いましょう。Perlのモジュールのコンパイルに必要です。
+  Installation of the compiler / linker. <a href="/blog/20200514084132.html"> Install make</a>, <a href="/blog/20200504174004.html"> Install gcc</a>, <a href="/blog/" 20200503174004.html "> Install g ++</a>. Required for compiling Perl modules.
 </p>
 <p>
-  aptでインストールする手順は一行ずつ実行していくことをお勧めします。手順がとばされたり、インストールされていることを確認せずに、進んでいくという経験が多いという理由で。
+  We recommend that you follow the steps for installing with apt line by line. Because I have a lot of experience going forward without skipping steps or making sure they are installed.
 </p>
 <pre>
 sudo apt install -y make
 sudo apt install -y gcc
-sudo apt install -y g++
+sudo apt install -y g ++
 </pre>
-<h4>テキストエディタ</h4>
+<h4> Text editor </h4>
 <p>
-  Ubuntuのデフォルトのviは機能が限定されているので、より便利な<a href="/blog/20200825150919.html">vimのインストール</a>を行いましょう。
+  Ubuntu's default vi has limited functionality, so let's do a more convenient <a href="/blog/20200825150919.html"> install vim</a>.
 </p>
 <pre>
 sudo apt install -y vim
 </pre>
-<h4>HTTPクライアント</h4>
+<h4> HTTP client </h4>
 <p>
-  手順でよく利用されるHTTPクライアントである<a href="/blog/20200826170338.html">curlのインストール</a>をしておきます。
+  Install <a href="/blog/20200826170338.html"> curl</a>, which is an HTTP client that is often used in the procedure.
 </p>
 <pre>
 sudo apt install -y curl
 </pre>
-<h4>SSL通信</h4>
+<h4> SSL communication </h4>
 <p>
-  SSL通信のために<a href="/blog/20200412174004.html">libssl-devのインストール</a>を行いましょう。
+  Install <a href="/blog/20200412174004.html"> libssl-dev</a> for SSL communication.
 </p>
 <pre>
 sudo apt install -y libssl-dev
 </pre>
-<h4>画像処理</h4>
+<h4> Image processing </h4>
 <p>
-  画像処理のために<a href="/blog/20200501174004.html">libpng-devのインストール</a>、<a href="/blog/20200502174004.html">libgif-devのインストール</a>、<a href="/blog/20200426174004.html">libjpeg-devのインストール</a>を行いましょう。
+  <a href="/blog/20200501174004.html"> Install libpng-dev</a>, <a href="/blog/20200502174004.html"> Install libgif-dev</a> for image processing , <a href="/blog/20200426174004.html"> Install libjpeg-dev</a>.
 </p>
 <pre>
 sudo apt install -y libpng-dev
 sudo apt install -y libgif-dev
 sudo apt install -y libjpeg-dev
 </pre>
-<h4>圧縮・解凍</h4>
+<h4> Compression / decompression </h4>
 <p>
-  圧縮・解凍のために<a href="/blog/20200323174004.html">zipのインストール</a>を行いましょう。
+  Install <a href="/blog/20200323174004.html"> zip</a> for compression / decompression.
 </p>
 <pre>
 sudo apt install -y zip
 </pre>
-<h4>ネットワーク</h4>
+<h4> Network </h4>
 <p>
-  ifconfigが使えるように<a href="/blog/20200324174004.html">net-toolsのインストール</a>を行いましょう。ipコマンドがLinuxでは推奨されていますが、使いたいサーバー管理者も多そうなので。
+  Let's <a href="/blog/20200324174004.html"> install net-tools</a> so that ifconfig can be used. The ip command is recommended for Linux, but many server administrators want to use it.
 </p>
 <pre>
 sudo apt install -y net-tools
 </pre>
-<h4>リポジトリ管理</h4>
+<h4> Repository management </h4>
 <p>
-  リポジトリ管理のために<a href="/blog/20200607082859.html">gitのインストール</a>を行いましょう。
+  Let's <a href="/blog/20200607082859.html"> install git</a> for repository management.
 </p>
 <pre>
 sudo apt install -y git
 </pre>
-<h4>Perl</h4>
+<h4> Perl </h4>
 <p>
-  システムPerlのためのしばしば使うであろうツールとモジュールをインストールしましょう。<a href="/blog/20200516081846.html">perl-docパッケージのインストール</a>、<a href="/blog/20200515081846.html">libio-socket-ssl-perlのインストール</a>、<a href="/blog/20200606082859.html">libreadline-devのインストール</a>、<a href="/blog/20200227174004.html">libterm-readline-gnu-perlのインストール</a>を行います。
+  Install the tools and modules you will often use for your system Perl. <a href="/blog/20200516081846.html"> Install perl-doc package</a>, <a href="/blog/20200515081846.html"> Install libio-socket-ssl-perl</a> , <a href="/blog/20200606082859.html"> Install libreadline-dev</a>, <a href="/blog/20200227174004.html"> Install libterm-readline-gnu-perl</a> to hold.
 </p>
 <pre>
 sudo apt install -y perl-doc
@@ -537,110 +537,111 @@ sudo apt install -y libio-socket-ssl-perl
 sudo apt install -y libreadline-dev
 sudo apt install -y libterm-readline-gnu-perl
 </pre>
-<h4>SSL証明書</h4>
+<h4> SSL certificate </h4>
 <p>
-  SSL証明書の自動発行のために<a href="/blog/20200319174004.html">certbotのインストール</a>を行います。
+  Install <a href="/blog/20200319174004.html"> certbot</a> for automatic issuance of SSL certificate.
 </p>
 <pre>
 sudo apt install -y certbot
 </pre>
-<h3>データ用ディレクトリの作成</h3>
+<h3> Creating a directory for data </​​h3>
 <p>
-  Webアプリケーションがデータを保存するためのデータ用のディレクトリを作成しましょう。「myapp」ユーザーだけではなく、他の開発ユーザーも書き込めるように設定しておきます。
+  Let's create a directory for the data for the web application to store the data. Set it so that not only "myapp" users but also other development users can write.
 </p>
 <p>
-  「/datadrive」を<a href="https://en.linux.perlzemi.com/blog/20191211133524.html">mkdir</a>コマンドでデータ用ディレクトリを作成します。
+  Create a data directory with the <a href="https://en.linux.perlzemi.com/blog/20191211133524.html"> mkdir</a> command for "/ datadrive".
 </p>
 <pre>
-sudo mkdir /datadrive
+sudo mkdir / datadrive
 </pre>
 <p>
-  次に、このデータ用ディレクトリに、Webアプリケーションユーザー「myapp」と他の開発ユーザーが書き込めるようにします。
+  Next, allow the web application user "myapp" and other development users to write to this directory for data.
 </p>
 <ul>
-  <li><a href="/blog/20200327174004.html">データディレクトリに複数のユーザーが読み書きする方法 - Webアプリのファイルアップロードディレクトリ</a></li>
+  <li> <a href="/blog/20200327174004.html"> How multiple users read and write to the data directory --Web app file upload directory</a> </li>
 </ul>
 <p>
-  上記の手順の「myapp」ユーザーに関する部分だけを抜き出しました。
+  I have extracted only the part related to the "myapp" user in the above procedure.
 </p>
 <pre>
 sudo groupadd myapp-group
 sudo gpasswd -a myapp myapp-group
-sudo chgrp -R myapp-group /datadrive
-sudo chmod 775 /datadrive
-sudo chmod g+s /datadrive
+sudo chgrp -R myapp-group / datadrive
+sudo chmod 775 / datadrive
+sudo chmod g + s / datadrive
 
-# 確認
+# Verification
 ls -l / | grep datadrive
 </pre>
 <p>
-  これで、データ用ディレクトリが完成しました。
+  This completes the data directory.
 </p>
-<h3>Redisサーバー</h3>
+<h3> Redis server </h3>
 <p>
-  揮発性の情報の保存サーバーである<a href="/blog/20200525135533.html">Redisサーバーのインストール</a>と<a href="/blog/20200225174004.html">Redisサーバーの起動確認</a>を行います。
-</p>
-<p>
-  Redisは、主にユーザー認証とセッション管理に利用します。
+  <a href="/blog/20200525135533.html"> Redis server installation</a> and <a href="/blog/20200225174004.html"> Redis server startup confirmation <a href="/blog/20200525135533.html"> Redis server startup confirmation Do / a>.
 </p>
 <p>
-  RedisのPub/Sub機能を利用してpush通知、リアルタイム更新、リアルタイムチャットなどのリアルタイムWebに対応することもできます。
+  Redis is primarily used for user authentication and session management.
 </p>
-<h4>Redisサーバーのインストール</h4>
 <p>
-  Redsiサーバーをインストールします。
+  You can also use Redis' Pub / Sub feature to support real-time webs such as push notifications, real-time updates, and real-time chat.
+</p>
+<h4> Redis server installation </h4>
+<p>
+  Install the Redsi server.
 </p>
 <pre>
 sudo apt install -y redis-server
 </pre>
 <p>
-  Redisのインストールはすぐ終わっているはずですが、Redisサーバーの起動に内部で失敗するために、処理に時間がかかります。リトライなどをしているのでしょうか。しばらく待ちましょう。
+  The installation of Redis should be finished soon, but it takes a long time to start because the Redis server fails internally. Are you retrying? Let's wait for a while.
 </p>
-<h4>Redisサーバーの起動確認</h4>
+<h4> Confirm Redis server startup </h4>
 <p>
-  Redsiサーバーの起動確認を行います。
+  Check the startup of the Redsi server.
 </p>
 <pre>
 sudo systemctl status redis-server
 </pre>
 <p>
-  Redisサーバーのデフォルト設定では、IPv6が有効化されていない場合は、起動に失敗するようです。さくらのVPSのUbuntu 18では、IPv6が、デフォルトで設定されていません。
+  The default setting on the Redis server seems to fail to boot if IPv6 is not enabled. IPv6 is not set by default on Ubuntu 18 of Sakura's VPS.
 </p>
-<h4>Redis設定ファイルの編集</h4>
+<h4> Edit Redis configuration file </h4>
 <p>
-  Redis設定ファイルを<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">viエディタ</a>で編集します。間違った場合のためにバックアップもとっておきます。
+  Edit the Redis configuration file with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi editor</a>. Make a backup in case you make a mistake.
 </p>
 <pre>
 sudo cp /etc/redis/redis.conf /etc/redis/redis.conf.bak
 sudo vi /etc/redis/redis.conf
 </pre>
 <p>
-  以下を
+  The following
 </p>
 <pre>
-bind 127.0.0.1 ::1
+bind 127.0.0.1 :: 1
 </pre>
 <p>
-  以下に変更
+  Changed to<pre>
 </p>
-<pre>
-bind 127.0.0.1
-</pre>
-<h4>Redisの起動と確認</h4>
 <p>
-  Redisの起動と確認を行います。
+  bind 127.0.0.1
+</p>
+</pre>
+<h4> Start and check Redis </h4>
+<p>
+  Start and check Redis.
 </p>
 <pre>
 sudo systemctl start redis-server
 sudo systemctl status redis-server
 </pre>
-<h3>データベースサーバー MariaDB</h3>
+<h3> Database server MariaDB </h3>
 <p>
-  データベースサーバーであるMariaDBのインストールと起動確認を行います。
+  Install and check the startup of MariaDB, which is a database server.
 </p>
-<h4>データベースサーバーと関連ライブラリのインストール</h4>
+<h4> Install database server and related libraries </h4>
 <p>
-  データベースサーバーMariaDBと関連ライブラリをインストールします。<a href="/blog/20200422174004.html">mariadb-clientのインストール</a>、<a href="/blog/20200421174004.html">mariadb-serverのインストール</a>、<a href="/blog/20200411174004.html">libmysqlclient-dev のインストール</a>、<a href="/blog/20200419174004.html">libmariadb-devのインストール</a>を行います。
+  Install the database server MariaDB and related libraries. <a href="/blog/20200422174004.html"> Install mariadb-client</a>, <a href="/blog/20200421174004.html"> Install mariadb-server</a>, <a href= "/blog/20200411174004.html"> Install libmysqlclient-dev</a>, <a href="/blog/20200419174004.html"> Install libmariadb-dev</a>.
 </p>
 <pre>
 sudo apt install -y mariadb-client
@@ -648,263 +649,263 @@ sudo apt install -y mariadb-server
 sudo apt install -y libmariadbclient-dev
 sudo apt install -y libmariadb-dev
 </pre>
-<h4>データベースサーバーの起動確認</h4>
+<h4> Confirm database server startup </h4>
 <p>
-  <a href="/blog/20200417174004.html">MariaDBが起動</a>していることを確認します。
+  <a href="/blog/20200417174004.html"> Make sure MariaDB is running</a>.
 </p>
 <pre>
 sudo systemctl status mariadb
 </pre>
-<h4>rootユーザーでMariaDBに接続</h4>
+<h4> Connect to MariaDB as root user </h4>
 <p>
-  まず最初にMariaDBのrootユーザーでMariaDBに接続しましょう。
+  First of all, let's connect to MariaDB as the MariaDB root user.
 </p>
 <p>
-  rootユーザーで接続するためには、mysqlコマンドをsudoで実行します。ユーザー名はrootです。
+  To connect as the root user, run the mysql command with sudo. The user name is root.
 </p>
 <pre>
 sudo mysql -uroot
 </pre>
 <p>
-  MariaDBへの接続を終了するには「quit」と入力してEnterを押します。
+  To end the connection to MariaDB, type quit and press Enter.
 </p>
 <pre>
 quit
 </pre>
-<h4>データベースの作成</h4>
+<h4> Creating a database </h4>
 <p>
-  ここでは、Webアプリケーション用の<a href="https://en.mariadb.perlzemi.com/blog/20200521082643.html">データベースを作成</a>します。データベース名は、myappdbにしておきます。データベース名の変更には、少し工夫はいりますが、後でデータベース名の変更は可能です。
+  Here, <a href="https://en.mariadb.perlzemi.com/blog/20200521082643.html"> create a database</a> for your web application. The database name should be myappdb. Changing the database name requires some ingenuity, but you can change the database name later.
 </p>
 <pre>
 create database myappdb;
 </pre>
 <p>
-  作成したデータベースを確認するために、<a href="https://en.mariadb.perlzemi.com/blog/20200518082643.html">データベースの一覧</a>を表示します。
+  Display the <a href="https://en.mariadb.perlzemi.com/blog/20200518082643.html"> database list</a> to see the database you created.
 </p>
 <pre>
 show databases;
 </pre>
-<h4>アプリケーションユーザーの作成</h4>
+<h4> Creating an application user </h4>
 <p>
-  アプリケーション用のユーザー「myapp」を作成します。
+  Create a user "myapp" for the application.
 </p>
 <pre>
-# myappユーザーの作成
+#Myapp Create user
 create user myapp;
 </pre>
-<h4>権限とパスワードの設定</h4>
+<h4> Setting permissions and passwords </h4>
 <p>
-  myappユーザーにselect,update,insert,delete権限を与えパスワードを設定します。
+  Give the myapp user select, update, insert, delete permissions and set a password.
 </p>
 <p>
-  パスワードは「identified by」の後ろに続いている文字列です。この部分を、自分で設定してください。
+  The password is the string that follows "identified by". Please set this part yourself.
 </p>
 <pre>
-# myappユーザーにselect,update,insert,delete権限を与える
-grant insert,update,delete,select on myappdb.* to 'myapp'@'localhost' identified by 'eifjutab&amp;';
+#myapp Give user select, update, insert, delete permissions
+grant insert, update, delete, select on myappdb. * to'myapp' @'localhost' identified by'eifjutab &amp;';
 </pre>
 <p>
-  PerlでDBD::mysqlをインストールするときに、testデータベースへの接続権限必要になるので、設定しておきます。
+  When installing DBD :: mysql with Perl, you need to have connection permission to the test database, so set it.
 </p>
 <pre>
 create database test;
-grant all privileges on test.* to 'myapp'@'localhost' identified by 's3kr1t';
+grant all privileges on test. * to'myapp' @'localhost' identified by's3kr1t';
 </pre>
-<h4>アプリケーションユーザーでの接続確認</h4>
+<h4> Connection confirmation by application user </h4>
 <p>
-  接続を抜けて、新しく作成した「myapp」ユーザーで、MariaDBに接続できることを確認します。
+  Make sure you can disconnect and connect to MariaDB with the newly created "myapp" user.
 </p>
 <pre>
-# rootユーザーで接続
+#Connect as root user
 mysql -umyapp -p
 </pre>
 <p>
-  MaridDBの初期設定の詳しい解説は<a href="/blog/20200224174004.html">MariaDBの初期設定とユーザーの作成</a>が参考になります。
+  For a detailed explanation of MariaDB initial settings, refer to <a href="/blog/20200224174004.html"> MariaDB initial settings and user creation</a>.
 </p>
-<h3>Perl Web開発環境の構築</h3>
+<h3> Building a Perl Web development environment </h3>
 <p>
-  Perl Web開発環境の構築としてユーザー環境に<a href="https://en.perlzemi.com/">Perl</a>をインストールし、<a href="https://en.mojolicious.perlzemi.com/">Mojolicious</a>の小さなWebアプリケーションを立ち上げます。
+  Install <a href="https://en.perlzemi.com/"> Perl</a> in the user environment to build the Perl Web development environment, and <a href="https://en.mojolicious.perlzemi" Launch a small web application from .com / "> Mojolicious</a>.
 </p>
-<h4>Perlのインストール</h4>
+<h4> Perl installation </h4>
 <p>
-  ここでは、Perlのトラブルがなるべく少ない「perl-5.20.3」をインストールします。
-</p>
-<p>
-  公式なセキュリティフィックスのサポートが存在するバージョンが良い場合は、最新版のPerlかその前のバージョンのPerlをインストールしましょう。
+  Here, install "perl-5.20.3" which has as few Perl troubles as possible.
 </p>
 <p>
-  以下の手順からperlbrewでユーザー環境にPerlをインストールするための必要な部分を抜き出します。plenvで行いたい場合は、以下の手順の中にあるので参考にしてください。
+  If you prefer a version that has official security fix support, install the latest version of Perl or an earlier version of Perl.
+</p>
+<p>
+  Extract the necessary parts to install Perl in the user environment with perlbrew from the following procedure. If you want to do it with plenv, please refer to the procedure below.
 </p>
 <ul>
-  <li><a href="/blog/20200413174004.html">ユーザーPerlとcpanmのインストール</a></li>
+  <li> <a href="/blog/20200413174004.html"> User Perl and cpanm installation</a> </li>
 </ul>
 <p>
-  Perlのインストールは、ソースコードからビルドされ、さらに試験が実行されるので、非常に時間がかかります。10分～20分くらいかかる気がするので、お茶でも飲みましょう。
+  The Perl installation is very time consuming as it is built from source code and further tested. I think it will take about 10 to 20 minutes, so let's drink tea.
 </p>
 <pre>
-# perlbrewのインストール
-wget -O - http://install.perlbrew.pl | bash
+Install # perlbrew
+wget -O --http://install.perlbrew.pl | bash
 
-# perlbrewの設定を~/.bashrcに書き込み
-echo "source ~/perl5/perlbrew/etc/bashrc" &gt;&gt; ~/.bashrc
+Write # perlbrew settings to ~ / .bashrc
+echo "source ~ / perl5 / perlbrew / etc / bashrc" &gt;&gt; ~ / .bashrc
 
-# ~/.bashrcを再読み込み
-source  ~/.bashrc
+Reload # ~ / .bashrc
+source ~ / .bashrc
 
-# Perlのインストール
+#Install Perl
 perlbrew install perl-5.20.3
 
-# インストールしたPerlへの切り替え
+#Switch to installed Perl
 perlbrew switch perl-5.20.3
 
-# Perlのバージョン確認
+# Perl version check
 perl -v
 
-# cpanmのインストール
+# installation of cpanm
 perlbrew install-cpanm
 </pre>
-<h4>Webアプリケーションの立ち上げ</h4>
+<h4> Launching a web application </h4>
 <p>
-  次にMojoliciousのインストールとWebアプリケーションの起動を行います。
+  Next, install Mojolicious and start the web application.
 </p>
 <p>
-  以下の記事の内容を実行してください。最後の「ApacheからのリバースプキシによるWebアプリケーションへの接続」の部分以外の手順を実行しましょう。
+  Please execute the contents of the following articles. Follow the steps other than the last part, "Connecting to a web application with a reverse pixie from Apache".
 </p>
 <ul>
-  <li><a href="/blog/20200729134756.html">MojoliciousによるWebアプリケーションのデプロイ</a></li>
+  <li> <a href="/blog/20200729134756.html"> Deploying a web application with Mojolicious</a> </li>
 </ul>
-<h4>バッチプログラムがライブラリのパスを発見できるようにする</h4>
+<h4> Allow batch programs to find the library path </h4>
 <p>
-  バッチプログラムがWebアプリケーションのライブラリのパスを発見できるようにしておきましょう。Webアプリケーションに加えて、バッチプログラムを作成する場合の準備をしておきます。
+  Let the batch program find the path to the web application's library. Be prepared to create a batch program in addition to your web application.
 </p>
 <p>
-  「~/.bashrc」に追加しましょう。
+  Let's add it to "~ / .bashrc".
 </p>
 <pre>
-vi ~/.bashrc
+vi ~ / .bashrc
 </pre>
 <p>
-  以下の内容を追記します。
+  Add the following contents.
 </p>
 <pre>
-export PERL5LIB=/home/myapp/webapp/lib
+export PERL5LIB = / home / myapp / webapp / lib
 </pre>
-<h3>ドメイン名の取得とDNSサーバーの設定</h3>
+<h3> Get domain name and set DNS server </h3>
 <p>
-  ドメインを取得して、ドメイン名とサーバーIPアドレスを紐づけましょう。ドメイン名は、インターネット上でWebサイトを公開するためと、メール送信サーバーの設定のために必要です。
+  Get the domain and associate the domain name with the server IP address. The domain name is required to publish the website on the Internet and to set up the mail sending server.
 </p>
 <p>
-  さくらVPSの場合のサーバーのIPアドレスは、VPSコントロールパネルの「IPv4」「ネットワーク情報」「アドレス」に記載されています。
+  The IP address of the server for Sakura VPS is described in "IPv4", "Network Information", and "Address" on the VPS control panel.
 </p>
 <p>
-  以下の記事の中のAレコードの設定のみを行ってください。
-</p>
-<ul>
-  <li><a href="/blog/20200807062918.html">DNSサーバーの設定 - ドメイン名とIPアドレスを対応させる</a></li>
-</ul>
-<p>
-  この記事のここからの例では、ドメイン名として「build-sakuravps-ubuntu18.perlclub.net」を使用します。
-</p>
-<h3>メールアドレスの作成とDNSサーバーの設定</h3>
-<p>
-  メールアドレスの作成とDNSサーバーの設定を行いましょう。
+  Please set only the A record in the following articles.
 </p>
 <ul>
-  <li><a href="/blog/20200828123127.html">メールアドレスの作成とDNSサーバーの設定</a></li>
+  <li> <a href="/blog/20200807062918.html"> DNS server settings-Make domain names correspond to IP addresses</a> </li>
 </ul>
-<h3>cron</h3>
 <p>
-  定期プログラム実行の常駐アプリケーションであるcronの起動確認を行います。
+  The examples from here in this article use "build-sakuravps-ubuntu18.perlclub.net" as the domain name.
 </p>
-<h4>cronの起動確認</h4>
+<h3> Creating an email address and setting up a DNS server </h3>
 <p>
-  以下の記事の「sudo systemctl status cron」を実行してApacheが起動していることを確認してください。
+  Let's create an email address and set up a DNS server.
 </p>
 <ul>
-  <li><a href="/blog/20200520084454.html">cronの起動・停止・再起動・状態確認, cronの実行ログ</a></li>
+  <li> <a href="/blog/20200828123127.html"> Creating an email address and setting up a DNS server</a> </li>
 </ul>
-<h4>crontabの設定</h4>
+<h3> cron </h3>
 <p>
-  <a href="/blog/20200604085516.html">crontabの初期設定</a>をしておきましょう。
+  Check the startup of cron, which is a resident application for executing periodic programs.
+</p>
+<h4> Confirmation of cron startup </h4>
+<p>
+  Make sure Apache is running by running "sudo systemctl status cron" in the following article.
+</p>
+<ul>
+  <li> <a href="/blog/20200520084454.html"> Start / stop / restart / status check of cron, cron execution log</a> </li>
+</ul>
+<h4> Crontab settings </h4>
+<p>
+  <a href="/blog/20200604085516.html"> Initialize crontab</a>.
 </p>
 <p>
-  cronの設定はcrontabに書きます。crontabは、ユーザーごとに持つことができます。myappというユーザーでcrontabを編集すると、それはmyappのcrontabになります。
+  Write cron settings in crontab. You can have a crontab for each user. If you edit the crontab as a user named myapp, it becomes myapp's crontab.
 </p>
 <p>
-  crontabを編集するには「-e」オプションを使用します。
+  Use the "-e" option to edit the crontab.
 </p>
 <pre>
 crontab -e
 </pre>
 <p>
-  エディタが起動します。
+  The editor will start.
 </p>
 <p>
-  cronの落とし穴として、ユーザー環境にインストールしたPerlが使われないというものがあります。これを解決するためにPATH環境変数を設定します。
-</p>
-<pre>
-env | grep -P '^PATH'
-</pre>
-<p>
-  表示された値を以下のように設定します。
+  One of the pitfalls of cron is that Perl installed in the user environment is not used. Set the PATH environment variable to resolve this.
 </p>
 <pre>
-PATH=/home/myapp/perl5/perlbrew/bin:/home/myapp/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/myapp/bin
+env | grep -P'^ PATH'
 </pre>
 <p>
-  cronの自動実行でエラーが発生した場合にメールが来るように設定しておきましょう。
+  Set the displayed value as follows.
 </p>
 <pre>
-MAILTO=kimoto_test@perlclub.net
+PATH = / home / myapp / perl5 / perlbrew / bin: / home / myapp / perl5 / perlbrew / perls / perl-5.16.2 / bin: / usr / kerberos / bin: / usr / local / bin: / bin: / usr / bin: / home / myapp / bin
 </pre>
 <p>
-  バッチプログラムがWebアプリケーションのライブラリのパスを読み込んでくれるように設定しておきましょう。
+  You will receive an email if an error occurs in the automatic execution of cron.Let's set it to.
 </p>
 <pre>
-PERL5LIB=/home/myapp/webapp/lib
+MAILTO = kimoto_test@perlclub.net
 </pre>
 <p>
-  保存して終了しましょう。
+  Let's set the batch program to read the path of the library of the web application.
 </p>
-<h3>Apache</h3>
+<pre>
+PERL5LIB = / home / myapp / webapp / lib
+</pre>
 <p>
-  WebサーバーであるApacheのインストールと設定を行います。HTTPSで接続できるようにSSLの設定を行います。Mojoliciousアプリケーションに接続できるようにバーチャルホストとリバースプロキシの設定を行います。
+  Save and exit.
+</p>
+<h3> Apache </h3>
+<p>
+  Install and configure Apache, the web server. Set up SSL so that you can connect via HTTPS. Set up a virtual host and reverse proxy to connect to Mojolicious applications.
 </p>
 <p>
-  ドメイン名の取得とDNSサーバーの設定で、使用するドメインが正しくサーバーのIPアドレスに紐づけられていることが前提です。
+  It is assumed that the domain to be used is correctly linked to the IP address of the server in the acquisition of the domain name and the setting of the DNS server.
 </p>
-<h4>Apacheのインストール</h4>
+<h4> Apache installation </h4>
 <p>
-  <a href="/blog/20200424174004.html">Apache</a>のインストールを行います。
+  Install <a href="/blog/20200424174004.html"> Apache</a>.
 </p>
 <pre>
 sudo apt install -y apache2
 </pre>
-<h4>Apacheの起動確認</h4>
+<h4> Apache startup confirmation </h4>
 <p>
-  <a href="/blog/20200519084454.html">Apacheの起動確認</a>を行います。
+  <a href="/blog/20200519084454.html"> Check Apache startup</a>.
 </p>
 <pre>
 sudo systemctl status apache2
 </pre>
-<h4>Apacheモジュール</h4>
+<h4> Apache module </h4>
 <p>
-  リバースプロキシの設定とSSLの設定とWebSocketの設定に必要なApacheモジュールを有効にします。
+  Enable the Apache module required for reverse proxy settings, SSL settings, and WebSocket settings.
 </p>
 <p>
-  <a href="/blog/20200318174004.html">mod_ssl</a>, <a href="/blog/20200311174004.html">mod_rewrite</a>, <a href="/blog/20200309174004.html">mod_headers</a>, <a href="/blog/20200310174004.html">mod_proxy</a>, <a href="/blog/20200220174004.html">mod_proxy_http</a>, <a href="/blog/20200718090758.html">proxy_wstunnel</a>を有効にします。
+  <a href="/blog/20200318174004.html"> mod_ssl</a>, <a href="/blog/20200311174004.html"> mod_rewrite</a>, <a href="/blog/20200309174004.html" > mod_headers</a>, <a href="/blog/20200310174004.html"> mod_proxy</a>, <a href="/blog/20200220174004.html"> mod_proxy_http</a>, <a href=" Enable /blog/20200718090758.html "> proxy_wstunnel</a>.
 </p>
 <pre>
-# mod_sslを有効化
+Enable # mod_ssl
 sudo a2enmod ssl
 
-# mod_rewriteを有効化
+Enable # mod_rewrite
 sudo a2enmod rewrite
 
-# mod_headersを有効化
+Enable # mod_headers
 sudo a2enmod headers
 
-# mod_proxyを有効化
+Enable # mod_proxy
 sudo a2enmod proxy
 
 # mod_proxy_http
@@ -914,52 +915,52 @@ sudo a2enmod proxy_http
 sudo a2enmod proxy_wstunnel
 </pre>
 <p>
-  Apacheを再起動します。
+  Restart Apache.
 </p>
 <pre>
 sudo systemctl restart apache2
 </pre>
 <p>
-  Apacheの状態確認を行います。
+  Check the status of Apache.
 </p>
 <pre>
 sudo systemctl status apache2
 </pre>
-<h4>バーチャルホストとリバースプロキシの設定</h4>
+<h4> Virtual host and reverse proxy settings </h4>
 <p>
-  バーチャルホストとリバースプロキシを設定してApacheへのHTTP接続をMojoliciousアプリケーションに転送します。以下の手順から、必要な部分を抜粋します。
+  Set up a virtual host and reverse proxy to forward HTTP connections to Apache to your Mojolicious application. Extract the necessary parts from the following procedure.
 </p>
 <ul>
-  <li><a href="/blog/20200306174004.html">WebサイトをバーチャルホストとリバースプロキシでApacheから接続する</a></li>
+  <li> <a href="/blog/20200306174004.html"> Connect your website from Apache with a virtual host and reverse proxy</a> </li>
 </ul>
 <p>
-  設定ファイルを以下のディレクトリに配置します。
+  Place the configuration file in the following directory.
 </p>
 <pre>
-/etc/apache2/sites-available
+/ etc / apache2 / sites-available
 </pre>
 <p>
-  この設定ファイルのディレクトリについては、以下のページで詳しく解説しています。
+  The directory of this configuration file is explained in detail on the following page.
 </p>
 <p>
-  サイトのドメイン名(ここではbuild-sakuravps-ubuntu18.perlclub.net)に「.conf」を付けた名前で、<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">vi</a>コマンドで、設定ファイルを作成しましょう。
+  <a href="https://en.linux.perlzemi.com/blog/20190401171737.html" with the site domain name (here build-sakuravps-ubuntu18.perlclub.net) with ".conf" Let's create a configuration file with the "> vi</a> command.
 </p>
 <pre>
-cd /etc/apache2/sites-available
+cd / etc / apache2 / sites-available
 sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
 </pre>
 <p>
-  バーチャルホストとリバースプロキシの設定ファイルの内容です。WebSocketとHTTPSに対応したリバースプロキシの設定です。SSL証明書は、デフォルトで準備されている自己SSL証明書を指定しています。これは、後で、正式なSSL証明書に差し替えます。
+  The contents of the virtual host and reverse proxy configuration files. It is a setting of the reverse proxy corresponding to WebSocket and HTTPS. The SSL certificate specifies the self-SSL certificate that is prepared by default. This will later be replaced with a formal SSL certificate.
 </p>
 <pre>
-&lt;VirtualHost *:80&gt;
+&lt;VirtualHost *: 80&gt;
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   RewriteEngine on
-  RewriteRule (.*)?$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
 &lt;/VirtualHost&gt;
 
-&lt;VirtualHost *:443&gt;
+&lt;VirtualHost *: 443&gt;
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   &lt;Proxy *&gt;
@@ -968,73 +969,73 @@ sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
 
   ProxyRequests Off
   ProxyPreserveHost On
-  ProxyPass /websocket ws://localhost:8080/websocket
-  ProxyPass / http://localhost:8080/ keepalive=On
-  ProxyPassReverse / http://localhost:8080/
+  ProxyPass / websocket ws: // localhost: 8080 / websocket
+  ProxyPass / http: // localhost: 8080 / keepalive = On
+  ProxyPassReverse / http: // localhost: 8080 /
   RequestHeader set X-Forwarded-Proto "https"
 
   SSLEngine on
-  SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+  SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
 &lt;/VirtualHost&gt;
 </pre>
-<h4>設定ファイルの有効化</h4>
+<h4> Enable configuration file </h4>
 <p>
-  設定が終わったら、設定ファイルを有効にします。
+  After completing the settings, enable the configuration file.
 </p>
 <pre>
 sudo a2ensite build-sakuravps-ubuntu18.perlclub.net.conf
 </pre>
-<h4>設定ファイルの再読み込み</h4>
+<h4> Reloading the configuration file </h4>
 <p>
-  Apacheの設定ファイルを再読み込みします。再読み込みの前に、<a href="/blog/20200609132409.html">Apacheの設定ファイルのテスト</a>をしましょう。
+  Reload the Apache configuration file. Before reloading, let's <a href="/blog/20200609132409.html"> test the Apache config file</a>.
 </p>
 <pre>
 sudo apachectl -t
 </pre>
 <p>
-  Apacheを再起動します。
+  Restart Apache.
 </p>
 <pre>
 sudo systemctl reload apache2
 </pre>
 <p>
-  以下のドメインででWebサイトが表示できれば成功です。SSLの警告がでるのは、この後、正式なSSL証明書の設定をすることで、修正されます。
+  If you can display the website in the following domain, it is successful. The SSL warning will be corrected after this by setting the official SSL certificate.
 </p>
 <pre>
 https://build-sakuravps-ubuntu18.perlclub.net
 </pre>
-<h4>SSL証明書の取得</h4>
+<h4> Get SSL certificate </h4>
 <p>
-  HTTPSでリクエストを受けるために、<a href="/blog/20200618081050.html">Let's Encryptを使ってSSL証明書の発行</a>を行います。
+  To receive the request over HTTPS, <a href="/blog/20200618081050.html"> Let's Encrypt is used to issue an SSL certificate</a>.
 </p>
 <p>
-  Let's Encryptは、HTTPリクエストによってSSL証明書の認証を行うので、Webアプリケーションを起動します。
+  Let's Encrypt authenticates the SSL certificate by HTTP request, so it launches a web application.
 </p>
 <pre>
-# Webアプリケーションの起動
+#Launch web application
 hypnotoad webapp.pl
 </pre>
 <p>
-  ドメイン名は「build-sakuravps-ubuntu18.perlclub.net」という名前で取得しており、DNSサーバーにおける、ドメイン名とIPアドレスの対応の記述は済んでいることを、この記事では前提とします。適宜対応する部分を書き換えてください。
+  This article assumes that the domain name is obtained as "build-sakuravps-ubuntu18.perlclub.net" and that the correspondence between the domain name and the IP address in the DNS server has been described. Please rewrite the corresponding part as appropriate.
 </p>
 <p>
-  メールアドレスの作成の作業が終了しており「kimoto_test@perlclub.net」というメールアドレスで送受信できることをこの記事では前提とします。適宜対応する部分を書き換えてください。
+  This article assumes that you have completed the work of creating an email address and can send and receive with the email address "kimoto_test@perlclub.net". Please rewrite the corresponding part as appropriate.
 </p>
 <p>
-  SSL証明書をLet's Encryptで取得するには、certbotコマンドを実行してください。
+  To get the SSL certificate with Let's Encrypt, execute the certbot command.
 </p>
 <pre>
 sudo certbot certonly --agree-tos --non-interactive -d build-sakuravps-ubuntu18.perlclub.net --webroot -w /home/myapp/webapp/public --email kimoto_test@perlclub.net
 </pre>
 <p>
-  以下のメッセージが含まれていれば成功です。
+  If the following message is included, it is successful.
 </p>
 <pre>
 Congratulations! Your certificate and chain have been saved at:
 </pre>
 <p>
-  SSL証明書が以下のディレクトリに作成されます。上から、SSLの証明書ファイル、SSL証明書の秘密鍵ファイル、中間証明書ファイルです。
+  The SSL certificate will be created in the following directory. From the top, the SSL certificate file, the SSL certificate private key file, and the intermediate certificate file.
 </p>
 <pre>
 /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/cert.pem
@@ -1042,70 +1043,70 @@ Congratulations! Your certificate and chain have been saved at:
 /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/chain.pem
 </pre>
 <p>
-  lsコマンドで実際に見てみましょう。
+  Let's see it in action with the ls command.
 </p>
 <pre>
 sudo ls -l /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net
 </pre>
 <p>
-  Let's EncryptでのSSL証明書の更新する場合「certbot renew」コマンドを使用します。取得したすべてのSSL証明書に対して更新が必要かどうかの確認が行われ、更新期限が1ヵ月以内であれば証明書が更新されます。
+  Use the "certbot renew" command to renew the SSL certificate with Let's Encrypt. All the SSL certificates obtained will be checked for renewal, and if the renewal period is within one month, the certificate will be renewed.
 </p>
 <pre>
 sudo certbot renew -q --no-self-upgrade --post-hook "systemctl reload apache2"
 </pre>
 <p>
-  このコマンドは<a href="/blog/20200830052743.html">cron</a>の自動更新に設定しておくと、自動で更新されます。cronの設定については、後程解説します。
+  If this command is set to automatic update of <a href="/blog/20200830052743.html"> cron</a>, it will be updated automatically. I will explain the cron settings later.
 </p>
-<h4>Apacheの設定ファイルにSSL証明書を追加</h4>
+<h4> Add SSL certificate to Apache config file </h4>
 <p>
-  <a href="/blog/20200611082716.html">Apacheの設定ファイルにSSL証明書を追加</a>します。
-</p>
-<p>
-  まずSSLの基本設定ファイルを作成します。これは、後でWebアプリケーションが増えた場合に共通して使うことを想定しています。
+  <a href="/blog/20200611082716.html"> Add the SSL certificate to the Apache config file</a>.
 </p>
 <p>
-  「conf-available/ssl-basic.conf」というファイル名で<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">viエディタ</a>で作成します。
+  First, create an SSL basic configuration file. This is intended to be used in common later when the number of web applications increases.
+</p>
+<p>
+  <a href="https://en.li" with the file name "conf-available / ssl-basic.conf"Create with nux.perlzemi.com/blog/20190401171737.html "> vi editor</a>.
 </p>
 <pre>
-cd /etc/apache2
+cd / etc / apache2
 sudo vi conf-available/ssl-basic.conf
 </pre>
 <p>
-  以下の内容を追加します。
+  Add the following content.
 </p>
 <pre>
 SSLEngine on
-SSLProtocol             all -SSLv2 -SSLv3
-SSLCipherSuite          ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS
-SSLHonorCipherOrder     on
+SSLProtocol all -SSLv2 -SSLv3
+SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305: ECDHE-RSA-CHACHA20-POLY1305: ECDHE-ECDSA-AES128-GCM-SHA256: ECDHE-RSA-AES128-GCM-SHA256: ECDHE-ECDSA-AES256-GCM-SHA384 -AES256-GCM-SHA384: DHE-RSA-AES128-GCM-SHA256: DHE-RSA-AES256-GCM-SHA384: ECDHE-ECDSA-AES128-SHA256: ECDHE-RSA-AES128-SHA256: ECDHE-ECDSA-AES128-SHA : ECDHE-RSA-AES256-SHA384: ECDHE-RSA-AES128-SHA: ECDHE-ECDSA-AES256-SHA384: ECDHE-ECDSA-AES256-SHA: ECDHE-RSA-AES256-SHA: DHE-RSA-AES128-SHA256: DHE -RSA-AES128-SHA: DHE-RSA-AES256-SHA256: DHE-RSA-AES256-SHA: ECDHE-ECDSA-DES-CBC3-SHA: ECDHE-RSA-DES-CBC3-SHA: EDH-RSA-DES-CBC3 -SHA: AES128-GCM-SHA256: AES256-GCM-SHA384: AES128-SHA256: AES256-SHA256: AES128-SHA: AES256-SHA: DES-CBC3-SHA :! DSS
+SSLHonorCipherOrder on
 </pre>
 <p>
-  次にWebアプリケーションの設定ファイルを編集します。自己SSL証明書の記載部分をLet's Encryptで作ったSSL証明書に変更します。
+  Then edit the web application's configuration file. Change the description part of the self SSL certificate to the SSL certificate created by Let's Encrypt.
 </p>
 <pre>
-cd /etc/apache2/sites-available
+cd / etc / apache2 / sites-available
 sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
 </pre>
 <p>
-  元のSSL証明書の設定部分です。
+  This is the setting part of the original SSL certificate.
 </p>
 <pre>
   SSLEngine on
-  SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+  SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
 </pre>
 <p>
-  以下のように書き換えてください。
+  Please rewrite as follows.
 </p>
 <pre>
-&lt;VirtualHost *:80&gt;
+&lt;VirtualHost *: 80&gt;
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   RewriteEngine on
-  RewriteRule (.*)?$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
 &lt;/VirtualHost&gt;
 
-&lt;VirtualHost *:443&gt;
+&lt;VirtualHost *: 443&gt;
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   &lt;Proxy *&gt;
@@ -1114,12 +1115,12 @@ sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
 
   ProxyRequests Off
   ProxyPreserveHost On
-  ProxyPass /websocket ws://localhost:8080/websocket
-  ProxyPass / http://localhost:8080/ keepalive=On
-  ProxyPassReverse / http://localhost:8080/
+  ProxyPass / websocket ws: // localhost: 8080 / websocket
+  ProxyPass / http: // localhost: 8080 / keepalive = On
+  ProxyPassReverse / http: // localhost: 8080 /
   RequestHeader set X-Forwarded-Proto "https"
   
-  # SSL証明書
+  #SSL certificate
   Include conf-available/ssl-basic.conf
   SSLCertificateFile /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/cert.pem
   SSLCertificateKeyFile /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/privkey.pem
@@ -1127,265 +1128,265 @@ sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
 &lt;/VirtualHost&gt;
 </pre>
 <p>
-  Apacheの設定ファイルが正しいかテストを行います。
+  Test if the Apache configuration file is correct.
 </p>
 <pre>
 sudo apachectl -t
 </pre>
 <p>
-  SSL証明書の更新後、SSL証明書を再読み込みするために、<a href="/blog/20200605104005.html">systemctl</a>コマンドでApacheの再起動をします。
+  After updating the SSL certificate, restart Apache with the <a href="/blog/20200605104005.html"> systemctl</a> command to reload the SSL certificate.
 </p>
 <pre>
 sudo systemctl reload apache2
 </pre>
 <p>
-  WebサイトにアクセスしてSSL証明書が有効になっていればOKです。
+  It's OK if you visit the website and the SSL certificate is valid.
 </p>
-<h4>Let's EncryptでのSSL証明書の更新の自動化</h4>
+<h4> Automation of SSL certificate renewal with Let's Encrypt </h4>
 <p>
-  Let's EncryptでのSSL証明書の更新を手動で行うのは、手間がかかります。一週間に一回、自動的に更新するように設定しておきましょう。
-</p>
-<p>
-  一日一回の場合は、もしcertbotが間違っていた場合に、大量にSSL証明書を発行してしまって、しばらくSSL証明書が取得できないという事態になる可能性があるので、やめておいた方がリスクは避けられます。
+  Manually updating the SSL certificate with Let's Encrypt is tedious. Let's set it to update automatically once a week.
 </p>
 <p>
-  1ヵ月に一回だと、もう少し頻度を上げた方が、間違っている場合の確認がしやすいかなと感じます。
+  If it is once a day, if the certbot is wrong, it may issue a large number of SSL certificates and you may not be able to obtain the SSL certificate for a while, so please stop it. But the risk is avoided.
 </p>
 <p>
-  というわけで、ここでは、1週間に1回、月曜日の9時に更新するという記述にしておきます。
+  If it is once a month, I feel that it is easier to check if it is wrong if you increase the frequency a little more.
 </p>
 <p>
-  rootのcrontabを修正するには「sudo」をつけてcrontabを起動します。
+  So, here, I will update it once a week at 9 o'clock on Monday.
+</p>
+<p>
+  To modify the root crontab, add "sudo" and start crontab.
 </p>
 <pre>
 sudo crontab -e
 </pre>
 <p>
-  以下のようにcrontabの内容を設定します。メールアドレスは、自分が受信できるメールアドレスを指定してください。
+  Set the contents of crontab as follows. For the e-mail address, specify the e-mail address that you can receive.
 </p>
 <pre>
-MAILTO=kimoto_test@perlclub.net
+MAILTO = kimoto_test@perlclub.net
 
 0 9 * * 1 certbot renew -q --no-self-upgrade --post-hook "systemctl reload apache2"
 </pre>
-<h3>Webアプリケーションのsystemdによる管理</h3>
+<h3> Systemd management of web applications </h3>
 <p>
-  OPを再起動したときにMojoliciousアプリケーションも自動起動するように<a href="/blog/20200901150837.html">Mojoliciousアプリケーションをsystemdへ登録</a>しましょう。
+  Let's <a href="/blog/20200901150837.html"> register the Mojolicious application with systemd</a> so that the Mojolicious application will also start automatically when the OP is restarted.
 </p>
 <p>
-  ここでは、perlbrewを使って、Perl 5.20.3をインストールしていることを前提とします。Mojoliciousアプリケーションも上記手順で「Webapp」という名前で作成したことを前提としています。
+  Here, it is assumed that you have installed Perl 5.20.3 using perlbrew. It is assumed that the Mojolicious application was also created with the name "Webapp" in the above procedure.
 </p>
-<h4>systemdの設定ファイル</h4>
+<h4> systemd configuration file </h4>
 <p>
-  「webapp」というサービス名で、systemdに登録します。以下のファイルを新規作成します。
+  Register with systemd with the service name "webapp". Create a new file as follows.
 </p>
 <pre>
 sudo vi /lib/systemd/system/webapp.service
 </pre>
 <p>
-  <a href="https://en.linux.perlzemi.com/blog/20190401171737.html">vi</a>コマンド開いて以下の内容を書き込んでください。
+  <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> Open the command and write the following content.
 </p>
 <pre>
 [Unit]
-Description=My Mojolicious application
-After=network.target
+Description = My Mojolicious application
+After = network.target
 
 [Service]
-Type=forking
-PIDFile=/home/myapp/webapp/script/hypnotoad.pid
-ExecStart=/home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp
-ExecReload=/home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp
-ExecStop=/home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp --stop
-KillMode=process
-User=myapp
-Group=myapp-group
-Environment=MY_SERVER_ENV=my_dev
+Type = forking
+PIDFile = / home / myapp / webapp / script / hypnotoad.pid
+ExecStart = / home / myapp / perl5 / perlbrew / perls / perl-5.20.3 / bin / hypnotoad / home / myapp / webapp / script / webapp
+ExecReload = / home / myapp / perl5 / perlbrew / perls / perl-5.20.3 / bin / hypnotoad / home / myapp / webapp / script / webapp
+ExecStop = / home / myapp / perl5 / perlbrew / perls / perl-5.20.3 / bin / hypnotoad / home / myapp / webapp / script / webapp --stop
+KillMode = process
+User = myapp
+Group = myapp-group
+Environment = MY_SERVER_ENV = my_dev
 
 [Install]
-WantedBy=multi-user.target
+WantedBy = multi-user.target
 </pre>
-<h4>サービスの有効化</h4>
+<h4> Service activation </h4>
 <p>
-  サービスを有効化しましょう。
+  Let's activate the service.
 </p>
 <pre>
 sudo systemctl enable webapp
 </pre>
 <p>
-  もしMojoliciousアプリケーションがすでに起動している場合は、停止します。
+  If the Mojolicious application is already running, stop it.
 </p>
 <pre>
 /home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp --stop
 </pre>
 <p>
-  Mojoliciousアプリケーションをsystemdの管理下でスタートしましょう。
+  Start your Mojolicious application under systemd's control.
 </p>
 <pre>
 sudo systemctl start webapp
 </pre>
 <p>
-  Mojoliciousアプリケーションが起動しているかどうか確認しましょう。
+  Let's check if the Mojolicious application is running.
 </p>
 <pre>
 sudo systemctl status webapp
 </pre>
 <p>
-  Mojoliciousアプリケーションが再起動できるか確認しましょう。
+  Check if the Mojolicious application can be restarted.
 </p>
 <pre>
 sudo systemctl reload webapp
 </pre>
 <p>
-  Mojoliciousアプリケーションが停止できるか確認しましょう。
+  Let's see if the Mojolicious application can be stopped.
 </p>
 <pre>
 sudo systemctl stop webapp
 </pre>
 <p>
-  Mojoliciousアプリケーションを立ち上げておきましょう。
+  Let's launch the Mojolicious application.
 </p>
 <pre>
 sudo systemctl start webapp
 </pre>
-<h4>OSの再起動</h4>
+<h4> Restart the OS </h4>
 <p>
-  <a href="/blog/20200903120232.html">OSを再起動</a>を行ってMojoliciousアプリケーションが自動再起動されるか確認しましょう。
+  Do <a href="/blog/20200903120232.html"> Restart the OS</a> and see if the Mojolicious application is automatically restarted.
 </p>
 <pre>
 sudo reboot
 </pre>
-<h3>メール送信</h3>
+<h3> Send email </h3>
 <p>
-  sendmailコマンドでメール送信ができるようにします。メール送信サーバーとして利用するpostfixのインストールを行います。クラウドメールサービスSendGridをpostfixと連携させる設定を行います。
+  Allows you to send mail with the sendmail command. Install postfix to be used as an email sending server. Set the cloud mail service SendGrid to work with postfix.
 </p>
-<h4>postfixのインストール</h4>
+<h4> Postfix installation </h4>
 <p>
-  メール送信サーバー<a href="/blog/20200423174004.html">postfixのインストール</a>を行いましょう。メール送信サーバーとして機能するpostfixをインストールするとメールを送信するためのsendmailコマンドが使える用になります。
+  Mail sending server <ahref="/blog/20200423174004.html"> Install postfix</a>. If you install postfix, which functions as an email sending server, you can use the sendmail command to send emails.
 </p>
 <pre>
 sudo apt install -y postfix
 </pre>
 <p>
-  インストールコマンドを実行すると、GUIのような画面が立ち上がります。
+  When you execute the installation command, a GUI-like screen will appear.
 </p>
 <p>
-  キーボードの右を押すと、Okが光ります。Enterを押します。
+  Press the right side of the keyboard and Ok will illuminate. Press Enter.
 </p>
 <p>
-  上下キーで「No configuration」を選択します。右キーを押すとOkに勧めるので、Enterを押します。
+  Select "No configuration" with the up and down keys. Press the right key to recommend Ok, so press Enter.
 </p>
 <p>
-  postfixがインストールされます。
+  postfix will be installed.
 </p>
-<h4>SendGridへの申し込み</h4>
+<h4> Apply for SendGrid </h4>
 <p>
-  SendGridトップページから、メールアドレスを入力して申し込みます。
-</p>
-<p>
-  <a href="https://sendgrid.kke.co.jp">SendGrid申し込み</a>
+  From the SendGrid top page, enter your email address to apply.
 </p>
 <p>
-  翌営業日までには、アカウントが発行されます。
+  <a href="https://sendgrid.kke.co.jp"> SendGrid application</a>
 </p>
 <p>
-  SendGridとposfixの連携については、<a href="/blog/20200521085509.html">クラウドメール配信SendGridとPostfixとの連携</a>で解説しているものを、必要な部分だけ、以下に書き出します。
-</p>
-<h4>APIキーを取得する</h4>
-<p>
-  APIキーを取得しましょう。SendGridの管理画面にログインします。左のサイドバーの「Settings」をクリック。「API keys」をクリック。
+  Your account will be issued by the next business day.
 </p>
 <p>
-  右上の「Create API Key」をクリック。
+  Regarding the cooperation between SendGrid and postfix, the one explained in <a href="/blog/20200521085509.html"> Cloud mail delivery SendGrid and Postfix cooperation</a> is written below only for the necessary parts. increase.
+</p>
+<h4> Get the API key </h4>
+<p>
+  Get your API key. Log in to the SendGrid management screen. Click "Settings" in the left sidebar. Click "API keys".
 </p>
 <p>
-  「API Key name」に任意の名前を入力。(例)perlgenki。
+  Click "Create API Key" in the upper right.
 </p>
 <p>
-  「API Key Permissions」を「Full Access」に。
+  Enter any name in "API Key name". (Example) perlgenki.
 </p>
 <p>
-  作成されたAPIキーが表示されます。一度しか表示されないので、コピペして、どこかに保存してください。もし画面を消してしまった場合は、削除して、作成しなおしましょう。
+  Change "API Key Permissions" to "Full Access".
 </p>
-<h4>postfixの設定ファイルの編集</h4>
 <p>
-  postfixの設定ファイルを<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">vi</a>コマンドで編集します。
+  The created API key is displayed. It will only be displayed once, so copy and paste it and save it somewhere. If you turn off the screen, delete it and recreate it.
+</p>
+<h4> Edit postfix configuration file </h4>
+<p>
+  Edit the postfix configuration file with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> command.
 </p>
 <pre>
 sudo vi /etc/postfix/main.cf
 </pre>
 <p>
-  以下の内容を記述します。その他の設定はいらず、これだけOKです。
+  Describe the following contents. No other settings are required, just this is OK.
 </p>
 <pre>
 smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_password_maps = hash: / etc / postfix / sasl_passwd
 smtp_sasl_security_options = noanonymous
 smtp_sasl_tls_security_options = noanonymous
 smtp_tls_security_level = encrypt
 header_size_limit = 4096000
-relayhost = [smtp.sendgrid.net]:587
+relayhost = [smtp.sendgrid.net]: 587
 </pre>
 <p>
-  ここで上で設定に記述したパスワードファイルを作成します。
+  Now create the password file described in the settings above.
 </p>
 <pre>
-sudo vi /etc/postfix/sasl_passwd
+sudo vi / etc / postfix / sasl_passwd
 </pre>
 <p>
-  SendGridで取得したAPIキーを指定します。APIキーの部分を、取得したAPIキーに書き換えてください。
+  Specify the API key obtained by SendGrid. Replace the API key part with the obtained API key.
 </p>
 <pre>
-[smtp.sendgrid.net]:587 apikey:APIキー
+[smtp.sendgrid.net]: 587 apikey: API key
 </pre>
 <p>
-  次に、このファイルがrootアカウントでのみ読み書きができるよう制限されていることを確認して、postmap コマンドを使用してPostfixがこの新しいファイルを使用するようハッシュテーブルを更新します:
+  Then make sure that this file is restricted to read and write only by the root account, and use the postmap command to update the hashtable for Postfix to use this new file:
 </p>
 <pre>
-sudo chmod 600 /etc/postfix/sasl_passwd
-sudo postmap /etc/postfix/sasl_passwd
+sudo chmod 600 / etc / postfix / sasl_passwd
+sudo postmap / etc / postfix / sasl_passwd
 </pre>
 <p>
-  最後にPostfixを<a href="/blog/20200605104005.html">systemctl</a>で、起動してください。
+  Finally, start Postfix with <a href="/blog/20200605104005.html"> systemctl</a>.
 </p>
 <pre>
-# 起動
+# Start-up
 sudo systemctl start postfix
 
-# 再起動したい場合は以下で
+#If you want to restart, use the following
 sudo systemctl restart postfix
 </pre>
 <p>
-  Postfixの状態を確認します。
+  Check the status of Postfix.
 </p>
 <pre>
 sudo systemctl status postfix
 </pre>
-<h4>sendmailコマンドでメール送信</h4>
+<h4> Send an email with the sendmail command </h4>
 <p>
-  sendmailコマンドでメールを送信してみましょう。[メール送信元] [メール送信先]のところを送信可能なのメールアドレスにしてください。
+  Let's send an email with the sendmail command. Please set [Email sender] and [Email destination] to an email address that can be sent.
 </p>
 <pre>
-echo Hello | sendmail -f [メール送信元] [メール送信先]
+echo Hello | sendmail -f [mail source] [mail destination]
 </pre>
 <p>
-  sendmailでは、標準入力が、本文になります。
+  In sendmail, the standard input is the body.
 </p>
 <p>
-  -fはfromでメール送信元を指定します。メール送信元がない場合は、メールがはじかれるという経験が多いので、指定しています。
+  -f specifies the mail sender with from. If there is no sender of the email, the email is often rejected, so I have specified it.
 </p>
 <p>
-  その後ろに、メールの送信先を指定します。試験するときは、送信先、送信元どちらも同じで大丈夫です。
+  After that, specify the destination of the email. When testing, both the destination and the source can be the same.
 </p>
 <pre>
-# 送信例
+# Sending example
 echo Hello | sendmail -f kimoto_test@perlclub.net kimoto_test@perlclub.net
 </pre>
 <p>
-  メール送信ができればOKです。
+  It is OK if you can send an email.
 </p>
-<h3>完成!!!</h3>
+<h3> Completed !!! </h3>
 <p>
-  さくらVPS+Ubuntu 18+PerlでWebシステム開発 環境構築の完成です。お疲れさまでした。
+  The construction of the Web system development environment is completed with Sakura VPS + Ubuntu 18 + Perl. Thank you for your hard work.
 </p>
 
   </div>

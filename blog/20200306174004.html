@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>WebサイトをバーチャルホストとリバースプロキシでApacheから接続する - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="WebサイトをバーチャルホストとリバースプロキシでApacheから接続する方法を解説します。">
+<title> Connect your website from Apache with a virtual host and reverse proxy  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Learn how to connect your website from Apache with a virtual host and reverse proxy.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200306174004.html">WebサイトをバーチャルホストとリバースプロキシでApacheから接続する</a></h2>
+<h2><a href="/blog/20200306174004.html"> Connect your website from Apache with a virtual host and reverse proxy </a></h2>
 <p>
-  WebサイトをバーチャルホストとリバースプロキシでApacheから接続する方法を解説します。
+  Learn how to connect your website from Apache with a virtual host and reverse proxy.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,107 +96,107 @@
 
 
 <p>
-  Perlで新規に<a href="https://en.webapp.perlzemi.com/">Webシステム開発</a>を行う場合に、セキュリティ、開発効率、リアルタイムWeb、クラウドサーバー対応など複合的な理由で、リバースプロキシ構成で、Webサイトを作成することを推奨しています。
+  When doing a new <a href="https://en.webapp.perlzemi.com/"> Web system development</a> with Perl, it is complex such as security, development efficiency, real-time Web, cloud server support, etc. For that reason, we recommend that you create your website in a reverse proxy configuration.
 </p>
-<h3>なぜリバースプロキシ構成で運用するか</h3>
+<h3> Why operate with a reverse proxy configuration </h3>
 <p>
-  なぜCGIプログラムのように配置するだけで動かせる方法ではなく、リバースプロキシ構成で運用することを推奨するかという理由を書きます。
+  I will write the reason why it is recommended to operate with a reverse proxy configuration instead of the method that can be operated just by arranging it like a CGI program.
 </p>
-<h4>セキュリティリスクの軽減</h4>
+<h4> Mitigating security risks </h4>
 <p>
-  CGIプログラムと比較すると、Webフレームワークを使用することで、セキュリティリスクを最小限に抑えることができます。一般的にいうと、Webフレームワークは、文字列をHTMLに出力する場合は、エスケープしてくれるなど、Webの脆弱性に対してあらかじめ対策をとってくれています。もちろん、それだけで安全というわけではないのですが、フレームワークの流儀に従うことで、セキュリティリスクを減らすことができます。
+  Compared to CGI programs, web frameworks can be used to minimize security risks. Generally speaking, the web framework takes measures in advance against vulnerabilities in the web, such as escaping when outputting a character string to HTML. Of course, that's not the only thing that's safe, but by following the framework's style, you can reduce your security risks.
 </p>
-<h4>開発効率</h4>
+<h4> Development efficiency </h4>
 <p>
-  Webフレームワークを使うと、ユーザー環境で、Webサイトの試験を行うことができます。Apacheの上でCGIを動かすのではなく、各ユーザーのホームディレクトリの中で、Webサイトを起動して、開発を行うことができます。Webフレームワークが表示するエラーメッセージは親切です。開発効率を高めることができます。
+  The web framework allows you to test your website in a user environment. Instead of running CGI on Apache, you can launch a website and develop in each user's home directory. The error messages that the web framework displays are kind. You can improve development efficiency.
 </p>
-<h4>実行速度</h4>
+<h4> Execution speed </h4>
 <p>
-  Webフレームワークを使って、WebサイトをPerlのWebサーバーで起動すれば、CGIのように毎回プロセスを起動することはなく、高速な実行速度を得ることができます。
+  If you use a web framework to launch a website on a Perl web server, you can get fast execution speed without launching the process every time like CGI.
 </p>
-<h4>リアルタイムWeb</h4>
+<h4> Real-time Web </h4>
 <p>
-  push通知、ストリーミング、リアルタイム更新、リアルタイムチャットと呼ばれる、現代的なWeb手法がありますが、これはCGIで実現することができません。リアルタイムWebに対応したWebフレームワークを使って、Webサイトを起動し、Apacheからリバースプロキシで接続すれば、これを実現することができます。
+  There are modern web techniques called push notifications, streaming, real-time updates, and real-time chat, which cannot be achieved with CGI. You can do this by launching a website using a web framework that supports the real-time web and connecting with a reverse proxy from Apache.
 </p>
-<h4>クラウドサーバー対応</h4>
+<h4> Cloud server support </h4>
 <p>
-  CGIプログラムは、実行速度が遅く、サーバーを増やして負荷分散機につなぐなどの、スケーラビリティを持っていません。一方、Webサイトを起動して、これをApacheのリバースプロキシからつなぐようにしておくと、これはサーバー間疎結合ですので、Apacheのリバースプロキシからの接続を負荷分散機からの接続変えるということが、自然にできます。
+  CGI programs are slow to execute and do not have scalability such as increasing the number of servers and connecting them to load balancers. On the other hand, if you start the website and connect it from the Apache reverse proxy, this is a loose coupling between servers, so you can change the connection from the Apache reverse proxy to the connection from the load balancer. , Can be done naturally.
 </p>
-<h3>Apacheのバーチャルホストの主な機能</h3>
+<h3> Main features of Apache virtual hosts </h3>
 <p>
-  まずApacheのバーチャルホストの機能について解説します。Apacheのバーチャルホストとは、簡単にいうと、ドメインが異なる複数のWebサイトを運用するための機能です。
-</p>
-<p>
-  つまり、ドメインが異なる複数のWebサイトを運営したい場合は、Apacheのバーチャルホストという機能を使うことになります。複数のサイトを運営したいという場合は、非常に頻繁に起こりますので、ひとつのWebサイトであっても、最初からバーチャルホストでApachenの設定ファイルを作っておくことを、お勧めします。
-</p>
-<h3>リバースプロキシとはなにか?</h3>
-<p>
-  リバースプロキシとは、簡単にいうと、Apacheへのアクセスを、他のサーバーへ転送する機能です。ユーザは、WebブラウザなどのHTTPクライアントからApacheに接続します。その接続を、別のサーバーに接続することができます。
+  First, I will explain the functions of Apache's virtual host. Apache virtual hosting is simply a feature for running multiple websites in different domains.
 </p>
 <p>
-  PerlのWebサイトをHTTPサーバーとして起動して、特定のポートで待ち受けます。これは、Webフレームワークが提供している機能です。たとえば、8080番ポートで、待ち受けます。
+  In other words, if you want to run multiple websites with different domains, you'll want to use Apache's virtual host feature. If you want to run multiple sites, it happens very often, so it is recommended to create an Apache configuration file on a virtual host from the beginning, even for one website.
+</p>
+<h3> What is a reverse proxy? </H3>
+<p>
+  A reverse proxy is simply a function that transfers access to Apache to another server. Users connect to Apache from an HTTP client such as a web browser. You can connect that connection to another server.
 </p>
 <p>
-  Apacheでリバースプロキシの設定を行って、これを、PerlのWebサイトに接続します。バーチャルホストを使うと、異なるドメインであれば、別のポートに接続することができますから、異なるポートでWebサイトを起動して、ドメインに応じて、接続すれば、複数のWebサイトを運用できます。
+  Start a Perl website as an HTTP server and listen on a specific port. This is a feature provided by the web framework. For example, listen on port 8080.
 </p>
-<h3>リバースプロキシのために必要なApacheモジュール</h3>
 <p>
-  リバースプロキシの設定ために必要なApacheモジュールは、mod_proxy, mod_proxy_httpです。
+  Set up a reverse proxy in Apache and connect it to your Perl website. With a virtual host, you can connect to different ports in different domains, so you can operate multiple websites by launching websites on different ports and connecting according to the domain. increase.
 </p>
-<ul>
-  <li><a href="/blog/20200310174004.html">Apacheでmod_proxyモジュールを有効にする</a></li>
-  <li><a href="/blog/20200220174004.html">Apacheでmod_proxy_httpモジュールを有効にする</a></li>
-</ul>
+<h3> Apache module required for reverse proxy </h3>
 <p>
-  また、HTTPをHTTPSにリダイレクトするために、mod_rewriteが必要です。
+  The Apache modules required to configure the reverse proxy are mod_proxy, mod_proxy_http.
 </p>
 <ul>
-  <li><a href="/blog/20200311174004.html">Apacheでmod_rewriteモジュールを有効にする</a></li>
+  <li> <a href="/blog/20200310174004.html"> Enable mod_proxy module in Apache</a> </li>
+  <li> <a href="/blog/20200220174004.html"> Enable mod_proxy_http module in Apache</a> </li>
 </ul>
 <p>
-  HTTPSをサポートするためには、mod_sslが必要になります。
+  You also need mod_rewrite to redirect HTTP to HTTPS.
 </p>
 <ul>
-  <li><a href="/blog/20200318174004.html">ApacheでHTTPSで通信できるようにmod_sslを有効化</a></li>
+  <li> <a href="/blog/20200311174004.html"> Enable mod_rewrite module in Apache</a> </li>
 </ul>
 <p>
-  HTTPSであることをHTTPヘッダで教えるためにmod_headersモジュールが必要になります。
+  Mod_ssl is required to support HTTPS.
 </p>
 <ul>
-  <li><a href="/blog/20200309174004.html">Apacheでmod_headersモジュールを有効にする</a></li>
+  <li> <a href="/blog/20200318174004.html"> Enable mod_ssl for HTTPS communication with Apache</a> </li>
 </ul>
-<h3>Apacheのバーチャルホストとリバースプロキシの設定</h3>
 <p>
-  まず設定ファイルは以下のディレクトリに配置します。
+  You will need the mod_headers module to tell in the HTTP headers that it is HTTPS.
+</p>
+<ul>
+  <li> <a href="/blog/20200309174004.html"> Enable mod_headers module in Apache</a> </li>
+</ul>
+<h3> Apache virtual host and reverse proxy settings </h3>
+<p>
+  First, place the configuration file in the following directory.
 </p>
 <pre>
-/etc/apache2/sites-available
+/ etc / apache2 / sites-available
 </pre>
 <p>
-  この設定ファイルのディレクトリについては、以下のページで詳しく解説しています。
+  The directory of this configuration file is explained in detail on the following page.
 </p>
 <ul>
-  <li><a href="/blog/20200610082714.html">Apache設定ファイルを有効・無効にする - 基本設定・モジュール設定・サイト設定</a></li>
+  <li> <a href="/blog/20200610082714.html"> Enable / disable Apache config file-basic config / module config / site config</a> </li>
 </ul>
 <p>
-  サイトのドメイン名(ここではwww.mydomain.example)に「.conf」を付けた名前で、<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">vi</a>コマンドで、設定ファイルを作成しましょう。
+  <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi < Create a configuration file with the / a> command.
 </p>
 <pre>
-cd /etc/apache2/sites-available
+cd / etc / apache2 / sites-available
 sudo vi www.mydomain.example.conf
 </pre>
 <p>
-  設定ファイルの内容は以下です。バーチャルホスト機能を使って、「www.mydomain.example」をリバースプロキシで「8080番ポート」に接続しているというところに注目してください。HTTPS対応した記述ですが、まだ本物のSSL証明書は使っておらず、<a href="/blog/20200307174004.html">自己SSL証明書</a>を使った状態になっています。
+  The contents of the configuration file are as follows. Notice that we are using the virtual host feature to connect "www.mydomain.example" to "port 8080" with a reverse proxy. Although it is a description that supports HTTPS, I have not used a real SSL certificate yet, and I am using <a href="/blog/20200307174004.html"> Self SSL certificate</a>.
 </p>
 <pre>
-&lt;VirtualHost *:80&gt;
+&lt;VirtualHost *: 80&gt;
   ServerName www.mydomain.example
 
   RewriteEngine on
-  RewriteRule (.*)?$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
 &lt;/VirtualHost&gt;
 
-&lt;VirtualHost *:443&gt;
+&lt;VirtualHost *: 443&gt;
   ServerName www.mydomain.example
 
   &lt;Proxy *&gt;
@@ -205,29 +205,29 @@ sudo vi www.mydomain.example.conf
 
   ProxyRequests Off
   ProxyPreserveHost On
-  ProxyPass / http://localhost:8080/ keepalive=On
-  ProxyPassReverse / http://localhost:8080/
+  ProxyPass / http: // localhost: 8080 / keepalive = On
+  ProxyPassReverse / http: // localhost: 8080 /
   RequestHeader set X-Forwarded-Proto "https"
 
   SSLEngine on
-  SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+  SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
 &lt;/VirtualHost&gt;
 </pre>
-<h4>設定ファイルの簡単な解説</h4>
+<h4> A brief explanation of the configuration file </h4>
 <pre>
-&lt;VirtualHost *:80&gt;
+&lt;VirtualHost *: 80&gt;
   ServerName www.mydomain.example
 
   RewriteEngine on
-  RewriteRule (.*)?$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
 &lt;/VirtualHost&gt;
 </pre>
 <p>
-  ServerNameは、Webサイトのドメイン名を記述します。http(80番ポート)への接続をmod_rewriteを使って、https(443番ポート)へリダイレクトしています。
+  ServerName describes the domain name of your website. The connection to http (port 80) is redirected to https (port 443) using mod_rewrite.
 </p>
 <pre>
-&lt;VirtualHost *:443&gt;
+&lt;VirtualHost *: 443&gt;
   ServerName www.mydomain.example
 
   &lt;Proxy *&gt;
@@ -236,70 +236,70 @@ sudo vi www.mydomain.example.conf
 
   ProxyRequests Off
   ProxyPreserveHost On
-  ProxyPass / http://localhost:8080/ keepalive=On
-  ProxyPassReverse / http://localhost:8080/
+  ProxyPass / http: // localhost: 8080 / keepalive = On
+  ProxyPassReverse / http: // localhost: 8080 /
   RequestHeader set X-Forwarded-Proto "https"
 
   SSLEngine on
-  SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+  SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
 &lt;/VirtualHost&gt;
 </pre>
 <p>
-  ServerNameは、Webサイトのドメイン名を記述します。
+  ServerName describes the domain name of your website.
 </p>
 <p>
-  Proxyディレクティブは、必須です。プロキシリクエストを許可します。
+  The Proxy directive is mandatory. Allow proxy requests.
 </p>
 <p>
-  「ProxyRequests Off」は、フォーワードプロキシ(リバースプロキシではない通常のプロキシ接続)をOffにしています。
+  "Proxy Requests Off" turns off the forward proxy (a normal proxy connection that is not a reverse proxy).
 </p>
 <p>
-  「ProxyPreserveHost On」は、Apacheにアクセスしたクライアントのホスト名を、そのままWebアプリケーションに渡します。
+  "Proxy Preserve Host On" passes the host name of the client that accessed Apache to the Web application as it is.
 </p>
 <pre>
-ProxyPass / http://localhost:8080/ keepalive=On
-ProxyPassReverse / http://localhost:8080/
+ProxyPass / http: // localhost: 8080 / keepalive = On
+ProxyPassReverse / http: // localhost: 8080 /
 </pre>
 <p>
-  上記は、ローカルホストの8080番ポートに接続するという設定です。ふたつ書く必要があります。
+  The above is the setting to connect to port 8080 of the local host. I need to write two things.
 </p>
 <p>
-  「RequestHeader set X-Forwarded-Proto "https"」によって、PerlのWebアプリケーションが、HTTPSによる接続であることを知ることができます
+  "Request Header set X-Forwarded-Proto" https "" tells you that your Perl web application is an HTTPS connection.
 </p>
 <pre>
   SSLEngine on
-  SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+  SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
 </pre>
 <p>
-  上記は、<a href="/blog/20200307174004.html">自己SSL証明書</a>の設定です。
+  The above is the setting of <a href="/blog/20200307174004.html"> Self SSL certificate</a>.
 </p>
-<h4>設定ファイルの有効化</h4>
+<h4> Enable configuration file </h4>
 <p>
-  設定が終わったら、設定ファイルを有効にします。
+  After completing the settings, enable the configuration file.
 </p>
 <pre>
 sudo a2ensite www.mydomain.example
 </pre>
 <p>
-  有効化が終わったら<a href="/blog/20200519084454.html">Aapacheを再起動</a>してください。
+  <a href="/blog/20200519084454.html"> Restart Aapache</a> after activation.
 </p>
 <pre>
 sudo systemctl reload apache2
 </pre>
 <p>
-  8080番ポートでPerlでWebサイトが起動していることを確認してください。
+  Make sure the website is running in Perl on port 8080.
 </p>
 <p>
-  「https://www.mydomain.example」でWebサイトが表示できれば成功です。
+  If you can display the website with "https://www.mydomain.example", it is successful.
 </p>
-<h3>HTTPSで運用する</h3>
+<h3> Operate with HTTPS </h3>
 <p>
-  本番環境で、SSL証明書を取得して、HTTPSで運用したい場合は以下の記事でSSL証明書の設定方法を解説しています。
+  If you want to obtain an SSL certificate and operate it over HTTPS in a production environment, the following article explains how to set the SSL certificate.
 </p>
 <ul>
-  <li><a href="/blog/20200611082716.html">SSL証明書の設定をApacheの設定ファイルに記述する</a></li>
+  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file</a> </li>
 </ul>
 
   </div>

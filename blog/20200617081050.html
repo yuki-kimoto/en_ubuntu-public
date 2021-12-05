@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>WebフレームワークMojoliciousのインストールとWebアプリケーションの実行方法 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="WebフレームワークMojoliciousのインストールとWebアプリケーションの実行方法について解説します。Ubuntuサーバー構築入門では、Perl Webシステム開発を行うための、環境構築を行う上で、最低限必要な知識を公開します。">
+<title> How to install the web framework Mojolicious and run the web application  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Learn how to install the web framework Mojolicious and run web applications. In the introduction to Ubuntu server construction, we will disclose the minimum knowledge necessary for building an environment for developing Perl Web systems.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
-        <span itemprop="name">Perl</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Perl </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200617081050.html">WebフレームワークMojoliciousのインストールとWebアプリケーションの実行方法</a></h2>
+<h2><a href="/blog/20200617081050.html"> How to install the web framework Mojolicious and run the web application </a></h2>
 <p>
-  WebフレームワークMojoliciousのインストールとWebアプリケーションの実行方法について解説します。Ubuntuサーバー構築入門では、Perl Webシステム開発を行うための、環境構築を行う上で、最低限必要な知識を公開します。
+  Learn how to install the web framework Mojolicious and run web applications. In the introduction to Ubuntu server construction, we will disclose the minimum knowledge necessary for building an environment for developing Perl Web systems.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,103 +95,103 @@
 </div>
 
 
-<h3>Webフレームワーク Mojoliciousをインストールする前提</h3>
+<h3> Prerequisites for installing the web framework Mojolicious </h3>
 <p>
-  Webフレームワーク<a href="https://en.mojolicious.perlzemi.com/">Mojolicious</a>をインストールする前提として、ユーザーPerlとcpanmがインストールされている必要があります。
+  As a prerequisite to installing the web framework <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious</a>, the users Perl and cpanm must be installed.
 </p>
 <ul>
-  <li><a href="/blog/20200413174004.html">ユーザーPerlとcpanmのインストール</a></li>
+  <li> <a href="/blog/20200413174004.html"> User Perl and cpanm installation</a> </li>
 </ul>
-<h3>Webフレームワーク Mojoliciousのインストール</h3>
+<h3> Installing the web framework Mojolicious </h3>
 <p>
-  Webフレームワーク Mojoliciousをインストールしましょう。
+  Install the web framework Mojolicious.
 </p>
 <pre>
 cpanm Mojolicious
 </pre>
 <p>
-  Mojoliciousがインストールされたことの確認しましょう。エラーが起こらなければ大丈夫です。
+  Make sure you have Mojolicious installed. It's okay if no error occurs.
 </p>
 <pre>
-perl -e 'use Mojolicious'
+perl -e'use Mojolicious'
 </pre>
-<h3>一番小さなMojoliciousアプリケーション</h3>
+<h3> The smallest Mojolicious application </h3>
 <p>
-  Mojoliciousアプリケーションを作成しましょう。
+  Let's create a Mojolicious application.
 </p>
 <pre>
 
 </pre>
 <p>
-  次のMojoliciousのプログラムを「myapp.pl」という名前で保存しましょう。
+  Save the following Mojolicious program as "myapp.pl".
 </p>
 <pre>
-use Mojolicious::Lite;
-get '/' =&gt; {text =&gt; 'Hello World!'};
-app-&gt;start;
+use Mojolicious :: Lite;
+get'/' =&gt; {text =&gt;'Hello World!'};
+app-&gt; start;
 </pre>
-<h3>開発環境用でWebアプリケーションを起動</h3>
+<h3> Launch a web application for the development environment </h3>
 <p>
-  <a href="https://en.mojolicious.perlzemi.com/blog/20120406133367.html">morbo</a>(モーボ)コマンドを使うと、Webアプリケーションが開発環境で起動します。
+  The <a href="https://en.mojolicious.perlzemi.com/blog/20120406133367.html"> morbo</a> command launches the web application in the development environment.
 </p>
 <pre>
 morbo myapp.pl
 </pre>
 <p>
-  3000番ポートでWebアプリケーションが起動します。
+  The web application starts on port 3000.
 </p>
 <pre>
 Web application available at http://127.0.0.1:3000
 </pre>
 <p>
-  127.0.0.1は、ローカルサーバーのアドレスです。この部分を、あなたのサーバーのIPアドレスに変えてブラウザからアクセスしてみましょう。
+  127.0.0.1 is the address of the local server. Change this part to the IP address of your server and access it from your browser.
 </p>
 <p>
-  VPSやクラウドサーバで、3000番ポートが開いていない場合は、アクセスできないので、3000番ポートを許可してください。
+  If port 3000 is not open on your VPS or cloud server, you will not be able to access it, so allow port 3000.
 </p>
 <p>
-  以下の例は、サーバーのIPアドレスが「59.105.185.197」の例です。
+  The following example is an example where the IP address of the server is "59.105.185.197".
 </p>
 <pre>
 http://59.105.185.197:3000
 </pre>
 <p>
-  画面に「Hello World!」と表示されれば、成功です。
+  If "Hello World!" Is displayed on the screen, it is successful.
 </p>
-<h3>本番環境用でWebアプリケーションを起動</h3>
+<h3> Launch a web application for production environment </h3>
 <p>
-  次に本番環境用で、Webアプリケーションを起動してみましょう。<a href="https://en.mojolicious.perlzemi.com/blog/20110122130016.html">hypnotoad</a>(ハイフノトード)コマンドを使うと、Webアプリケーションが本番環境用で起動します。
+  Next, let's start the web application for the production environment. The <a href="https://en.mojolicious.perlzemi.com/blog/20110122130016.html"> hypnotoad</a> command launches the web application for production.
 </p>
 <pre>
 hypnotoad myapp.pl
 </pre>
 <p>
-  8080番ポートでWebアプリケーションが起動します。
+  The web application starts on port 8080.
 </p>
 <pre>
 Web application available at http://127.0.0.1:8080
 </pre>
 <p>
-  再起動するときは、もう一度実行します。
+  When you reboot, try again.
 </p>
 <pre>
 hypnotoad myapp.pl
 </pre>
 <p>
-  停止するときは「--stop」オプションを使用します。
+  Use the "--stop" option to stop.
 </p>
 <pre>
 hypnotoad --stop myapp.pl
 </pre>
-<h3>Mojoliciousアプリをリバースプロキシから接続する</h3>
+<h3> Connect Mojolicious apps from a reverse proxy </h3>
 <p>
-  本番環境では、hypnotoadで起動したWebアプリケーションを、<a href="/blog/20200526151435.html">Apache</a>などのWebサーバーからリバースプロキシで接続します。
+  In the production environment, connect the web application started by hypnotoad from a web server such as <a href="/blog/20200526151435.html"> Apache</a> with a reverse proxy.
 </p>
 <p>
-  この手順については、以下を参考にしてください。
+  Please refer to the following for this procedure.
 </p>
 <ul>
-  <li><a href="/blog/20200306174004.html">WebアプリケーションをバーチャルホストとリバースプロキシでApacheから接続する</a></li>
+  <li> <a href="/blog/20200306174004.html"> Connect your web application from Apache with a virtual host and reverse proxy</a> </li>
 </ul>
 
   </div>

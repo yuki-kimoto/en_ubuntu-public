@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheのアクセスログとエラーログの場所 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="UbuntuにおけるApacheのアクセスログとエラーログの場所は、環境変数「APACHE_LOG_DIR」で定義されています。">
+<title> Apache access log and error log locations  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="The location of Apache access logs and error logs on Ubuntu is defined by the environment variable "APACHE_LOG_DIR".">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200313174004.html">Apacheのアクセスログとエラーログの場所</a></h2>
+<h2><a href="/blog/20200313174004.html"> Apache access log and error log locations </a></h2>
 <p>
-  UbuntuにおけるApacheのアクセスログとエラーログの場所は、環境変数「APACHE_LOG_DIR」で定義されています。
+  The location of Apache access logs and error logs on Ubuntu is defined by the environment variable "APACHE_LOG_DIR".
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,26 +96,26 @@
 
 
 <p>
-  <a href="/blog/20200317174004.html">Apacheの設定ファイルがあるディレクトリ</a>の中の「envvars」ファイルの中で定義されています。
+  It is defined in the "envvars" file in the <a href="/blog/20200317174004.html"> directory where the Apache configuration files are located</a>.
 </p>
 <pre>
-export APACHE_LOG_DIR=/var/log/apache2$SUFFIX
+export APACHE_LOG_DIR = / var / log / apache2 $ SUFFIX
 </pre>
 <p>
-  $SUFFIXは、Apacheが一台しか動いていない場合は空文字ですので、Apacheのログのディレクトリは「/var/log/apache2」になります。
+  $ SUFFIX is an empty string when only one Apache is running, so the Apache log directory will be "/ var / log / apache2".
 </p>
 <pre>
-sudo ls /var/log/apache2
+sudo ls / var / log / apache2
 </pre>
 <pre>
-access.log        access.log.13.gz  access.log.5.gz  error.log        error.log.13.gz  error.log.5.gz  other_vhosts_access.log        other_vhosts_access.log.13.gz  other_vhosts_access.log.5.gz
-access.log.1      access.log.14.gz  access.log.6.gz  error.log.1      error.log.14.gz  error.log.6.gz  other_vhosts_access.log.1      other_vhosts_access.log.14.gz  other_vhosts_access.log.6.gz
-access.log.10.gz  access.log.2.gz   access.log.7.gz  error.log.10.gz  error.log.2.gz   error.log.7.gz  other_vhosts_access.log.10.gz  other_vhosts_access.log.2.gz   other_vhosts_access.log.7.gz
-access.log.11.gz  access.log.3.gz   access.log.8.gz  error.log.11.gz  error.log.3.gz   error.log.8.gz  other_vhosts_access.log.11.gz  other_vhosts_access.log.3.gz   other_vhosts_access.log.8.gz
-access.log.12.gz  access.log.4.gz   access.log.9.gz  error.log.12.gz  error.log.4.gz   error.log.9.gz  other_vhosts_access.log.12.gz  other_vhosts_access.log.4.gz   other_vhosts_access.log.9.gz
+access.log access.log.13.gz access.log.5.gz error.log error.log.13.gz error.log.5.gz other_vhosts_access.log other_vhosts_access.log.13.gz other_vhosts_access.log.5. gz
+access.log.1 access.log.14.gz access.log.6.gz error.log.1 error.log.14.gz error.log.6.gz other_vhosts_access.log.1 other_vhosts_access.log.14.gz other_vhosts_access.log.6.gz
+access.log.10.gz access.log.2.gz access.log.7.gz error.log.10.gz error.log.2.gz error.log.7.gz other_vhosts_access.log.10.gz other_vhosts_access .log.2.gz other_vhosts_access.log.7.gz
+access.log.11.gz access.log.3.gz access.log.8.gz error.log.11.gz error.log.3.gz error.log.8.gz other_vhosts_access.log.11.gz other_vhosts_access .log.3.gz other_vhosts_access.log.8.gz
+access.log.12.gz access.log.4.gz access.log.9.gz error.log.12.gz error.log.4.gz error.log.9.gz other_vhosts_access.log.12.gz other_vhosts_access .log.4.gz other_vhosts_access.log.9.gz
 </pre>
 <p>
-  最新と1つ前のアクセスログ以外は, <a href="https://en.linux.perlzemi.com/blog/20200608103245.html">GZIP形式</a>に圧縮されているようです。
+  Except for the latest and the previous access log, it seems to be compressed to <a href="https://en.linux.perlzemi.com/blog/20200608103245.html"> GZIP format</a>.
 </p>
 
   </div>

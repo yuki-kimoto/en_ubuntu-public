@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>libgif-devのインストール - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="libgif-devのインストール方法を解説します。aptコマンドを使って、libgif-devをインストールします。sudoを使って管理者権限で実行します。">
+<title> Install libgif-dev  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="I will explain how to install libgif-dev. Install libgif-dev using the  apt command. Run with administrator privileges using sudo.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Package management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200502174004.html">libgif-devのインストール</a></h2>
+<h2><a href="/blog/20200502174004.html"> Install libgif-dev </a></h2>
 <p>
-  libgif-devのインストール方法を解説します。<a href="/blog/20200530085516.html">apt</a>コマンドを使って、libgif-devをインストールします。sudoを使って管理者権限で実行します。
+  I will explain how to install libgif-dev. Install libgif-dev using the <a href="/blog/20200530085516.html"> apt</a> command. Run with administrator privileges using sudo.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -99,36 +99,36 @@
 sudo apt install -y libgif-dev
 </pre>
 <p>
-  libgif-devをインストールすると「libgif7」も一緒にインストールされます。「libgif7」は「libgif」のバージョン7という意味のようです。
+  When you install libgif-dev, "libgif7" is also installed. "Libgif7" seems to mean version 7 of "libgif".
 </p>
-<h3>libgif-devとは</h3>
+<h3> What is libgif-dev </h3>
 <p>
-  (以下の記述は2020年5月14日時点で未確認)
-</p>
-<p>
-  libgif-devは、GIF画像を読み込み・書き込み・編集するためのライブラリのひとつです。
+  (The following description is unconfirmed as of May 14, 2020)
 </p>
 <p>
-  C言語ソースファイルの中で「gif_lib.h」を読み込むために必要です。
+  libgif-dev is one of the libraries for reading, writing and editing GIF images.
 </p>
 <p>
-  Perlでは、GIF画像の読み書きに「gif_lib.h」が利用されているモジュールがあります。例として、ImagerのGIF画像の読み書きモジュールであるImager::File::GIFがあります。
+  Required to read "gif_lib.h" in a C source file.
 </p>
 <p>
-  Imager::File::GIFをインストールするためには「gif_lib.h」がヘッダーファイルの読み込みパスにインストールされており、対応する共有ライブラリ「libgif.so」が、ライブラリの読み込みパスにインストールされている必要があります。
+  In Perl, there are modules that use "gif_lib.h" to read and write GIF images. An example is Imager :: File :: GIF, Imager's GIF image read / write module.
 </p>
 <p>
-  libgif-devをインストールすると、「gif_lib.h」ヘッダと、それに対応する共有ライブラリがインストールされます。
+  In order to install Imager :: File :: GIF, "gif_lib.h" is installed in the header file loading path, and the corresponding shared library "libgif.so" is installed in the library loading path. is needed.
 </p>
 <p>
-  Webでは、PNG,GIF,JPEGの画像アップロードが良く行われるので、GIFのライブラリをインストールしておきます。
+  Installing libgif-dev installs the "gif_lib.h" header and its corresponding shared library.
 </p>
 <p>
-  ヘッダーファイルの読み込みパスと、ライブラリの読み込みパスについては、以下を参考にしてください。
+  On the Web, PNG, GIF, and JPEG images are often uploaded, so install the GIF library.
+</p>
+<p>
+  Please refer to the following for the reading path of the header file and the reading path of the library.
 </p>
 <ul>
-  <li><a href="/blog/20200429174004.html">ヘッダーファイルの読み込みパス</a></li>
-  <li><a href="/blog/20200428174004.html">ライブラリの読み込みパス</a></li>
+  <li> <a href="/blog/20200429174004.html"> Header file read path</a> </li>
+  <li> <a href="/blog/20200428174004.html"> Library loading path</a> </li>
 </ul>
 
   </div>

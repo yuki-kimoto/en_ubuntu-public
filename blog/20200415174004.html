@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>vsftpd FTPサーバーの起動・停止・再起動・状態確認 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="vsftpd FTPサーバーの起動・停止・再起動・状態確認について解説します。">
+<title> vsftpd FTP server start / stop / restart / status check  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="vsftpd Explains how to start / stop / restart / check the status of the FTP server.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200415174004.html">vsftpd FTPサーバーの起動・停止・再起動・状態確認</a></h2>
+    <h2><a href="/blog/20200415174004.html"> vsftpd FTP server start / stop / restart / status check </a></h2>
 <p>
-  vsftpd FTPサーバーの起動・停止・再起動・状態確認について解説します。
+  vsftpd Explains how to start / stop / restart / check the status of the FTP server.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -76,19 +76,19 @@
 </div>
 
 
-<h4>vsftpd FTPサーバーの状態確認</h4>
+<h4> vsftpd FTP server status check </h4>
 <p>
-  vsftpd FTPサーバーの状態確認は、<a href="/blog/20200605104005.html">systemctl</a>コマンドの「status」を使って行います。
+  To check the status of the vsftpd FTP server, use the "status" of the <a href="/blog/20200605104005.html"> systemctl</a> command.
 </p>
 <pre>
 sudo systemctl status vsftpd
 </pre>
-<h5>起動している場合</h5>
+<h5> If it is running </h5>
 <p>
-  起動している場合は、以下のように表示されます。
+  If it is running, the following will be displayed.
 </p>
 <pre>
-● vsftpd.service - vsftpd FTP server
+● vsftpd.service-vsftpd FTP server
    Loaded: loaded (/lib/systemd/system/vsftpd.service; enabled; vendor preset: enabled)
    Active: active (running) since Tue 2020-05-19 12:55:57 JST; 18min ago
  Main PID: 8044 (vsftpd)
@@ -96,120 +96,120 @@ sudo systemctl status vsftpd
    CGroup: /system.slice/vsftpd.service
            mq8044 /usr/sbin/vsftpd /etc/vsftpd.conf
 </pre>
-<h5>停止している場合</h5>
+<h5> When stopped </h5>
 <p>
-  停止している場合は、以下のように表示されます。
+  If it is stopped, the following will be displayed.
 </p>
 <pre>
-● vsftpd.service - vsftpd FTP server
+● vsftpd.service-vsftpd FTP server
    Loaded: loaded (/lib/systemd/system/vsftpd.service; enabled; vendor preset: enabled)
    Active: inactive (dead) since Tue 2020-05-19 13:15:39 JST; 5s ago
-  Process: 8044 ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf (code=killed, signal=TERM)
- Main PID: 8044 (code=killed, signal=TERM)
+  Process: 8044 ExecStart = / usr / sbin / vsftpd /etc/vsftpd.conf (code = killed, signal = TERM)
+ Main PID: 8044 (code = killed, signal = TERM)
 
-May 19 12:55:57 development-batch systemd[1]: Starting vsftpd FTP server...
-May 19 12:55:57 development-batch systemd[1]: Started vsftpd FTP server.
-May 19 13:15:39 development-batch systemd[1]: Stopping vsftpd FTP server...
-May 19 13:15:39 development-batch systemd[1]: Stopped vsftpd FTP server.
+May 19 12:55:57 development-batch systemd [1]: Starting vsftpd FTP server ...
+May 19 12:55:57 development-batch systemd [1]: Started vsftpd FTP server.
+May 19 13:15:39 development-batch systemd [1]: Stopping vsftpd FTP server ...
+May 19 13:15:39 development-batch systemd [1]: Stopped vsftpd FTP server.
 </pre>
-<h4>vsftpd FTPサーバーの起動</h4>
+<h4> Start vsftpd FTP server </h4>
 <p>
-  vsftpd FTPサーバーの起動は、systemctlコマンドの「start」を使って行います。sudoコマンドを使って、root権限で実行します。
+  The vsftpd FTP server is started using the systemctl command "start". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl start vsftpd
 </pre>
 <p>
-  起動が成功しても、成功したというメッセージは返ってきません。状態確認を行ってください。
+  Even if the boot is successful, the message that it was successful is not returned. Please check the status.
 </p>
-<h4>vsftpd FTPサーバーの停止</h4>
+<h4> Stop vsftpd FTP server </h4>
 <p>
-  vsftpd FTPサーバーの停止は、systemctlコマンドの「stop」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To stop the vsftpd FTP server, use the "stop" systemctl command. Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl stop vsftpd
 </pre>
 <p>
-  停止が成功しても、成功したというメッセージは何も返ってきません。状態確認を行ってください。
+  If the outage is successful, no successful message will be returned. Please check the status.
 </p>
-<h4>vsftpd FTPサーバーの再起動</h4>
+<h4> Restart the vsftpd FTP server </h4>
 <p>
-  vsftpd FTPサーバーの再起動は、systemctlコマンドの「restart」を使って行います。sudoコマンドを使って、root権限で実行します。
+  vsftpd Use the systemctl command "restart" to restart the FTP server. Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl restart vsftpd
 </pre>
 <p>
-  restartは単に、stopコマンドを実行して、startコマンドを実行します。HTTPクライアントからの処理を切断してしまうので、通常はreloadコマンドを使用しましょう
+  restart simply executes the stop command and executes the start command. Normally, use the reload command as it will disconnect the processing from the HTTP client.
 </p>
 <p>
-  再起動が成功しても、成功したというメッセージは返ってきません。状態確認を行ってください。
+  If the reboot is successful, you will not get a successful message. Please check the status.
 </p>
-<h3>vsftpd FTPサーバーの起動・停止のログを見るには</h3>
+<h3> vsftpd To see the start / stop log of the FTP server </h3>
 <p>
-  vsftpd FTPサーバーなどのサーバーは、systemdというプログラムによって集中的に管理されています。
-</p>
-<p>
-  systemdのログにvsftpd FTPサーバーの起動・停止ログが出力されています。
+  Servers such as the vsftpd FTP server are centrally managed by a program called systemd.
 </p>
 <p>
-  systemdのログを見るには<a href="/blog/20200602135100.html">journalctlコマンド</a>を使います。「-u」オプションでユニット「vsftpd」を指定します。sudoで実行しないとFTPサーバーのログが見れないので注意してください。ログの最後の部分だけ見たい場合は「-r」オプションを組み合わせます。
+  The vsftpd FTP server start / stop log is output to the systemd log.
+</p>
+<p>
+  Use the <a href="/blog/20200602135100.html"> journalctl command</a> to see the systemd logs. Specify the unit "vsftpd" with the "-u" option. Please note that you will not be able to see the FTP server logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 </p>
 <pre>
 sudo journalctl -r -u vsftpd
 </pre>
 <p>
-  ログのサンプルです。
+  This is a sample log.
 </p>
 <pre>
--- Logs begin at Mon 2020-06-01 15:51:16 JST, end at Thu 2020-07-23 14:42:25 JST. --
-Jul 22 13:24:34 shinshina-development-app-00000001 systemd[1]: Started vsftpd FTP server.
-Jul 22 13:24:33 shinshina-development-app-00000001 systemd[1]: Starting vsftpd FTP server...
--- Reboot --
-Jul 22 13:13:48 shinshina-development-app-00000001 systemd[1]: Stopped vsftpd FTP server.
-Jul 22 13:13:47 shinshina-development-app-00000001 systemd[1]: Stopping vsftpd FTP server...
-Jun 22 23:17:45 shinshina-development-app-00000001 vsftpd[7261]: pam_unix(vsftpd:auth): authentication failure; logname= uid=0 euid=0 tty=ftp ruser=anonymous rhost=::ffff:35.187.98.101
-Jun 22 23:17:45 shinshina-development-app-00000001 vsftpd[7261]: pam_unix(vsftpd:auth): check pass; user unknown
-Jun 22 19:42:05 shinshina-development-app-00000001 vsftpd[122058]: pam_unix(vsftpd:auth): authentication failure; logname= uid=0 euid=0 tty=ftp ruser=admin rhost=::ffff:80.184.11.115
-Jun 22 19:42:05 shinshina-development-app-00000001 vsftpd[122058]: pam_unix(vsftpd:auth): check pass; user unknown&lt;/pre&gt;
+--Logs begin at Mon 2020-06-01 15:51:16 JST, end at Thu 2020-07-23 14:42:25 JST. -
+Jul 22 13:24:34 shinshina-development-app-00000001 systemd [1]: Started vsftpd FTP server.
+Jul 22 13:24:33 shinshina-development-app-00000001 systemd [1]: Starting vsftpd FTP server ...
+--Reboot -
+Jul 22 13:13:48 shinshina-development-app-00000001 systemd [1]: Stopped vsftpd FTP server.
+Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping vsftpd FTP server ...
+Jun 22 23:17:45 shinshina-development-app-00000001 vsftpd [7261]: pam_unix (vsftpd: auth): authentication failure; logname = uid = 0 euid = 0 tty = ftp ruser = anonymous rhost = :: ffff: 35.187 .98.101
+Jun 22 23:17:45 shinshina-development-app-00000001 vsftpd [7261]: pam_unix (vsftpd: auth): check pass; user unknown
+Jun 22 19:42:05 shinshina-development-app-00000001 vsftpd [122058]: pam_unix (vsftpd: auth): authentication failure; logname = uid = 0 euid = 0 tty = ftp ruser = admin rhost = :: ffff: 80.184 .11.115
+Jun 22 19:42:05 shinshina-development-app-00000001 vsftpd [122058]: pam_unix (vsftpd: auth): check pass; user unknown &lt;/pre&gt;
 
-&lt;h3&gt;vsftpd FTPサーバーのsystemdの設定ファイルを見るには&lt;/h3&gt;
+&lt;h3&gt; vsftpd To see the systemd configuration file for the FTP server &lt;/h3&gt;
 
-vsftpd FTPサーバーのsystemdの設定ファイルは「systemctl status vsftpd」で見れます。
+vsftpd You can see the systemd configuration file for the FTP server under "systemctl status vsftpd".
 
-設定ファイルを&lt;a href="https://en.linux.perlzemi.com/blog/20200113083613.html"&gt;catコマンド&lt;/a&gt;で見てみましょう。
+Let's take a look at the configuration file with the &lt;a href="https://en.linux.perlzemi.com/blog/20200113083613.html"&gt; cat command&lt;/a&gt;.
 
 &lt;pre&gt;
 cat /lib/systemd/system/vsftpd.service
 </pre>
 <p>
-  start、stop、reloadのコマンド定義などが確認できます。
+  You can check the command definitions for start, stop, and reload.
 </p>
 <pre>
 [Unit]
-Description=vsftpd FTP server
-After=network.target
+Description = vsftpd FTP server
+After = network.target
 
 [Service]
-Type=simple
-ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf
-ExecReload=/bin/kill -HUP $MAINPID
-ExecStartPre=-/bin/mkdir -p /var/run/vsftpd/empty
+Type = simple
+ExecStart = / usr / sbin / vsftpd /etc/vsftpd.conf
+ExecReload = / bin / kill -HUP $ MANPID
+ExecStartPre =-/ bin / mkdir -p / var / run / vsftpd / empty
 
 [Install]
-WantedBy=multi-user.target
+WantedBy = multi-user.target
 </pre>
-<h3>vsftpd FTPサーバーの他の情報</h3>
-<h4>vsftpd FTPサーバーをインストールするには</h4>
+<h3> Other information on vsftpd FTP server </h3>
+<h4> To install the vsftpd FTP server </h4>
 <p>
-  vsftpd FTPサーバーのインストールについては、以下の記事で解説しています。
+  Installing the vsftpd FTP server is described in the following article.
 </p>
 <p>
-  <a href="/blog/20200416174004.html">vsftpdのインストール - FTPサーバー</a>
+  <a href="/blog/20200416174004.html"> Installing vsftpd-FTP server</a>
 </p>
-<h4>vsftpd FTPサーバーの設定ファイル</h4>
+<h4> vsftpd FTP server configuration file </h4>
 <p>
-  vsftpd FTPサーバーの設定ファイルについては、別の記事で解説します。
+  The vsftpd FTP server configuration file will be discussed in another article.
 </p>
 
   </div>

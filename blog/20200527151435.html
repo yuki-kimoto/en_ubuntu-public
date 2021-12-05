@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheにおける環境変数の設定 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Apacheでは、Apacheが実行されるときに利用される環境変数を定義することができます。環境変数の定義ファイルは以下です。">
+<title> Setting environment variables in Apache  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Apache allows you to define environment variables that are used when Apache runs. The environment variable definition file is as follows.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200527151435.html">Apacheにおける環境変数の設定</a></h2>
+<h2><a href="/blog/20200527151435.html"> Setting environment variables in Apache </a></h2>
 <p>
-  Apacheでは、Apacheが実行されるときに利用される環境変数を定義することができます。環境変数の定義ファイルは以下です。
+  Apache allows you to define environment variables that are used when Apache runs. The environment variable definition file is as follows.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,32 +96,32 @@
 
 
 <pre>
-# 環境変数定義ファイル
-/etc/apache2/envvars
+#Environment variable definition file
+/ etc / apache2 / envvars
 </pre>
 <p>
-  ここに環境変数の読み込みの定義をしておくと、Apacheの再起動時に読み込まれます。
+  If you define the loading of environment variables here, it will be loaded when Apache is restarted.
 </p>
-<h3>Apacheにおける環境変数の利用の例</h3>
+<h3> Example of using environment variables in Apache </h3>
 <p>
-  Apacheにおける環境変数の利用の例です。
+  Here is an example of using environment variables in Apache.
 </p>
-<h4>CGIを実行するPerlを指定したい</h4>
+<h4> I want to specify Perl to execute CGI </h4>
 <p>
-  CGIスクリプトがある場合、システムPerlではなく、自分でインストールしたユーザーPerlを使いたいという場合があります。
+  If you have a CGI script, you may want to use your own installed user Perl instead of the system Perl.
 </p>
 <p>
-  現在のPATHの先頭にユーザーPerlのパスを追加します。whichコマンドを使うと、ユーザーPerlがどこにあるかを簡単に確認できるので、末尾の「/perl」を取り除いたパスを設定します。
+  Add the user Perl's path to the beginning of your current PATH. The which command makes it easy to see where the user Perl is, so set the path without the trailing "/ perl".
 </p>
 <pre>
-export PATH="/home/admins/perl5/perlbrew/perls/perl-5.30.2/bin:$PATH"
+export PATH = "/ home / admins / perl5 / perlbrew / perls / perl-5.30.2 / bin: $ PATH"
 </pre>
-<h4>Perlのライブラリを追加で読み込みたい</h4>
+<h4> I want to load additional Perl libraries </h4>
 <p>
-  Perlのアプリケーションのライブラリが、自分で置いた場所にあるとします。そのような場合は、PERL5LIB環境変数を使えば、そのライブラリを読み込ませることができます。
+  Suppose you have a Perl application library in your location. In such cases, you can use the PERL5LIB environment variable to load the library.
 </p>
 <pre>
-export PERL5LIB=/my/lib
+export PERL5LIB = / my / lib
 </pre>
 
   </div>

@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>MariaDBの初期設定とユーザーの作成 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="データベースサーバーとして利用するときに必要なMariaDBの初期設定についての解説です。">
+<title> MariaDB initialization and user creation  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="This is an explanation of the initial settings of MariaDB required when using it as a database server.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200829052743.html">
-        <span itemprop="name">MariaDB</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> MariaDB </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200224174004.html">MariaDBの初期設定とユーザーの作成</a></h2>
+<h2><a href="/blog/20200224174004.html"> MariaDB initialization and user creation </a></h2>
 <p>
-  データベースサーバーとして利用するときに必要なMariaDBの初期設定についての解説です。
+  This is an explanation of the initial settings of MariaDB required when using it as a database server.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,110 +95,110 @@
 </div>
 
 
-<h3>MariaDBのrootユーザーでの接続</h3>
+<h3> MariaDB root user connection </h3>
 <p>
-  Ubuntuでは、MariaDBのrootユーザーとして接続するには、Ubuntuのroot権限を使ってアクセスします。つまり、sudoを使って、パスワードなしでrootユーザーで接続します。
+  On Ubuntu, to connect as the MariaDB root user, access using Ubuntu root privileges. That is, use sudo to connect as the root user without a password.
 </p>
 <pre>
 sudo mysql -uroot
 </pre>
 <p>
-  MariaDBへの接続を終了するには「quit」と入力してEnterを押します。
+  To end the connection to MariaDB, type quit and press Enter.
 </p>
 <pre>
 quit
 </pre>
-<h3>タイムゾーンの設定 - オプション</h3>
+<h3> Time Zone Settings-Options </h3>
 <p>
-  MariaDBのデフォルトのタイムゾーンは、OSのタイムゾーンです。つまり。<a href="/blog/20200507174004.html">OSのタイムゾーンの設定</a>を行っている場合は、MariaDBのタイムゾーンの設定はいりません。
+  MariaDB's default time zone is the OS time zone. in short. If you have <a href="/blog/20200507174004.html"> OS time zone setting</a>, you do not need to set MariaDB time zone.
 </p>
 <p>
-  タイムゾーンの設定が必要となるのは、MariaDBがクラウドサービスとして、提供されている場合です。この場合は、MariaDBの設定ファイルのタイムゾーン設定を行ってください。そのままではUTC時刻になっています。
+  You need to set the time zone when MariaDB is provided as a cloud service. In this case, set the time zone in the MariaDB configuration file. As it is, it is UTC time.
 </p>
 <p>
-  UTCと「Asia/Tokyo」の時間差分である「+09:00」を設定します。
+  Set the time difference between UTC and "Asia / Tokyo", "+09: 00".
 </p>
 <pre>
-# パラメータ名
+#Parameter name
 time_zone
 
-# 値
-+09:00
+# value
++09: 00
 </pre>
-<h3>MariaDBの設定ファイルの場所</h3>
+<h3> MariaDB configuration file location </h3>
 <p>
-  初期設定では、特に設定の必要がありませんが、メモリの設定は、必ず行うことになるので、UbuntuにおけるMariaDBの設定ファイルの場所を記載しておきます。
+  In the initial setting, no special setting is required, but since the memory setting is always done, the location of the MariaDB configuration file in Ubuntu is described.
 </p>
 <ul>
-  <li><a href="/blog/20200223174004.html">UbuntuのMariaDBの設定ファイルの場所</a></li>
+  <li> <a href="/blog/20200223174004.html"> Ubuntu MariaDB configuration file location</a> </li>
 </ul>
-<h3>データベースの作成</h3>
+<h3> Creating a database </h3>
 <p>
-  ここでは、Webアプリケーション用の<a href="https://en.mariadb.perlzemi.com/blog/20200521082643.html">データベースを作成</a>します。データベース名は、myappdbにしておきます。後でデータベース名の変更は可能です(少し工夫はいりますが)。
+  Here, <a href="https://en.mariadb.perlzemi.com/blog/20200521082643.html"> create a database</a> for your web application. The database name should be myappdb. You can change the database name later (although with some ingenuity).
 </p>
 <pre>
 create database myappdb;
 </pre>
 <p>
-  作成したデータベースを確認するために、<a href="https://en.mariadb.perlzemi.com/blog/20200518082643.html">データベースの一覧</a>を表示します。
+  Display the <a href="https://en.mariadb.perlzemi.com/blog/20200518082643.html"> database list</a> to see the database you created.
 </p>
 <pre>
 show databases;
 </pre>
-<h3>アプリケーションユーザーの作成</h3>
+<h3> Creating an application user </h3>
 <p>
-  Webアプリケーション用のMariaDBユーザを作成しましょう。select,insert,update,deleteの権限を持ったユーザーです。
+  Let's create a MariaDB user for your web application. A user with select, insert, update, delete permissions.
 </p>
 <p>
-  MariaDBに管理者ユーザで接続します。上記でrootのパスワードを設定した場合は、rootユーザーで、管理者ユーザーが他にいる場合は、そのユーザーで接続してください。
+  Connect to MariaDB as an admin user. If you set the root password above, connect as the root user, and if there is another administrator user, connect as that user.
 </p>
 <pre>
-# Ubuntuのrootユーザーで接続
+#Connect as Ubuntu root user
 sudo mysql -uroot
 
-# MariaDBクラウドサービスに接続するサンプル
+#MariaDB Sample to connect to cloud service
 mysql -h my-devel-db-001.mariadb.database.azure.com -ukanri@my-devel-db-001 -p
 </pre>
 <p>
-  パスワードを聞かれますので、入力してください。
+  You will be asked for a password, so enter it.
 </p>
 <p>
-  データべースがリモートにあり、接続できない場合は、データベースサーバー側のファイアーウォールの確認も合わせておこなってください。
+  If the database is remote and you cannot connect, also check the firewall on the database server side.
 </p>
 <p>
-  <a href="https://en.mariadb.perlzemi.com/blog/20200523082643.html">MariaDBでユーザーの作成</a>を行います。
+  <a href="https://en.mariadb.perlzemi.com/blog/20200523082643.html"> Create a user in MariaDB</a>.
 </p>
 <pre>
 create user myapp;
 </pre>
 <p>
-  次に、<a href="https://en.mariadb.perlzemi.com/blog/20200522082643.html">データベースへのアクセス権限の設定とパスワードを設定</a>します。
+  Next, <a href="https://en.mariadb.perlzemi.com/blog/20200522082643.html"> Set database access permissions and passwords</a>.
 </p>
 <p>
-  以下の、localhostの部分は、データベースサーバーが、同じサーバーにある場合の設定です。クラウドサーバーの場合ですと、接続元のIPアドレス、または、ドメイン名を指定してください。
+  The localhost part below is the setting when the database server is on the same server. In the case of a cloud server, specify the IP address or domain name of the connection source.
 </p>
 <pre>
-grant insert,update,delete,select on myappdb.* to 'myapp'@'localhost' identified by 'eifjutab&amp;';
+grant insert, update, delete, select on myappdb. * to'myapp' @'localhost' identified by'eifjutab &amp;';
 </pre>
 <p>
-  PerlでDBD::mysqlをインストールするときに、testデータベースへの接続権限必要になるので、設定しておきます。
+  When installing DBD :: mysql with Perl, you need to have connection permission to the test database, so set it.
 </p>
 <pre>
 create database test;
-grant all privileges on test.* to 'myapp'@'localhost' identified by 's3kr1t';
+grant all privileges on test. * to'myapp' @'localhost' identified by's3kr1t';
 </pre>
 <p>
-  接続を抜けて、新しく作成した「myapp」ユーザーで、MariaDBに接続できることを確認します。
+  Make sure you can disconnect and connect to MariaDB with the newly created "myapp" user.
 </p>
 <pre>
-# rootユーザーで接続
+#Connect as root user
 mysql -umyapp -p
 
-# MariaDBクラウドサービスに接続するサンプル
+#MariaDB Sample to connect to cloud service
 mysql -h my-devel-db-001.mariadb.database.azure.com -umyapp@my-devel-db-001 -p
 </pre>
 <p>
-  これで初期設定とユーザーの作成が完了しました。
+  This completes the initial settings and user creation.
 </p>
 
   </div>

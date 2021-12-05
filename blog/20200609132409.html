@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheの設定ファイルが正しかテストする - apachectl -t - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Apacheの設定ファイルが正しかテストするにはapachectlコマンドの「-t」オプションを使用します。">
+<title> Test if Apache config file is correct --apachectl -t  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="To test that the Apache configuration file is correct, use the "-t" option of the apachectl command.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200609132409.html">Apacheの設定ファイルが正しかテストする - apachectl -t</a></h2>
+<h2><a href="/blog/20200609132409.html"> Test if Apache config file is correct --apachectl -t </a></h2>
 <p>
-  Apacheの設定ファイルが正しかテストするにはapachectlコマンドの「-t」オプションを使用します。
+  To test that the Apache configuration file is correct, use the "-t" option of the apachectl command.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -99,28 +99,28 @@
 sudo apachectl -t
 </pre>
 <p>
-  <a href="/blog/20200307174004.html">自己SSL証明書</a>を読み込んでいる場合に、root権限が必要になるので、sudoでroot権限で実行する方がよいでしょう。
+  If you are reading <a href="/blog/20200307174004.html"> self SSL certificate</a>, you will need root privileges, so it is better to run with root privileges with sudo.
 </p>
 <p>
-  Aapcheの設定ファイルを間違ったまま<a href="/blog/20200605104005.html">systemctl</a>コマンドで、<a href="/blog/20200519084454.html">Apacheを再起動</a>してしまうと、Apacheが停止します。Apacheが停止すると、Apache上で動いているすべてのWebサイト・Webサービスがダウンします。
+  <a href="/blog/20200605104005.html"> Restart Apache</a> with the <a href="/blog/20200605104005.html"> systemctl</a> command with the Aapche configuration file wrong. If you do, Apache will stop. When Apache stops, all websites and web services running on Apache will go down.
 </p>
 <p>
-  これは、起こりやすいミスで、多くのエンジニアが経験するミスです。Webサイトが全部停止して、焦った方も多いのではないでしょうか。
+  This is a common mistake that many engineers experience. I think there are many people who are impatient because all the websites have stopped.
 </p>
 <p>
-  Apacheの再起動を行う前は、Apacheの設定ファイルが正しいかテストしておく習慣をつけておくのがお勧めです。
+  Before restarting Apache, it's a good idea to get in the habit of testing the Apache configuration files for correctness.
 </p>
 <p>
-  また、たとえ、Apacheの設定ファイルが正しくても、それは、再起動ができるということを意味するだけで、設定を間違っていたために、意図したように動いていないということもあります。
+  Also, even if the Apache config file is correct, it just means that you can reboot, and it may not be working as intended because of the wrong config.
 </p>
 <p>
-  元に戻せるよう設定ファイルのバックアップを行っておくことは大切です。
+  It is important to back up the configuration file so that it can be restored.
 </p>
 <p>
-  Ubuntuの場合は、細かく設定ファイルが分かれているので、<a href="https://en.git.perlzemi.com/">Git</a>を使って管理できると便利でしょう。
+  In the case of Ubuntu, the configuration file is divided into small parts, so it would be convenient to manage it using <a href="https://en.git.perlzemi.com/"> Git</a>.
 </p>
 <p>
-  Aapcheの設定ファイルを変更する必要がある場合は、できるだけ少しづつ変更して、間違いがないことを確認しながら、再起動する方法がお勧めです。一度に変更すると、どこが間違っているかわからなくなったり、全部をやりなおす必要がでてくるからです。
+  If you need to change the Aapche config file, it's a good idea to change it as little as possible and restart, making sure there are no mistakes. If you change it all at once, you won't know what's wrong or you'll have to redo everything.
 </p>
 
   </div>

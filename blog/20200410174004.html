@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>UbuntuとCentOSの違いと共通化された部分 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="UbuntuとCentOSの違うところをここでまとめておきます。両方で動くようになるのがよいですね。">
+<title> Differences between Ubuntu and CentOS and common parts  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Here is a summary of the differences between Ubuntu and  CentOS. It's good to be able to work with both.">
   </head>
   <body>
     <div class="container">
@@ -56,9 +56,9 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200410174004.html">UbuntuとCentOSの違いと共通化された部分</a></h2>
+    <h2><a href="/blog/20200410174004.html"> Differences between Ubuntu and CentOS and common parts </a></h2>
 <p>
-  Ubuntuと<a href="https://en.centos.perlzemi.com/">CentOS</a>の違うところをここでまとめておきます。両方で動くようになるのがよいですね。
+  Here is a summary of the differences between Ubuntu and <a href="https://en.centos.perlzemi.com/"> CentOS</a>. It's good to be able to work with both.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -76,188 +76,188 @@
 </div>
 
 
-<h3>シェルのシェバン「/bin/sh」</h3>
+<h3> Shell shebang "/ bin / sh" </h3>
 <p>
-  CentOSでは「/bin/sh」は「/bin/bash」にシンボリックリンクが張られているので、bashで実行されます。
+  In CentOS, "/ bin / sh" has a symbolic link in "/ bin / bash", so it will be executed in bash.
 </p>
 <p>
-  Ubuntuでは「/bin/sh」で実行されます。実装は「dash」と呼ばれるシェルになっています。
+  On Ubuntu it runs in "/ bin / sh". The implementation is in a shell called "dash".
 </p>
 <p>
-  シェバンを以下のように書いているとCentOSでは、bashで実行されるのに対して、Ubuntuでは「/bin/sh」で実行されます。
+  If you write the shebang as follows, it will be executed by "/ bin / sh" on Ubuntu, while it will be executed by bash on CentOS.
 </p>
 <pre>
-#!/bin/sh
+#! / bin / sh
 </pre>
 <p>
-  そして、bashの文法を使っていると以下のように文法エラーになる。
+  And when using the bash grammar, a grammar error occurs as follows.
 </p>
 <pre>
 ./morbo: 10: ./morbo: Syntax error: "(" unexpected
 </pre>
 <p>
-  <a href="https://en.linux.perlzemi.com/">Linux</a>間ポータビリティを持たせるためには、明示的にbashとシェバンと明示的に書きます。
+  <a href="https://en.linux.perlzemi.com/"> Linux</a> To have inter-portability, explicitly write bash and shebang.
 </p>
 <pre>
-#!/bin/bash
+#! / bin / bash
 </pre>
 <p>
-  Unix間ともポータビリティを持たせる場合はshの文法で書き直す必要があるでしょう。
+  If you want to have portability between Unixes, you will need to rewrite it with sh syntax.
 </p>
 <p>
-  <a href="https://en.perlzemi.com/">Perl</a>で書けば、Unix/Linux間で、ポータブルなプログラムが書けます。
+  You can write portable programs between Unix / Linux by writing <a href="https://en.perlzemi.com/"> Perl</a>.
 </p>
-<h3>パッケージ管理</h3>
+<h3> Package management </h3>
 <p>
-  パッケージ管理ツールUbuntuではapt、CentOSではyumの違いがあります。
-</p>
-<p>
-  CentOS 8からはdnfがyumを置き換えます。yumはdnfのエイリアスになります。
+  There is a difference between apt in the package management tool Ubuntu and yum in CentOS.
 </p>
 <p>
-  パッケージ名も異なります。パッケージ管理は現在のところ共通化できなさそうです。
-</p>
-<h3>sudo</h3>
-<p>
-  Ubuntuは、sudoがデフォルトで利用可能です。
+  Starting with CentOS 8, dnf replaces yum. yum is an alias for dnf.
 </p>
 <p>
-  sudoを許可するには、Ubuntuでは、ユーザーをsudoグループに追加します。
+  The package name is also different. It seems that package management cannot be standardized at this time.
+</p>
+<h3> sudo </h3>
+<p>
+  For Ubuntu, sudo is available by default.
+</p>
+<p>
+  To allow sudo, Ubuntu adds the user to the sudo group.
 </p>
 <pre>
-# Ubuntuでsudoを許可
+#Allow sudo on Ubuntu
 gpasswd -a myapp sudo
 </pre>
 <p>
-  CentOSでは、sudoが有効になっていません。visudoでsudoが利用可能になる設定を行います。(CentOS 7の場合)
+  Sudo is not enabled on CentOS. Make settings to enable sudo with visudo. (For CentOS 7)
 </p>
 <p>
-  「%wheel ALL=(ALL) ALL」のコメントを外します。
+  Uncomment "% wheel ALL = (ALL) ALL".
 </p>
 <pre>
 ## Allows people in group wheel to run all commands
-#%wheel ALL=(ALL) ALL
-%wheel ALL=(ALL) ALL
+#% wheel ALL = (ALL) ALL
+% wheel ALL = (ALL) ALL
 </pre>
 <p>
-  sudoを許可するには、ユーザーをwheelグループに追加します。
+  To allow sudo, add the user to the wheel group.
 </p>
 <pre>
-# CentOSでsudoを許可
+#Allow sudo on CentOS
 gpasswd -a myapp wheel
 </pre>
-<h3>サーバー</h3>
-<h4>Apache</h4>
+<h3> Server </h3>
+<h4> Apache </h4>
 <p>
-  Apacheは名前が異なります。CentOSではhttpdなのに対して、Ubuntuでは、apache2です。
+  Apache has a different name. In CentOS it is httpd, but in Ubuntu it is apache2.
 </p>
 <p>
-  設定ファイルの場所や、<a href="/blog/20200605104005.html">systemctl</a>コマンドを実行するときの名前が異なっています。
+  The location of the configuration file and the name when executing the <a href="/blog/20200605104005.html"> systemctl</a> command are different.
 </p>
 <p>
-  設定ファイルの構成も、CentOSとUbuntuで異なっています。
+  The configuration of the configuration file is also different between CentOS and Ubuntu.
 </p>
 <p>
-  UbuntuのApacheには、a2ensite, a2enmod, a2enconfなどの、設定ファイル有効化コマンドがあります。
+  Apache on Ubuntu has configuration file enable commands such as a2ensite, a2enmod, a2enconf.
 </p>
 <p>
-  コマンドを使って設定ファイルを有効化・無効可するといったことが、Ubuntuでは、やりやすくなっています。
+  In Ubuntu, it is easier to enable / disable the configuration file using commands.
 </p>
-<h3>ファイアーウォール</h3>
+<h3> Firewall </h3>
 <p>
-  ファイアーウォールは、Ubuntuはufw、CentOSはfirewalldです。
-</p>
-<p>
-  ファイアーウォールは、コマンドラインでの設定は、非常にややこしく、やりたくないという気持ちは強い。
+  The firewall is ufw for Ubuntu and firewalld for CentOS.
 </p>
 <p>
-  VPS、クラウドサービスには、たいてい、ファイアーウォールの設定が存在するので、それで設定すると、Linux自体のファイアーウォールを意識しないですむ。ネットワークの設定でパケット制御を行う部分があります。
+  Firewalls are very confusing to set up on the command line, and I have a strong feeling that I don't want to do it.
 </p>
 <p>
-  オンプレミスの場合は、コマンドでファイアーウォール管理を行う。
-</p>
-<h3>cron</h3>
-<p>
-  Ubuntuの場合は、デフォルトでcronがインストールされていて、普通のcronです。自然にcronを使えます。
+  VPS and cloud services usually have a firewall setting, so if you set it with that, you do not have to be aware of the firewall of Linux itself. There is a part that controls packets in the network settings.
 </p>
 <p>
-  CentOSの場合は、デフォルトのcronがanacronです。普通のcronが欲しい場合は、anacronをアンインストールして、普通のcronをインストールする必要があります。
+  In case of on-premises, firewall management is performed by command.
 </p>
-<h3>SeLinux</h3>
+<h3> cron </h3>
 <p>
-  Ubuntuの場合は、CentOSのSeLinuxに該当する機能は、デフォルトでoffになっています。
-</p>
-<p>
-  CentOSの場合は、SeLinuxがデフォルトでonになっている。この機能、リバースプロキシでの接続で、プロキシエラーになっちゃうので、SeLinuxを無効にするか、リバースプロキシができる設定にする必要があります。
-</p>
-<h3>Let's EncryptによるSSL証明書</h3>
-<p>
-  Ubuntuでは、certbotがaptからインストールできます。
+  For Ubuntu, cron is installed by default, which is a normal cron. You can use cron naturally.
 </p>
 <p>
-  CentOSでは、以下のようにcertbotをインストールします。
+  For CentOS, the default cron is anacron. If you want a regular cron, you need to uninstall anacron and install a regular cron.
+</p>
+<h3> SeLinux </h3>
+<p>
+  In case of Ubuntu, the function corresponding to SeLinux of CentOS is off by default.
+</p>
+<p>
+  For CentOS, SeLinux is on by default. This function causes a proxy error when connecting with a reverse proxy, so you need to disable SeLinux or set it to allow reverse proxy.
+</p>
+<h3> SSL certificate by Let's Encrypt </h3>
+<p>
+  On Ubuntu, certbot can be installed from apt.
+</p>
+<p>
+  On CentOS, install certbot as follows.
 </p>
 <pre>
 # Cent OS 7
 yum install epel-release
-yum install --enablerepo=epel certbot
+yum install --enablerepo = epel certbot
 </pre>
 <p>
-  新しいCent OSのバージョンが出たばかりなど、certbotがepelレポジトリに含まれていない場合は、ソースコードからインストールしする必要があります。またcertbotは、certbot-autoという名前です。
+  If the certbot is not included in the epel repository, such as when a new Cent OS version is just out, you will need to install it from source code. Also, certbot is named certbot-auto.
 </p>
-<h3>UbuntuとCentOSで共通になったもの</h3>
+<h3> What is common to Ubuntu and CentOS </h3>
 <p>
-  CentOSとUbuntuで、ここ最近共通になったもの。
+  CentOS and Ubuntu have recently become common.
 </p>
-<h4>systemctl</h4>
+<h4> systemctl </h4>
 <p>
-  CentOSもUbuntuもサービス(サーバーとして起動する者)は、systemdで管理するようになって、管理コマンドもsystemctlになりました。
-</p>
-<p>
-  CentOS 7からはsystemctlコマンドをUbuntuと共通で使うことができます。
-</p>
-<h4>journalctl</h4>
-<p>
-  systemdのログ管理もjournalctlがUbuntuとCentOSで共通で使える。
+  In both CentOS and Ubuntu, services (those who start as a server) are now managed by systemd, and the management command is also systemctl.
 </p>
 <p>
-  CentOS 7からはjournalctlコマンドをUbuntuと共通で使うことができます。
+  From CentOS 7, you can use the systemctl command in common with Ubuntu.
 </p>
-<h3>Perl</h3>
+<h4> journalctl </h4>
 <p>
-  Ubuntuの一般的な構成ではデフォルトで<a href="https://en.perlzemi.com/">Perl</a>がインストールされています。
+  For systemd log management, journalctl can be used for both Ubuntu and CentOS.
 </p>
 <p>
-  CentOSの一般的な構成ではデフォルトでPerlがインストールされていないことが多いです。さらに、付け加えておくと、Perlのコアモジュールがperlパッケージから分離されて別になっています。
+  From CentOS 7, you can use the journalctl command in common with Ubuntu.
+</p>
+<h3> Perl </h3>
+<p>
+  <a href="https://en.perlzemi.com/"> Perl</a> is installed by default in a typical Ubuntu configuration.
+</p>
+<p>
+  Perl is often not installed by default in a typical CentOS configuration. In addition, Perl's core modules are separate from the perl package.
 </p>
 <pre>
-# CentOSにおけるPerlのインストール
+#Install Perl on CentOS
 yum install perl
 yum install perl-core
 </pre>
-<h3>パッケージのインストール後のサーバーの状態</h3>
+<h3> Server state after package installation </h3>
 <p>
-  サーバーアプリケーションをインストールした場合は、Ubuntuの場合は、起動されます。
+  If you installed the server application, it will be launched for Ubuntu.
 </p>
 <p>
-  サーバーアプリケーションをインストールした場合は、CentOSの場合は、起動されていません。
+  If you installed the server application, it is not started for CentOS.
 </p>
-<h3>標準パッケージの種類</h3>
+<h3> Standard package type </h3>
 <p>
-  Ubuntuでは標準パッケージでLet's Encryptのクライアントであるcertbotと、Redisサーバーが提供されています。
+  Ubuntu provides a Let's Encrypt client, certbot, and a Redis server as standard packages.
 </p>
 <p>
-  CentOSの場合は(CentOS 7の場合)は、上記が提供されていません。Linux 用の拡張パッケージ(EPEL)リポジトリをインストールすることで利用可能になります。
+  For CentOS (for CentOS 7), the above is not provided. It is available by installing the Expansion Package (EPEL) repository for Linux.
 </p>
 <pre>
 sudo yum -y install epel-release
 </pre>
-<h3>バージョン間の変化の大きさ</h3>
+<h3> The magnitude of change between versions </h3>
 <p>
-  Ubuntuは、変化はあれども、なるべく互換性が保たれ、大きな変更は少ない感じがします。
+  Ubuntu is as compatible as possible, despite changes, and I feel that there are few major changes.
 </p>
 <p>
-  CentOSの方が変化が大きく。バージョン間の差分は大きく感じる。CentOS 5, 6, 7, 8で、変化は多い。
+  The change is bigger in CentOS. The difference between the versions feels big. There are many changes in CentOS 5, 6, 7, 8.
 </p>
 
   </div>

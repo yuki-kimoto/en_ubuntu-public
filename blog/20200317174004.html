@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheの設定ファイルの場所 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="UbuntuにおけるApacheの設定ファイルの場所は「/etc/apache2」です。">
+<title> Apache configuration file location  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="The location of the Apache configuration file on Ubuntu is "/ etc / apache2".">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200317174004.html">Apacheの設定ファイルの場所</a></h2>
+<h2><a href="/blog/20200317174004.html"> Apache configuration file location </a></h2>
 <p>
-  UbuntuにおけるApacheの設定ファイルの場所は「/etc/apache2」です。
+  The location of the Apache configuration file on Ubuntu is "/ etc / apache2".
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,23 +96,23 @@
 
 
 <pre>
-ls /etc/apache2
+ls / etc / apache2
 </pre>
 <p>
-  この中にApacheの設定ファイルが格納されています。
+  The Apache configuration file is stored in this.
 </p>
 <pre>
--rw-r--r-- 1 root root  7224 Mar 13 21:26 apache2.conf
-drwxr-xr-x 2 root root  4096 Jun 10 08:41 conf-available
-drwxr-xr-x 2 root root  4096 Jun 10 08:46 conf-enabled
--rw-r--r-- 1 root root  1855 May 27 15:53 envvars
--rw-r--r-- 1 root root  1782 May 27 15:42 envvars.bak
--rw-r--r-- 1 root root 31063 Jul 17  2019 magic
-drwxr-xr-x 2 root root 12288 Jun  8 15:21 mods-available
-drwxr-xr-x 2 root root  4096 Jun  8 16:07 mods-enabled
--rw-r--r-- 1 root root   320 Jul 17  2019 ports.conf
-drwxr-xr-x 2 root root  4096 May 26 14:59 sites-available
-drwxr-xr-x 2 root root  4096 May 26 14:59 sites-enabled
+-rw-r--r-- 1 root root 7224 Mar 13 21:26 apache2.conf
+drwxr-xr-x 2 root root 4096 Jun 10 08:41 conf-available
+drwxr-xr-x 2 root root 4096 Jun 10 08:46 conf-enabled
+-rw-r--r-- 1 root root 1855 May 27 15:53 ​​envvars
+-rw-r--r-- 1 root root 1782 May 27 15:42 envvars.bak
+-rw-r--r-- 1 root root 31063 Jul 17 2019 magic
+drwxr-xr-x 2 root root 12288 Jun 8 15:21 mods-available
+drwxr-xr-x 2 root root 4096 Jun 8 16:07 mods-enabled
+-rw-r--r-- 1 root root 320 Jul 17 2019 ports.conf
+drwxr-xr-x 2 root root 4096 May 26 14:59 sites-available
+drwxr-xr-x 2 root root 4096 May 26 14:59 sites-enabled
 </pre>
 
   </div>

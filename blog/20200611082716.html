@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>SSL証明書の設定をApacheの設定ファイルに記述する - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="SSLの設定をApacheの設定ファイルの例を紹介します。">
+<title> Describe the SSL certificate settings in the Apache configuration file  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Here is an example of an Apache configuration file for SSL settings.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200611082716.html">SSL証明書の設定をApacheの設定ファイルに記述する</a></h2>
+<h2><a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file </a></h2>
 <p>
-  SSLの設定をApacheの設定ファイルの例を紹介します。
+  Here is an example of an Apache configuration file for SSL settings.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,82 +96,82 @@
 
 
 <p>
-  ApacheでHTTPSを有効にする場合は、Let's Encryptなどを使ってSSL証明書を取得して、Apacheの設定ファイルにSSLの設定を行う必要があります。
+  If you want to enable HTTPS on Apache, you need to get an SSL certificate using Let's Encrypt etc. and set SSL in the Apache configuration file.
 </p>
 <p>
-  SSLの設定で行うことは、二種類あって、すべてのサイトで共通させるSSLの基本設定と、各サイトごとに異なるSSL証明書のパスの設定です。
+  There are two types of SSL settings, the basic SSL settings that are common to all sites and the SSL certificate path settings that are different for each site.
 </p>
-<h3>SSLの基本設定</h3>
+<h3> SSL basic settings </h3>
 <p>
-  SSLの基本設定の例です。必須であるのは「SSLEngine on」です。残りの設定は、SSLのセキュリティの脆弱性を減らし、セキュリティを高めるための設定です。
+  This is an example of SSL basic settings. Required is "SSL Engine on". The remaining settings are for reducing SSL security vulnerabilities and increasing security.
 </p>
 <p>
-  これは、Let's Encryptが設定したSSLの設定をそのまま記載したものです。
+  This is the same as the SSL setting set by Let's Encrypt.
 </p>
 <pre>
 SSLEngine on
-SSLProtocol             all -SSLv2 -SSLv3
-SSLCipherSuite          ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS
-SSLHonorCipherOrder     on
+SSLProtocol all -SSLv2 -SSLv3
+SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305: ECDHE-RSA-CHACHA20-POLY1305: ECDHE-ECDSA-AES128-GCM-SHA256: ECDHE-RSA-AES128-GCM-SHA256: ECDHE-ECDSA-AES256-GCM-SHA384 -AES256-GCM-SHA384: DHE-RSA-AES128-GCM-SHA256: DHE-RSA-AES256-GCM-SHA384: ECDHE-ECDSA-AES128-SHA256: ECDHE-RSA-AES128-SHA256: ECDHE-ECDSA-AES128-SHA : ECDHE-RSA-AES256-SHA384: ECDHE-RSA-AES128-SHA: ECDHE-ECDSA-AES256-SHA384: ECDHE-ECDSA-AES256-SHA: ECDHE-RSA-AES256-SHA: DHE-RSA-AES128-SHA256: DHE -RSA-AES128-SHA: DHE-RSA-AES256-SHA256: DHE-RSA-AES256-SHA: ECDHE-ECDSA-DES-CBC3-SHA: ECDHE-RSA-DES-CBC3-SHA: EDH-RSA-DES-CBC3 -SHA: AES128-GCM-SHA256: AES256-GCM-SHA384: AES128-SHA256: AES256-SHA256: AES128-SHA: AES256-SHA: DES-CBC3-SHA :! DSS
+SSLHonorCipherOrder on
 </pre>
 <p>
-  すべてのサイトで共通させることができるので「conf-available/ssl-basic.conf」というファイル名を<a href="https://en.linux.perlzemi.com/blog/20190401171737.html">viエディタ</a>で作成して、各サイトのバーチャルホストの設定からインクルードしましょう。
+  Since it can be shared by all sites, the file name "conf-available / ssl-basic.conf" is <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi. Create it in an editor and include it from the virtual host settings for each site.
 </p>
 <pre>
-cd /etc/apache2
+cd / etc / apache2
 sudo vi conf-available/ssl-basic.conf
 </pre>
 <p>
-  Apache設定ファイルでインクルード。
+  Included in Apache configuration file.
 </p>
 <pre>
 Include conf-available/ssl-basic.conf
 </pre>
-<h3>各サイトごとのSSL証明書のパスの設定</h3>
+<h3> Setting the SSL certificate path for each site </h3>
 <p>
-  各サイトごとのSSL証明書のパスの設定ですが、三つのファイルのパスを記載する必要があります。SSLは公開鍵認証なので、サーバー側に秘密鍵が必要であること、中間証明書が合わせて必要なことを覚えておきましょう。実装の詳細などの詳しい内容については、セキュリティの専門家の方にお尋ねください。
+  It is the setting of the SSL certificate path for each site, but it is necessary to describe the path of the three files. Keep in mind that SSL is a public key authentication, so you need a private key on the server side and an intermediate certificate as well. Ask your security expert for more details, including implementation details.
 </p>
 <ul>
-  <li>SSL証明書</li>
-  <li>SSL証明書の秘密鍵</li>
-  <li>SSL証明書の中間証明書</li>
+  <li> SSL certificate </li>
+  <li> SSL certificate private key </li>
+  <li> Intermediate certificate of SSL certificate </li>
 </ul>
 <p>
-  これを各サイトのバーチャルホストの設定に記述しましょう。以下は、Let's Encryptで生成された、SSL証明書のファイルです。
+  Let's describe this in the virtual host settings of each site. The following is the SSL certificate file generated by Let's Encrypt.
 </p>
 <pre>
   SSLCertificateFile /etc/letsencrypt/live/www.mydomain.example/cert.pem
   SSLCertificateKeyFile /etc/letsencrypt/live/www.mydomain.example/privkey.pem
   SSLCertificateChainFile /etc/letsencrypt/live/www.mydomain.example/chain.pem
 </pre>
-<h3>設定ファイルを作成する手順</h3>
+<h3> Procedure for creating a configuration file </h3>
 <p>
-  ここで、SSLの設定ファイルを作成する手順について書いておきます。実は、Let's Encryptで生成された、SSL証明書を利用する場合は、一度でApacheの設定ファイルの設定を行うことができないからです。
+  Here, I will write about the procedure to create an SSL configuration file. Actually, when using the SSL certificate generated by Let's Encrypt, it is not possible to set the Apache configuration file at once.
 </p>
 <p>
-  なぜなら、Let's Encryptは、実際にそのHTTPサーバーにアクセスできるということで、SSL証明書の所有者の確認を行うからです。
+  This is because Let's Encrypt verifies the owner of the SSL certificate by actually being able to access the HTTP server.
 </p>
 <p>
-  つまり、まず最初に、80番ポートで、Let's Encryptからくる確認のHTTPリクエストがアクセス可能な状態にして、おく必要があります。
+  In other words, first of all, you need to make the confirmation HTTP request coming from Let's Encrypt accessible on port 80.
 </p>
 <p>
-  ただし、HTTPで80番ポートで設定して、また443のHTTPSの設定を行うということは、面倒です。
+  However, it is troublesome to set HTTP on port 80 and then set HTTPS on 443.
 </p>
 <p>
-  ですので、80番ポートで、受けたHTTPリクエストは最初から、HTTPS(443)にリダイレクトするようにしておきましょう。リバースプロキシで、Webアプリケーションが起動していることを前提とします。
+  Therefore, let's redirect the received HTTP request to HTTPS (443) from the beginning on port 80. It is assumed that the web application is running on the reverse proxy.
 </p>
 <p>
-  SSLの設定を有効にして、最初から準備されている<a href="/blog/20200307174004.html">自己SSL証明書</a>を読み込みます。「SSLEngine on」だけでは、HTTPSでの接続に失敗するので注意しましょう。
+  Enable the SSL settings and load the <a href="/blog/20200307174004.html"> self-SSL certificate</a> that was prepared from the beginning. Please note that the connection with HTTPS will fail only with "SSL Engine on".
 </p>
 <pre>
-&lt;VirtualHost *:80&gt;
+&lt;VirtualHost *: 80&gt;
   ServerName www.mydomain.example
 
   RewriteEngine on
-  RewriteRule (.*)?$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
 &lt;/VirtualHost&gt;
 
-&lt;VirtualHost *:443&gt;
+&lt;VirtualHost *: 443&gt;
   ServerName www.mydomain.example
   &lt;Proxy *&gt;
     Require all granted
@@ -179,30 +179,30 @@ Include conf-available/ssl-basic.conf
 
   ProxyRequests Off
   ProxyPreserveHost On
-  ProxyPass / http://localhost:20013/ keepalive=On
-  ProxyPassReverse / http://localhost:20013/
+  ProxyPass / http: // localhost: 20013 / keepalive = On
+  ProxyPassReverse / http: // localhost: 20013 /
   RequestHeader set X-Forwarded-Proto "https"
 
   SSLEngine on
-  SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+  SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
 &lt;/VirtualHost&gt;
 </pre>
 <p>
-  そして、SSL証明書が取得できると、以下の設定に修正します。
+  Then, if you can get the SSL certificate, modify it to the following settings.
 </p>
 <p>
-  Let's Encryptのcertbotが自動的にApacheのSSL証明書の設定してくれる場合もあるのですが、Apacheの設定ファイルのディレクトリ外から設定ファイルを読み込むため、<a href="/blog/20200312174004.html">Gitでの設定ファイルの管理</a>のしやすさという面を考慮して、手動で設定することをお勧めしておきます。
+  Let's Encrypt's certbot may automatically set the Apache SSL certificate, but since the configuration file is read from outside the Apache configuration file directory, <a href="/blog/20200312174004.html" We recommend that you set it manually, considering the ease of "> managing the configuration file with Git</a>.
 </p>
 <pre>
-&lt;VirtualHost *:80&gt;
+&lt;VirtualHost *: 80&gt;
   ServerName www.mydomain.example
 
   RewriteEngine on
-  RewriteRule (.*)?$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
 &lt;/VirtualHost&gt;
 
-&lt;VirtualHost *:443&gt;
+&lt;VirtualHost *: 443&gt;
   ServerName www.mydomain.example
   &lt;Proxy *&gt;
     Require all granted
@@ -210,8 +210,8 @@ Include conf-available/ssl-basic.conf
 
   ProxyRequests Off
   ProxyPreserveHost On
-  ProxyPass / http://localhost:20013/ keepalive=On
-  ProxyPassReverse / http://localhost:20013/
+  ProxyPass / http: // localhost: 20013 / keepalive = On
+  ProxyPassReverse / http: // localhost: 20013 /
   RequestHeader set X-Forwarded-Proto "https"
 
   Include conf-available/ssl-basic.conf
@@ -220,15 +220,15 @@ Include conf-available/ssl-basic.conf
   SSLCertificateChainFile /etc/letsencrypt/live/www.mydomain.example/chain.pem
 &lt;/VirtualHost&gt;
 </pre>
-<h3>必要になるApacheのモジュール</h3>
+<h3> Required Apache modules </h3>
 <p>
-  上記のSSL対応のApacheの設定ファイルを記述するためには、以下のモジュールが有効にする必要があります。
+  In order to write the above SSL-enabled Apache configuration file, the following modules must be enabled.
 </p>
 <ul>
-  <li><a href="/blog/20200318174004.html">ApacheでHTTPSで通信できるようにmod_sslを有効化</a></li>
-  <li><a href="/blog/20200311174004.html">Apacheでmod_rewriteモジュールを有効にする</a></li>
-  <li><a href="/blog/20200310174004.html">Apacheでmod_proxyモジュールを有効にする</a></li>
-  <li><a href="/blog/20200309174004.html">Apacheでmod_headersモジュールを有効にする</a></li>
+  <li> <a href="/blog/20200318174004.html"> Enable mod_ssl for HTTPS communication with Apache</a> </li>
+  <li> <a href="/blog/20200311174004.html"> ApacEnable mod_rewrite module with he</a> </li>
+   <li> <a href="/blog/20200310174004.html"> Enable mod_proxy module in Apache</a> </li>
+   <li> <a href="/blog/20200309174004.html"> Enable mod_headers module in Apache</a> </li>
 </ul>
 
   </div>

@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Let's EncryptのアクセスURLだけをApacheのベーシック認証から除外する - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="Let's EncryptがSSL証明書を発行するときには、Let's Encryptのクライアントはそのサイトにアクセスできることを調べます。ひとつ注意しないといけないのは、ベーシック認証をサイト全体にかけている場合に、Let's Encryptのクライアントがアクセスできなくなってしまうということです。">
+<title> Exclude only Let's Encrypt access URL from Apache basic authentication  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="When Let's Encrypt issues an SSL certificate, the Let's Encrypt client checks that it can access the site. One thing to keep in mind is that if you apply basic authentication to the entire site, the Let's Encrypt client will not be able to access it.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200701124838.html">Let's EncryptのアクセスURLだけをApacheのベーシック認証から除外する</a></h2>
+<h2><a href="/blog/20200701124838.html"> Exclude only Let's Encrypt access URL from Apache basic authentication </a></h2>
 <p>
-  Let's EncryptがSSL証明書を発行するときには、Let's Encryptのクライアントはそのサイトにアクセスできることを調べます。ひとつ注意しないといけないのは、ベーシック認証をサイト全体にかけている場合に、Let's Encryptのクライアントがアクセスできなくなってしまうということです。
+  When Let's Encrypt issues an SSL certificate, the Let's Encrypt client checks that it can access the site. One thing to keep in mind is that if you apply basic authentication to the entire site, the Let's Encrypt client will not be able to access it.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,34 +96,34 @@
 
 
 <p>
-  ここでは、Let's EncryptのアクセスURLだけを、ベーシック認証から除外する方法を解説します。
+  Here, we will explain how to exclude only the access URL of Let's Encrypt from basic authentication.
 </p>
 <p>
-  Apacheの設定ファイルで以下のように設定してください。
+  Please set as follows in the Apache configuration file.
 </p>
 <pre>
-&lt;Location / &gt;
+&lt;Location /&gt;
   AuthType Basic
   AuthName "Secret Zone"
   AuthUserFile /var/www/.htpasswd
   Require user foo
 &lt;/Location&gt;
 
-&lt;Location /.well-known/acme-challenge &gt;
+&lt;Location /.well-known/acme-challenge&gt;
   Require all granted
 &lt;/Location&gt;
 </pre>
 <p>
-  Let's Encryptが使うパスだけは、接続をすべて許可してください。
+  Allow all connections only for the path used by Let's Encrypt.
 </p>
 <pre>
 /.well-known/acme-challenge
 </pre>
 <p>
-  がLet's Encryptが使うパスです。
+  Is the path used by Let's Encrypt.
 </p>
 <p>
-  「/」がベーシック認証のパスになっていますが、その後ろの設定で「/.well-known/acme-challenge」のパスに対しては、すべての接続が許可されます。
+  "/" Is the path for basic authentication, but all connections are allowed for the path "/.well-known/acme-challenge" in the settings after it.
 </p>
 
   </div>

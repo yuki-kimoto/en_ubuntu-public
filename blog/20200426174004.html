@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>libjpeg-devのインストール - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="libjpeg-devのインストール方法を解説します。aptコマンドを使って、libjpeg-devをインストールします。sudoを使って管理者権限で実行します。">
+<title> Install libjpeg-dev  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="I will explain how to install libjpeg-dev. Install libjpeg-dev using the  apt command. Run with administrator privileges using sudo.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Package management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200426174004.html">libjpeg-devのインストール</a></h2>
+<h2><a href="/blog/20200426174004.html"> Install libjpeg-dev </a></h2>
 <p>
-  libjpeg-devのインストール方法を解説します。<a href="/blog/20200530085516.html">apt</a>コマンドを使って、libjpeg-devをインストールします。sudoを使って管理者権限で実行します。
+  I will explain how to install libjpeg-dev. Install libjpeg-dev using the <a href="/blog/20200530085516.html"> apt</a> command. Run with administrator privileges using sudo.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -98,27 +98,27 @@
 <pre>
 sudo apt install -y libjpeg-dev
 </pre>
-<h3>libjpeg-devとは</h3>
+<h3> What is libjpeg-dev? </H3>
 <p>
-  (以下の記述は2020年5月14日時点で未確認)
+  (The following description is unconfirmed as of May 14, 2020)
 </p>
 <p>
-  libjpeg-devは、JPEG画像を読み込み・書き込み・編集するためのライブラリのひとつです。
+  libjpeg-dev is one of the libraries for reading, writing and editing JPEG images.
 </p>
 <p>
-  C言語ソースファイルの中で「jpeglib.h」を読み込むために必要です。
+  It is necessary to read "jpeglib.h" in the C language source file.
 </p>
 <p>
-  Perlでは、JPEG画像の読み書きに「jpeglib.h」が利用されているモジュールがあります。例として、ImagerのJPEG画像の読み書きモジュールであるImager::File::JPEGがあります。
+  In Perl, there are modules that use "jpeglib.h" to read and write JPEG images. An example is Imager :: File :: JPEG, Imager's JPEG image read / write module.
 </p>
 <p>
-  Imager::File::JPEGをインストールするためには「jpeglib.h」がインクルードディレクトリに、対応する共有ライブラリ「libjpeg.so」が、ライブラリのディレクトリにインストールされている必要があります。
+  In order to install Imager :: File :: JPEG, "jpeglib.h" must be installed in the include directory, and the corresponding shared library "libjpeg.so" must be installed in the library directory.
 </p>
 <p>
-  libjpeg-devをインストールすると、「jpeglib.h」ヘッダと、それに対応する共有ライブラリがインストールされます。
+  Installing libjpeg-dev installs the "jpeglib.h" header and the corresponding shared library.
 </p>
 <p>
-  Webでは、PNG,GIF,JPEGの画像アップロードが良く行われるので、JPEGのライブラリをインストールしておきます。
+  On the Web, PNG, GIF, and JPEG images are often uploaded, so install the JPEG library.
 </p>
 
   </div>

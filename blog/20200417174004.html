@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>MariaDBの起動・停止・再起動・状態確認 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="MariaDBの起動・停止・再起動・状態確認について解説します。">
+<title> MariaDB start / stop / restart / status check  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Explains how to start / stop / restart / check the status of MariaDB.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200829052743.html">
-        <span itemprop="name">MariaDB</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> MariaDB </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200417174004.html">MariaDBの起動・停止・再起動・状態確認</a></h2>
+<h2><a href="/blog/20200417174004.html"> MariaDB start / stop / restart / status check </a></h2>
 <p>
-  MariaDBの起動・停止・再起動・状態確認について解説します。
+  Explains how to start / stop / restart / check the status of MariaDB.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,147 +95,147 @@
 </div>
 
 
-<h4>MariaDBの状態確認</h4>
+<h4> MariaDB status check </h4>
 <p>
-  MariaDBの状態確認は、<a href="/blog/20200605104005.html">systemctl</a>コマンドの「status」を使って行います。
+  To check the status of MariaDB, use "status" of the <a href="/blog/20200605104005.html"> systemctl</a> command.
 </p>
 <pre>
 sudo systemctl status mariadb
 </pre>
-<h5>起動している場合</h5>
+<h5> If it is running </h5>
 <p>
-  起動している場合は、以下のように表示されます。
+  If it is running, the following will be displayed.
 </p>
 <pre>
-● mariadb.service - MariaDB 10.1.44 database server
+● mariadb.service --MariaDB 10.1.44 database server
    Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: enabled)
    Active: active (running) since Mon 2020-05-18 12:38:49 JST; 22h ago
-     Docs: man:mysqld(8)
+     Docs: man: mysqld (8)
            https://mariadb.com/kb/en/library/systemd/
  Main PID: 33941 (mysqld)
-   Status: "Taking your SQL requests now..."
+   Status: "Taking your SQL requests now ..."
     Tasks: 27 (limit: 9479)
    CGroup: /system.slice/mariadb.service
-           mq33941 /usr/sbin/mysqld
+           mq33941 / usr / sbin / mysqld
 
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: Processing databases
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: information_schema
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: mysql
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: performance_schema
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: Phase 6/7: Checking and upgrading tables
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: Processing databases
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: information_schema
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: performance_schema
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: Phase 7/7: Running 'FLUSH PRIVILEGES'
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: OK&lt;/pre&gt;
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Processing databases
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: information_schema
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: mysql
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: performance_schema
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Phase 6/7: Checking and upgrading tables
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Processing databases
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: information_schema
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: performance_schema
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Phase 7/7: Running'FLUSH PRIVILEGES'
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: OK &lt;/pre&gt;
 </pre>
-<h5>停止している場合</h5>
+<h5> When stopped </h5>
 <p>
-  停止している場合は、以下のように表示されます。
+  If it is stopped, the following will be displayed.
 </p>
 <pre>
-● mariadb.service - MariaDB 10.1.44 database server
+● mariadb.service --MariaDB 10.1.44 database server
    Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: enabled)
    Active: inactive (dead) since Tue 2020-05-19 10:53:02 JST; 6s ago
-     Docs: man:mysqld(8)
+     Docs: man: mysqld (8)
            https://mariadb.com/kb/en/library/systemd/
-  Process: 33941 ExecStart=/usr/sbin/mysqld $MYSQLD_OPTS $_WSREP_NEW_CLUSTER $_WSREP_START_POSITION (code=exited, status=0/SUCCESS)
- Main PID: 33941 (code=exited, status=0/SUCCESS)
+  Process: 33941 ExecStart = / usr / sbin / mysqld $ MYSQLD_OPTS $ _WSREP_NEW_CLUSTER $ _WSREP_START_POSITION (code = exited, status = 0 / SUCCESS)
+ Main PID: 33941 (code = exited, status = 0 / SUCCESS)
    Status: "MariaDB server is down"
 
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: mysql
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: performance_schema
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: Phase 6/7: Checking and upgrading tables
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: Processing databases
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: information_schema
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: performance_schema
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: Phase 7/7: Running 'FLUSH PRIVILEGES'
-May 18 12:38:50 development-batch /etc/mysql/debian-start[33977]: OK
-May 19 10:53:01 development-batch systemd[1]: Stopping MariaDB 10.1.44 database server...
-May 19 10:53:02 development-batch systemd[1]: Stopped MariaDB 10.1.44 database server.
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: mysql
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: performance_schema
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Phase 6/7: Checking and upgrading tables
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Processing databases
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: information_schema
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: performance_schema
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Phase 7/7: Running'FLUSH PRIVILEGES'
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: OK
+May 19 10:53:01 development-batch systemd [1]: Stopping MariaDB 10.1.44 database server ...
+May 19 10:53:02 development-batch systemd [1]: Stopped MariaDB 10.1.44 database server.
 </pre>
-<h4>MariaDBの起動</h4>
+<h4> Starting MariaDB </h4>
 <p>
-  MariaDBの起動は、systemctlコマンドの「start」を使って行います。sudoコマンドを使って、root権限で実行します。
+  MariaDB is started using the systemctl command "start". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl start mariadb
 </pre>
 <p>
-  起動が成功しても、成功したというメッセージは返ってきません。状態確認を行ってください。
+  Even if the boot is successful, the message that it was successful is not returned. Please check the status.
 </p>
-<h4>MariaDBの停止</h4>
+<h4> MariaDB outage </h4>
 <p>
-  MariaDBの停止は、systemctlコマンドの「stop」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To stop MariaDB, use the systemctl command "stop". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl stop mariadb
 </pre>
 <p>
-  停止が成功しても、成功したというメッセージは何も返ってきません。状態確認を行ってください。
+  If the outage is successful, no successful message will be returned. Please check the status.
 </p>
-<h4>MariaDBの再起動</h4>
+<h4> Restart MariaDB </h4>
 <p>
-  MariaDBの再起動は、systemctlコマンドの「restart」を使って行います。sudoコマンドを使って、root権限で実行します。
+  To restart MariaDB, use the systemctl command "restart". Run with root privileges using the sudo command.
 </p>
 <pre>
 sudo systemctl restart mariadb
 </pre>
 <p>
-  restartは単に、stopコマンドを実行して、startコマンドを実行します。
+  restart simply executes the stop command and executes the start command.
 </p>
-<h3>MariaDBの起動・停止のログを見るには</h3>
+<h3> To see the MariaDB start / stop log </h3>
 <p>
-  MariaDBなどのサーバーは、systemdというプログラムによって集中的に管理されています。
-</p>
-<p>
-  systemdのログにMariaDBの起動・停止ログが出力されています。
+  Servers such as MariaDB are centrally managed by a program called systemd.
 </p>
 <p>
-  systemdのログを見るには<a href="/blog/20200602135100.html">journalctlコマンド</a>を使います。「-u」オプションでユニット「mariadb」を指定します。sudoで実行しないとmariadbのログが見れないので注意してください。ログの最後の部分だけ見たい場合は「-r」オプションを組み合わせます。
+  MariaDB start / stop log is output to systemd log.
+</p>
+<p>
+  Use the <a href="/blog/20200602135100.html"> journalctl command</a> to see the systemd logs. Specify the unit "mariadb" with the "-u" option. Please note that you will not be able to see the mariadb log unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 </p>
 <pre>
 sudo journalctl -r -u mariadb
 </pre>
 <p>
-  ログのサンプルです。
+  This is a sample log.
 </p>
 <pre>
--- Logs begin at Mon 2020-06-01 15:51:16 JST, end at Thu 2020-07-23 14:33:01 JST. --
-Jul 22 13:24:37 shinshina-development-app-00000001 /etc/mysql/debian-start[1896]: Triggering myisam-recover for all MyISAM tables and aria-recover for all Aria tables
-Jul 22 13:24:37 shinshina-development-app-00000001 /etc/mysql/debian-start[1869]: Checking for insecure root accounts.
-Jul 22 13:24:37 shinshina-development-app-00000001 /etc/mysql/debian-start[1826]: This installation of MySQL is already upgraded to 10.1.44-MariaDB, use --force if you still need to run mysql_upgrade
-Jul 22 13:24:37 shinshina-development-app-00000001 /etc/mysql/debian-start[1826]: Looking for 'mysqlcheck' as: /usr/bin/mysqlcheck
-Jul 22 13:24:37 shinshina-development-app-00000001 /etc/mysql/debian-start[1826]: Looking for 'mysql' as: /usr/bin/mysql
-Jul 22 13:24:37 shinshina-development-app-00000001 /etc/mysql/debian-start[1826]: /usr/bin/mysql_upgrade: the '--basedir' option is always ignored
-Jul 22 13:24:36 shinshina-development-app-00000001 systemd[1]: Started MariaDB 10.1.44 database server.
-Jul 22 13:24:36 shinshina-development-app-00000001 /etc/mysql/debian-start[1822]: Upgrading MySQL tables if necessary.
-Jul 22 13:24:35 shinshina-development-app-00000001 mysqld[1536]: 2020-07-22 13:24:35 139798878784640 [Note] /usr/sbin/mysqld (mysqld 10.1.44-MariaDB-0ubuntu0.18.04.1) starting as process 1536 ...
-Jul 22 13:24:33 shinshina-development-app-00000001 systemd[1]: Starting MariaDB 10.1.44 database server...
--- Reboot --
-Jul 22 13:13:50 shinshina-development-app-00000001 systemd[1]: Stopped MariaDB 10.1.44 database server.
-Jul 22 13:13:47 shinshina-development-app-00000001 systemd[1]: Stopping MariaDB 10.1.44 database server...&lt;/pre&gt;
+--Logs begin at Mon 2020-06-01 15:51:16 JST, end at Thu 2020-07-23 14:33:01 JST. -
+Jul 22 13:24:37 shinshina-development-app-00000001 / etc / mysql / debian-start [1896]: Triggering myisam-recover for all MyISAM tables and aria-recover for all Aria tables
+Jul 22 13:24:37 shinshina-development-app-00000001 / etc / mysql / debian-start [1869]: Checking for insecure root accounts.
+Jul 22 13:24:37 shinshina-development-app-00000001 / etc / mysql / debian-start [1826]: This installation of MySQL is already upgraded to 10.1.44-MariaDB, use --force if you still need to run mysql_upgrade
+Jul 22 13:24:37 shinshina-development-app-00000001 / etc / mysql / debian-start [1826]: Looking for'mysqlcheck' as: / usr / bin / mysqlcheck
+Jul 22 13:24:37 shinshina-development-app-00000001 / etc / mysql / debian-start [1826]: Looking for'mysql' as: / usr / bin / mysql
+Jul 22 13:24:37 shinshina-development-app-00000001 / etc / mysql / debian-start [1826]: / usr / bin / mysql_upgrade: the'--basedir' option is always ignored
+Jul 22 13:24:36 shinshina-development-app-00000001 systemd [1]: Started MariaDB 10.1.44 database server.
+Jul 22 13:24:36 shinshina-development-app-00000001 / etc / mysql / debian-start [1822]: Upgrading MySQL tables if necessary.
+Jul 22 13:24:35 shinshina-development-app-00000001 mysqld [1536]: 2020-07-22 13:24:35 139798878784640 [Note] / usr / sbin / mysqld (mysqld 10.1.44-MariaDB-0ubuntu0.18.04 .1) starting as process 1536 ...
+Jul 22 13:24:33 shinshina-development-app-00000001 systemd [1]: Starting MariaDB 10.1.44 database server ...
+--Reboot -
+Jul 22 13:13:50 shinshina-development-app-00000001 systemd [1]: Stopped MariaDB 10.1.44 database server.
+Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping MariaDB 10.1.44 database server ... &lt;/pre&gt;
 
-&lt;h3&gt;MariaDBのsystemdの設定ファイルを見るには&lt;/h3&gt;
+&lt;h3&gt; To see MariaDB's systemd configuration file &lt;/h3&gt;
 
-MariaDBのsystemdの設定ファイルは「systemctl status mariadb」で見れます。
+MariaDB's systemd configuration file can be found under "systemctl status mariadb".
 
-設定ファイルを&lt;a href="https://en.linux.perlzemi.com/blog/20200113083613.html"&gt;catコマンド&lt;/a&gt;で見てみましょう。
+Let's take a look at the configuration file with the &lt;a href="https://en.linux.perlzemi.com/blog/20200113083613.html"&gt; cat command&lt;/a&gt;.
 
 &lt;pre&gt;
 cat /lib/systemd/system/mariadb.service
 </pre>
-<h3>MariaDBの他の情報</h3>
-<h4>MariaDBをインストールするには</h4>
+<h3> Other MariaDB information </h3>
+<h4> To install MariaDB </h4>
 <p>
-  MariaDBのインストールについては、以下の記事で解説しています。
+  The following article explains how to install MariaDB.
 </p>
 <p>
-  <a href="/blog/20200421174004.html">mariadb-serverのインストール - MariaDBデータベースサーバー</a>
+  <a href="/blog/20200421174004.html"> Installing mariadb-server --MariaDB database server</a>
 </p>
-<h4>MariaDBの設定ファイル</h4>
+<h4> MariaDB configuration file </h4>
 <p>
-  MariaDBの設定ファイルについては、別の記事で解説します。
+  MariaDB's configuration file will be discussed in another article.
 </p>
 
   </div>

@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>Apacheでドキュメントルート化でCGIを実行できるようにする設定 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="UbuntuのApacheでドキュメントルート化でCGIを実行できるようにする設定の解説です。">
+<title> Settings that allow Apache to execute CGI with document rooting  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="It is a description of the setting that enables CGI to be executed by document rooting in Apache of Ubuntu.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200612083423.html">Apacheでドキュメントルート化でCGIを実行できるようにする設定</a></h2>
+<h2><a href="/blog/20200612083423.html"> Settings that allow Apache to execute CGI with document rooting </a></h2>
 <p>
-  UbuntuのApacheでドキュメントルート化でCGIを実行できるようにする設定の解説です。
+  It is a description of the setting that enables CGI to be executed by document rooting in Apache of Ubuntu.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,47 +96,47 @@
 
 
 <p>
-  UbuntuのApacheの設定ではCGIを利用するための<a href="/blog/20200316174004.html">mod_cgidを有効にする</a>ことを行っても「/usr/lib/cgi-bin/」以下でしかCGIを実行することができません。
+  Even if you do <a href="/blog/20200316174004.html"> enable mod_cgid</a> to use CGI in Apache settings of Ubuntu, "/ usr / lib / cgi-bin /" You can only run CGI with:
 </p>
 <p>
-  これは、セキュアですが、すでに作成されているCGIアプリケーションの多くは、ドキュメントルート下で動くことが求められるでしょう。
+  This is secure, but many CGI applications that have already been created will be required to run under the document root.
 </p>
 <p>
-  新規にPerlで<a href="https://en.webapp.perlzemi.com/">Webシステム開発</a>を行う場合は、セキュリティ、開発効率、リアルタイムWeb、クラウドサーバーなどを総合的に考慮して、リバースプロキシ運用をお勧めします。
+  When doing <a href="https://en.webapp.perlzemi.com/"> Web system development</a> with Perl newly, security, development efficiency, real-time Web, cloud server, etc. are comprehensively integrated. Considering this, we recommend reverse proxy operation.
 </p>
-<h4>ドキュメントルート下でCGIを実行するためのApacheの設定ファイル</h3>
+<h4> Apache config file for running CGI under the document root </h3>
 <p>
-  ドキュメントルート下でCGIを実行のためのApacheの設定ファイルです。<a href="/blog/20200314174004.html">デフォルトのバーチャルホスト</a>の中で運用することを想定しています。
+  Apache's configuration file for running CGI under the document root. It is supposed to operate in <a href="/blog/20200314174004.html"> default virtual host</a>.
 </p>
 <p>
-  デフォルトのバーチャルホストは、最初に読み込まれる必要があるために「000-default.conf」のように、前に「000」を付けるなどして、最初に読み込まれるファイル名にする必要があることに注意してください。
+  The default virtual host needs to be loaded first, so it needs to be the file name to be loaded first, such as "000-default.conf", prefixed with "000". be careful.
 </p>
 <pre>
-&lt;VirtualHost *:80&gt;
+&lt;VirtualHost *: 80&gt;
   ServerName www.mydomain.example
 
-  DocumentRoot "/var/www/html"
+  DocumentRoot "/ var / www / html"
 
   AddHandler cgi-script .cgi
 
-  &lt;Directory /var/www/html&gt;
-    Options +ExecCGI
+  &lt;Directory / var / www / html&gt;
+    Options + ExecCGI
   &lt;/Directory&gt;
 &lt;/VirtualHost&gt;
 </pre>
-<h3>HTTPSで運用する</h3>
+<h3> Operate with HTTPS </h3>
 <p>
-  CGIプログラムをHTTPSで運用したい場合は以下の記事でSSL証明書の設定方法を解説しています。
+  If you want to operate the CGI program with HTTPS, the following article explains how to set the SSL certificate.
 </p>
 <ul>
-  <li><a href="/blog/20200611082716.html">SSL証明書の設定をApacheの設定ファイルに記述する</a></li>
+  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file</a> </li>
 </ul>
-<h3>ユーザーPerlでCGIプログラムを実行する</h3>
+<h3> Run a CGI program in user Perl </h3>
 <p>
-  システムPerlではなく、ユーザーPerlでプログラムを実行したい場合は、以下の記事を参考にしてください。
+  If you want to run the program in user Perl instead of system Perl, please refer to the following articles.
 </p>
 <ul>
-  <li><a href="/blog/20200308174004.html">ApacheのCGIプログラムでユーザーPerlを利用する方法</a></li>
+  <li> <a href="/blog/20200308174004.html"> How to use user Perl with Apache's CGI program</a> </li>
 </ul>
 
   </div>

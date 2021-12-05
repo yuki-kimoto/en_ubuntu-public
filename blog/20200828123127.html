@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>メールアドレスの作成とDNSサーバーの設定 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="メールアドレスの作成とDNSサーバーの設定について解説します。">
+<title> Creating an email address and setting up a DNS server  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="This section describes how to create an email address and set up a DNS server.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200902120232.html">
-        <span itemprop="name">ドメイン管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Domain management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200828123127.html">メールアドレスの作成とDNSサーバーの設定</a></h2>
+<h2><a href="/blog/20200828123127.html"> Creating an email address and setting up a DNS server </a></h2>
 <p>
-  メールアドレスの作成とDNSサーバーの設定について解説します。
+  This section describes how to create an email address and set up a DNS server.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,83 +96,83 @@
 
 
 <p>
-  Webサービスで利用するためのメールアドレスをすでに、持っている場合は、この手順は必要ありません。
+  If you already have an email address to use with your web service, this step is not necessary.
 </p>
 <p>
-  Webサービスと同時に新しいメールアドレスを作成する場合について解説します。
+  This section describes the case of creating a new email address at the same time as the Web service.
 </p>
-<h3>メールアドレス作成の一般的な手順</h3>
-<h4>ドメインを取得する</h4>
+<h3> General procedure for creating an email address </h3>
+<h4> Get a domain </h4>
 <p>
-  ドメインを取得する方法は、ドメイン名の取得とDNSサーバーの設定の記事を参考にしてください。
+  For information on how to get a domain, refer to the article on getting a domain name and setting up a DNS server.
 </p>
 <ul>
-  <li><a href="/blog/20200807062918.html">ドメイン名の取得とDNSサーバーの設定</a></li>
+  <li> <a href="/blog/20200807062918.html"> Get domain name and set DNS server</a> </li>
 </ul>
-<h4>共有レンタルサーバーを借りる</h4>
+<h4> Rent a shared rental server </h4>
 <p>
-  メールアドレスを取得する場合の最も簡単な方法は、メールアドレス作成の機能がついたレンタルサーバーを借りることです。
+  The easiest way to get an email address is to rent a rental server with the ability to create an email address.
 </p>
 <p>
-  またドメインを提供しているサービスが、メールアドレス作成サービスを持っている場合は、それを利用することもできます。
+  If the service that provides the domain has an email address creation service, you can also use it.
 </p>
-<h4>管理画面にログインする</h4>
+<h4> Log in to the management screen </h4>
 <p>
-  管理画面にログインします。
+  Log in to the management screen.
 </p>
-<h4>共有レンタルサーバーのIPアドレスを調べる</h4>
+<h4> Find out the IP address of the shared rental server </h4>
 <p>
-  共有レンタルサーバーのIPアドレスが掲載しているページに行って、IPアドレスをメモします。以下のようなIPアドレスをメモしてください。
+  Go to the page where the IP address of the shared rental server is posted and make a note of the IP address. Make a note of the IP address as shown below.
 </p>
 <pre>
 59.106.185.101
 </pre>
-<h3>DNSサーバーのメール設定</h3>
+<h3> DNS server mail settings </h3>
 <p>
-  DNSサーバーのメールの設定を行います。
+  Set the mail of the DNS server.
 </p>
-<h4>Aレコードの設定</h4>
+<h4> A record settings </h4>
 <p>
-  「mail」というサブドメインでAレコードの設定をします。先ほど調べた共有レンタルサーバーのIPアドレスを設定します。
-</p>
-<table>
-  <tr><th>mail</th><td>Aレコード</td><td>59.106.185.101</td></tr>
-</table>
-<h4>MXレコードの設定</h4>
-<p>
-  MXレコードの設定を行います。これは「xxx@perlclub.net」という表記をドメイン解決できるようにするための設定です。
+  Set the A record in the subdomain "mail". Set the IP address of the shared rental server you checked earlier.
 </p>
 <table>
-  <tr><th>空</th><td>MXレコード</td><td>mail.perlclub.net</td></tr>
+  <tr> <th> mail </th> <td> A record </td> <td> 59.106.185.101 </td> </tr>
 </table>
-<h3>共有レンタルサーバーのメール設定</h3>
+<h4> MX record settings </h4>
 <p>
-  共有レンタルサーバーでのメール設定です。
+  Set the MX record. This is a setting to enable domain resolution of the notation "xxx@perlclub.net".
 </p>
-<h4>ドメイン名の追加</h4>
+<table>
+  <tr> <th> empty </th> <td> MX record </td> <td> mail.perlclub.net </td> </tr>
+</table>
+<h3> Email settings for shared rental server </h3>
 <p>
-  ドメイン名の追加の項目からドメイン名「perlclub.net」を追加します。
+  It is a mail setting on the shared rental server.
 </p>
-<h4>メールアドレスの追加</h4>
+<h4> Add domain name </h4>
 <p>
-  メールアドレスの追加から、新しいメールアドレスを作成します。
+  Add the domain name "perlclub.net" from the Add Domain Name item.
+</p>
+<h4> Add email address </h4>
+<p>
+  Create a new email address from Add Email Address.
 </p>
 <pre>
-# 個人用メールアドレス
+#Personal email address
 kimoto_test@perlclub.net
 
-# サポート用メールアドレス
+#Support email address
 support@perlclub.net
 </pre>
-<h3>メールクライアントの設定</h3>
+<h3> Email client settings </h3>
 <p>
-  共有レンタルサーバー側での設定が終わったらメールクライアントで、メールの送受信をできるようにします。
+  After completing the settings on the shared rental server side, you can send and receive emails with the email client.
 </p>
 <p>
-  検索エンジンを使って「メールクライアント」と検索して、お気に入りのメールクライアントをダウンロードして、設定してください。
+  Use a search engine to search for "email client" to download and configure your favorite email client.
 </p>
 <p>
-  メールの送受信ができるようになれば、設定完了です。
+  If you can send and receive emails, the settings are complete.
 </p>
 
   </div>

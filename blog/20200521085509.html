@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>クラウドメール配信SendGridとPostfixとの連携 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="SendGridは、メール配信のためのクラウドメール配信サービスです。">
+<title> Cloud mail delivery SendGrid and Postfix work together  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="SendGrid is a cloud mail delivery service for mail delivery.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200822150919.html">
-        <span itemprop="name">メール設定</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Email settings </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200521085509.html">クラウドメール配信SendGridとPostfixとの連携</a></h2>
+<h2><a href="/blog/20200521085509.html"> Cloud mail delivery SendGrid and Postfix work together </a></h2>
 <p>
-  SendGridは、メール配信のためのクラウドメール配信サービスです。
+  SendGrid is a cloud mail delivery service for mail delivery.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,202 +95,202 @@
 </div>
 
 
-<h3>SendGridを使う理由</h3>
+<h3> Reasons to use SendGrid </h3>
 <p>
-  SendGridを使う理由です。SendGridは、メール配信のためのクラウドサービスで、月に1万2000通を超えると、月額の料金がかかります。
+  That's why we use SendGrid. SendGrid is a cloud service for mail delivery, and if you exceed 12,000 emails a month, you will be charged a monthly fee.
 </p>
 <p>
-  無料でメール配信しようとする場合、postfixを使って、SMTPサーバーを立てて、sendmailを使って送信する方法が考えられます。
+  If you want to deliver mail for free, you can use postfix to set up an SMTP server and send it using sendmail.
 </p>
 <p>
-  ただし、クラウドサーバーでポート25番のSMTPでメールを送れなかったり、メールの配信数が増えてきたり、ブラックリストに登録されたくない、という課題に突き当たります。
+  However, you will run into problems such as not being able to send emails via SMTP on port 25 on the cloud server, increasing the number of emails delivered, and not wanting to be blacklisted.
 </p>
-<h4>クラウドサーバーでポート25番のSMTPでメールを送れない</h4>
+<h4> I can't send mail via SMTP on port 25 on the cloud server </h4>
 <p>
-  パブリックなクラウドサーバーの構成として、外部に対して、動的にIPアドレスを見せている場合、もし選択されたIPアドレスが、ブラックリストに登録されていたら、メールは到着しません。
-</p>
-<p>
-  このような予期しな不具合があるため、デフォルトで、25番ポートからのメール送信を禁止しているという場合があります。
+  As a public cloud server configuration, if you are dynamically showing your IP address to the outside world, your email will not arrive if the selected IP address is blacklisted.
 </p>
 <p>
-  このような場合は、SendGridとメールのWeb API、あるいは、postfixのリレー機能を使って、SengGridに接続するという方法があります。
+  Due to such an unexpected problem, it may be prohibited to send mail from port 25 by default.
 </p>
 <p>
-  既存のシステムから移行する場合は、リレー機能を使うと、アプリケーションの修正なしで、移行できるようです。
-</p>
-<h4>メールの通数が増えて処理に時間がかかる</h4>
-<p>
-  メールの通数が増えてきて処理に時間がかかる場合は、SendGridを使うと、処理が速く終わるようです。
+  In such cases, you can connect to SengGrid using SendGrid and the Web API of mail, or the relay function of postfix.
 </p>
 <p>
-  「メール送信にかかっていた時間を大幅に短縮できました。それまで8時間近くかかっていた宛先約16万件のメルマガ送信が、SendGridを利用するようになってからは3～4分で完了するようになりました。」
+  When migrating from an existing system, it seems that the relay function can be used to migrate without modifying the application.
+</p>
+<h4> The number of emails increases and it takes time to process </h4>
+<p>
+  If the number of emails is increasing and it takes a long time to process, SendGrid seems to finish the process faster.
 </p>
 <p>
-  という体験談が書かれています。
-</p>
-<h4>ブラックリストに登録されたくない</h4>
-<p>
-  もし、メール送信元のIPアドレスがブラックリストに登録されてしまった場合、メールが到達しなくなります。
+  "We were able to significantly reduce the time it took to send an e-mail. It took about 8 hours to send e-mail newsletters to about 160,000 recipients, but it took 3 to 4 minutes after we started using SendGrid. I came to do it. "
 </p>
 <p>
-  SendGridを使うと、そのようなことが、もしSendGrid内で起こったとしても、SendGrid側で、解決してくれて、高い到達率を実現してくれるようです。
+  The experience story is written.
 </p>
-<h3>SendGridの価格</h3>
+<h4> I don't want to be blacklisted </h4>
 <p>
-  価格は以下のようになっています。
-</p>
-<p>
-  <a href="https://sendgrid.kke.co.jp/plan/">SendGrid価格(2020年5月21日現在)</a>
+  If the IP address of the sender of the email is blacklisted, the email will not be delivered.
 </p>
 <p>
-  <a href="https://sendgrid.kke.co.jp/plan/"><img src="/images/sendgrid/sendgrid-price.png" width="100%"></a>
+  With SendGrid, even if such a thing happens inside SendGrid, it seems that SendGrid will solve it and achieve a high arrival rate.
 </p>
-<h3>SendGridの申し込み</h3>
+<h3> SendGrid Price </h3>
 <p>
-  トップページから、メールアドレスを入力して申し込みます。
-</p>
-<p>
-  <a href="https://sendgrid.kke.co.jp">SendGrid申し込み</a>
+  The price is as follows.
 </p>
 <p>
-  <a href="https://sendgrid.kke.co.jp"><img src="/images/sendgrid/sendgrid-top.png" width="100%"></a>
+  <a href="https://sendgrid.kke.co.jp/plan/"> SendGrid Price (as of May 21, 2020)</a>
 </p>
 <p>
-  審査の後、本承認のメールが届きます。
+  <a href="https://sendgrid.kke.co.jp/plan/"> <img src = "/ images / sendgrid / sendgrid-price.png" width = "100%"></a>
 </p>
-<h3>Web APIやリレーメールを送るために必要なSendGridの情報</h3>
+<h3> SendGrid application </h3>
 <p>
-  Web APIやリレーメールを送るために必要なSendGridの情報は、APIキーです。(2021年以前は、ユーザー名とパスワードが、必要な情報でしたが、迷惑メール防止の観点から、APIキーが必須になったようです。)
-</p>
-<h3>APIキーを取得する</h3>
-<p>
-  APIキーを取得しましょう。SendGridの管理画面にログインします。左のサイドバーの「Settings」をクリック。「API keys」をクリック。
+  From the top page, enter your email address to apply.
 </p>
 <p>
-  右上の「Create API Key」をクリック。
+  <a href="https://sendgrid.kke.co.jp"> SendGrid application</a>
 </p>
 <p>
-  「API Key name」に任意の名前を入力。(例)perlgenki。
+  <a href="https://sendgrid.kke.co.jp"> <img src = "/ images / sendgrid / sendgrid-top.png" width = "100%"></a>
 </p>
 <p>
-  「API Key Permissions」を「Full Access」に。
+  After the review, you will receive an email with this approval.
+</p>
+<h3> SendGrid information required to send Web API and relay mail </h3>
+<p>
+  The SendGrid information required to send Web API and relay emails is the API key. (Before 2021, the user name and password were necessary information, but from the viewpoint of preventing junk mail, it seems that the API key is required.)
+</p>
+<h3> Get the API key </h3>
+<p>
+  Get your API key. Log in to the SendGrid management screen. Click "Settings" in the left sidebar. Click "API keys".
 </p>
 <p>
-  作成されたAPIキーが表示されます。一度しか表示されないので、コピペして、どこかに保存してください。もし画面を消してしまった場合は、削除して、作成しなおしましょう。
-</p>
-<h3>SendGridとPostfixを連携する</h3>
-<p>
-  SendGridはWeb APIを持っていますが、Postfixと連携して、sendmailコマンドからのメール送信をSendGridに接続することもできます。
+  Click "Create API Key" in the upper right.
 </p>
 <p>
-  この方法の利点は、SendGridを使う使わないの選択で、メールを送信するアプリケーションに変更を加える必要がないことです。アプリケーションを抽象化できます。
+  Enter any name in "API Key name". (Example) perlgenki.
 </p>
 <p>
-  デメリットは、Postfixのインストールと設定が必要なことです。
+  Change "API Key Permissions" to "Full Access".
 </p>
 <p>
-  (UbuntuのPostfixのインストールは、GUI画面が登場するので、インストール自動化が可能なのかは、今の僕にはまだわからない。)
+  The created API key is displayed. It will only be displayed once, so copy and paste it and save it somewhere. If you turn off the screen, delete it and recreate it.
 </p>
-<h4>SendGridの公式ドキュメント</h4>
+<h3> Link SendGrid and Postfix </h3>
 <p>
-  手順の詳細についてはSendGridのドキュメントが詳しいです。
-</p>
-<p>
-  基本的なドキュメント。新規に始める場合は「SendGridドキュメント - Postfix」の手順を実行しましょう。
+  SendGrid has a Web API, but you can also work with Postfix to connect sending mail from the sendmail command to SendGrid.
 </p>
 <p>
-  <a href="https://sendgrid.kke.co.jp/docs/Integrate/Mail_Servers/postfix.html">SendGridドキュメント - Postfix</a>
+  The advantage of this method is that you choose not to use SendGrid and you don't have to make any changes to the application that sends the email. You can abstract your application.
 </p>
 <p>
-  以下では、メール配信に当たって、応用的な情報が記載されています。
+  The disadvantage is that you need to install and configure Postfix.
 </p>
 <p>
-  <a href="https://sendgrid.kke.co.jp/blog/?p=8192">PostfixからSendGridへのリレーをカスタマイズする - SendGridブログ</a>
+  (Since the GUI screen appears for the installation of Postfix on Ubuntu, I still don't know if the installation can be automated.)
 </p>
-<h4>SendGridとPostfixを連携する手順</h4>
+<h4> SendGrid official documentation </h4>
 <p>
-  Postfixの設定ファイルを編集します。
+  The SendGrid documentation is detailed for detailed instructions.
+</p>
+<p>
+  Basic documentation. If you want to start anew, follow the steps in "SendGrid Documents --Postfix".
+</p>
+<p>
+  <a href="https://sendgrid.kke.co.jp/docs/Integrate/Mail_Servers/postfix.html"> SendGrid Document --Postfix</a>
+</p>
+<p>
+  Below, you will find useful information for mail delivery.
+</p>
+<p>
+  <a href="https://sendgrid.kke.co.jp/blog/?p=8192"> Customize the relay from Postfix to SendGrid --SendGrid Blog</a>
+</p>
+<h4> Procedure for linking SendGrid and Postfix </h4>
+<p>
+  Edit the Postfix configuration file.
 </p>
 <pre>
 sudo vi /etc/postfix/main.cf
 </pre>
 <p>
-  以下の設定を追加します。SMTP-Authプロトコルを使って、Postfixは、SendGridにメールの配信を依頼します。
+  Add the following settings. Using the SMTP-Auth protocol, Postfix asks SendGrid to deliver the mail.
 </p>
 <p>
-  上記の公式ドキュメントから引用して、手順をここに書き出してみます。(以下引用、2020年6月2日現在)
+  I'll write the steps here, quoting from the official documentation above. (Quoted below, as of June 2, 2020)
 </p>
 <p>
-  Postfixの設定ファイルを開いてください。通常、 /etc/postfix/main.cf です。そして、以下に書き換えてください。他の内容は削除して大丈夫です。
+  Open the Postfix configuration file. Usually it is /etc/postfix/main.cf. Then rewrite it as follows. You can delete the other contents.
 </p>
 <pre>
 smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_password_maps = hash: / etc / postfix / sasl_passwd
 smtp_sasl_security_options = noanonymous
 smtp_sasl_tls_security_options = noanonymous
 smtp_tls_security_level = encrypt
 header_size_limit = 4096000
-relayhost = [smtp.sendgrid.net]:587
+relayhost = [smtp.sendgrid.net]: 587
 </pre>
 <p>
-  ここで上で設定に記述したパスワードファイルを作成します。
+  Now create the password file described in the settings above.
 </p>
 <pre>
-sudo vi /etc/postfix/sasl_passwd
+sudo vi / etc / postfix / sasl_passwd
 </pre>
 <p>
-  SendGridで取得したAPIキーを指定します。APIキーの部分を、取得したAPIキーに書き換えてください。
+  Specify the API key obtained by SendGrid. Replace the API key part with the obtained API key.
 </p>
 <pre>
-[smtp.sendgrid.net]:587 apikey:APIキー
+[smtp.sendgrid.net]: 587 apikey: API key
 </pre>
 <p>
-  次に、このファイルがrootアカウントでのみ読み書きができるよう制限されていることを確認して、postmap コマンドを使用してPostfixがこの新しいファイルを使用するようハッシュテーブルを更新します:
+  Then make sure that this file is restricted to read and write only by the root account, and use the postmap command to update the hashtable for Postfix to use this new file:
 </p>
 <pre>
-sudo chmod 600 /etc/postfix/sasl_passwd
-sudo postmap /etc/postfix/sasl_passwd
+sudo chmod 600 / etc / postfix / sasl_passwd
+sudo postmap / etc / postfix / sasl_passwd
 </pre>
 <p>
-  最後にPostfixを<a href="/blog/20200605104005.html">systemctl</a>で、再起動してください:
+  Finally restart Postfix with <a href="/blog/20200605104005.html"> systemctl</a>:
 </p>
 <pre>
 sudo systemctl restart postfix
 </pre>
-<h3>sendmailコマンドでメール送信</h3>
+<h3> Send an email with the sendmail command </h3>
 <p>
-  sendmailコマンドでメール送信してみましょう。送信元がなかった場合は、メールをはじかれる経験があるので、「-f」で送信元メールアドレスを指定しています。
+  Let's send an email with the sendmail command. If there is no sender, the email has been rejected, so "-f" is used to specify the sender's email address.
 </p>
 <pre>
 echo Hello | sendmail -f kimoto.example@foo.com kimoto.example@foo.com
 </pre>
 <p>
-  メール送信できれば、正しく設定できています。
+  If you can send an email, the settings are correct.
 </p>
 <p>
-  送信できていなければ、mailqコマンドで、まずメールのキューを見てみましょう。
+  If you haven't been able to send it, use the mailq command to first look at the mail queue.
 </p>
 <pre>
 mailq
 </pre>
 <p>
-  キューに送信失敗と書かれていれば失敗しています。
+  If the queue says send failed, it has failed.
 </p>
 <p>
-  Postfixのsystemdのログを見るには<a href="/blog/20200602135100.html">journalctlコマンド</a>を使います。「-u」オプションでユニット「postfix」を指定します。sudoで実行しないとPostfixのログが見れないので注意してください。ログの最後の部分だけ見たい場合は「-r」オプションを組み合わせます。
+  To see the Postfix systemd logs, use the <a href="/blog/20200602135100.html"> journalctl command</a>. Specify the unit "postfix" with the "-u" option. Please note that you will not be able to see the Postfix logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 </p>
 <pre>
 sudo journalctl -r -u postfix
 </pre>
 <p>
-  Postfixのログのサンプルです。
+  This is a sample Postfix log.
 </p>
 <pre>
--- Logs begin at Mon 2020-06-01 15:51:16 JST, end at Thu 2020-07-23 14:44:11 JST. --
-Jul 22 13:24:35 shinshina-development-app-00000001 systemd[1]: Started Postfix Mail Transport Agent.
-Jul 22 13:24:35 shinshina-development-app-00000001 systemd[1]: Starting Postfix Mail Transport Agent...
--- Reboot --
-Jul 22 13:13:47 shinshina-development-app-00000001 systemd[1]: Stopped Postfix Mail Transport Agent.
+--Logs begin at Mon 2020-06-01 15:51:16 JST, end at Thu 2020-07-23 14:44:11 JST. -
+Jul 22 13:24:35 shinshina-development-app-00000001 systemd [1]: Started PostfixMail Transport Agent.
+Jul 22 13:24:35 shinshina-development-app-00000001 systemd [1]: Starting Postfix Mail Transport Agent ...
+--Reboot -
+Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopped Postfix Mail Transport Agent.
 </pre>
 
   </div>

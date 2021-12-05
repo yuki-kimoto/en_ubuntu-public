@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>nfs-kernel-serverのインストール - NFSサーバー ネットワークファイル共有 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="複数サーバー間で、ネットワークファイル共有をするにはNFSサーバーをである「nfs-kernel-server」を、aptコマンドでインストールしましょう。">
+<title> Install nfs-kernel-server --NFS server network file share  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="To share network files between multiple servers, install the NFS server "nfs-kernel-server" with the  apt command.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Package management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200518093929.html">nfs-kernel-serverのインストール - NFSサーバー ネットワークファイル共有</a></h2>
+<h2><a href="/blog/20200518093929.html"> Install nfs-kernel-server --NFS server network file share </a></h2>
 <p>
-  複数サーバー間で、ネットワークファイル共有をするにはNFSサーバーをである「nfs-kernel-server」を、<a href="/blog/20200530085516.html">apt</a>コマンドでインストールしましょう。
+  To share network files between multiple servers, install the NFS server "nfs-kernel-server" with the <a href="/blog/20200530085516.html"> apt</a> command.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -99,26 +99,26 @@
 sudo apt install -y nfs-kernel-server
 </pre>
 <p>
-  NFSは、ネットワークファイルシステムの略です。
+  NFS stands for Network File System.
 </p>
 <p>
-  NFSクライアントとしてNFSサーバーにマウントする機能を提供する<a href="/blog/20200517093929.html">nfs-common</a>も一緒にインストールされます。
+  <a href="/blog/20200517093929.html"> nfs-common</a>, which provides the ability to mount to an NFS server as an NFS client, is also installed.
 </p>
-<h4>NFSサーバーがインストールできたことの確認</h4>
+<h4> Confirm that the NFS server has been installed </h4>
 <p>
-  NFSサーバーがインストールできたことを<a href="/blog/20200605104005.html">systemctl</a>コマンドのstatusを使って確認しましょう。
+  Use the status of the <a href="/blog/20200605104005.html"> systemctl</a> command to confirm that the NFS server has been installed.
 </p>
 <pre>
 systemctl status nfs-kernel-server
 </pre>
 <p>
-  以下のように表示されればインストールされています。
+  If the following is displayed, it is installed.
 </p>
 <pre>
-● nfs-server.service - NFS server and services
+● nfs-server.service --NFS server and services
    Loaded: loaded (/lib/systemd/system/nfs-server.service; enabled; vendor prese
    Active: active (exited) since Mon 2020-05-18 09:51:35 JST; 2min 47s ago
- Main PID: 20222 (code=exited, status=0/SUCCESS)
+ Main PID: 20222 (code = exited, status = 0 / SUCCESS)
     Tasks: 0 (limit: 9479)
    CGroup: /system.slice/nfs-server.service
 </pre>

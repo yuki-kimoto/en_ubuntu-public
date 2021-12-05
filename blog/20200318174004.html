@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>ApacheでHTTPSで通信できるようにmod_sslを有効化 - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="HTTPSで通信できるようにmod_sslを有効化しておきましょう。a2enmodというのは、「Apache2 Enable Module」の略のようです。">
+<title> Enable mod_ssl to allow Apache to communicate over HTTPS  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="Let's enable mod_ssl so that we can communicate over HTTPS. a2enmod seems to be an abbreviation for "Apache2 Enable Module".">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Apache </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200318174004.html">ApacheでHTTPSで通信できるようにmod_sslを有効化</a></h2>
+<h2><a href="/blog/20200318174004.html"> Enable mod_ssl to allow Apache to communicate over HTTPS </a></h2>
 <p>
-  HTTPSで通信できるようにmod_sslを有効化しておきましょう。a2enmodというのは、「Apache2 Enable Module」の略のようです。
+  Let's enable mod_ssl so that we can communicate over HTTPS. a2enmod seems to be an abbreviation for "Apache2 Enable Module".
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -99,55 +99,55 @@
 sudo a2enmod ssl
 </pre>
 <p>
-  a2enmodコマンドは、利用可能なモジュールから、指定したモジュールの読み込みを有効にするものです。
+  The a2enmod command enables loading of the specified module from the available modules.
 </p>
 <p>
-  設定ファイルの有効化が、ファイル編集なしで、コマンドだけで、完結します。
+  The activation of the configuration file is completed with just a command without editing the file.
 </p>
 <p>
-  動作を理解するために、<a href="https://en.linux.perlzemi.com/blog/20191126082723.html">lsコマンド</a>で、Apacheの設定ファイルのディレクトリを見てみましょう。
-</p>
-<pre>
-ls /etc/apache2
-</pre>
-<p>
-  以下です。
+  To understand how it works, take a look at the Apache configuration file directory with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls command</a>. prize.
 </p>
 <pre>
-apache2.conf    conf-enabled  magic           mods-enabled  sites-available
-conf-available  envvars       mods-available  ports.conf    sites-enabled
+ls / etc / apache2
 </pre>
 <p>
-  「mods-available」の中に、ssl.confというファイルがあります。lsとgrepで確認します。
+  It is less than.
 </p>
 <pre>
-ls /etc/apache2/mods-available | grep ssl
+apache2.conf conf-enabled magic mods-enabled sites-available
+conf-available envvars mods-available ports.conf sites-enabled
 </pre>
 <p>
-  確かに「ssl.conf」があります。
+  In "mods-available" there is a file called ssl.conf. Check with ls and grep.
 </p>
 <pre>
-ssl.conf
-ssl.load
+ls / etc / apache2 / mods-available | grep ssl
 </pre>
 <p>
-  「mods-enabled」の中も見てみましょう。こちらは実際に読み込まれる設定ファイルです。
-</p>
-<pre>
-ls /etc/apache2/mods-enabled | grep ssl
-</pre>
-<p>
-  「ssl.conf」があります。
+  Certainly there is "ssl.conf".
 </p>
 <pre>
 ssl.conf
 ssl.load
 </pre>
 <p>
-  「mods-enabled」の中に、設定ファイルが存在するかどうかで、有効/無効の切り替えを行っているんですね。
+  Let's take a look inside "mods-enabled". This is the configuration file that is actually loaded.
+</p>
+<pre>
+ls / etc / apache2 / mods-enabled | grep ssl
+</pre>
+<p>
+  There is "ssl.conf".
+</p>
+<pre>
+ssl.conf
+ssl.load
+</pre>
+<p>
+  You can enable / disable it depending on whether the configuration file exists in "mods-enabled".
 </p>
 <p>
-  Apacheの再起動後に有効になります。
+  It will take effect after restarting Apache.
 </p>
 
   </div>

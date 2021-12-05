@@ -35,8 +35,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title>makeのインストール - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="makeのインストール方法を解説します。aptコマンドを使って、makeをインストールします。sudoを使って管理者権限で実行します。">
+<title> Install make  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="I will explain how to install make. Install make using the  apt command. Run with administrator privileges using sudo.">
   </head>
   <body>
     <div class="container">
@@ -56,28 +56,28 @@
 
   </div>
   <div class="middle">
-    <div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
-      </a>
-      <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
+      <meta itemprop = "position" content = "1" />
     </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
-      </a>
-      <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Package management </span>
+     </a>
+      <meta itemprop = "position" content = "2" />
     </li>
     <li>
       here
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200514084132.html">makeのインストール</a></h2>
+<h2><a href="/blog/20200514084132.html"> Install make </a></h2>
 <p>
-  makeのインストール方法を解説します。<a href="/blog/20200530085516.html">apt</a>コマンドを使って、makeをインストールします。sudoを使って管理者権限で実行します。
+  I will explain how to install make. Install make using the <a href="/blog/20200530085516.html"> apt</a> command. Run with administrator privileges using sudo.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -98,21 +98,21 @@
 <pre>
 sudo apt install -y make
 </pre>
-<h3>makeの主な用途</h3>
+<h3> Main uses of make </h3>
 <p>
-  makeは、主な用途として、C言語のソースファイルをコンパイルするときに、ソースファイルの依存関係を調べて、再コンパイルが必要なソースファイルだけをコンパイルするためのツールです。
+  make is a tool mainly used to check source file dependencies and compile only source files that need to be recompiled when compiling C source files.
 </p>
 <p>
-  また、makeのサブコマンド(本当はサブコマンドという名前ではない)「make test」や「make install」などを作って、一連のシェルコマンドやプログラムを実行できます。
+  You can also create a make subcommand (not really a subcommand) such as "make test" or "make install" to execute a series of shell commands or programs.
 </p>
 <p>
-  makeは、<a href="https://perlzemi.com/blog/20100504127089.html">CPAN</a>からPerlのモジュールをインストールするときにも必要となります。C言語ソースコードを含んでいる<a href="https://perlzemi.com/blog/20100809127859.html">XSモジュール</a>の場合は、もちろん必要ですが、C言語ソースコードを含んでいないモジュールでも、多くの場合は必要です。
+  make is also required when installing Perl modules from <a href="https://perlzemi.com/blog/20100504127089.html"> CPAN</a>. For <a href="https://perlzemi.com/blog/20100809127859.html"> XS module</a> that contains C source code, of course it is necessary, but it includes C source code. Modules that aren't there are often needed.
 </p>
 <p>
-  多くの場合はというのは、<a href="https://perlzemi.com/blog/20170210150108.html">ExtUtils::MakeMaker</a>が使われている場合のことです。Module::BuildやModule::Build::Tinyが使われている場合はいらない。
+  In most cases, <a href="https://perlzemi.com/blog/20170210150108.html"> ExtUtils :: MakeMaker</a> is used. Not needed if Module :: Build or Module :: Build :: Tiny is used.
 </p>
 <p>
-  以下のような手順を実行するだけで、モジュールをコンパイルして、ファイルをディレクトリに配置、テストを行って、インストールするということができます。
+  You can compile the module, place the files in a directory, test it, and install it by simply following these steps:
 </p>
 <pre>
 make
@@ -120,7 +120,7 @@ make test
 make install
 </pre>
 <p>
-  これがCPANモジュールのインストールにおいて行われています。
+  This is done in the CPAN module installation.
 </p>
 
   </div>
