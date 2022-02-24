@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-313KMDYSPS"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-313KMDYSPS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -53,7 +51,6 @@
           <div class="entry">
   <div class="top">
     <!-- top -->
-
   </div>
   <div class="middle">
     <h2><a href="/blog/20200415174004.html"> vsftpd FTP server start / stop / restart / status check </a></h2>
@@ -167,9 +164,9 @@ Jul 22 13:24:33 shinshina-development-app-00000001 systemd [1]: Starting vsftpd 
 --Reboot -
 Jul 22 13:13:48 shinshina-development-app-00000001 systemd [1]: Stopped vsftpd FTP server.
 Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping vsftpd FTP server ...
-Jun 22 23:17:45 shinshina-development-app-00000001 vsftpd [7261]: pam_unix (vsftpd: auth): authentication failure; logname = uid = 0 euid = 0 tty = ftp ruser = anonymous rhost = :: ffff: 35.187 .98.101
+Jun 22 23:17:45 shinshina-development-app-00000001 vsftpd [7261]: pam_unix (vsftpd: auth): authentication failure; logname = uid = 0 euid = 0 tty = ftp ruser = anonymous rhost =::ffff: 35.187 .98.101
 Jun 22 23:17:45 shinshina-development-app-00000001 vsftpd [7261]: pam_unix (vsftpd: auth): check pass; user unknown
-Jun 22 19:42:05 shinshina-development-app-00000001 vsftpd [122058]: pam_unix (vsftpd: auth): authentication failure; logname = uid = 0 euid = 0 tty = ftp ruser = admin rhost = :: ffff: 80.184 .11.115
+Jun 22 19:42:05 shinshina-development-app-00000001 vsftpd [122058]: pam_unix (vsftpd: auth): authentication failure; logname = uid = 0 euid = 0 tty = ftp ruser = admin rhost =::ffff: 80.184 .11.115
 Jun 22 19:42:05 shinshina-development-app-00000001 vsftpd [122058]: pam_unix (vsftpd: auth): check pass; user unknown &lt;/pre&gt;
 
 &lt;h3&gt; vsftpd To see the systemd configuration file for the FTP server &lt;/h3&gt;
@@ -192,7 +189,7 @@ After = network.target
 [Service]
 Type = simple
 ExecStart = / usr / sbin / vsftpd /etc/vsftpd.conf
-ExecReload = / bin / kill -HUP $ MANPID
+ExecReload = / bin / kill -HUP $MANPID
 ExecStartPre =-/ bin / mkdir -p / var / run / vsftpd / empty
 
 [Install]
@@ -239,8 +236,7 @@ WantedBy = multi-user.target
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

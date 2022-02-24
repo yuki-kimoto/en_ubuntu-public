@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-313KMDYSPS"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-313KMDYSPS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -53,7 +51,6 @@
           <div class="entry">
   <div class="top">
     <!-- top -->
-
   </div>
   <div class="middle">
     <h2><a href="/blog/20200623095744.html"> Create a private / public key pair for SSH public key authentication with ssh-keygen </a></h2>
@@ -169,7 +166,7 @@ chmod 600 id_rsa_example
   Let's display the contents of "id_rsa_example.pub" with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat</a> command.
 </p>
 <pre>
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @myhost
 </pre>
 <p>
   This is the content of the public key registered on the remote server.
@@ -182,7 +179,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpf
 vi ~ / .ssh / authorized_keys
 </pre>
 <pre>
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @myhost
 </pre>
 <p>
   "Authorized_keys" can register multiple public keys, and you can also set each public key.
@@ -191,8 +188,8 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpf
   If you want to register more than one, please change the line.
 </p>
 <pre>
-ssh-rsa AAAAB3NzaC1yc2EAAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
-ssh-rsa CCCAB3NzaC1yc2EAAAADAQAnAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp2 @ myhost
+ssh-rsa AAAAB3NzaC1yc2EAAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @myhost
+ssh-rsa CCCAB3NzaC1yc2EAAAADAQAnAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp2 @myhost
 </pre>
 <p>
   Let's set the permission to 600. This is not required, but 600 is recommended.
@@ -245,8 +242,7 @@ chmod 600 ~ / .ssh / authorized_keys
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

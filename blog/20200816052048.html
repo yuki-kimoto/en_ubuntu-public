@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-313KMDYSPS"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-313KMDYSPS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -53,7 +51,6 @@
           <div class="entry">
   <div class="top">
     <!-- top -->
-
   </div>
   <div class="middle">
     <h2><a href="/blog/20200816052048.html"> Web system development environment construction with Sakura VPS + Ubuntu 18 + Perl </a></h2>
@@ -354,7 +351,7 @@ Password: Password:
   Enter your initial password and press Enter. If you can log in, you are successful. It will be displayed as follows.
 </p>
 <pre>
-ubuntu @ tk2-250-35845: ~ $
+ubuntu @tk2-250-35845: ~ $
 </pre>
 <p>
   In this state, you can execute <a href="https://en.linux.perlzemi.com/blog/20200211081227.html"> Linux commands</a>.
@@ -617,7 +614,7 @@ sudo vi /etc/redis/redis.conf
   The following
 </p>
 <pre>
-bind 127.0.0.1 :: 1
+bind 127.0.0.1::1
 </pre>
 <p>
   Changed to<pre>
@@ -704,7 +701,7 @@ create user myapp;
 grant insert, update, delete, select on myappdb. * to'myapp' @'localhost' identified by'eifjutab &amp;';
 </pre>
 <p>
-  When installing DBD :: mysql with Perl, you need to have connection permission to the test database, so set it.
+  When installing DBD::mysql with Perl, you need to have connection permission to the test database, so set it.
 </p>
 <pre>
 create database test;
@@ -956,7 +953,7 @@ sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   RewriteEngine on
-  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
+  RewriteRule (. *)? $Https: //%{HTTP_HOST}%{REQUEST_URI} [L, R = 301]
 &lt;/VirtualHost&gt;
 
 &lt;VirtualHost *: 443&gt;
@@ -1102,7 +1099,7 @@ sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   RewriteEngine on
-  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
+  RewriteRule (. *)? $Https: //%{HTTP_HOST}%{REQUEST_URI} [L, R = 301]
 &lt;/VirtualHost&gt;
 
 &lt;VirtualHost *: 443&gt;
@@ -1416,8 +1413,7 @@ echo Hello | sendmail -f kimoto_test@perlclub.net kimoto_test@perlclub.net
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

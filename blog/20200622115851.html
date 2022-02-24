@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-313KMDYSPS"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-313KMDYSPS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -35,8 +33,8 @@
   gtag('config', 'G-313KMDYSPS');
 </script>
 
-<title> Install Image :: Magick with cpanm on user Perl  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
-<meta name="description" content="How to install Image :: Magic with cpanm in user Perl.">
+<title> Install Image::Magick with cpanm on user Perl  - Ubuntuサーバー構築入門 - Ubuntuサーバーでゼロから環境構築</title>
+<meta name="description" content="How to install Image::Magic with cpanm in user Perl.">
   </head>
   <body>
     <div class="container">
@@ -53,7 +51,6 @@
           <div class="entry">
   <div class="top">
     <!-- top -->
-
   </div>
   <div class="middle">
     <div class = "bread">
@@ -61,13 +58,13 @@
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
         <span itemprop = "name"> Ubuntu </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "1" />
     </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
         <span itemprop = "name"> Perl </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "2" />
     </li>
     <li>
@@ -75,9 +72,9 @@
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200622115851.html"> Install Image :: Magick with cpanm on user Perl </a></h2>
+<h2><a href="/blog/20200622115851.html"> Install Image::Magick with cpanm on user Perl </a></h2>
 <p>
-  How to install Image :: Magic with cpanm in user Perl.
+  How to install Image::Magic with cpanm in user Perl.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -95,7 +92,7 @@
 </div>
 
 <p>
-  First of all, the Image :: Magick module is a very difficult module to install in Perl in your environment with cpanm. It is not easy to install with cpanm and you have to manually rewrite Makefile.PL.
+  First of all, the Image::Magick module is a very difficult module to install in Perl in your environment with cpanm. It is not easy to install with cpanm and you have to manually rewrite Makefile.PL.
 </p>
 <p>
   When performing image processing in a new Perl system development, an image editing module called <a href="https://en.perlzemi.com/blog/20110820131832.html"> Imager</a> written in Perl. There is, so let's try this first.
@@ -103,10 +100,10 @@
 <p>
   <a href="https://en.ubuntu.perlzemi.com/blog/20200425174004.html"> Install ImageMagic</a> and execute the convert command etc. <a href="https://en.perlzemi. Calling it with the com / blog / 20180124151680.html "> system function</a> is the next best thing to do.
 </p>
-<h3> Packages required to install Image :: Magick with cpanm on user Perl </h3>
+<h3> Packages required to install Image::Magick with cpanm on user Perl </h3>
 <h4> Install libmagickcore-dev </h4>
 <p>
-  Install ImageMagick headers and libraries as a prerequisite to installing Perl's Image :: Magick.
+  Install ImageMagick headers and libraries as a prerequisite to installing Perl's Image::Magick.
 </p>
 <ul>
   <li> <a href="/blog/20200612115851.html"> Installing libmagickcore-dev --ImageMagick headers and libraries</a> </li>
@@ -139,12 +136,12 @@ find / usr / include | grep'magick-baseconfig.h'
 <ul>
   <li> <a href="/blog/20200620115851.html"> Installing libperl-dev --Perl headers and libraries</a> </li>
 </ul>
-<h3> Install Image :: Magick with cpanm on user Perl </h3>
+<h3> Install Image::Magick with cpanm on user Perl </h3>
 <p>
-  First, let's install Image :: Magick with cpanm.
+  First, let's install Image::Magick with cpanm.
 </p>
 <pre>
-cpanm Image :: Magick
+cpanm Image::Magick
 </pre>
 <p>
   It will fail. Looking at the log, it is said that "magick / magick-baseconfig.h" does not exist.
@@ -169,7 +166,7 @@ cd ~ / .cpanm / latest-build
 ls
 </pre>
 <p>
-  Image :: Magick is included in PerlMagick, so find the following directory. The version number depends on your environment.
+  Image::Magick is included in PerlMagick, so find the following directory. The version number depends on your environment.
 </p>
 <pre>
 PerlMagick-6.89
@@ -187,7 +184,7 @@ cd PerlMagick-6.89
 vi Makefile.PL
 </pre>
 <p>
-  Rewrite $ INC_magick. Add the following include directories to the beginning. "-I" is a gcc option to add an include directory.
+  Rewrite $INC_magick. Add the following include directories to the beginning. "-I" is a gcc option to add an include directory.
 </p>
 <pre>
 / usr / include / ImageMagick-6
@@ -195,10 +192,10 @@ vi Makefile.PL
 </pre>
 <pre>
 # Change before
-my $ INC_magick ='-I / usr / local / include / ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE = 0 -DMAGICKCORE_QUANTUM_DEPTH = 16 -I / usr / include / libxml2 -I"'. $ Config {'usrinc'}.'/ ImageMagick- 6 "';
+my $INC_magick ='-I / usr / local / include / ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE = 0 -DMAGICKCORE_QUANTUM_DEPTH = 16 -I / usr / include / libxml2 -I"'. $Config {'usrinc'}.'/ ImageMagick- 6 "';
 
 # After change
-my $ INC_magick ='-I / usr / include / ImageMagick-6 -I / usr / include / x86_64-linux-gnu / ImageMagick-6 -I / usr / local / include / ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE = 0 -DMAGICKCORE_QUANTUM_DEPTH = 16 -I / usr / include / libxml2 -I "'. $ Config {'usrinc'}.'/ ImageMagick-6"';
+my $INC_magick ='-I / usr / include / ImageMagick-6 -I / usr / include / x86_64-linux-gnu / ImageMagick-6 -I / usr / local / include / ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE = 0 -DMAGICKCORE_QUANTUM_DEPTH = 16 -I / usr / include / libxml2 -I "'. $Config {'usrinc'}.'/ ImageMagick-6"';
 </pre>
 <p>
   The rest is compilation and installation.
@@ -212,7 +209,7 @@ make install
   Load the module and make sure there are no errors.
 </p>
 <pre>
-perl -e'use Image :: Magick'
+perl -e'use Image::Magick'
 </pre>
 
   </div>
@@ -243,8 +240,7 @@ perl -e'use Image :: Magick'
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"
